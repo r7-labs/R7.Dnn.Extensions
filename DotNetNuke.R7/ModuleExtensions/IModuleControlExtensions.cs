@@ -62,7 +62,7 @@ namespace DotNetNuke.R7
             return module.ModuleContext.NavigateUrl (module.ModuleContext.TabId, controlKey, false, argList.ToArray ());
         }
 
-        public static void SynchronizeModuleHack (IModuleControl module)
+        public static void SynchronizeModuleHack (this IModuleControl module)
         {
             ModuleController.SynchronizeModule (module.ModuleContext.ModuleId);
 
