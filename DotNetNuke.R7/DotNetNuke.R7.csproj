@@ -64,7 +64,6 @@
     <Compile Include="DnnTypeUtils.cs" />
     <Compile Include="DnnUtils.cs" />
     <Compile Include="ControlExtensions\DnnFilePickerUploaderExtensions.cs" />
-    <Compile Include="ControlExtensions\ListControlExtensions.cs" />
     <Compile Include="ModuleExtensions\IModuleControlExtensions.cs" />
     <Compile Include="ModuleExtensions\ModuleExtensions.cs" />
     <Compile Include="ModuleExtensions\MessageType.cs" />

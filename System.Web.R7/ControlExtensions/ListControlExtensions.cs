@@ -26,7 +26,7 @@
 using System;
 using System.Web.UI.WebControls;
 
-namespace DotNetNuke.R7
+namespace System.Web.R7
 {
     public static class ListControlExtensions
     {
