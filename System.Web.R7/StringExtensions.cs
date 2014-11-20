@@ -1,5 +1,5 @@
 ﻿//
-// DnnStringExtensions.cs
+// StringExtensions.cs
 //
 // Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
@@ -23,30 +23,26 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using DotNetNuke.Common.Utilities;
+using System.Web.UI.WebControls;
 
-namespace DotNetNuke.R7
+namespace System.Web.R7
 {
-    public static class DnnStringExtensions
+    public static class StringExtensions
     {
-        /// <summary>
-        /// Parses specified string value to a nullable int, 
-        /// also with convertion of Null.NullInteger to null 
-        /// </summary>
-        /// <returns>The nullable int.</returns>
-        /// <param name="value">String value to parse.</param>
-        public static int? ParseToNullableInt (this string value)
+        public static Unit ToUnit (this string value, double minvalue)
         {
-            // TODO: Make another variant of ParseToNullableInt() without using DNN Null object
-
-            int n;
-
-            if (int.TryParse (value, out n))
-                return Null.IsNull (n) ? null : (int?) n;
-            else
-                return null;
+            try
+            {
+                var unit = Unit.Parse (value);
+                if (unit.Value <= minvalue)
+                    return Unit.Empty;
+                return unit; 
+            }
+            catch
+            {
+                return Unit.Empty;
+            }
         }
     }
 }

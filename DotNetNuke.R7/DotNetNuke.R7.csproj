@@ -68,10 +68,10 @@
     <Compile Include="ModuleExtensions\ModuleExtensions.cs" />
     <Compile Include="ModuleExtensions\MessageType.cs" />
     <Compile Include="ControlExtensions\DnnTreeViewExtensions.cs" />
-    <Compile Include="DnnStringExtensions.cs" />
     <Compile Include="TypedSettingsBase.cs" />
     <Compile Include="ExtendedModuleBase\ExtendedPortalModuleBase.cs" />
     <Compile Include="ExtendedModuleBase\ExtendedModuleSettingsBase.cs" />
+    <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

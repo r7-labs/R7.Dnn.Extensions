@@ -1,5 +1,5 @@
 ﻿//
-// TypeUtils.cs
+// StringExtensions.cs
 //
 // Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
@@ -23,13 +23,31 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using System.Text.RegularExpressions;
 
-namespace R7.Common
+using System;
+using DotNetNuke.Common.Utilities;
+
+namespace DotNetNuke.R7
 {
-    public class TypeUtils
+    public static class StringExtensions
     {
+        /// <summary>
+        /// Parses specified string value to a nullable int, 
+        /// also with convertion of Null.NullInteger to null 
+        /// </summary>
+        /// <returns>The nullable int.</returns>
+        /// <param name="value">String value to parse.</param>
+        public static int? ParseToNullableInt (this string value)
+        {
+            // TODO: Make another variant of ParseToNullableInt() without using DNN Null object
+
+            int n;
+
+            if (int.TryParse (value, out n))
+                return Null.IsNull (n) ? null : (int?) n;
+            else
+                return null;
+        }
     }
 }
 

@@ -26,7 +26,6 @@
 using System;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web.UI.WebControls;
 
 namespace R7.Common
 {
@@ -79,21 +78,6 @@ namespace R7.Common
             }
 
             return defaultValue;
-        }
-
-        public static Unit ToUnit (this string value, double minvalue)
-        {
-            try
-            {
-                var unit = Unit.Parse (value);
-                if (unit.Value <= minvalue)
-                    return Unit.Empty;
-                return unit; 
-            }
-            catch
-            {
-                return Unit.Empty;
-            }
         }
 
         public static int ToInt32 (this string value, int defaultValue)
