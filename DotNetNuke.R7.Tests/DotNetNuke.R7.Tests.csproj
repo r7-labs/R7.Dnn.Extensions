@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DnnTypeUtils.test.cs" />
+    <Compile Include="StringExtensions.test.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -48,6 +49,10 @@
     <ProjectReference Include="..\R7.Common\R7.Common.csproj">
       <Project>{7013A6D9-ABFA-48E2-A6A7-2576FEC31843}</Project>
       <Name>R7.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\System.Web.R7\System.Web.R7.csproj">
+      <Project>{3D1EAB1E-3A72-4675-A34A-42F21FFD9FF6}</Project>
+      <Name>System.Web.R7</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
