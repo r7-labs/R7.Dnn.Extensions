@@ -34,14 +34,14 @@ namespace DotNetNuke.Entities.Modules
     /// <summary>
     /// Provides strong typed access to settings used by module
     /// </summary>
-    public class TypedSettingsBase
+    public class SettingsWrapper
     {
         protected ModuleController ctrl;
         protected int ModuleId;
         protected int TabModuleId;
         protected Hashtable settings;
 
-        private TypedSettingsBase (int moduleId, int tabModuleId)
+        private SettingsWrapper (int moduleId, int tabModuleId)
         {
             Init (moduleId, tabModuleId);
         }
@@ -52,7 +52,7 @@ namespace DotNetNuke.Entities.Modules
         /// <param name='module'>
         /// Module control.
         /// </param>
-        public TypedSettingsBase (IModuleControl module) : this (module.ModuleContext.ModuleId, module.ModuleContext.TabModuleId)
+        public SettingsWrapper (IModuleControl module) : this (module.ModuleContext.ModuleId, module.ModuleContext.TabModuleId)
         {
         }
 
@@ -60,7 +60,7 @@ namespace DotNetNuke.Entities.Modules
         /// Initializes a new instance of the <see cref="DotNetNuke.R7.TypedSettingsBase"/> class
         /// and should only be used in generic classes along with <see cref="DotNetNuke.R7.TypedSettingsBase.Init()" /> call.
         /// </summary>
-        public TypedSettingsBase ()
+        public SettingsWrapper ()
         {
         }
 
@@ -85,7 +85,7 @@ namespace DotNetNuke.Entities.Modules
         /// <param name='module'>
         /// Module info.
         /// </param>
-        public TypedSettingsBase (ModuleInfo module) : this (module.ModuleID, module.TabModuleID)
+        public SettingsWrapper (ModuleInfo module) : this (module.ModuleID, module.TabModuleID)
         {
         }
 

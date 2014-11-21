@@ -29,7 +29,7 @@ namespace DotNetNuke.Entities.Modules
 {
     public class ExtendedPortalModuleBase <TC, TS> : PortalModuleBase 
         where TC : ControllerBase, new ()
-        where TS : TypedSettingsBase, new ()
+        where TS : SettingsWrapper, new ()
     {
         private TC ctrl = null;
 
