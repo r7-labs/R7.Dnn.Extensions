@@ -28,7 +28,7 @@ using System.Web.UI.WebControls;
 
 namespace DotNetNuke.Common.Utilities
 {
-    public class DnnTypeUtils
+    public class NullUtils
     {
         /// <summary>
         /// Converts n (including DNN Null) to nullable type.

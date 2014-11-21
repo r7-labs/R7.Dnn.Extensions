@@ -71,7 +71,7 @@
     <Compile Include="DotNetNuke.Entities.Modules\ControllerBase.cs" />
     <Compile Include="DotNetNuke.Entities.Modules\TypedSettingsBase.cs" />
     <Compile Include="DotNetNuke.Common.Utilities\StringExtensions.cs" />
-    <Compile Include="DotNetNuke.Common.Utilities\DnnTypeUtils.cs" />
+    <Compile Include="DotNetNuke.Common.Utilities\NullUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

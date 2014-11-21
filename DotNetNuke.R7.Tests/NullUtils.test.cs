@@ -31,13 +31,13 @@ using NUnit.Framework;
 namespace DotNetNuke.R7.Tests
 {
     [TestFixture ()]
-    public class DnnTypeUtilsTest 
+    public class NullUtilsTest
     {
         [Test ()]
         public void ToNullable_TestCase ()
         {
-            Assert.AreEqual (DnnTypeUtils.ToNullable<int> (-1), null);
-            Assert.AreEqual (DnnTypeUtils.ToNullable<int> (20), (int?) 20);
+            Assert.AreEqual (NullUtils.ToNullable<int> (-1), null);
+            Assert.AreEqual (NullUtils.ToNullable<int> (20), (int?) 20);
 
         }
     }
