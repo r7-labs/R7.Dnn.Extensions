@@ -25,9 +25,8 @@
 // THE SOFTWARE.
 
 using System;
-using DotNetNuke.Common.Utilities;
 
-namespace System.Text
+namespace DotNetNuke.Common.Utilities
 {
     public static class StringExtensions
     {
