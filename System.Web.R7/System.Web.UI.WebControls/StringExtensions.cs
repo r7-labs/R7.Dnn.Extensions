@@ -31,15 +31,8 @@ namespace System.Web.UI.WebControls
     {
         public static Unit ToUnit (this string value, double minvalue)
         {
-            try
-            {
-                var unit = Unit.Parse (value);
-                return unit.Value <= minvalue ? Unit.Empty : unit;
-            }
-            catch
-            {
-                return Unit.Empty;
-            }
+            var unit = Unit.Parse (value);
+            return unit.Value <= minvalue ? Unit.Empty : unit;
         }
     }
 }
