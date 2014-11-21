@@ -34,9 +34,7 @@ namespace System.Web.UI.WebControls
             try
             {
                 var unit = Unit.Parse (value);
-                if (unit.Value <= minvalue)
-                    return Unit.Empty;
-                return unit; 
+                return unit.Value <= minvalue ? Unit.Empty : unit;
             }
             catch
             {

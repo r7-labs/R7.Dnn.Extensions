@@ -49,7 +49,7 @@ namespace System.Text
                     return s1.Length;
 
                 var diff = 0;                       
-                int [,] m = new int[s1.Length + 1, s2.Length + 1];
+                var m = new int [s1.Length + 1, s2.Length + 1];
 
                 for (var i = 0; i <= s1.Length; i++)
                     m [i, 0] = i;

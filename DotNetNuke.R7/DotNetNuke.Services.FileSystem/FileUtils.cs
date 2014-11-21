@@ -30,7 +30,7 @@ using DotNetNuke.Entities.Controllers;
 
 namespace DotNetNuke.Services.FileSystem
 {
-    public class FileUtils
+    public static class FileUtils
     {
         /// <summary>
         /// Determines if the specified file is an images.
@@ -42,8 +42,8 @@ namespace DotNetNuke.Services.FileSystem
             if (!string.IsNullOrWhiteSpace (fileName))
                 return Globals.glbImageFileTypes.Contains (
                     Path.GetExtension (fileName).Substring (1).ToLowerInvariant ());
-            else
-                return false;
+
+            return false;
         }
 
         public static bool IsFileAllowed (string filename)

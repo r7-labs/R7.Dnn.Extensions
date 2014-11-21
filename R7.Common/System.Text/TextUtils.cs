@@ -26,11 +26,10 @@
 using System;
 using System.Text.RegularExpressions;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace System.Text
 {
-    public class TextUtils
+    public static class TextUtils
     {
         /// <summary>
         /// Formats the list of arguments, excluding empty ones.

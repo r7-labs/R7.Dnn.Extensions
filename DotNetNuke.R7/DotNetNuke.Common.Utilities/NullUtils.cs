@@ -28,7 +28,7 @@ using System.Web.UI.WebControls;
 
 namespace DotNetNuke.Common.Utilities
 {
-    public class NullUtils
+    public static class NullUtils
     {
         /// <summary>
         /// Converts n (including DNN Null) to nullable type.
@@ -36,9 +36,9 @@ namespace DotNetNuke.Common.Utilities
         /// <returns>The nullable.</returns>
         /// <param name="n">N.</param>
         /// <typeparam name="T">Type parameter.</typeparam>
-        public static Nullable<T> ToNullable<T> (T n) where T: struct
+        public static T? ToNullable<T> (T n) where T: struct
         {
-            return Null.IsNull (n) ? null : (Nullable<T>) n;
+            return Null.IsNull (n) ? null : (T?) n;
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace DotNetNuke.Common.Utilities
         /// <returns><c>true</c> if the specified n is null or DNN Null; otherwise, <c>false</c>.</returns>
         /// <param name="n">N.</param>
         /// <typeparam name="T">Type parameter.</typeparam>
-        public static bool IsNull<T> (Nullable<T> n) where T: struct
+        public static bool IsNull<T> (T? n) where T: struct
         {
             if (n.HasValue && !Null.IsNull (n.Value))
                 return false;

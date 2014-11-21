@@ -36,7 +36,7 @@ namespace DotNetNuke.Entities.Modules
         #region Common methods
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MiniGallery.ControllerBase"/> class.
+        /// Initializes a new instance of the <see cref="DotNetNuke.Entities.Modules.ControllerBase"/> class.
         /// </summary>
         protected ControllerBase ()
         { 
@@ -127,7 +127,7 @@ namespace DotNetNuke.Entities.Modules
         /// <returns></returns>
         public IEnumerable<T> GetObjects<T> (int scopeId) where T: class
         {
-            IEnumerable<T> infos = null;
+            IEnumerable<T> infos;
 
             using (var ctx = DataContext.Instance ())
             {
@@ -147,7 +147,7 @@ namespace DotNetNuke.Entities.Modules
         /// <returns></returns>
         public IEnumerable<T> GetObjects<T> () where T: class
         {
-            IEnumerable<T> infos = null;
+            IEnumerable<T> infos;
 
             using (var ctx = DataContext.Instance ())
             {
@@ -165,14 +165,14 @@ namespace DotNetNuke.Entities.Modules
         /// <param name="sqlCondition">SQL command condition.</param>
         /// <param name="args">SQL command arguments.</param>
         /// <typeparam name="T">Type of objects.</typeparam>
-        public IEnumerable<T> GetObjects<T> (string sqlConditon, params object[] args) where T: class
+        public IEnumerable<T> GetObjects<T> (string sqlCondition, params object[] args) where T: class
         {
-            IEnumerable<T> infos = null;
+            IEnumerable<T> infos;
 
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                infos = repo.Find (sqlConditon, args);
+                infos = repo.Find (sqlCondition, args);
             }
 
             return infos;
@@ -188,7 +188,7 @@ namespace DotNetNuke.Entities.Modules
         /// <typeparam name="T">Type of objects.</typeparam>
         public IEnumerable<T> GetObjects<T> (System.Data.CommandType cmdType, string sql, params object[] args) where T: class
         {
-            IEnumerable<T> infos = null;
+            IEnumerable<T> infos;
 
             using (var ctx = DataContext.Instance ())
             {

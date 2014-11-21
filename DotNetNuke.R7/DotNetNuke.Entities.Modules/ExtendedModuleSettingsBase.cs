@@ -31,9 +31,9 @@ namespace DotNetNuke.Entities.Modules
         where TC : ControllerBase, new ()
         where TS : SettingsWrapper, new ()
     {
-        private TC ctrl = null;
+        private TC ctrl;
 
-        private TS settings = null;
+        private TS settings;
 
         protected TC Controller
         {
@@ -42,7 +42,7 @@ namespace DotNetNuke.Entities.Modules
 
         /// <summary>
         /// Gets the module settings. Raw settings hashtable is accessible via 
-        /// <see cref="DotNetNuke.R7.TypedSettings.Settings" /> property.
+        /// <see cref="DotNetNuke.Entities.Modules.SettingsWrapper.Settings" /> property.
         /// </summary>
         /// <value>The module settings.</value>
         protected new TS Settings

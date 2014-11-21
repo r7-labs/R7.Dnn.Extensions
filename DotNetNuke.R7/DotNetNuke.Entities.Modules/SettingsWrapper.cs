@@ -47,7 +47,7 @@ namespace DotNetNuke.Entities.Modules
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MiniGallery.SettingsWrapper"/> class.
+        /// Initializes a new instance of the <see cref="DotNetNuke.Entities.Modules.SettingsWrapper"/> class.
         /// </summary>
         /// <param name='module'>
         /// Module control.
@@ -57,8 +57,8 @@ namespace DotNetNuke.Entities.Modules
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNetNuke.R7.TypedSettingsBase"/> class
-        /// and should only be used in generic classes along with <see cref="DotNetNuke.R7.TypedSettingsBase.Init()" /> call.
+        /// Initializes a new instance of the <see cref="DotNetNuke.Entities.Modules.SettingsWrapper"/> class
+        /// and should only be used in generic classes along with <see cref="DotNetNuke.Entities.Modules.SettingsWrapper.Init()" /> call.
         /// </summary>
         public SettingsWrapper ()
         {
@@ -80,7 +80,7 @@ namespace DotNetNuke.Entities.Modules
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MiniGallery.SettingsWrapper"/> class.
+        /// Initializes a new instance of the <see cref="DotNetNuke.Entities.Modules.SettingsWrapper"/> class.
         /// </summary>
         /// <param name='module'>
         /// Module info.
@@ -106,7 +106,7 @@ namespace DotNetNuke.Entities.Modules
         /// </typeparam>
         protected T ReadSetting<T> (string settingName, T defaultValue)
         {
-            T ret = default(T);
+            T ret;
 
             if (settings.ContainsKey (settingName))
             {

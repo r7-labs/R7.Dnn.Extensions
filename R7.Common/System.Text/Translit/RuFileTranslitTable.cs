@@ -23,15 +23,14 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Dynamic;
-using System.Security.Cryptography;
 
 namespace System.Text
 {
     public class RuFileTranslitTable : TranslitTableBase
     {
-        private static string [,] ruFileTranslitTable ={
+        private static readonly string [,] ruFileTranslitTable ={
             // apply some filename rules
             {@"[^0-9^a-z^а-я^A-Z^А-Я^\-^ё^Ё]", "_"},
             {@"_+", "_"},

@@ -79,9 +79,9 @@ namespace System.Text
             if (textToEncode == null)
                 throw new ArgumentNullException ();
 
-            byte[] bytes = Encoding.UTF8.GetBytes (textToEncode);
-            StringBuilder builder = new StringBuilder ();
-            foreach (byte b in bytes)
+            var bytes = Encoding.UTF8.GetBytes (textToEncode);
+            var builder = new StringBuilder ();
+            foreach (var b in bytes)
             {
                 if (b != 0)
                 if ((b < 32) || (b > 126))
@@ -114,9 +114,9 @@ namespace System.Text
             if (qpstr == null)
                 throw new ArgumentNullException ();
 
-            StringBuilder builder = new StringBuilder ();
-            char[] charArray = qpstr.ToCharArray ();
-            int i = 0;
+            var builder = new StringBuilder ();
+            var charArray = qpstr.ToCharArray ();
+            var i = 0;
             foreach (char c in charArray)
             {
                 builder.Append (c);
@@ -137,7 +137,7 @@ namespace System.Text
                 return null;
 
             CaptureCollection captures = m.Groups [3].Captures;
-            byte[] bytes = new byte[captures.Count];
+            var bytes = new byte[captures.Count];
 
             for (int i = 0; i < captures.Count; i++)
             {
@@ -152,7 +152,7 @@ namespace System.Text
             if (line == null)
                 throw new ArgumentNullException ();
 
-            Regex re = new Regex ("((\\=([0-9A-F][0-9A-F]))*)", RegexOptions.IgnoreCase);
+            var re = new Regex ("((\\=([0-9A-F][0-9A-F]))*)", RegexOptions.IgnoreCase);
             return re.Replace (line, new MatchEvaluator (HexDecoderEvaluator));
         }
 
@@ -161,13 +161,13 @@ namespace System.Text
             if (encodedText == null)
                 throw new ArgumentNullException ();
 
-            using (StringReader sr = new StringReader (encodedText))
+            using (var sr = new StringReader (encodedText))
             {
-                StringBuilder builder = new StringBuilder ();
+                var builder = new StringBuilder ();
                 string line;
                 while ((line = sr.ReadLine ()) != null)
                 {
-                    if (line.EndsWith ("="))
+                    if (line.EndsWith ("=", StringComparison.Ordinal))
                         builder.Append (line.Substring (0, line.Length - 1));
                     else
                         builder.Append (line);

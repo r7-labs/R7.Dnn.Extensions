@@ -46,9 +46,11 @@ namespace System.Text
                 {
                     if (string.IsNullOrEmpty (s2))
                         return 0;
+
                     return s2.Length;
                 }
-                else if (string.IsNullOrEmpty (s2))
+
+                if (string.IsNullOrEmpty (s2))
                     return s1.Length;
 
                 var D = new int[s1.Length + 1, s2.Length + 1]; // dynamics

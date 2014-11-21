@@ -44,8 +44,8 @@ namespace DotNetNuke.Common.Utilities
 
             if (int.TryParse (value, out n))
                 return Null.IsNull (n) ? null : (int?) n;
-            else
-                return null;
+
+            return null;
         }
     }
 }
