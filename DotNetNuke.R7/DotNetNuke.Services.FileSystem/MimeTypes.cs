@@ -29,6 +29,8 @@ using System.Collections.Generic;
 
 namespace DotNetNuke.Services.FileSystem
 {
+    // REVIEW: Rename class to MimeUtils?
+
     public static class MimeTypes
     {
         #region Big freaking list of mime types
