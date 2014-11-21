@@ -73,6 +73,7 @@
     <Compile Include="DotNetNuke.Entities.Modules\SettingsWrapper.cs" />
     <Compile Include="DotNetNuke.Services.FileSystem\FileUtils.cs" />
     <Compile Include="DotNetNuke.Entities.Users\UserUtils.cs" />
+    <Compile Include="DotNetNuke.Services.FileSystem\MimeTypes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
