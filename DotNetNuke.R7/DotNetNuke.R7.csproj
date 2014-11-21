@@ -60,7 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DnnUtils.cs" />
     <Compile Include="DotNetNuke.Web.UI.WebControls\DnnFilePickerUploaderExtensions.cs" />
     <Compile Include="DotNetNuke.Web.UI.WebControls\DnnTreeViewExtensions.cs" />
     <Compile Include="DotNetNuke.Entities.Modules\ExtendedModuleSettingsBase.cs" />
@@ -73,6 +72,7 @@
     <Compile Include="DotNetNuke.Common.Utilities\NullUtils.cs" />
     <Compile Include="DotNetNuke.Entities.Modules\SettingsWrapper.cs" />
     <Compile Include="DotNetNuke.Services.FileSystem\FileUtils.cs" />
+    <Compile Include="DotNetNuke.Entities.Users\UserUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -90,5 +90,6 @@
     <Folder Include="DotNetNuke.UI.Modules\" />
     <Folder Include="DotNetNuke.Common.Utilities\" />
     <Folder Include="DotNetNuke.Services.FileSystem\" />
+    <Folder Include="DotNetNuke.Entities.Users\" />
   </ItemGroup>
 </Project>

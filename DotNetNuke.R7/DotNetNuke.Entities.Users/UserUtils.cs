@@ -1,5 +1,5 @@
 ﻿//
-// Utils.cs
+// UserUtils.cs
 //
 // Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
@@ -25,26 +25,11 @@
 // THE SOFTWARE.
 
 using System;
-using System.Web;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using System.Web.UI.WebControls;
-using DotNetNuke.UI.Modules;
-using DotNetNuke.UI.Skins;
-using DotNetNuke.Common;
-using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Portals;
-using DotNetNuke.Entities.Modules;
-using DotNetNuke.Entities.Users;
-using DotNetNuke.Services.FileSystem;
-using DotNetNuke.Services.Localization;
-using DotNetNuke.Web.UI.WebControls;
 
-namespace DotNetNuke.R7
+namespace DotNetNuke.Entities.Users
 {
-    public class DnnUtils
+    public static class UserUtils
     {
         public static string GetUserDisplayName (int userId)
         {
@@ -54,5 +39,6 @@ namespace DotNetNuke.R7
             // TODO: "System" user name needs localization
             return (user != null) ? user.DisplayName : "System";
         }
-    } // class
-} // namespace
+    }
+}
+
