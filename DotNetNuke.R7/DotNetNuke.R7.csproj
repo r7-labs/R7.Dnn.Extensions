@@ -72,6 +72,7 @@
     <Compile Include="DotNetNuke.Common.Utilities\StringExtensions.cs" />
     <Compile Include="DotNetNuke.Common.Utilities\NullUtils.cs" />
     <Compile Include="DotNetNuke.Entities.Modules\SettingsWrapper.cs" />
+    <Compile Include="DotNetNuke.Services.FileSystem\FileUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -88,5 +89,6 @@
     <Folder Include="DotNetNuke.Entities.Modules\" />
     <Folder Include="DotNetNuke.UI.Modules\" />
     <Folder Include="DotNetNuke.Common.Utilities\" />
+    <Folder Include="DotNetNuke.Services.FileSystem\" />
   </ItemGroup>
 </Project>

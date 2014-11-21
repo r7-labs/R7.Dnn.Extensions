@@ -1,5 +1,5 @@
 ﻿//
-// Utils.cs
+// FileUtils.cs
 //
 // Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
@@ -23,36 +23,27 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using System.Web;
 using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using System.Web.UI.WebControls;
-using DotNetNuke.UI.Modules;
-using DotNetNuke.UI.Skins;
 using DotNetNuke.Common;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.Entities.Portals;
-using DotNetNuke.Entities.Modules;
-using DotNetNuke.Entities.Users;
-using DotNetNuke.Services.FileSystem;
-using DotNetNuke.Services.Localization;
-using DotNetNuke.Web.UI.WebControls;
 
-namespace DotNetNuke.R7
+namespace DotNetNuke.Services.FileSystem
 {
-    public class DnnUtils
+    public class FileUtils
     {
-        public static string GetUserDisplayName (int userId)
+        /// <summary>
+        /// Determines if the specified file is an images.
+        /// </summary>
+        /// <returns></returns>
+        /// <param name="fileName">File name.</param>
+        public static bool IsImage (string fileName)
         {
-            var portalId = PortalController.GetCurrentPortalSettings ().PortalId;
-            var user = UserController.GetUserById (portalId, userId);
-
-            // TODO: "System" user name needs localization
-            return (user != null) ? user.DisplayName : "System";
+            if (!string.IsNullOrWhiteSpace (fileName))
+                return Globals.glbImageFileTypes.Contains (
+                    Path.GetExtension (fileName).Substring (1).ToLowerInvariant ());
+            else
+                return false;
         }
-    } // class
-} // namespace
+    }
+}
+
