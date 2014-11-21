@@ -26,6 +26,7 @@
 using System;
 using System.IO;
 using DotNetNuke.Common;
+using DotNetNuke.Entities.Controllers;
 
 namespace DotNetNuke.Services.FileSystem
 {
@@ -43,6 +44,19 @@ namespace DotNetNuke.Services.FileSystem
                     Path.GetExtension (fileName).Substring (1).ToLowerInvariant ());
             else
                 return false;
+        }
+
+        public static bool IsFileAllowed (string filename)
+        {
+            var hostSettings = HostController.Instance.GetSettingsDictionary ();
+            var allowedFileExts = hostSettings ["FileExtensions"].Split (new [] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
+
+            var upExt = Path.GetExtension (filename).ToLowerInvariant ().TrimStart ('.');
+            foreach (var ext in allowedFileExts)
+                if (ext.Trim().ToLowerInvariant () == upExt)
+                    return true;
+
+            return false;
         }
     }
 }
