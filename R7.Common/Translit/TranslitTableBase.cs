@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 using System;
 
-namespace R7.Common
+namespace System.Text
 {
     public abstract class TranslitTableBase
     {

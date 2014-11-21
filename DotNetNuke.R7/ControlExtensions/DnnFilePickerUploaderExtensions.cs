@@ -24,11 +24,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using DotNetNuke.Web.UI.WebControls;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Services.FileSystem;
 
-namespace DotNetNuke.R7
+namespace DotNetNuke.Web.UI.WebControls
 {
     public static class DnnFilePickerUploaderExtensions
     {

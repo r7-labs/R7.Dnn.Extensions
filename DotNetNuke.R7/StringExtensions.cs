@@ -27,7 +27,7 @@
 using System;
 using DotNetNuke.Common.Utilities;
 
-namespace DotNetNuke.R7
+namespace System.Text
 {
     public static class StringExtensions
     {

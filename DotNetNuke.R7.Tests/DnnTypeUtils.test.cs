@@ -25,19 +25,19 @@
 // THE SOFTWARE.
 
 using System;
-using DotNetNuke.R7;
+using DotNetNuke.Common.Utilities;
 using NUnit.Framework;
 
 namespace DotNetNuke.R7.Tests
 {
     [TestFixture ()]
-    public class DnnTypeUtilsTest : DnnTypeUtils
+    public class DnnTypeUtilsTest 
     {
         [Test ()]
         public void ToNullable_TestCase ()
         {
-            Assert.AreEqual (ToNullable<int> (-1), null);
-            Assert.AreEqual (ToNullable<int> (20), (int?) 20);
+            Assert.AreEqual (DnnTypeUtils.ToNullable<int> (-1), null);
+            Assert.AreEqual (DnnTypeUtils.ToNullable<int> (20), (int?) 20);
 
         }
     }

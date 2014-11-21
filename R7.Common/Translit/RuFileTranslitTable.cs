@@ -27,7 +27,7 @@ using System;
 using System.Dynamic;
 using System.Security.Cryptography;
 
-namespace R7.Common
+namespace System.Text
 {
     public class RuFileTranslitTable : TranslitTableBase
     {

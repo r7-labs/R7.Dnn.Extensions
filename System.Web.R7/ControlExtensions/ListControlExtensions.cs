@@ -24,9 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Web.UI.WebControls;
 
-namespace System.Web.R7
+namespace System.Web.UI.WebControls
 {
     public static class ListControlExtensions
     {

@@ -25,10 +25,9 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using DotNetNuke.UI.Modules;
 using DotNetNuke.Entities.Modules;
 
-namespace DotNetNuke.R7
+namespace DotNetNuke.UI.Modules
 {
     public static class IModuleControlExtensions
     {

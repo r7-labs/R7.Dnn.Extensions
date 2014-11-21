@@ -41,7 +41,6 @@ using DotNetNuke.Entities.Users;
 using DotNetNuke.Services.FileSystem;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Web.UI.WebControls;
-using R7.Common;
 
 namespace DotNetNuke.R7
 {

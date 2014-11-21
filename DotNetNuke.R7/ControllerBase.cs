@@ -26,11 +26,10 @@
 
 using System;
 using System.Collections.Generic;
-using DotNetNuke.Collections;
 using DotNetNuke.Data;
-using DotNetNuke.Entities.Modules;
+using DotNetNuke.Collections;
 
-namespace DotNetNuke.R7
+namespace DotNetNuke.Entities.Modules
 {
     public abstract class ControllerBase : ModuleSearchBase
     {

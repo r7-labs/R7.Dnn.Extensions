@@ -24,12 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using DotNetNuke.Entities.Modules;
 using DotNetNuke.UI.Skins;
 using DotNetNuke.UI.Skins.Controls;
 using DotNetNuke.Services.Localization;
 
-namespace DotNetNuke.R7
+namespace DotNetNuke.Entities.Modules
 {
     public static class ModuleExtensions
     {

@@ -25,12 +25,11 @@
 // THE SOFTWARE.
 using System;
 using System.IO;
-using System.Text;
 using System.Text.RegularExpressions;
 
 // http://sourceforge.net/apps/mediawiki/syncmldotnet/index.php?title=Quoted_Printable
 
-namespace R7.Common
+namespace System.Text
 {
     /// <summary>
     /// Provide encoding and decoding of Quoted-Printable.

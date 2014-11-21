@@ -26,7 +26,7 @@
 using System;
 using DotNetNuke.UI.Skins.Controls;
 
-namespace DotNetNuke.R7
+namespace DotNetNuke.Entities.Modules
 {
     /// <summary>
     /// Module message types.

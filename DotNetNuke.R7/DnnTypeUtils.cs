@@ -25,12 +25,10 @@
 // THE SOFTWARE.
 using System;
 using System.Web.UI.WebControls;
-using DotNetNuke.Common.Utilities;
-using R7.Common;
 
-namespace DotNetNuke.R7
+namespace DotNetNuke.Common.Utilities
 {
-    public class DnnTypeUtils : TypeUtils
+    public class DnnTypeUtils
     {
         /// <summary>
         /// Converts n (including DNN Null) to nullable type.

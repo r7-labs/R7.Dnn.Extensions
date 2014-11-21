@@ -26,7 +26,7 @@
 
 using System;
 
-namespace DotNetNuke.R7
+namespace DotNetNuke.Web.UI.WebControls
 {
     public static class DnnTreeViewExtensions
     {

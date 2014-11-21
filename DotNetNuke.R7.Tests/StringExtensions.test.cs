@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 
 using System;
-using R7.Common;
+using System.Text;
 using NUnit.Framework;
 
 namespace DotNetNuke.R7.Tests
