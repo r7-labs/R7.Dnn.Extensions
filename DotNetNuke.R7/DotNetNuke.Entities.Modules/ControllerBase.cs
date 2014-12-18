@@ -28,6 +28,7 @@ using System;
 using System.Collections.Generic;
 using DotNetNuke.Data;
 using DotNetNuke.Collections;
+using System.Linq;
 
 namespace DotNetNuke.Entities.Modules
 {
@@ -138,7 +139,7 @@ namespace DotNetNuke.Entities.Modules
                 // infos = repo.Find ("WHERE ModuleID = @0", moduleId);
             }
 
-            return infos;
+            return infos ?? Enumerable.Empty<T> ();
         }
 
         /// <summary>
@@ -155,7 +156,7 @@ namespace DotNetNuke.Entities.Modules
                 infos = repo.Get ();
             }
 
-            return infos;
+            return infos ?? Enumerable.Empty<T> ();
         }
 
         /// <summary>
@@ -175,7 +176,7 @@ namespace DotNetNuke.Entities.Modules
                 infos = repo.Find (sqlCondition, args);
             }
 
-            return infos;
+            return infos ?? Enumerable.Empty<T> ();
         }
 
         /// <summary>
@@ -195,7 +196,7 @@ namespace DotNetNuke.Entities.Modules
                 infos = ctx.ExecuteQuery<T> (cmdType, sql, args);
             }
 
-            return infos;
+            return infos ?? Enumerable.Empty<T> ();
         }
 
         /// <summary>
@@ -247,7 +248,6 @@ namespace DotNetNuke.Entities.Modules
             {
                 var repo = ctx.GetRepository<T> ();
                 repo.Delete (info);
-
             }
         }
 
