@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Web.UI.WebControls;
 using DotNetNuke.Common.Utilities;
 
 namespace DotNetNuke.R7
@@ -74,6 +75,11 @@ namespace DotNetNuke.R7
             return true;
         }
 
+        public static Unit ToUnit (string value, double minvalue)
+        {
+            var unit = Unit.Parse (value);
+            return unit.Value <= minvalue ? Unit.Empty : unit;
+        }
     }
 }
 
