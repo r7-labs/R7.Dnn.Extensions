@@ -1,10 +1,10 @@
 ﻿//
-// StringExtensions.cs
+// UnitUtils.cs
 //
 // Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-// Copyright (c) 2014 
+// Copyright (c) 2014-2015 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -27,9 +27,9 @@ using System;
 
 namespace System.Web.UI.WebControls
 {
-    public static class StringExtensions
+    public static class UnitUtils
     {
-        public static Unit ToUnit (this string value, double minvalue)
+        public static Unit ToUnit (string value, double minvalue)
         {
             var unit = Unit.Parse (value);
             return unit.Value <= minvalue ? Unit.Empty : unit;
