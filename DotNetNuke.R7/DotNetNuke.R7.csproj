@@ -60,40 +60,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DotNetNuke.Entities.Modules\ExtendedModuleSettingsBase.cs" />
-    <Compile Include="DotNetNuke.Entities.Modules\ExtendedPortalModuleBase.cs" />
-    <Compile Include="DotNetNuke.Entities.Modules\ControllerBase.cs" />
-    <Compile Include="DotNetNuke.Entities.Modules\SettingsWrapper.cs" />
-    <Compile Include="ControlExtensions\DnnFilePickerUploaderExtensions.cs" />
-    <Compile Include="ControlExtensions\DnnTreeViewExtensions.cs" />
-    <Compile Include="ModuleExtensions\IModuleControlExtensions.cs" />
-    <Compile Include="ModuleExtensions\ModuleExtensions.cs" />
-    <Compile Include="ModuleExtensions\MessageType.cs" />
-    <Compile Include="ControlExtensions\ListControlExtensions.cs" />
-    <Compile Include="Utilities\TypeUtils.cs" />
-    <Compile Include="Utilities\UserUtils.cs" />
-    <Compile Include="Utilities\FileUtils.cs" />
-    <Compile Include="Utilities\MimeTypes.cs" />
-    <Compile Include="Utilities\UnitUtils.cs" />
-    <Compile Include="TextUtilities\TextUtils.cs" />
-    <Compile Include="TextUtilities\Translit\RuFileTranslitTable.cs" />
-    <Compile Include="TextUtilities\Translit\TranslitTableBase.cs" />
-    <Compile Include="TextUtilities\QuotedPrintable.cs" />
-    <Compile Include="TextUtilities\Levenstein\DamerauLevenshteinDistance.cs" />
-    <Compile Include="TextUtilities\Levenstein\LevenshteinDistanceBase.cs" />
-    <Compile Include="TextUtilities\StringExtensions.cs" />
+    <Compile Include="Text\Extensions\StringExtensions.cs" />
+    <Compile Include="Text\Levenstein\DamerauLevenshteinDistance.cs" />
+    <Compile Include="Text\Levenstein\LevenshteinDistanceBase.cs" />
+    <Compile Include="Text\Translit\RuFileTranslitTable.cs" />
+    <Compile Include="Text\Translit\TranslitTableBase.cs" />
+    <Compile Include="Text\QuotedPrintable.cs" />
+    <Compile Include="Text\TextUtils.cs" />
+    <Compile Include="Modules\Extensions\IModuleControlExtensions.cs" />
+    <Compile Include="Modules\Extensions\ModuleExtensions.cs" />
+    <Compile Include="Modules\MessageType.cs" />
+    <Compile Include="Modules\ExtendedModuleSettingsBase.cs" />
+    <Compile Include="Modules\ExtendedPortalModuleBase.cs" />
+    <Compile Include="Controls\Extensions\DnnFilePickerUploaderExtensions.cs" />
+    <Compile Include="Controls\Extensions\DnnTreeViewExtensions.cs" />
+    <Compile Include="Controls\Extensions\ListControlExtensions.cs" />
+    <Compile Include="FileSystem\FileUtils.cs" />
+    <Compile Include="FileSystem\MimeTypes.cs" />
+    <Compile Include="Types\TypeUtils.cs" />
+    <Compile Include="Users\UserUtils.cs" />
+    <Compile Include="DAL\ControllerBase.cs" />
+    <Compile Include="DAL\SettingsWrapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DotNetNuke.Entities.Modules\" />
-    <Folder Include="ControlExtensions\" />
-    <Folder Include="ModuleExtensions\" />
-    <Folder Include="Utilities\" />
-    <Folder Include="TextUtilities\" />
-    <Folder Include="TextUtilities\Translit\" />
-    <Folder Include="TextUtilities\Levenstein\" />
+    <Folder Include="Text\" />
+    <Folder Include="Text\Extensions\" />
+    <Folder Include="Text\Levenstein\" />
+    <Folder Include="Text\Translit\" />
+    <Folder Include="Modules\" />
+    <Folder Include="Modules\Extensions\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Controls\Extensions\" />
+    <Folder Include="FileSystem\" />
+    <Folder Include="Types\" />
+    <Folder Include="Users\" />
+    <Folder Include="DAL\" />
   </ItemGroup>
 </Project>
