@@ -1,10 +1,10 @@
 ﻿//
-// DnnTypeUtils.test.cs
+// TypeUtils.test.cs
 //
 // Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-// Copyright (c) 2014 
+// Copyright (c) 2014-2015 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,8 +36,8 @@ namespace DotNetNuke.R7.Tests
         [Test ()]
         public void ToNullable_TestCase ()
         {
-            Assert.AreEqual (NullUtils.ToNullable<int> (-1), null);
-            Assert.AreEqual (NullUtils.ToNullable<int> (20), (int?) 20);
+            Assert.AreEqual (TypeUtils.ToNullable<int> (-1), null);
+            Assert.AreEqual (TypeUtils.ToNullable<int> (20), (int?) 20);
 
         }
     }

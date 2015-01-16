@@ -1,10 +1,10 @@
 ﻿//
-// StringExtensions.cs
+// TypeUtils.cs
 //
 // Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-// Copyright (c) 2014 
+// Copyright (c) 2014-2015 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ using System;
 
 namespace DotNetNuke.Common.Utilities
 {
-    public static class StringExtensions
+    public static class TypeUtils
     {
         /// <summary>
         /// Parses specified string value to a nullable int, 
@@ -36,7 +36,7 @@ namespace DotNetNuke.Common.Utilities
         /// </summary>
         /// <returns>The nullable int.</returns>
         /// <param name="value">String value to parse.</param>
-        public static int? ParseToNullableInt (this string value)
+        public static int? ParseToNullableInt (string value)
         {
             // TODO: Make another variant of ParseToNullableInt() without using DNN Null object
 
@@ -47,6 +47,32 @@ namespace DotNetNuke.Common.Utilities
 
             return null;
         }
+
+        /// <summary>
+        /// Converts n (including DNN Null) to nullable type.
+        /// </summary>
+        /// <returns>The nullable.</returns>
+        /// <param name="n">N.</param>
+        /// <typeparam name="T">Type parameter.</typeparam>
+        public static T? ToNullable<T> (T n) where T: struct
+        {
+            return Null.IsNull (n) ? null : (T?) n;
+        }
+
+        /// <summary>
+        /// Determines if the specified n is null or DNN Null
+        /// </summary>
+        /// <returns><c>true</c> if the specified n is null or DNN Null; otherwise, <c>false</c>.</returns>
+        /// <param name="n">N.</param>
+        /// <typeparam name="T">Type parameter.</typeparam>
+        public static bool IsNull<T> (T? n) where T: struct
+        {
+            if (n.HasValue && !Null.IsNull (n.Value))
+                return false;
+
+            return true;
+        }
+
     }
 }
 
