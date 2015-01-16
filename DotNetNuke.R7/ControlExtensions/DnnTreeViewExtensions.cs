@@ -1,10 +1,10 @@
 ﻿//
-// MessageType.cs
+// DnnTreeViewExtensions.cs
 //
 // Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-// Copyright (c) 2014 
+// Copyright (c) 2014-2015
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,21 +23,38 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using DotNetNuke.UI.Skins.Controls;
 
-namespace DotNetNuke.Entities.Modules
+using System;
+
+namespace DotNetNuke.R7
 {
-    /// <summary>
-    /// Module message types.
-    /// </summary>
-    public enum MessageType
+    public static class DnnTreeViewExtensions
     {
-        // duplicate ModuleMessage.ModuleMessageType values here
-        Success = ModuleMessage.ModuleMessageType.GreenSuccess,
-        Info = ModuleMessage.ModuleMessageType.BlueInfo,
-        Warning = ModuleMessage.ModuleMessageType.YellowWarning,
-        Error = ModuleMessage.ModuleMessageType.RedError
+        /// <summary>
+        /// Expands node with specified value and all it's parent nodes
+        /// </summary>
+        /// <param name="treeview">DNN or RAD treeview.</param>
+        /// <param name="value">Value of the node.</param>
+        /// <param name="ignoreCase">If set to <c>true</c> ignore value case.</param>
+        public static void SelectAndExpandByValue (this Telerik.Web.UI.RadTreeView treeview, string value, bool ignoreCase = false)
+        {
+            if (!string.IsNullOrWhiteSpace (value))
+            {
+                var treeNode = treeview.FindNodeByValue (value, ignoreCase);
+                if (treeNode != null)
+                {
+                    treeNode.Selected = true;
+
+                    // expand all parent nodes
+                    treeNode = treeNode.ParentNode;
+                    while (treeNode != null)
+                    {
+                        treeNode.Expanded = true;
+                        treeNode = treeNode.ParentNode;
+                    } 
+                }
+            }
+        }
     }
 }
 
