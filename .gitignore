@@ -1,0 +1,6 @@
+# User-specific
+*.userprefs
+*.usertasks
+
+# NuGet packages
+packages/*
