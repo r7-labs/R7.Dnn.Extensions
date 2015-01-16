@@ -1,10 +1,10 @@
 ﻿//
-// LevensteinDistance.cs
+// LevenshteinDistanceBase.cs
 //
 // Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-// Copyright (c) 2014 
+// Copyright (c) 2014-2015
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,47 +25,34 @@
 // THE SOFTWARE.
 
 using System;
+using System.Text;
 
-namespace System.Text
+namespace DotNetNuke.R7
 {
-    public class LevenshteinDistance : LevenshteinDistanceBase
+    public abstract class LevenshteinDistanceBase
     {
-        public LevenshteinDistance (string s1, string s2) : base (s1, s2)
+        protected string s1;
+
+        protected string s2;
+
+        protected LevenshteinDistanceBase (string s1, string s2)
         {
+            this.s1 = s1;
+            this.s2 = s2;
         }
 
-        public override int Distance
+        public abstract int Distance { get; }
+
+        public double NormalDistance
         {
             get
             {
-                if (string.IsNullOrEmpty (s1))
-                {
-                    if (string.IsNullOrEmpty (s2))
-                        return 0;
-                    return s2.Length;
-                }
+                var l1 = (s1 == null) ? 0 : s1.Length;
+                var l2 = (s2 == null) ? 0 : s2.Length;
 
-                if (string.IsNullOrEmpty (s2))
-                    return s1.Length;
-
-                var diff = 0;                       
-                var m = new int [s1.Length + 1, s2.Length + 1];
-
-                for (var i = 0; i <= s1.Length; i++)
-                    m [i, 0] = i;
-                for (var j = 0; j <= s2.Length; j++)
-                    m [0, j] = j;
-
-                for (var i = 1; i <= s1.Length; i++)
-                    for (var j = 1; j <= s2.Length; j++)
-                    {
-                        diff = (s1 [i - 1] == s2 [j - 1]) ? 0 : 1;
-                        m [i, j] = Math.Min (
-                            Math.Min (m [i - 1, j] + 1, m [i, j - 1] + 1), m [i - 1, j - 1] + diff);
-                    }
-
-                return m [s1.Length, s2.Length];   
+                return  1 - (double) Distance / Math.Max (l1, l2);
             }
         }
     }
 }
+

@@ -1,10 +1,10 @@
 ﻿//
-// LevenshteinDistanceBase.cs
+// UserUtils.cs
 //
 // Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-// Copyright (c) 2014 
+// Copyright (c) 2014-2015
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,32 +25,20 @@
 // THE SOFTWARE.
 
 using System;
+using DotNetNuke.Entities.Portals;
+using DotNetNuke.Entities.Users;
 
-namespace System.Text
+namespace DotNetNuke.R7
 {
-    public abstract class LevenshteinDistanceBase
+    public static class UserUtils
     {
-        protected string s1;
-
-        protected string s2;
-
-        protected LevenshteinDistanceBase (string s1, string s2)
+        public static string GetUserDisplayName (int userId)
         {
-            this.s1 = s1;
-            this.s2 = s2;
-        }
+            var portalId = PortalController.GetCurrentPortalSettings ().PortalId;
+            var user = UserController.GetUserById (portalId, userId);
 
-        public abstract int Distance { get; }
-
-        public double NormalDistance
-        {
-            get
-            {
-                var l1 = (s1 == null) ? 0 : s1.Length;
-                var l2 = (s2 == null) ? 0 : s2.Length;
-
-                return  1 - (double) Distance / Math.Max (l1, l2);
-            }
+            // TODO: "System" user name needs localization
+            return (user != null) ? user.DisplayName : "System";
         }
     }
 }

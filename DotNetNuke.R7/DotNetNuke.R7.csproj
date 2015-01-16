@@ -64,16 +64,24 @@
     <Compile Include="DotNetNuke.Entities.Modules\ExtendedPortalModuleBase.cs" />
     <Compile Include="DotNetNuke.Entities.Modules\ControllerBase.cs" />
     <Compile Include="DotNetNuke.Entities.Modules\SettingsWrapper.cs" />
-    <Compile Include="DotNetNuke.Services.FileSystem\FileUtils.cs" />
-    <Compile Include="DotNetNuke.Entities.Users\UserUtils.cs" />
-    <Compile Include="DotNetNuke.Services.FileSystem\MimeTypes.cs" />
-    <Compile Include="DotNetNuke.Common.Utilities\TypeUtils.cs" />
     <Compile Include="ControlExtensions\DnnFilePickerUploaderExtensions.cs" />
     <Compile Include="ControlExtensions\DnnTreeViewExtensions.cs" />
     <Compile Include="ModuleExtensions\IModuleControlExtensions.cs" />
     <Compile Include="ModuleExtensions\ModuleExtensions.cs" />
     <Compile Include="ModuleExtensions\MessageType.cs" />
     <Compile Include="ControlExtensions\ListControlExtensions.cs" />
+    <Compile Include="Utilities\TypeUtils.cs" />
+    <Compile Include="Utilities\UserUtils.cs" />
+    <Compile Include="Utilities\FileUtils.cs" />
+    <Compile Include="Utilities\MimeTypes.cs" />
+    <Compile Include="Utilities\UnitUtils.cs" />
+    <Compile Include="TextUtilities\TextUtils.cs" />
+    <Compile Include="TextUtilities\Translit\RuFileTranslitTable.cs" />
+    <Compile Include="TextUtilities\Translit\TranslitTableBase.cs" />
+    <Compile Include="TextUtilities\QuotedPrintable.cs" />
+    <Compile Include="TextUtilities\Levenstein\DamerauLevenshteinDistance.cs" />
+    <Compile Include="TextUtilities\Levenstein\LevenshteinDistanceBase.cs" />
+    <Compile Include="TextUtilities\StringExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -87,10 +95,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DotNetNuke.Entities.Modules\" />
-    <Folder Include="DotNetNuke.Common.Utilities\" />
-    <Folder Include="DotNetNuke.Services.FileSystem\" />
-    <Folder Include="DotNetNuke.Entities.Users\" />
     <Folder Include="ControlExtensions\" />
     <Folder Include="ModuleExtensions\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="TextUtilities\" />
+    <Folder Include="TextUtilities\Translit\" />
+    <Folder Include="TextUtilities\Levenstein\" />
   </ItemGroup>
 </Project>

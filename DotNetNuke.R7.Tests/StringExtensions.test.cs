@@ -27,6 +27,7 @@
 using System;
 using System.Text;
 using NUnit.Framework;
+using DotNetNuke.R7;
 
 namespace DotNetNuke.R7.Tests
 {

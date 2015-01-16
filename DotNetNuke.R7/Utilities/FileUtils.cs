@@ -1,10 +1,10 @@
 ﻿//
-// TranslitTableBase.cs
+// FileUtils.cs
 //
 // Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-// Copyright (c) 2014 
+// Copyright (c) 2014-2015 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,22 +23,42 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
+using System.IO;
+using DotNetNuke.Common;
+using DotNetNuke.Entities.Controllers;
+using DotNetNuke.Services.FileSystem;
 
-namespace System.Text
+namespace DotNetNuke.R7
 {
-    public abstract class TranslitTableBase
+    public static class FileUtils
     {
-        protected string [,] translitTable; 
-
-        public string [,] TranslitTable 
+        /// <summary>
+        /// Determines if the specified file is an images.
+        /// </summary>
+        /// <returns></returns>
+        /// <param name="fileName">File name.</param>
+        public static bool IsImage (string fileName)
         {
-            get { return translitTable; }
+            if (!string.IsNullOrWhiteSpace (fileName))
+                return Globals.glbImageFileTypes.Contains (
+                    Path.GetExtension (fileName).Substring (1).ToLowerInvariant ());
+
+            return false;
         }
 
-        protected TranslitTableBase (string [,] translitTable)
+        public static bool IsFileAllowed (string filename)
         {
-            this.translitTable = translitTable;
+            var hostSettings = HostController.Instance.GetSettingsDictionary ();
+            var allowedFileExts = hostSettings ["FileExtensions"].Split (new [] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
+
+            var upExt = Path.GetExtension (filename).ToLowerInvariant ().TrimStart ('.');
+            foreach (var ext in allowedFileExts)
+                if (ext.Trim().ToLowerInvariant () == upExt)
+                    return true;
+
+            return false;
         }
     }
 }

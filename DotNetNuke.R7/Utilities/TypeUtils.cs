@@ -25,8 +25,9 @@
 // THE SOFTWARE.
 
 using System;
+using DotNetNuke.Common.Utilities;
 
-namespace DotNetNuke.Common.Utilities
+namespace DotNetNuke.R7
 {
     public static class TypeUtils
     {

@@ -1,10 +1,10 @@
 ﻿//
-// UserUtils.cs
+// TranslitTableBase.cs
 //
 // Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-// Copyright (c) 2014 
+// Copyright (c) 2014-2015
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,19 +25,22 @@
 // THE SOFTWARE.
 
 using System;
-using DotNetNuke.Entities.Portals;
+using System.Text;
 
-namespace DotNetNuke.Entities.Users
+namespace DotNetNuke.R7
 {
-    public static class UserUtils
+    public abstract class TranslitTableBase
     {
-        public static string GetUserDisplayName (int userId)
-        {
-            var portalId = PortalController.GetCurrentPortalSettings ().PortalId;
-            var user = UserController.GetUserById (portalId, userId);
+        protected string [,] translitTable; 
 
-            // TODO: "System" user name needs localization
-            return (user != null) ? user.DisplayName : "System";
+        public string [,] TranslitTable 
+        {
+            get { return translitTable; }
+        }
+
+        protected TranslitTableBase (string [,] translitTable)
+        {
+            this.translitTable = translitTable;
         }
     }
 }
