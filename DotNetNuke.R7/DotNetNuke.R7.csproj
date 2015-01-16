@@ -88,12 +88,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\R7.Common\R7.Common.csproj">
-      <Project>{7013A6D9-ABFA-48E2-A6A7-2576FEC31843}</Project>
-      <Name>R7.Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="DotNetNuke.Entities.Modules\" />
     <Folder Include="ControlExtensions\" />
     <Folder Include="ModuleExtensions\" />
