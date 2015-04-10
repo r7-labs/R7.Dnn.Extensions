@@ -4,3 +4,4 @@
 
 # NuGet packages
 packages/*
+*.nupkg
