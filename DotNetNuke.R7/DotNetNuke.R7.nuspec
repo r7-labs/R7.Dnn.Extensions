@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Roman M. Yagodin</authors>
+    <owners>Roman M. Yagodin</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/roman-yagodin/DotNetNuke.R7</projectUrl>
+    <description>$description$</description>
+    <summary>DotNetNuke.R7 is a library for DNN Platform web CMS extensions development (NOT STABLE).</summary>
+    <releaseNotes>First release of the $id$ library package. Fixed wrong namespaces. Fixed debug assemblies included in the package.</releaseNotes>
+    <copyright>Copyright 2014-2015 Roman M. Yagodin &lt;roman.yagodin@gmail.com&gt;</copyright>
+    <tags>DotNetNuke DNN</tags>
+  </metadata>
+</package>
