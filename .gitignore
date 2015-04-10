@@ -2,6 +2,10 @@
 *.userprefs
 *.usertasks
 
-# NuGet packages
-packages/*
+# Build output
+DotNetNuke.R7*/bin
+DotNetNuke.R7*/obj
 *.nupkg
+
+# Downloaded NuGet packages
+packages/*
