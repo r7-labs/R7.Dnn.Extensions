@@ -24,8 +24,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using DotNetNuke.Entities.Modules;
 
-namespace DotNetNuke.Entities.Modules
+namespace DotNetNuke.R7
 {
     public class ExtendedModuleSettingsBase <TC, TS> : ModuleSettingsBase
         where TC : ControllerBase, new ()

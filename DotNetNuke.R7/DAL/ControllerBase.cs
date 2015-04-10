@@ -25,12 +25,13 @@
 // THE SOFTWARE.
 
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using DotNetNuke.Data;
 using DotNetNuke.Collections;
-using System.Linq;
+using DotNetNuke.Entities.Modules;
 
-namespace DotNetNuke.Entities.Modules
+namespace DotNetNuke.R7
 {
     public abstract class ControllerBase : ModuleSearchBase
     {
