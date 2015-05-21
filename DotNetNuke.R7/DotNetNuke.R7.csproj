@@ -88,6 +88,8 @@
     <Compile Include="Users\UserUtils.cs" />
     <Compile Include="DAL\ControllerBase.cs" />
     <Compile Include="DAL\SettingsWrapper.cs" />
+    <Compile Include="Controls\PagingControl\PagingControl.cs" />
+    <Compile Include="Controls\PagingControl\PagingControlMode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -107,5 +109,6 @@
     <Folder Include="Types\" />
     <Folder Include="Users\" />
     <Folder Include="DAL\" />
+    <Folder Include="Controls\PagingControl\" />
   </ItemGroup>
 </Project>
