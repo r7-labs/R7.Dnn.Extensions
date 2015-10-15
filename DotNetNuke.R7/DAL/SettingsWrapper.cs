@@ -48,7 +48,7 @@ namespace DotNetNuke.R7
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNetNuke.Entities.Modules.SettingsWrapper"/> class.
+        /// Initializes a new instance of the <see cref="DotNetNuke.R7.SettingsWrapper"/> class.
         /// </summary>
         /// <param name='module'>
         /// Module control.
@@ -58,8 +58,8 @@ namespace DotNetNuke.R7
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNetNuke.Entities.Modules.SettingsWrapper"/> class
-        /// and should only be used in generic classes along with <see cref="DotNetNuke.Entities.Modules.SettingsWrapper.Init()" /> call.
+        /// Initializes a new instance of the <see cref="DotNetNuke.R7.SettingsWrapper"/> class
+        /// and should only be used in generic classes along with <see cref="DotNetNuke.R7.SettingsWrapper.Init" /> call.
         /// </summary>
         public SettingsWrapper ()
         {
@@ -81,7 +81,7 @@ namespace DotNetNuke.R7
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNetNuke.Entities.Modules.SettingsWrapper"/> class.
+        /// Initializes a new instance of the <see cref="DotNetNuke.R7.SettingsWrapper"/> class.
         /// </summary>
         /// <param name='module'>
         /// Module info.

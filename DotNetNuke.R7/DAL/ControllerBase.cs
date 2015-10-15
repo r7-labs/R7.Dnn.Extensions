@@ -38,7 +38,7 @@ namespace DotNetNuke.R7
         #region Common methods
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNetNuke.Entities.Modules.ControllerBase"/> class.
+        /// Initializes a new instance of the <see cref="DotNetNuke.R7.ControllerBase"/> class.
         /// </summary>
         protected ControllerBase ()
         { 

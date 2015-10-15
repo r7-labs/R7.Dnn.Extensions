@@ -43,7 +43,7 @@ namespace DotNetNuke.R7
 
         /// <summary>
         /// Gets the module settings. Raw settings hashtable is accessible via 
-        /// <see cref="DotNetNuke.Entities.Modules.SettingsWrapper.Settings" /> property.
+        /// <see cref="DotNetNuke.R7.SettingsWrapper.Settings" /> property.
         /// </summary>
         /// <value>The module settings.</value>
         protected new TS Settings
