@@ -201,6 +201,21 @@ namespace DotNetNuke.R7
         }
 
         /// <summary>
+        /// Finds the objects of type T
+        /// </summary>
+        /// <returns>Enumerable with objects of type T matching sqlCondition. If searchText is null or whitespace, all objects of type T returned.</returns>
+        /// <param name="sqlConditon">SQL conditon.</param>
+        /// <param name="searchText">Search text.</param>
+        /// <param name="dynamicSql">If set to <c>true</c> use dynamic sql arguments with @, otherwize string.Format().</param>
+        /// <typeparam name="T">Type of objects.</typeparam>
+        public IEnumerable<T> FindObjects<T> (string sqlConditon, string searchText, bool dynamicSql = true) where T: class
+        {
+            return string.IsNullOrWhiteSpace (searchText) ? GetObjects<T> ()
+                    : dynamicSql ? GetObjects<T> (sqlConditon, searchText)
+                    : GetObjects<T> (string.Format (sqlConditon, searchText)); 
+        }
+
+        /// <summary>
         /// Gets one page of objects of type T
         /// </summary>
         /// <param name="scopeId">Scope identifier (like moduleId)</param>
