@@ -232,7 +232,7 @@ namespace DotNetNuke.R7
                 infos = repo.GetPage (scopeId, index, size);
             }
 
-            return infos;
+            return infos ?? new PagedList<T> (Enumerable.Empty<T> (), 0, 0);
         }
 
         /// <summary>
@@ -251,7 +251,7 @@ namespace DotNetNuke.R7
                 infos = repo.GetPage (index, size);
             }
 
-            return infos;
+            return infos ?? new PagedList<T> (Enumerable.Empty<T> (), 0, 0);
         }
 
         /// <summary>
