@@ -70,14 +70,14 @@ namespace DotNetNuke.R7
             ctrl = new ModuleController ();
             ModuleId = moduleId;
             TabModuleId = tabModuleId;
+            var tabModule = ctrl.GetTabModule (tabModuleId);
 
-            // from PortalModuleBase settings definition
-            settings = new Hashtable (ctrl.GetModuleSettings (ModuleId));
-            var tabModuleSettings = ctrl.GetTabModuleSettings (TabModuleId);
+            // taken from PortalModuleBase settings definition
+            settings = new Hashtable (tabModule.ModuleSettings);
 
             // combine settings
-            foreach (string key in tabModuleSettings.Keys)
-                settings [key] = tabModuleSettings [key];
+            foreach (string key in tabModule.TabModuleSettings.Keys)
+                settings [key] = tabModule.TabModuleSettings [key];
         }
 
         /// <summary>
