@@ -11,7 +11,7 @@
     <projectUrl>https://github.com/roman-yagodin/DotNetNuke.R7</projectUrl>
     <description>$description$</description>
     <summary>DotNetNuke.R7 is a library for DNN Platform web CMS extensions development (NOT STABLE).</summary>
-    <releaseNotes>ControllerBase: add FindObjects method; return empty IPagedList&lt;T&gt; collections instead of nulls.</releaseNotes>
+    <releaseNotes>Add EditModuleBase abstract class.</releaseNotes>
     <copyright>Copyright 2014-2015 Roman M. Yagodin &lt;roman.yagodin@gmail.com&gt;</copyright>
     <tags>DotNetNuke DNN</tags>
   </metadata>
