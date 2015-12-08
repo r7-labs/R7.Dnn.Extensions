@@ -160,7 +160,7 @@ namespace DotNetNuke.R7
                             ModuleAuditControl.Visible = false;
                         }
 
-                        OnNewItem ();
+                        OnLoadNewItem ();
                     }
                 }
                 else
@@ -183,17 +183,19 @@ namespace DotNetNuke.R7
         {
             try
             {
-                TItem item;
-
-                // determine if we are adding or updating
-                item = (ItemId == null) ? new TItem () : Controller.Get<TItem> (ItemId.Value);
+                // create new or get existing item
+                var item = (ItemId == null) ? new TItem () : Controller.Get<TItem> (ItemId.Value);
 
                 OnUpdateItem (item);
 
                 if (ItemId == null)
+                {
                     Controller.Add<TItem> (item);
+                }
                 else
+                {
                     Controller.Update<TItem> (item);
+                }
 
                 // synchronize module
                 ModuleController.SynchronizeModule (ModuleId);
@@ -258,7 +260,7 @@ namespace DotNetNuke.R7
         /// <summary>
         /// Override to provide custom code which should be called for new items.
         /// </summary>
-        protected virtual void OnNewItem ()
+        protected virtual void OnLoadNewItem ()
         {}
 
         /// <summary>
