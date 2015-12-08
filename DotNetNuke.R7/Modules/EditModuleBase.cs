@@ -30,6 +30,7 @@ using DotNetNuke.Common;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Entities.Modules;
+using DotNetNuke.UI.UserControls;
 
 namespace DotNetNuke.R7
 {
@@ -65,6 +66,11 @@ namespace DotNetNuke.R7
         /// The cancel link.
         /// </summary>
         protected HyperLink LinkCancel;
+
+        /// <summary>
+        /// The module audit control.
+        /// </summary>
+        protected ModuleAuditControl ModuleAuditControl;
 
         #endregion
 
@@ -106,11 +112,13 @@ namespace DotNetNuke.R7
         /// <param name="buttonUpdate">Update linkbutton.</param>
         /// <param name="buttonDelete">Delete linkbutton.</param>
         /// <param name="linkCancel">Cancel hyperlink.</param>
-        protected void InitControls (LinkButton buttonUpdate, LinkButton buttonDelete, HyperLink linkCancel)
+        /// <param name="moduleAuditControl">Optional module audit control.</param>
+        protected void InitControls (LinkButton buttonUpdate, LinkButton buttonDelete, HyperLink linkCancel, ModuleAuditControl moduleAuditControl = null)
         {
             ButtonUpdate = buttonUpdate;
             ButtonDelete = buttonDelete;
             LinkCancel = linkCancel;
+            ModuleAuditControl = moduleAuditControl;
         }
 
         /// <summary>
@@ -147,6 +155,10 @@ namespace DotNetNuke.R7
                     else
                     {
                         ButtonDelete.Visible = false;
+                        if (ModuleAuditControl != null)
+                        {
+                            ModuleAuditControl.Visible = false;
+                        }
                     }
                 }
                 else
