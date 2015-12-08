@@ -42,11 +42,11 @@ namespace DotNetNuke.R7
         where TS: SettingsWrapper, new ()
         where TItem: class, new ()
     {
-        #region Private fields
+        #region Fields
 
-        int? itemId;
+        protected int? ItemId;
 
-        readonly string key;
+        protected readonly string Key;
 
         #endregion
 
@@ -80,7 +80,7 @@ namespace DotNetNuke.R7
         /// <param name="key">Key.</param>
         protected EditModuleBase (string key)
         {
-            this.key = key;
+            Key = key;
         }
 
         /// <summary>
@@ -132,17 +132,17 @@ namespace DotNetNuke.R7
             try
             {
                 // parse querystring parameters
-                itemId = TypeUtils.ParseToNullableInt (Request.QueryString [key]);
+                ItemId = TypeUtils.ParseToNullableInt (Request.QueryString [Key]);
 
                 if (!IsPostBack)
                 {
                     // load the data into the control the first time we hit this page
 
                     // check we have an item to lookup
-                    if (itemId != null)
+                    if (ItemId != null)
                     {
                         // load the item
-                        var item = Controller.Get<TItem> (itemId.Value);
+                        var item = Controller.Get<TItem> (ItemId.Value);
 
                         if (item != null && CanEditItem (item))
                         {
@@ -186,11 +186,11 @@ namespace DotNetNuke.R7
                 TItem item;
 
                 // determine if we are adding or updating
-                item = (itemId == null) ? new TItem () : Controller.Get<TItem> (itemId.Value);
+                item = (ItemId == null) ? new TItem () : Controller.Get<TItem> (ItemId.Value);
 
                 OnUpdateItem (item);
 
-                if (itemId == null)
+                if (ItemId == null)
                     Controller.Add<TItem> (item);
                 else
                     Controller.Update<TItem> (item);
@@ -215,9 +215,9 @@ namespace DotNetNuke.R7
         {
             try
             {
-                if (itemId.HasValue)
+                if (ItemId.HasValue)
                 {
-                    var item = Controller.Get<TItem> (itemId.Value);
+                    var item = Controller.Get<TItem> (ItemId.Value);
                     if (item != null && CanDeleteItem (item))
                     {
                         BeforeDeleteItem (item);
