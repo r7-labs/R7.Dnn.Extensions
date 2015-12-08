@@ -29,11 +29,6 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <DocumentationFile>bin\Release\DotNetNuke.R7.xml</DocumentationFile>
-    <CustomCommands>
-      <CustomCommands>
-        <Command type="AfterBuild" name="Make NuGet Package" command="nuget pack ${ProjectFile} -Prop Configuration=Release" workingdir="${ProjectDir}" />
-      </CustomCommands>
-    </CustomCommands>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -97,6 +92,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="DotNetNuke.R7.nuspec" />
+    <None Include="DotNetNuke.R7.csproj" />
+    <None Include="MakeNuGetPackage.targets" />
+    <None Include="DotNetNuke.R7.Full.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Text\" />
@@ -113,4 +111,6 @@
     <Folder Include="DAL\" />
     <Folder Include="Controls\PagingControl\" />
   </ItemGroup>
+  <Import Project="MakeNuGetPackage.targets" />
+  <Target Name="AfterBuild" DependsOnTargets="MakeNuGetPackage" />
 </Project>
