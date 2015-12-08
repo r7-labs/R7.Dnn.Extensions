@@ -2,7 +2,7 @@
 <package>
     <metadata>
         <id>DotNetNuke.R7</id>
-        <version>0.2.1</version>
+        <version>$version$</version>
         <title>DotNetNuke.R7</title>
         <authors>Roman M. Yagodin</authors>
         <owners>Roman M. Yagodin</owners>
@@ -14,7 +14,7 @@
             useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.
         </description>
         <summary>DotNetNuke.R7 is a library for DNN Platform web CMS extensions development (NOT STABLE).</summary>
-        <releaseNotes>Add EditModuleBase abstract class.</releaseNotes>
+        <releaseNotes>EditModuleBase: Add OnLoadNewItem() method, make some fields protected.</releaseNotes>
         <copyright>Copyright 2014-2015 Roman M. Yagodin &lt;roman.yagodin@gmail.com&gt;</copyright>
         <tags>DotNetNuke DNN</tags>
         <dependencies>
