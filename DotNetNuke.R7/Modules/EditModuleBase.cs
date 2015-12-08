@@ -159,6 +159,8 @@ namespace DotNetNuke.R7
                         {
                             ModuleAuditControl.Visible = false;
                         }
+
+                        OnNewItem ();
                     }
                 }
                 else
@@ -252,6 +254,12 @@ namespace DotNetNuke.R7
         /// </summary>
         /// <param name="item">Item.</param>
         protected abstract void OnLoadItem (TItem item);
+
+        /// <summary>
+        /// Override to provide custom code which should be called for new items.
+        /// </summary>
+        protected virtual void OnNewItem ()
+        {}
 
         /// <summary>
         /// Implement to provide code to fill item from form controls here.
