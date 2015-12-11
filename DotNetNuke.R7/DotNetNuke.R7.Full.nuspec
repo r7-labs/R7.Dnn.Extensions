@@ -21,6 +21,7 @@
             <dependency id="DotNetNuke.Core" version="7.4.2.216" />
             <dependency id="DotNetNuke.Web" version="7.4.2.216" />
             <dependency id="DotNetNuke.WebApi" version="7.4.2.216" />
+            <dependency id="Microsoft.AspNet.WebApi.Core" version="5.2.3" />
         </dependencies>
     </metadata>
     <files>
