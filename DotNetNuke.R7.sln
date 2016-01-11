@@ -3,13 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNuke.R7", "DotNetNuke.R7\DotNetNuke.R7.csproj", "{F5EF3563-5DD0-4412-B6FE-1C992C1E4EE6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D3A206BB-A4DC-431C-B935-17965F95328A}"
-	ProjectSection(SolutionItems) = preProject
-		LICENSE.md = LICENSE.md
-		README.md = README.md
-		CHANGELOG.md = CHANGELOG.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNuke.R7.Tests", "DotNetNuke.R7.Tests\DotNetNuke.R7.Tests.csproj", "{DF59252F-CDEB-4BF3-8760-49F7835577B8}"
 EndProject
 Global
