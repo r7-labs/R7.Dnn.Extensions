@@ -108,7 +108,6 @@
     <Folder Include="Controls\PagingControl\" />
   </ItemGroup>
   <PropertyGroup>
-    <PackageExtension>zip</PackageExtension>
     <PackageName>DotNetNuke.R7</PackageName>
     <PackageOutputPath>output</PackageOutputPath>
   </PropertyGroup>

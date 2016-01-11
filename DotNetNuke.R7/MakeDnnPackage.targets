@@ -32,11 +32,11 @@
             <InstallPackageFiles Include="$(MSBuildProjectDirectory)\tmp\Package\**\*.*" />
         </ItemGroup>
         <!-- Create the install package -->
-        <Zip Condition=" '$(OS)' != 'Unix' " Files="@(InstallPackageFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Package" ZipFileName="$(PackageName)-$(Version)-Install.$(PackageExtension)" />
-        <Exec Condition=" '$(OS)' == 'Unix' " Command="zip -r -6 -UN=UTF8 &quot;$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.$(PackageExtension)&quot; ." WorkingDirectory="$(MSBuildProjectDirectory)/tmp/Package" />
+        <Zip Condition=" '$(OS)' != 'Unix' " Files="@(InstallPackageFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Package" ZipFileName="$(PackageName)-$(Version)-Install.zip" />
+        <Exec Condition=" '$(OS)' == 'Unix' " Command="zip -r -6 -UN=UTF8 &quot;$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.zip&quot; ." WorkingDirectory="$(MSBuildProjectDirectory)/tmp/Package" />
         <!-- Move the install package to the output directory -->
-        <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.$(PackageExtension)" DestinationFolder="$(PackageOutputPath)\" />
-        <Delete Files="$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.$(PackageExtension)" />
+        <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.zip" DestinationFolder="$(PackageOutputPath)\" />
+        <Delete Files="$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.zip" />
         <!-- Cleanup -->
         <RemoveDir Directories="$(MSBuildProjectDirectory)\tmp\Package" />
         <RemoveDir Directories="$(MSBuildProjectDirectory)\tmp" />
