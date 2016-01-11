@@ -84,14 +84,13 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="DotNetNuke.R7.nuspec" />
     <None Include="DotNetNuke.R7.csproj" />
     <None Include="MakeNuGetPackage.targets" />
-    <None Include="DotNetNuke.R7.Full.nuspec" />
     <None Include="DotNetNuke.R7.dnn" />
     <None Include="license.htm" />
     <None Include="releaseNotes.htm" />
     <None Include="MakeDnnPackage.targets" />
+    <None Include="DotNetNuke.R7.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Text\" />
@@ -112,7 +111,7 @@
     <PackageExtension>zip</PackageExtension>
     <PackageName>DotNetNuke.R7</PackageName>
     <PackageOutputPath>output</PackageOutputPath>
-   </PropertyGroup>
+  </PropertyGroup>
   <Import Project="MakeNuGetPackage.targets" />
   <Import Project="MakeDnnPackage.targets" />
   <Target Name="AfterBuild" DependsOnTargets="MakeNuGetPackage;MakeDnnPackage" />

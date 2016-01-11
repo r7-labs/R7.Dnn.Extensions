@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
     <Target Name="MakeNuGetPackage" Condition=" '$(Configuration)' == 'Release' ">
-        <Exec Condition=" '$(OS)' != 'Unix' " Command="nuget pack DotNetNuke.R7.csproj -Prop Configuration=Release" 
-            WorkingDirectory="$(MSBuildProjectDirectory)" />
-        <Exec Condition=" '$(OS)' == 'Unix' " Command="nuget pack DotNetNuke.R7.Full.nuspec -Version $(ReleaseVersion)" 
+        <Exec Command="nuget pack $(PackageName).nuspec -Version $(ReleaseVersion) -OutputDirectory $(PackageOutputPath)" 
             WorkingDirectory="$(MSBuildProjectDirectory)" />
     </Target>
 </Project>
