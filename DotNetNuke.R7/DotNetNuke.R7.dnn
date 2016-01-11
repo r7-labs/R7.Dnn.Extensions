@@ -1,0 +1,39 @@
+﻿<dotnetnuke type="Package" version="5.0">
+    <packages>
+        <package name="DotNetNuke.R7" type="Library" version="00.03.00">
+            <friendlyName>DotNetNuke.R7</friendlyName>
+            <description>DotNetNuke.R7 is a library for DNN Platform web CMS extensions development (primarily, modules). 
+            It includes DAL2-based generic controller, a set of base classes for modules and settings, 
+            useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.</description>
+            <owner>
+                <name>Roman M. Yagodin</name>
+                <organization>R7.Solutions</organization>
+                <url>https://github.com/roman-yagodin/DotNetNuke.R7</url>
+                <email>roman.yagodin@gmail.com</email>
+            </owner>
+            <license src="license.htm" />
+            <releaseNotes src="releaseNotes.htm" />
+            <dependencies>
+                <dependency type="CoreVersion">07.04.00</dependency>
+            </dependencies>
+            <components>
+                <component type="Assembly">
+                    <assemblies>
+                        <assembly>
+                            <path>bin</path>
+                            <name>DotNetNuke.R7.dll</name>
+                        </assembly>
+                    </assemblies>
+                </component>
+                <component type="File">
+                    <files>
+                        <file>
+                            <path>bin</path>
+                            <name>DotNetNuke.R7.xml</name>
+                        </file>
+                    </files>
+                </component>
+            </components>
+        </package>
+    </packages>
+</dotnetnuke>

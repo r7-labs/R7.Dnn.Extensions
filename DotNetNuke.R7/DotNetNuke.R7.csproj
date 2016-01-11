@@ -88,6 +88,10 @@
     <None Include="DotNetNuke.R7.csproj" />
     <None Include="MakeNuGetPackage.targets" />
     <None Include="DotNetNuke.R7.Full.nuspec" />
+    <None Include="DotNetNuke.R7.dnn" />
+    <None Include="license.htm" />
+    <None Include="releaseNotes.htm" />
+    <None Include="MakeDnnPackage.targets" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Text\" />
@@ -104,6 +108,12 @@
     <Folder Include="DAL\" />
     <Folder Include="Controls\PagingControl\" />
   </ItemGroup>
+  <PropertyGroup>
+    <PackageExtension>zip</PackageExtension>
+    <PackageName>DotNetNuke.R7</PackageName>
+    <PackageOutputPath>output</PackageOutputPath>
+   </PropertyGroup>
   <Import Project="MakeNuGetPackage.targets" />
-  <Target Name="AfterBuild" DependsOnTargets="MakeNuGetPackage" />
+  <Import Project="MakeDnnPackage.targets" />
+  <Target Name="AfterBuild" DependsOnTargets="MakeNuGetPackage;MakeDnnPackage" />
 </Project>
