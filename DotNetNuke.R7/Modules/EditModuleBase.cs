@@ -197,6 +197,8 @@ namespace DotNetNuke.R7
                     Controller.Update<TItem> (item);
                 }
 
+                AfterUpdateItem (item);
+
                 // synchronize module
                 ModuleController.SynchronizeModule (ModuleId);
 
@@ -268,6 +270,14 @@ namespace DotNetNuke.R7
         /// </summary>
         /// <param name="item">Item.</param>
         protected abstract void OnUpdateItem (TItem item);
+
+        /// <summary>
+        /// Implement to provide code which will be called 
+        /// after item update in the DB
+        /// </summary>
+        /// <param name="item">Item.</param>
+        protected virtual void AfterUpdateItem (TItem item)
+        {}
 
         /// <summary>
         /// Override to provide code which should be called on Page_Load then (IsPostBack == true) here

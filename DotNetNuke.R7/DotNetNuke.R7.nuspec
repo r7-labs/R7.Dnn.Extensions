@@ -14,7 +14,7 @@
             useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.
         </description>
         <summary>DotNetNuke.R7 is a library for DNN Platform web CMS extensions development (NOT STABLE).</summary>
-        <releaseNotes>Remove currently unused WebAPI references.</releaseNotes>
+        <releaseNotes>EditModuleBase: Add AfterUpdateItem virtual method.</releaseNotes>
         <copyright>Copyright 2014-2015 Roman M. Yagodin &lt;roman.yagodin@gmail.com&gt;</copyright>
         <tags>DotNetNuke DNN</tags>
         <dependencies>
