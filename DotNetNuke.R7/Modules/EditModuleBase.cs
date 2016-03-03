@@ -48,6 +48,8 @@ namespace DotNetNuke.R7
 
         protected readonly string Key;
 
+        protected readonly bool EnableAjax;
+
         #endregion
 
         #region Controls
@@ -81,6 +83,18 @@ namespace DotNetNuke.R7
         protected EditModuleBase (string key)
         {
             Key = key;
+            EnableAjax = false;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DotNetNuke.R7.EditModuleBase{TC,TS,TItem}"/> class.
+        /// </summary>
+        /// <param name="key">Key.</param>
+        /// <param name="enableAjax">If set to 'true', module will try to register AJAX script manager, if AJAX is installed.</param>
+        protected EditModuleBase (string key, bool enableAjax)
+        {
+            Key = key;
+            EnableAjax = enableAjax;
         }
 
         /// <summary>
@@ -128,6 +142,10 @@ namespace DotNetNuke.R7
         protected override void OnLoad (EventArgs e)
         {
             base.OnLoad (e);
+
+            if (EnableAjax && DotNetNuke.Framework.AJAX.IsInstalled ()) {
+                DotNetNuke.Framework.AJAX.RegisterScriptManager ();
+            }
 
             try
             {
