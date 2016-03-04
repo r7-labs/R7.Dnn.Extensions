@@ -106,6 +106,26 @@ namespace DotNetNuke.R7
         }
 
         /// <summary>
+        /// Gets a single object of type T from result of a dynamic sql query
+        /// </summary>
+        /// <returns>Object of type T or null.</returns>
+        /// <param name="sqlCondition">SQL command condition.</param>
+        /// <param name="args">SQL command arguments.</param>
+        /// <typeparam name="T">Type of objects.</typeparam>
+        public T Get<T> (string sqlCondition, params object [] args) where T: class
+        {
+            T info;
+
+            using (var ctx = DataContext.Instance ())
+            {
+                var repo = ctx.GetRepository<T> ();
+                info = repo.Find (sqlCondition, args).SingleOrDefault ();
+            }
+
+            return info;
+        }
+
+        /// <summary>
         /// Updates an object already stored in the database
         /// </summary>
         /// <param name='info'>
@@ -195,6 +215,25 @@ namespace DotNetNuke.R7
             using (var ctx = DataContext.Instance ())
             {
                 infos = ctx.ExecuteQuery<T> (cmdType, sql, args);
+            }
+
+            return infos ?? Enumerable.Empty<T> ();
+        }
+
+        /// <summary>
+        /// Gets the all objects of type T from result of a stored procedure call
+        /// </summary>
+        /// <returns>Enumerable with objects of type T</returns>
+        /// <param name="spName">Stored procedure name.</param>
+        /// <param name="args">SQL command arguments.</param>
+        /// <typeparam name="T">Type of objects.</typeparam>
+        public IEnumerable<T> GetObjectsFromSp<T> (string spName, params object [] args) where T: class
+        {
+            IEnumerable<T> infos;
+
+            using (var ctx = DataContext.Instance ())
+            {
+                infos = ctx.ExecuteQuery<T> (System.Data.CommandType.StoredProcedure, spName, args);
             }
 
             return infos ?? Enumerable.Empty<T> ();
