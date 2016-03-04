@@ -80,6 +80,7 @@
     <Compile Include="Controls\PagingControl\PagingControl.cs" />
     <Compile Include="Controls\PagingControl\PagingControlMode.cs" />
     <Compile Include="Modules\EditModuleBase.cs" />
+    <Compile Include="ViewModels\ViewModelContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -105,6 +106,7 @@
     <Folder Include="Users\" />
     <Folder Include="DAL\" />
     <Folder Include="Controls\PagingControl\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <PropertyGroup>
     <PackageName>DotNetNuke.R7</PackageName>
