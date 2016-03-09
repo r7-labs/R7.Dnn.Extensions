@@ -8,7 +8,7 @@
     <RootNamespace>DotNetNuke.R7</RootNamespace>
     <AssemblyName>DotNetNuke.R7</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <ReleaseVersion>0.3.1</ReleaseVersion>
+    <ReleaseVersion>0.4.0</ReleaseVersion>
     <Description>DotNetNuke.R7 is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules and settings, useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -81,6 +81,7 @@
     <Compile Include="Controls\PagingControl\PagingControlMode.cs" />
     <Compile Include="Modules\EditModuleBase.cs" />
     <Compile Include="ViewModels\ViewModelContext.cs" />
+    <Compile Include="DAL\Dal2DataProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

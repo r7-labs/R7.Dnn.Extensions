@@ -33,8 +33,11 @@ using DotNetNuke.Entities.Modules;
 
 namespace DotNetNuke.R7
 {
+    [Obsolete("Use Dal2DataProvider to access data and ModuleSearchBase to inherit module controllers")]
     public abstract class ControllerBase : ModuleSearchBase
     {
+        protected readonly Dal2DataProvider dataProvider = new Dal2DataProvider ();
+
         #region Common methods
 
         /// <summary>
@@ -42,7 +45,6 @@ namespace DotNetNuke.R7
         /// </summary>
         protected ControllerBase ()
         { 
-
         }
 
         /// <summary>
@@ -51,11 +53,7 @@ namespace DotNetNuke.R7
         /// <param name='info'></param>
         public void Add<T> (T info) where T: class
         {
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                repo.Insert (info);
-            }
+            dataProvider.Add (info);
         }
 
         /// <summary>
@@ -69,15 +67,7 @@ namespace DotNetNuke.R7
         /// </param>
         public T Get<T> (int itemId) where T: class
         {
-            T info;
-
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                info = repo.GetById (itemId);
-            }
-
-            return info;
+            return dataProvider.Get<T> (itemId);
         }
 
         /// <summary>
@@ -94,15 +84,7 @@ namespace DotNetNuke.R7
         /// </param>
         public T Get<T> (int itemId, int scopeId) where T: class
         {
-            T info;
-
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                info = repo.GetById (itemId, scopeId);
-            }
-
-            return info;
+            return dataProvider.Get<T> (itemId, scopeId);
         }
 
         /// <summary>
@@ -114,15 +96,7 @@ namespace DotNetNuke.R7
         /// <typeparam name="T">Type of objects.</typeparam>
         public T Get<T> (string sqlCondition, params object [] args) where T: class
         {
-            T info;
-
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                info = repo.Find (sqlCondition, args).SingleOrDefault ();
-            }
-
-            return info;
+            return dataProvider.Get<T> (sqlCondition, args);
         }
 
         /// <summary>
@@ -133,11 +107,7 @@ namespace DotNetNuke.R7
         /// </param>
         public void Update<T> (T info) where T: class
         {
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                repo.Update (info);
-            }
+            dataProvider.Update (info);
         }
 
         /// <summary>
@@ -149,18 +119,7 @@ namespace DotNetNuke.R7
         /// <returns></returns>
         public IEnumerable<T> GetObjects<T> (int scopeId) where T: class
         {
-            IEnumerable<T> infos;
-
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                infos = repo.Get (scopeId);
-
-                // Without [Scope("ModuleID")] it should be like:
-                // infos = repo.Find ("WHERE ModuleID = @0", moduleId);
-            }
-
-            return infos ?? Enumerable.Empty<T> ();
+            return dataProvider.GetObjects<T> (scopeId);
         }
 
         /// <summary>
@@ -169,15 +128,7 @@ namespace DotNetNuke.R7
         /// <returns></returns>
         public IEnumerable<T> GetObjects<T> () where T: class
         {
-            IEnumerable<T> infos;
-
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                infos = repo.Get ();
-            }
-
-            return infos ?? Enumerable.Empty<T> ();
+            return dataProvider.GetObjects<T> ();
         }
 
         /// <summary>
@@ -187,17 +138,9 @@ namespace DotNetNuke.R7
         /// <param name="sqlCondition">SQL command condition.</param>
         /// <param name="args">SQL command arguments.</param>
         /// <typeparam name="T">Type of objects.</typeparam>
-        public IEnumerable<T> GetObjects<T> (string sqlCondition, params object[] args) where T: class
+        public IEnumerable<T> GetObjects<T> (string sqlCondition, params object [] args) where T: class
         {
-            IEnumerable<T> infos;
-
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                infos = repo.Find (sqlCondition, args);
-            }
-
-            return infos ?? Enumerable.Empty<T> ();
+            return dataProvider.GetObjects<T> (sqlCondition, args);
         }
 
         /// <summary>
@@ -210,14 +153,7 @@ namespace DotNetNuke.R7
         /// <typeparam name="T">Type of objects.</typeparam>
         public IEnumerable<T> GetObjects<T> (System.Data.CommandType cmdType, string sql, params object[] args) where T: class
         {
-            IEnumerable<T> infos;
-
-            using (var ctx = DataContext.Instance ())
-            {
-                infos = ctx.ExecuteQuery<T> (cmdType, sql, args);
-            }
-
-            return infos ?? Enumerable.Empty<T> ();
+            return dataProvider.GetObjects<T> (cmdType, sql, args);
         }
 
         /// <summary>
@@ -229,29 +165,20 @@ namespace DotNetNuke.R7
         /// <typeparam name="T">Type of objects.</typeparam>
         public IEnumerable<T> GetObjectsFromSp<T> (string spName, params object [] args) where T: class
         {
-            IEnumerable<T> infos;
-
-            using (var ctx = DataContext.Instance ())
-            {
-                infos = ctx.ExecuteQuery<T> (System.Data.CommandType.StoredProcedure, spName, args);
-            }
-
-            return infos ?? Enumerable.Empty<T> ();
+            return dataProvider.GetObjectsFromSp<T> (spName, args);
         }
 
         /// <summary>
         /// Finds the objects of type T
         /// </summary>
         /// <returns>Enumerable with objects of type T matching sqlCondition. If searchText is null or whitespace, all objects of type T returned.</returns>
-        /// <param name="sqlConditon">SQL conditon.</param>
+        /// <param name="sqlCondition">SQL conditon.</param>
         /// <param name="searchText">Search text.</param>
         /// <param name="dynamicSql">If set to <c>true</c> use dynamic sql arguments with @, otherwize string.Format().</param>
         /// <typeparam name="T">Type of objects.</typeparam>
-        public IEnumerable<T> FindObjects<T> (string sqlConditon, string searchText, bool dynamicSql = true) where T: class
+        public IEnumerable<T> FindObjects<T> (string sqlCondition, string searchText, bool dynamicSql = true) where T: class
         {
-            return string.IsNullOrWhiteSpace (searchText) ? GetObjects<T> ()
-                    : dynamicSql ? GetObjects<T> (sqlConditon, searchText)
-                    : GetObjects<T> (string.Format (sqlConditon, searchText)); 
+            return dataProvider.FindObjects<T> (sqlCondition, searchText, dynamicSql);
         }
 
         /// <summary>
@@ -263,15 +190,7 @@ namespace DotNetNuke.R7
         /// <returns>A paged list of T objects</returns>
         public IPagedList<T> GetPage<T> (int scopeId, int index, int size) where T: class
         {
-            IPagedList<T> infos;
-
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                infos = repo.GetPage (scopeId, index, size);
-            }
-
-            return infos ?? new PagedList<T> (Enumerable.Empty<T> (), 0, 0);
+            return dataProvider.GetPage<T> (scopeId, index, size);
         }
 
         /// <summary>
@@ -282,15 +201,7 @@ namespace DotNetNuke.R7
         /// <returns>A paged list of T objects</returns>
         public IPagedList<T> GetPage<T> (int index, int size) where T: class
         {
-            IPagedList<T> infos;
-
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                infos = repo.GetPage (index, size);
-            }
-
-            return infos ?? new PagedList<T> (Enumerable.Empty<T> (), 0, 0);
+            return dataProvider.GetPage<T> (index, size);
         }
 
         /// <summary>
@@ -299,11 +210,7 @@ namespace DotNetNuke.R7
         /// <param name='info'></param>
         public void Delete<T> (T info) where T: class
         {
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                repo.Delete (info);
-            }
+            dataProvider.Delete (info);
         }
 
         /// <summary>
@@ -312,25 +219,17 @@ namespace DotNetNuke.R7
         /// <param name='itemId'></param>
         public void Delete<T> (int itemId) where T: class
         {
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                repo.Delete (repo.GetById (itemId));
-            }
+            dataProvider.Delete<T> (itemId);
         }
 
         /// <summary>
         /// Delete some item from the database using SQL condition
         /// </summary>
-        /// <param name='sqlConditon'>SQL condition</param>
+        /// <param name='sqlCondition'>SQL condition</param>
         /// <param name='args'>Optional arguments</param>
-        public void Delete<T> (string sqlConditon, params object[] args) where T: class
+        public void Delete<T> (string sqlCondition, params object [] args) where T: class
         {
-            using (var ctx = DataContext.Instance ())
-            {
-                var repo = ctx.GetRepository<T> ();
-                repo.Delete (sqlConditon, args);
-            }
+            dataProvider.Delete<T> (sqlCondition, args);
         }
 
         #endregion
