@@ -8,7 +8,7 @@
     <RootNamespace>DotNetNuke.R7.Tests</RootNamespace>
     <AssemblyName>DotNetNuke.R7.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <ReleaseVersion>0.4.0</ReleaseVersion>
+    <ReleaseVersion>0.4.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
