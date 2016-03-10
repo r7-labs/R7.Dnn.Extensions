@@ -82,6 +82,9 @@
     <Compile Include="Modules\EditModuleBase.cs" />
     <Compile Include="ViewModels\ViewModelContext.cs" />
     <Compile Include="DAL\Dal2DataProvider.cs" />
+    <Compile Include="Entities\Modules\EditPortalModuleBase.cs" />
+    <Compile Include="Entities\Modules\ModuleSettingsBase.cs" />
+    <Compile Include="Entities\Modules\PortalModuleBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -108,6 +111,8 @@
     <Folder Include="DAL\" />
     <Folder Include="Controls\PagingControl\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Entities\Modules\" />
   </ItemGroup>
   <PropertyGroup>
     <PackageName>DotNetNuke.R7</PackageName>

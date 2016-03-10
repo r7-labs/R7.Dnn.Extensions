@@ -37,6 +37,7 @@ namespace DotNetNuke.R7
     /// <summary>
     /// A base class to build simple edit module controls
     /// </summary>
+    [Obsolete ("Use DotNetNuke.R7.Entities.ModulesEditPortalModuleBase{TItem,IItemId} instead")]
     public abstract class EditModuleBase<TC,TS,TItem>: ExtendedPortalModuleBase<TC,TS>
         where TC: ControllerBase, new ()
         where TS: SettingsWrapper, new ()

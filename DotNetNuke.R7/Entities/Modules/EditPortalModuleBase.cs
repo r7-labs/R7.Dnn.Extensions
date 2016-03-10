@@ -37,16 +37,25 @@ namespace DotNetNuke.R7.Entities.Modules
     /// <summary>
     /// A base class to build simple edit module controls
     /// </summary>
-    public abstract class EditPortalModuleBase<TItem, TKey>: PortalModuleBase
+    public abstract class EditPortalModuleBase<TItem, TItemId>: PortalModuleBase
         where TItem: class, new ()
-        where TKey: struct
+        where TItemId: struct
     {
         #region Fields
 
-        protected TKey? ItemId;
+        /// <summary>
+        /// The edited item identifier.
+        /// </summary>
+        protected TItemId? ItemId;
 
+        /// <summary>
+        /// The querystring key to parse to get edited item identifier.
+        /// </summary>
         protected readonly string Key;
 
+        /// <summary>
+        /// The flag to enable AJAX.
+        /// </summary>
         protected readonly bool EnableAjax;
 
         #endregion
@@ -76,7 +85,7 @@ namespace DotNetNuke.R7.Entities.Modules
         #endregion
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNetNuke.R7.EditPortalModuleBase{TItem,TKey}"/> class.
+        /// Initializes a new instance of the <see cref="DotNetNuke.R7.Entities.Modules.EditPortalModuleBase{TItem,TKey}"/> class.
         /// </summary>
         /// <param name="key">Key.</param>
         protected EditPortalModuleBase (string key): this (key, false)
@@ -84,7 +93,7 @@ namespace DotNetNuke.R7.Entities.Modules
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNetNuke.R7.EditPortalModuleBase{TItem,TKey}"/> class.
+        /// Initializes a new instance of the <see cref="DotNetNuke.R7.Entities.Modules.EditPortalModuleBase{TItem,TKey}"/> class.
         /// </summary>
         /// <param name="key">Key.</param>
         /// <param name="enableAjax">If set to 'true', module will try to register AJAX script manager, if AJAX is installed.</param>
@@ -117,7 +126,7 @@ namespace DotNetNuke.R7.Entities.Modules
         }
 
         /// <summary>
-        /// Init controls, required by <see cref="DotNetNuke.R7.EditModuleBase{TItem,TKey}"/>
+        /// Init controls, required by <see cref="DotNetNuke.R7.Entities.Modules.EditPortalModuleBase{TItem,TKey}"/>
         /// Provides interface to implement OnInitControls in child classes.
         /// </summary>
         /// <param name="buttonUpdate">Update linkbutton.</param>
@@ -147,7 +156,7 @@ namespace DotNetNuke.R7.Entities.Modules
             try
             {
                 // parse querystring parameters
-                ItemId = TypeUtils.ParseToNullable<TKey> (Request.QueryString [Key]);
+                ItemId = TypeUtils.ParseToNullable<TItemId> (Request.QueryString [Key]);
 
                 if (!IsPostBack)
                 {
@@ -253,12 +262,30 @@ namespace DotNetNuke.R7.Entities.Modules
 
         #region Repository extension points
 
-        protected abstract TItem GetItem (TKey itemId);
+        /// <summary>
+        /// Implement method which will get item by id
+        /// </summary>
+        /// <returns>The item.</returns>
+        /// <param name="itemId">Item identifier.</param>
+        protected abstract TItem GetItem (TItemId itemId);
 
-        protected abstract TKey AddItem (TItem item);
+        /// <summary>
+        /// Implement method which will store new item in the datastore
+        /// </summary>
+        /// <returns>The item.</returns>
+        /// <param name="item">Item.</param>
+        protected abstract TItemId AddItem (TItem item);
 
+        /// <summary>
+        /// Implement method which will update existing item in the datastore
+        /// </summary>
+        /// <param name="item">Item.</param>
         protected abstract void UpdateItem (TItem item);
 
+        /// <summary>
+        /// Implement method which deletes the item in the datastore
+        /// </summary>
+        /// <param name="item">Item.</param>
         protected abstract void DeleteItem (TItem item);
 
         #endregion

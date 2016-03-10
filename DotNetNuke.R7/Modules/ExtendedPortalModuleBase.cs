@@ -23,11 +23,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 using DotNetNuke.Entities.Modules;
 
 namespace DotNetNuke.R7
 {
+    [Obsolete ("Use DotNetNuke.R7.Entities.Modules.PortalModuleBase{TSettings} class")]
     public class ExtendedPortalModuleBase <TC, TS> : PortalModuleBase 
         where TC : ControllerBase, new ()
         where TS : SettingsWrapper, new ()
@@ -36,6 +38,7 @@ namespace DotNetNuke.R7
 
         private TS settings;
 
+        [Obsolete ("Use instance of DotNetNuke.R7.Dal2DataProvider instead")]
         protected TC Controller
         {
             get {  { return ctrl ?? (ctrl = new TC ()); } }
