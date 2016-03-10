@@ -33,6 +33,7 @@ namespace DotNetNuke.R7
 {
     public static class DnnFilePickerUploaderExtensions
     {
+        [Obsolete ("This hack not needed anymore since DNN 7.3")]
         public static void SetFilePathHack (this DnnFilePickerUploader picker, PortalSettings portalSettings)
         {
             if (picker.FileID > 0)
