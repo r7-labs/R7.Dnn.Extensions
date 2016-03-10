@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.ComponentModel;
 using System.Web.UI.WebControls;
 using DotNetNuke.Common.Utilities;
 
@@ -38,16 +39,41 @@ namespace DotNetNuke.R7
         /// </summary>
         /// <returns>The nullable int.</returns>
         /// <param name="value">String value to parse.</param>
+        [Obsolete ("Use T? ParseToNullable<T> () method")]
         public static int? ParseToNullableInt (string value)
         {
-            // TODO: Make another variant of ParseToNullableInt() without using DNN Null object
-
             int n;
 
             if (int.TryParse (value, out n))
                 return Null.IsNull (n) ? null : (int?) n;
 
             return null;
+        }
+
+        /// <summary>
+        /// Parses specified string value to a nullable, optionally threating 
+        /// <see cref="DotNetNuke.Common.Utilities.Null" /> special values as nulls
+        /// </summary>
+        /// <returns>Parsed nullable value.</returns>
+        /// <param name="value">String value to parse.</param>
+        /// <param name="checkDnnNull">If set to 'true' (default), 
+        /// threat <see cref="DotNetNuke.Common.Utilities.Null" /> special values as nulls.</param>
+        public static T? ParseToNullable<T> (string value, bool checkDnnNull = true) where T: struct
+        {
+            var tc = TypeDescriptor.GetConverter (typeof (T));
+
+            try {
+                var result = (T) tc.ConvertFrom (value);
+
+                if (checkDnnNull) {
+                    return Null.IsNull (result) ? null : (T?) result;
+                }
+
+                return (T?) result;
+            }
+            catch {
+                return null;
+            }
         }
 
         /// <summary>
