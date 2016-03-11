@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
     <packages>
-        <package name="DotNetNuke.R7" type="Library" version="00.04.01">
+        <package name="DotNetNuke.R7" type="Library" version="00.05.00">
             <friendlyName>DotNetNuke.R7</friendlyName>
             <description>DotNetNuke.R7 is a library for DNN Platform web CMS extensions development (primarily, modules). 
             It includes DAL2-based generic controller, a set of base classes for modules and settings, 

@@ -14,7 +14,12 @@
             useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.
         </description>
         <summary>DotNetNuke.R7 is a library for DNN Platform web CMS extensions development (NOT STABLE).</summary>
-        <releaseNotes>Add Dal2DataProvider, obsolete ControllerBase; Add ViewModelContext class.</releaseNotes>
+        <releaseNotes>
+            - Obsolete ExtendedModuleSettingsBase, ExtendedPortalModuleBase, EditModuleBase classes;
+            - Provide replacements for obsoleted classes (ModuleSettingsBase{TSettings}, PortalModuleBase{TSettings}, 
+                EditPortalModuleBase{TItem,TItemId}) in the DotNetNuke.R7.Entities.Modules namespace;
+            - Add generic ParseToNullable{T} method to TextUtils class.
+        </releaseNotes>
         <copyright>Copyright 2014-2015 Roman M. Yagodin &lt;roman.yagodin@gmail.com&gt;</copyright>
         <tags>DotNetNuke DNN</tags>
         <dependencies>
