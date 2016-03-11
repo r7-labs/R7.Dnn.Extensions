@@ -2,6 +2,8 @@
 
 [![DotNetNuke.R7 on NuGet.org](https://img.shields.io/nuget/v/DotNetNuke.R7.svg)](https://www.nuget.org/packages/DotNetNuke.R7)
 
+[![DotNetNuke.R7 on NuGet.org](https://buildstats.info/nuget/DotNetNuke.R7)](https://www.nuget.org/packages/DotNetNuke.R7)
+
 *DotNetNuke.R7* is a library for DNN Platform web CMS extensions development (primarily, modules). 
 It includes DAL2-based generic controller, a set of base classes for modules and settings, 
 useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.
