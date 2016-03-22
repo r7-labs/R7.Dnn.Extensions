@@ -85,6 +85,8 @@
     <Compile Include="Entities\Modules\EditPortalModuleBase.cs" />
     <Compile Include="Entities\Modules\ModuleSettingsBase.cs" />
     <Compile Include="Entities\Modules\PortalModuleBase.cs" />
+    <Compile Include="ViewModels\EnumViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelContext_TSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

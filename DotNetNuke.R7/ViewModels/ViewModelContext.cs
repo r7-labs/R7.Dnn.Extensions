@@ -23,7 +23,7 @@ using System;
 using System.Web.UI;
 using DotNetNuke.UI.Modules;
 
-namespace DotNetNuke.R7
+namespace DotNetNuke.R7.ViewModels
 {
     public class ViewModelContext
     {
@@ -44,4 +44,3 @@ namespace DotNetNuke.R7
         }
     }
 }
-
