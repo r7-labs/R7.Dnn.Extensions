@@ -11,7 +11,7 @@
                 <url>https://github.com/roman-yagodin/DotNetNuke.R7</url>
                 <email>roman.yagodin@gmail.com</email>
             </owner>
-            <license src="license.htm" />
+            <license src="license.txt" />
             <releaseNotes src="releaseNotes.htm" />
             <dependencies>
                 <dependency type="CoreVersion">07.04.00</dependency>

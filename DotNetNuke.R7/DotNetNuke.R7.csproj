@@ -93,10 +93,11 @@
     <None Include="packages.config" />
     <None Include="MakeNuGetPackage.targets" />
     <None Include="DotNetNuke.R7.dnn" />
-    <None Include="license.htm" />
     <None Include="releaseNotes.htm" />
     <None Include="MakeDnnPackage.targets" />
     <None Include="DotNetNuke.R7.nuspec" />
+    <None Include="license.txt" />
+    <None Include="license-gpl.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Text\" />

@@ -18,7 +18,8 @@
         <!-- Declare manifest files -->
         <ItemGroup>
             <InstallManifestFiles Include="DotNetNuke.R7.dnn" />
-            <InstallManifestFiles Include="license.htm" />
+            <InstallManifestFiles Include="license.txt" />
+            <InstallManifestFiles Include="license-gpl.txt" />
             <InstallManifestFiles Include="releaseNotes.htm" />
         </ItemGroup>
         <!-- Copy binaries -->

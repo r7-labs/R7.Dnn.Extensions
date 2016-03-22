@@ -6,7 +6,7 @@
         <title>DotNetNuke.R7</title>
         <authors>Roman M. Yagodin</authors>
         <owners>Roman M. Yagodin</owners>
-        <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+        <licenseUrl>http://www.gnu.org/licenses/lgpl.txt</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <projectUrl>https://github.com/roman-yagodin/DotNetNuke.R7</projectUrl>
         <description>DotNetNuke.R7 is a library for DNN Platform web CMS extensions development (primarily, modules). 
