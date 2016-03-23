@@ -15,7 +15,7 @@
         </description>
         <summary>DotNetNuke.R7 is a library for DNN Platform web CMS extensions development (NOT STABLE).</summary>
         <releaseNotes></releaseNotes>
-        <copyright>Copyright 2014-2015 Roman M. Yagodin &lt;roman.yagodin@gmail.com&gt;</copyright>
+        <copyright>Copyright 2014, 2015, 2016 Roman M. Yagodin &lt;roman.yagodin@gmail.com&gt;</copyright>
         <tags>DotNetNuke DNN</tags>
         <dependencies>
             <dependency id="DotNetNuke.Core" version="7.4.2.216" />
