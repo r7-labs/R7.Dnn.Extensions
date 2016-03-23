@@ -26,6 +26,7 @@ using DotNetNuke.Services.Localization;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.UI.UserControls;
+using DotNetNuke.R7.Entities.Modules;
 
 namespace DotNetNuke.R7
 {

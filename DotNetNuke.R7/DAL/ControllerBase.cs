@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using DotNetNuke.Data;
 using DotNetNuke.Collections;
 using DotNetNuke.Entities.Modules;
+using DotNetNuke.R7.Data;
 
 namespace DotNetNuke.R7
 {

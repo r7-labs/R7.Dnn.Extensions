@@ -21,6 +21,7 @@
 
 using System;
 using DotNetNuke.Entities.Modules;
+using DotNetNuke.R7.Entities.Modules;
 
 namespace DotNetNuke.R7
 {

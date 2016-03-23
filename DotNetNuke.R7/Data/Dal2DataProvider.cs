@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using DotNetNuke.Data;
 using DotNetNuke.Collections;
 
-namespace DotNetNuke.R7
+namespace DotNetNuke.R7.Data
 {
     /// <summary>
     /// Provides interface to access data using DNN DAL2 features.

@@ -25,7 +25,7 @@ using System.Collections;
 using DotNetNuke.UI.Modules;
 using DotNetNuke.Entities.Modules;
 
-namespace DotNetNuke.R7
+namespace DotNetNuke.R7.Entities.Modules
 {
     /// <summary>
     /// Provides strong typed access to settings used by module

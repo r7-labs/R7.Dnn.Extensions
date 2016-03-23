@@ -76,17 +76,17 @@
     <Compile Include="Types\TypeUtils.cs" />
     <Compile Include="Users\UserUtils.cs" />
     <Compile Include="DAL\ControllerBase.cs" />
-    <Compile Include="DAL\SettingsWrapper.cs" />
     <Compile Include="Controls\PagingControl\PagingControl.cs" />
     <Compile Include="Controls\PagingControl\PagingControlMode.cs" />
     <Compile Include="Modules\EditModuleBase.cs" />
     <Compile Include="ViewModels\ViewModelContext.cs" />
-    <Compile Include="DAL\Dal2DataProvider.cs" />
     <Compile Include="Entities\Modules\EditPortalModuleBase.cs" />
     <Compile Include="Entities\Modules\ModuleSettingsBase.cs" />
     <Compile Include="Entities\Modules\PortalModuleBase.cs" />
     <Compile Include="ViewModels\EnumViewModel.cs" />
     <Compile Include="ViewModels\ViewModelContext_TSettings.cs" />
+    <Compile Include="Data\Dal2DataProvider.cs" />
+    <Compile Include="Entities\Modules\SettingsWrapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -116,6 +116,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Entities\" />
     <Folder Include="Entities\Modules\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <PropertyGroup>
     <PackageName>DotNetNuke.R7</PackageName>
