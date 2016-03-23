@@ -30,5 +30,7 @@
     <files>
         <file src="bin/Release/DotNetNuke.R7.dll" target="lib/net45" /> 
         <file src="bin/Release/DotNetNuke.R7.xml" target="lib/net45" />
+        <file src="license.txt" target="lib/net45" />
+        <file src="license-gpl.txt" target="lib/net45" />
     </files>
 </package>
