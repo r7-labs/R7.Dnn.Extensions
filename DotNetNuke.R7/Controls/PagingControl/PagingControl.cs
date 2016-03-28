@@ -325,7 +325,7 @@ namespace DotNetNuke.R7
 		private string GetFirstLink()
 		{
             if (CurrentPage > 1 && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL (CreateURL("1")) + "\">" + Localization.GetString("First", Localization.SharedResourceFile) + "</a></li>";
+                return "<li><a href=\"" + CreateURL ("1") + "\">" + Localization.GetString("First", Localization.SharedResourceFile) + "</a></li>";
 
             return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + Localization.GetString("First", Localization.SharedResourceFile) + "</span></li>";
 		}
