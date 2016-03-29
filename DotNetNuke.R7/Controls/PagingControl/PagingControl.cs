@@ -171,10 +171,17 @@ namespace DotNetNuke.R7
 
 		private void BindPageNumbers (int TotalRecords, int RecordsPerPage)
 		{
+            if (TotalRecords < 1 || RecordsPerPage < 1)
+            {
+                TotalPages = 1;
+                return;
+            }
+
 			if (TotalRecords / RecordsPerPage >= 1)
 			{
-				TotalPages = Convert.ToInt32 (Math.Ceiling (Convert.ToDouble (TotalRecords / RecordsPerPage)));
-			} else
+                TotalPages = TotalRecords / RecordsPerPage + ((TotalRecords % RecordsPerPage == 0) ? 0 : 1);
+			} 
+            else
 			{
 				TotalPages = 0;
 			}
