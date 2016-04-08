@@ -45,7 +45,7 @@ namespace DotNetNuke.R7.Entities.Modules
                 if (settings == null) 
                 {
                     settings = new TSettings ();
-                    settings.Init (ModuleId, TabModuleId);
+                    settings.Init (ModuleId, TabModuleId, PortalId);
                 }
 
                 return settings; 

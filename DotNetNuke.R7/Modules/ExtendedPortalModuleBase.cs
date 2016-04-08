@@ -52,7 +52,7 @@ namespace DotNetNuke.R7
                 if (settings == null)
                 {
                     settings = new TS ();
-                    settings.Init (ModuleId, TabModuleId);
+                    settings.Init (ModuleId, TabModuleId, PortalId);
                 }
 
                 return settings; 

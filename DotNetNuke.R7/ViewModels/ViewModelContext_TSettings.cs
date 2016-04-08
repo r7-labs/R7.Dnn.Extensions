@@ -53,7 +53,7 @@ namespace DotNetNuke.R7.ViewModels
                 if (settings == null)
                 {
                     settings = new TSettings ();
-                    settings.Init (Module.ModuleId, Module.TabModuleId);
+                    settings.Init (Module.ModuleId, Module.TabModuleId, Module.PortalId);
                 }
 
                 return settings;

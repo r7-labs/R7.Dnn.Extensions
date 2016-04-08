@@ -33,38 +33,49 @@ namespace DotNetNuke.R7.Entities.Modules
     public class SettingsWrapper
     {
         protected ModuleController ctrl;
+
         protected int ModuleId;
+
         protected int TabModuleId;
+
+        protected int PortalId;
+
         protected Hashtable settings;
 
-        private SettingsWrapper (int moduleId, int tabModuleId)
+        private SettingsWrapper (int moduleId, int tabModuleId, int portalId)
         {
-            Init (moduleId, tabModuleId);
+            Init (moduleId, tabModuleId, portalId);
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNetNuke.R7.SettingsWrapper"/> class.
+        /// Initializes a new instance of the <see cref="DotNetNuke.R7.Entities.Modules.SettingsWrapper"/> class.
         /// </summary>
-        /// <param name='module'>
-        /// Module control.
-        /// </param>
-        public SettingsWrapper (IModuleControl module) : this (module.ModuleContext.ModuleId, module.ModuleContext.TabModuleId)
+        public SettingsWrapper (IModuleControl module) : 
+            this (module.ModuleContext.ModuleId, module.ModuleContext.TabModuleId, module.ModuleContext.PortalId)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNetNuke.R7.SettingsWrapper"/> class
-        /// and should only be used in generic classes along with <see cref="DotNetNuke.R7.SettingsWrapper.Init" /> call.
+        /// Initializes a new instance of the <see cref="DotNetNuke.R7.Entities.Modules.SettingsWrapper"/> class
+        /// and should only be used in generic classes along with <see cref="DotNetNuke.R7.Entities.Modules.SettingsWrapper.Init" /> call.
         /// </summary>
         public SettingsWrapper ()
         {
         }
 
-        public void Init (int moduleId, int tabModuleId)
+        /// <summary>
+        /// Init the settings with specified moduleId, tabModuleId and portalId.
+        /// </summary>
+        /// <param name="moduleId">Module identifier.</param>
+        /// <param name="tabModuleId">TabModule identifier.</param>
+        /// <param name="portalId">Portal identifier.</param>
+        public void Init (int moduleId, int tabModuleId, int portalId)
         {
-            ctrl = new ModuleController ();
             ModuleId = moduleId;
             TabModuleId = tabModuleId;
+            PortalId = portalId;
+
+            ctrl = new ModuleController ();
             var tabModule = ctrl.GetTabModule (tabModuleId);
 
             // taken from PortalModuleBase settings definition
@@ -76,12 +87,13 @@ namespace DotNetNuke.R7.Entities.Modules
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DotNetNuke.R7.SettingsWrapper"/> class.
+        /// Initializes a new instance of the <see cref="DotNetNuke.R7.Entities.Modules.SettingsWrapper"/> class.
         /// </summary>
         /// <param name='module'>
         /// Module info.
         /// </param>
-        public SettingsWrapper (ModuleInfo module) : this (module.ModuleID, module.TabModuleID)
+        public SettingsWrapper (ModuleInfo module) : 
+            this (module.ModuleID, module.TabModuleID, module.PortalID)
         {
         }
 
