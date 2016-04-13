@@ -1,20 +1,20 @@
-# About DotNetNuke.R7
+# About R7.DotNetNuke.Extensions
 
-[![DotNetNuke.R7 on NuGet.org](https://img.shields.io/nuget/v/DotNetNuke.R7.svg)](https://www.nuget.org/packages/DotNetNuke.R7)
+[![R7.DotNetNuke.Extensions on NuGet.org](https://img.shields.io/nuget/v/R7.DotNetNuke.Extensions.svg)](https://www.nuget.org/packages/R7.DotNetNuke.Extensions)
 
-[![DotNetNuke.R7 on NuGet.org](https://buildstats.info/nuget/DotNetNuke.R7)](https://www.nuget.org/packages/DotNetNuke.R7)
+[![R7.DotNetNuke.Extensions on NuGet.org](https://buildstats.info/nuget/R7.DotNetNuke.Extensions)](https://www.nuget.org/packages/R7.DotNetNuke.Extensions)
 
-*DotNetNuke.R7* is a library for DNN Platform web CMS extensions development (primarily, modules). 
+*R7.DotNetNuke.Extensions* is a library for DNN Platform web CMS extensions development (primarily, modules). 
 It includes DAL2-based generic data provider, a set of base classes for modules and settings, 
 useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.
 
-The pragmatic goal of *DotNetNuke.R7* project is to provide a library, which could be shared
+The pragmatic goal of *R7.DotNetNuke.Extensions* project is to provide a library, which could be shared
 by all existing *R7* extensions for DNN Platform, and also new ones via 
 [R7.DnnTemplates](https://github.com/roman-yagodin/R7.DnnTemplates) integration.
 
 ## License
 
-The *DotNetNuke.R7* library is free software: you can redistribute it and/or modify it under the terms of 
+The *R7.DotNetNuke.Extensions* library is free software: you can redistribute it and/or modify it under the terms of 
 the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, 
 or (at your option) any later version.
 
@@ -22,43 +22,43 @@ or (at your option) any later version.
 
 ## Add to project
 
-The most convenient way to add *DotNetNuke.R7* library in your project is to use *NuGet* package manager.
+The most convenient way to add *R7.DotNetNuke.Extensions* library in your project is to use *NuGet* package manager.
 
 For *Visual Studio*, use package manager console:
 
 ```Shell
-PM> Install-Package DotNetNuke.R7
+PM> Install-Package R7.DotNetNuke.Extensions
 ```
 
 For *MonoDevelop* / *Xamarin Studio*, use *Add &gt; Add NuGet Packages* command in the context menu of the project,
-then search for *"DotNetNuke.R7"* and install it.
+then search for *"R7.DotNetNuke.Extensions"* and install it.
 
-After that you can add *DotNetNuke.R7* namespaces to your usings:
+After that you can add *R7.DotNetNuke.Extensions* namespaces to your usings:
 
 ```C#
-using DotNetNuke.R7;
+using R7.DotNetNuke.Extensions;
 ...
 ```
 
 ## Ship your extension
 
-To ship your extension which use *DotNetNuke.R7* library, declare the dependency in the DNN extension package 
+To ship your extension which use *R7.DotNetNuke.Extensions* library, declare the dependency in the DNN extension package 
 manifest file (see example below) and provide link to the corresponding release in the project
-[releases](https://github.com/roman-yagodin/DotNetNuke.R7/releases).
+[releases](https://github.com/roman-yagodin/R7.DotNetNuke.Extensions/releases).
 
 ```XML
 <dependencies>
     <-- replace 0.5.0 with actual used library version -->
-    <dependency type="managedPackage" version="0.5.0">DotNetNuke.R7</dependency>
+    <dependency type="managedPackage" version="0.5.0">R7.DotNetNuke.Extensions</dependency>
 <dependencies>
 ```
 
-If you want to ship object files (DLL's) of unmodified *DotNetNuke.R7* library in your package, 
+If you want to ship object files (DLL's) of unmodified *R7.DotNetNuke.Extensions* library in your package, 
 make sure that you also include copy of library license and give prominent notice with each copy of your package 
 that the library is used in it and that the library and its use are covered by its license.
 
 ## Links
 
-- [NuGet repository page](https://www.nuget.org/packages/DotNetNuke.R7)
+- [NuGet repository page](https://www.nuget.org/packages/R7.DotNetNuke.Extensions)
 - [R7.Documents](https://github.com/roman-yagodin/R7.Documents) module
 - [R7.University](https://github.com/roman-yagodin/R7.University) educational organization subsystem

@@ -3,8 +3,8 @@
 *.usertasks
 
 # Build output
-DotNetNuke.R7*/bin
-DotNetNuke.R7*/obj
+R7.DotNetNuke.Extensions*/bin
+R7.DotNetNuke.Extensions*/obj
 *.nupkg
 
 # Downloaded NuGet packages
