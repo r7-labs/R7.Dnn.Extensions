@@ -21,8 +21,8 @@
 
 using System;
 using System.Web.UI;
-using DotNetNuke.Web.UI;
 using DotNetNuke.UI.Modules;
+using UiUtilities = DotNetNuke.Web.UI.Utilities;
 
 namespace R7.DotNetNuke.Extensions.ViewModels
 {
@@ -41,7 +41,7 @@ namespace R7.DotNetNuke.Extensions.ViewModels
         public ViewModelContext (Control control, IModuleControl module)
         {
             Module = module.ModuleContext;
-            LocalResourceFile = Utilities.GetLocalResourceFile (control);
+            LocalResourceFile = UiUtilities.GetLocalResourceFile (control);
         }
     }
 }

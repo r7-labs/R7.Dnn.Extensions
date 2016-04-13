@@ -1,5 +1,5 @@
 ﻿//
-//  LevenshteinDistanceBase.cs
+//  DnnFilePickerUploaderExtensions.cs
 //
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
@@ -20,33 +20,21 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Text;
+using DotNetNuke.Entities.Portals;
+using DotNetNuke.Services.FileSystem;
+using DotNetNuke.Web.UI.WebControls;
 
-namespace R7.DotNetNuke.Extensions.Text.Levenstein
+namespace R7.DotNetNuke.Extensions.ControlExtensions
 {
-    public abstract class LevenshteinDistanceBase
+    public static class DnnFilePickerUploaderExtensions
     {
-        protected string s1;
-
-        protected string s2;
-
-        protected LevenshteinDistanceBase (string s1, string s2)
+        [Obsolete ("This hack not needed anymore since DNN 7.3")]
+        public static void SetFilePathHack (this DnnFilePickerUploader picker, PortalSettings portalSettings)
         {
-            this.s1 = s1;
-            this.s2 = s2;
-        }
-
-        public abstract int Distance { get; }
-
-        public double NormalDistance
-        {
-            get
-            {
-                var l1 = (s1 == null) ? 0 : s1.Length;
-                var l2 = (s2 == null) ? 0 : s2.Length;
-
-                return  1 - (double) Distance / Math.Max (l1, l2);
-            }
+            if (picker.FileID > 0)
+                picker.FilePath = FileManager.Instance.GetUrl (
+                    FileManager.Instance.GetFile (picker.FileID))
+                    .Remove (0, portalSettings.HomeDirectory.Length);
         }
     }
 }

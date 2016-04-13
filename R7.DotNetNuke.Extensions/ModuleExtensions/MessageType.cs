@@ -1,5 +1,5 @@
 ﻿//
-//  LevenshteinDistanceBase.cs
+//  MessageType.cs
 //
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
@@ -20,34 +20,20 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Text;
+using DotNetNuke.UI.Skins.Controls;
 
-namespace R7.DotNetNuke.Extensions.Text.Levenstein
+namespace R7.DotNetNuke.Extensions.ModuleExtensions
 {
-    public abstract class LevenshteinDistanceBase
+    /// <summary>
+    /// Module message types.
+    /// </summary>
+    public enum MessageType
     {
-        protected string s1;
-
-        protected string s2;
-
-        protected LevenshteinDistanceBase (string s1, string s2)
-        {
-            this.s1 = s1;
-            this.s2 = s2;
-        }
-
-        public abstract int Distance { get; }
-
-        public double NormalDistance
-        {
-            get
-            {
-                var l1 = (s1 == null) ? 0 : s1.Length;
-                var l2 = (s2 == null) ? 0 : s2.Length;
-
-                return  1 - (double) Distance / Math.Max (l1, l2);
-            }
-        }
+        // duplicate ModuleMessage.ModuleMessageType values here
+        Success = ModuleMessage.ModuleMessageType.GreenSuccess,
+        Info = ModuleMessage.ModuleMessageType.BlueInfo,
+        Warning = ModuleMessage.ModuleMessageType.YellowWarning,
+        Error = ModuleMessage.ModuleMessageType.RedError
     }
 }
 

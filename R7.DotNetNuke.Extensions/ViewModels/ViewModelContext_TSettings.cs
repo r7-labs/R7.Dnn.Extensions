@@ -22,7 +22,7 @@
 using System;
 using System.Web.UI;
 using DotNetNuke.UI.Modules;
-using R7.DotNetNuke.Extensions.Entities.Modules;
+using R7.DotNetNuke.Extensions.Modules;
 
 namespace R7.DotNetNuke.Extensions.ViewModels
 {

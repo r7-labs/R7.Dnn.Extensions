@@ -23,7 +23,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 
-namespace R7.DotNetNuke.Extensions
+namespace R7.DotNetNuke.Extensions.Text.Levenstein
 {
     public class DamerauLevenshteinDistance : LevenshteinDistanceBase
     {

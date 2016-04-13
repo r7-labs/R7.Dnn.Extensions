@@ -26,7 +26,7 @@ using System.Text;
 
 // http://sourceforge.net/apps/mediawiki/syncmldotnet/index.php?title=Quoted_Printable
 
-namespace R7.DotNetNuke.Extensions
+namespace R7.DotNetNuke.Extensions.Text
 {
     /// <summary>
     /// Provide encoding and decoding of Quoted-Printable.

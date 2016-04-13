@@ -8,7 +8,7 @@
     <RootNamespace>R7.DotNetNuke.Extensions</RootNamespace>
     <AssemblyName>R7.DotNetNuke.Extensions</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <ReleaseVersion>0.6.0-alpha2</ReleaseVersion>
+    <ReleaseVersion>0.7.0-alpha-2</ReleaseVersion>
     <Description>R7.DotNetNuke.Extensions is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules and settings, useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -21,6 +21,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <DocumentationFile>bin\Debug\R7.DotNetNuke.Extensions.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -56,37 +57,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Text\Extensions\StringExtensions.cs" />
     <Compile Include="Text\Levenstein\DamerauLevenshteinDistance.cs" />
     <Compile Include="Text\Levenstein\LevenshteinDistanceBase.cs" />
-    <Compile Include="Text\Translit\RuFileTranslitTable.cs" />
-    <Compile Include="Text\Translit\TranslitTableBase.cs" />
     <Compile Include="Text\QuotedPrintable.cs" />
-    <Compile Include="Text\TextUtils.cs" />
-    <Compile Include="Modules\Extensions\IModuleControlExtensions.cs" />
-    <Compile Include="Modules\Extensions\ModuleExtensions.cs" />
-    <Compile Include="Modules\MessageType.cs" />
-    <Compile Include="Modules\ExtendedModuleSettingsBase.cs" />
-    <Compile Include="Modules\ExtendedPortalModuleBase.cs" />
-    <Compile Include="Controls\Extensions\DnnFilePickerUploaderExtensions.cs" />
-    <Compile Include="Controls\Extensions\DnnTreeViewExtensions.cs" />
-    <Compile Include="Controls\Extensions\ListControlExtensions.cs" />
-    <Compile Include="FileSystem\FileUtils.cs" />
-    <Compile Include="FileSystem\MimeTypes.cs" />
-    <Compile Include="Types\TypeUtils.cs" />
-    <Compile Include="Users\UserUtils.cs" />
-    <Compile Include="DAL\ControllerBase.cs" />
-    <Compile Include="Controls\PagingControl\PagingControl.cs" />
-    <Compile Include="Controls\PagingControl\PagingControlMode.cs" />
-    <Compile Include="Modules\EditModuleBase.cs" />
     <Compile Include="ViewModels\ViewModelContext.cs" />
-    <Compile Include="Entities\Modules\EditPortalModuleBase.cs" />
-    <Compile Include="Entities\Modules\ModuleSettingsBase.cs" />
-    <Compile Include="Entities\Modules\PortalModuleBase.cs" />
     <Compile Include="ViewModels\EnumViewModel.cs" />
     <Compile Include="ViewModels\ViewModelContext_TSettings.cs" />
     <Compile Include="Data\Dal2DataProvider.cs" />
-    <Compile Include="Entities\Modules\SettingsWrapper.cs" />
+    <Compile Include="Controls\PagingControl.cs" />
+    <Compile Include="Controls\PagingControlMode.cs" />
+    <Compile Include="ControlExtensions\DnnFilePickerUploaderExtensions.cs" />
+    <Compile Include="ControlExtensions\DnnTreeViewExtensions.cs" />
+    <Compile Include="ControlExtensions\ListControlExtensions.cs" />
+    <Compile Include="ModuleExtensions\IModuleControlExtensions.cs" />
+    <Compile Include="ModuleExtensions\ModuleExtensions.cs" />
+    <Compile Include="Modules\EditPortalModuleBase.cs" />
+    <Compile Include="Modules\ModuleSettingsBase.cs" />
+    <Compile Include="Modules\PortalModuleBase.cs" />
+    <Compile Include="Modules\SettingsWrapper.cs" />
+    <Compile Include="ModuleExtensions\MessageType.cs" />
+    <Compile Include="Utilities\UserUtils.cs" />
+    <Compile Include="Utilities\TypeUtils.cs" />
+    <Compile Include="Text\Transliteration\RuFileTranslitTable.cs" />
+    <Compile Include="Text\Transliteration\TranslitTableBase.cs" />
+    <Compile Include="TextExtensions\StringExtensions.cs" />
+    <Compile Include="Utilities\FileUtils.cs" />
+    <Compile Include="Utilities\TextUtils.cs" />
+    <Compile Include="Utilities\MimeTypes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -101,22 +98,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Text\" />
-    <Folder Include="Text\Extensions\" />
     <Folder Include="Text\Levenstein\" />
-    <Folder Include="Text\Translit\" />
     <Folder Include="Modules\" />
-    <Folder Include="Modules\Extensions\" />
     <Folder Include="Controls\" />
-    <Folder Include="Controls\Extensions\" />
-    <Folder Include="FileSystem\" />
-    <Folder Include="Types\" />
-    <Folder Include="Users\" />
-    <Folder Include="DAL\" />
-    <Folder Include="Controls\PagingControl\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Entities\" />
-    <Folder Include="Entities\Modules\" />
     <Folder Include="Data\" />
+    <Folder Include="ControlExtensions\" />
+    <Folder Include="ModuleExtensions\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Text\Transliteration\" />
+    <Folder Include="TextExtensions\" />
   </ItemGroup>
   <PropertyGroup>
     <PackageName>R7.DotNetNuke.Extensions</PackageName>

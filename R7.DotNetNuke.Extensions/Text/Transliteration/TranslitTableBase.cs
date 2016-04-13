@@ -1,5 +1,5 @@
 ﻿//
-//  LevenshteinDistanceBase.cs
+//  TranslitTableBase.cs
 //
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
@@ -22,31 +22,20 @@
 using System;
 using System.Text;
 
-namespace R7.DotNetNuke.Extensions.Text.Levenstein
+namespace R7.DotNetNuke.Extensions.Text.Transliteration
 {
-    public abstract class LevenshteinDistanceBase
+    public abstract class TranslitTableBase
     {
-        protected string s1;
+        protected string [,] translitTable; 
 
-        protected string s2;
-
-        protected LevenshteinDistanceBase (string s1, string s2)
+        public string [,] TranslitTable 
         {
-            this.s1 = s1;
-            this.s2 = s2;
+            get { return translitTable; }
         }
 
-        public abstract int Distance { get; }
-
-        public double NormalDistance
+        protected TranslitTableBase (string [,] translitTable)
         {
-            get
-            {
-                var l1 = (s1 == null) ? 0 : s1.Length;
-                var l2 = (s2 == null) ? 0 : s2.Length;
-
-                return  1 - (double) Distance / Math.Max (l1, l2);
-            }
+            this.translitTable = translitTable;
         }
     }
 }
