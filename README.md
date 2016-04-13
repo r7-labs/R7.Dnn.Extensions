@@ -14,11 +14,11 @@ by all existing *R7* extensions for DNN Platform, and also new ones via
 
 ## License
 
+[![LGPLv3](http://www.gnu.org/graphics/lgplv3-147x51.png)](http://www.gnu.org/licenses/lgpl.txt)
+
 The *R7.DotNetNuke.Extensions* library is free software: you can redistribute it and/or modify it under the terms of 
 the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, 
 or (at your option) any later version.
-
-[![LGPLv3](http://www.gnu.org/graphics/lgplv3-147x51.png)](http://www.gnu.org/licenses/lgpl.txt)
 
 ## Add to project
 
@@ -29,9 +29,14 @@ For *Visual Studio*, use package manager console:
 ```Shell
 PM> Install-Package R7.DotNetNuke.Extensions
 ```
+For pre-release versions:
+
+```Shell
+PM> Install-Package R7.DotNetNuke.Extensions -Pre
+```
 
 For *MonoDevelop* / *Xamarin Studio*, use *Add &gt; Add NuGet Packages* command in the context menu of the project,
-then search for *"R7.DotNetNuke.Extensions"* and install it.
+then search for *"R7.DotNetNuke.Extensions"* and install it. Check *Show pre-release packages* to install pre-release versions.
 
 After that you can add *R7.DotNetNuke.Extensions* namespaces to your usings:
 
@@ -48,8 +53,8 @@ manifest file (see example below) and provide link to the corresponding release 
 
 ```XML
 <dependencies>
-    <-- replace 0.5.0 with actual used library version -->
-    <dependency type="managedPackage" version="0.5.0">R7.DotNetNuke.Extensions</dependency>
+    <-- replace 0.x.y with actual used library version -->
+    <dependency type="managedPackage" version="0.x.y">R7.DotNetNuke.Extensions</dependency>
 <dependencies>
 ```
 
