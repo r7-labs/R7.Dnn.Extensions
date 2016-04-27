@@ -8,7 +8,7 @@
     <RootNamespace>R7.DotNetNuke.Extensions</RootNamespace>
     <AssemblyName>R7.DotNetNuke.Extensions</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <ReleaseVersion>0.7.0-alpha-2</ReleaseVersion>
+    <ReleaseVersion>0.7.0</ReleaseVersion>
     <Description>R7.DotNetNuke.Extensions is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules and settings, useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
