@@ -23,7 +23,7 @@ using System;
 using DotNetNuke.Entities.Modules;
 using R7.DotNetNuke.Extensions.Modules;
 
-namespace R7.DotNetNuke.Extensions.Entities.Modules
+namespace R7.DotNetNuke.Extensions.Modules
 {
     /// <summary>
     /// Base class for module view and edit controls, extended with strongly-typed settings.
