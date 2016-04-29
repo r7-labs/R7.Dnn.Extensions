@@ -37,8 +37,9 @@ namespace R7.DotNetNuke.Extensions.TextExtensions
         {
             if (!string.IsNullOrWhiteSpace (s))
             {
-                if (s.Length == 1)
+                if (s.Length == 1) {
                     return s.ToUpper ();
+                }
 
                 return s.ToUpper () [0] + s.Substring (1);
             }
@@ -55,10 +56,49 @@ namespace R7.DotNetNuke.Extensions.TextExtensions
         {
             if (!string.IsNullOrWhiteSpace (s))
             {
-                if (s.Length == 1)
+                if (s.Length == 1) {
                     return s.ToUpperInvariant ();
+                }
 
                 return s.ToUpperInvariant () [0] + s.Substring (1);
+            }
+
+            return s;
+        }
+
+        /// <summary>
+        /// Converts first character of string to lowercase.
+        /// </summary>
+        /// <returns>The string with lowercased first character.</returns>
+        /// <param name="s">Original string.</param>
+        public static string FirstCharToLower (this string s)
+        {
+            if (!string.IsNullOrWhiteSpace (s))
+            {
+                if (s.Length == 1) {
+                    return s.ToLower ();
+                }
+
+                return s.ToLower () [0] + s.Substring (1);
+            }
+
+            return s;
+        }
+
+        /// <summary>
+        /// Converts first character of string to lowercase using invariant culture.
+        /// </summary>
+        /// <returns>The string with lowercased first character.</returns>
+        /// <param name="s">Original string.</param>
+        public static string FirstCharToLowerInvariant (this string s)
+        {
+            if (!string.IsNullOrWhiteSpace (s))
+            {
+                if (s.Length == 1) {
+                    return s.ToLowerInvariant ();
+                }
+
+                return s.ToLowerInvariant () [0] + s.Substring (1);
             }
 
             return s;
