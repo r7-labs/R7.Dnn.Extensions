@@ -29,30 +29,22 @@ namespace R7.DotNetNuke.Extensions.Utilities
     public static class TextUtils
     {
         /// <summary>
-        /// Formats the list of arguments, excluding empty ones.
+        /// Formats the list of arguments, excluding null or empty ones.
         /// </summary>
         /// <returns>Formatted list.</returns>
         /// <param name="separator">Separator.</param>
         /// <param name="args">Arguments.</param>
         public static string FormatList (string separator, params object [] args)
         {
-            var sb = new StringBuilder (args.Length);
-
-            var i = 0;
-            foreach (var a in args)
-            {
-                if (!string.IsNullOrWhiteSpace (a.ToString ()))
-                {
-                    if (i++ > 0)
-                        sb.Append (separator);
-
-                    sb.Append (a);
-                }
-            }
-
-            return sb.ToString ();
+            return FormatList (separator, (IEnumerable) args);
         }
 
+        /// <summary>
+        /// Formats the list of arguments, excluding null or empty ones.
+        /// </summary>
+        /// <returns>Formatted list.</returns>
+        /// <param name="separator">Separator.</param>
+        /// <param name="args">Arguments.</param>
         public static string FormatList (string separator, IEnumerable args)
         {
             var sb = new StringBuilder ();
