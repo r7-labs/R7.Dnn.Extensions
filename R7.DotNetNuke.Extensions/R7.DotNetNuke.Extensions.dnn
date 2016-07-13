@@ -12,7 +12,9 @@
             <license src="license.txt" />
             <releaseNotes src="releaseNotes.htm" />
             <dependencies>
-                <dependency type="CoreVersion">07.04.00</dependency>
+                <dependency type="CoreVersion">07.04.02</dependency>
+                <!-- TODO: Remove after switch to DNN 8 -->
+                <dependency type="type">DotNetNuke.Web.UI.WebControls.DnnDateTimePicker</dependency>
             </dependencies>
             <components>
                 <component type="Assembly">
