@@ -163,7 +163,7 @@ namespace R7.DotNetNuke.Extensions.Modules
                     if (ItemId != null)
                     {
                         // load the item
-                        var item = GetItem (ItemId.Value);
+                        var item = GetItemWithDependencies (ItemId.Value);
 
                         if (item != null && CanEditItem (item))
                         {
@@ -257,10 +257,25 @@ namespace R7.DotNetNuke.Extensions.Modules
         }
 
 
-        #region Repository extension points
+        #region CRUD methods
 
         /// <summary>
-        /// Implement method which will get item by id
+        /// Override this method if you need extra data 
+        /// (e.g. some dependent objects and collections) 
+        /// to fill edit form in LoadItem method, 
+        /// than returned by GetItem method.
+        /// </summary>
+        /// <returns>The item.</returns>
+        /// <param name="itemId">Item identifier.</param>
+        protected virtual TItem GetItemWithDependencies (TItemId itemId)
+        {
+            return GetItem (itemId);
+        }
+
+        /// <summary>
+        /// Implement method which will get item by id.
+        /// Usually there is no need to return extra data
+        /// (e.g. some dependent objects or collections) here.
         /// </summary>
         /// <returns>The item.</returns>
         /// <param name="itemId">Item identifier.</param>
