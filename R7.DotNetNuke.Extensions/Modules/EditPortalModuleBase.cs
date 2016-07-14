@@ -269,9 +269,8 @@ namespace R7.DotNetNuke.Extensions.Modules
         /// <summary>
         /// Implement method which will store new item in the datastore
         /// </summary>
-        /// <returns>The item.</returns>
         /// <param name="item">Item.</param>
-        protected abstract TItemId AddItem (TItem item);
+        protected abstract void AddItem (TItem item);
 
         /// <summary>
         /// Implement method which will update existing item in the datastore
