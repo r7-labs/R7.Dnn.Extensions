@@ -31,7 +31,7 @@ namespace R7.University.ControlExtensions
         /// </summary>
         /// <param name="gridView">GridView control reference.</param>
         /// <param name="resourceFile">File with localization resources.</param>
-        public static void LocalizeHeaders (this GridView gridView, string resourceFile)
+        public static void LocalizeColumnHeaders (this GridView gridView, string resourceFile)
         {
             foreach (DataControlField column in gridView.Columns) {
                 column.HeaderText = Localization.GetString (column.HeaderText, resourceFile);
