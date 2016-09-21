@@ -60,6 +60,28 @@ namespace R7.DotNetNuke.Extensions.ControlExtensions
         {
             list.SelectedIndex = FindIndexByValue (list, value, defaultIndex);
         }
+
+        /// <summary>
+        /// Adds new item to the list.
+        /// </summary>
+        /// <param name="list">List control.</param>
+        /// <param name="text">Item text.</param>
+        /// <param name="value">Item value.</param>
+        public static void AddItem (this ListControl list, string text, string value)
+        {
+            list.Items.Add (new ListItem (text, value));
+        }
+
+        /// <summary>
+        /// Inserts the default item at the start of the list.
+        /// </summary>
+        /// <param name="list">List control.</param>
+        /// <param name="text">Default item text.</param>
+        /// <param name="value">Default item value.</param>
+        public static void InsertDefaultItem (this ListControl list, string text, int value = -1)
+        {
+            list.Items.Insert (0, new ListItem (text, value.ToString ()));
+        }
     }
 }
 
