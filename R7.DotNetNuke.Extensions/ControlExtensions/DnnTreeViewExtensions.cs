@@ -20,6 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using DotNetNuke.Web.UI.WebControls;
 
 namespace R7.DotNetNuke.Extensions.ControlExtensions
 {
@@ -28,10 +29,10 @@ namespace R7.DotNetNuke.Extensions.ControlExtensions
         /// <summary>
         /// Expands node with specified value and all it's parent nodes
         /// </summary>
-        /// <param name="treeview">DNN or RAD treeview.</param>
+        /// <param name="treeview">DNN treeview.</param>
         /// <param name="value">Value of the node.</param>
         /// <param name="ignoreCase">If set to <c>true</c> ignore value case.</param>
-        public static void SelectAndExpandByValue (this Telerik.Web.UI.RadTreeView treeview, string value, bool ignoreCase = false)
+        public static void SelectAndExpandByValue (this DnnTreeView treeview, string value, bool ignoreCase = false)
         {
             if (!string.IsNullOrWhiteSpace (value))
             {
