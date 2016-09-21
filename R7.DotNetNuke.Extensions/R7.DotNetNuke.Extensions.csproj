@@ -85,6 +85,7 @@
     <Compile Include="Utilities\TextUtils.cs" />
     <Compile Include="Utilities\MimeTypes.cs" />
     <Compile Include="ControlExtensions\GridViewExtensions.cs" />
+    <Compile Include="Utilities\CacheHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
