@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2014, 2015 Roman M. Yagodin
+//  Copyright (c) 2014-2016 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -24,6 +24,9 @@ using DotNetNuke.Web.UI.WebControls;
 
 namespace R7.DotNetNuke.Extensions.ControlExtensions
 {
+    /// <summary>
+    /// DnnTreeView extensions.
+    /// </summary>
     public static class DnnTreeViewExtensions
     {
         /// <summary>
@@ -50,6 +53,17 @@ namespace R7.DotNetNuke.Extensions.ControlExtensions
                     } 
                 }
             }
+        }
+
+        /// <summary>
+        /// Inserts the default node at the root of the tree.
+        /// </summary>
+        /// <param name="treeView">Tree control.</param>
+        /// <param name="text">Default node text.</param>
+        /// <param name="value">Default node value.</param>
+        public static void InsertDefaultNode (this DnnTreeView treeView, string text, int value = -1)
+        {
+            treeView.Nodes.Insert (0, new DnnTreeNode { Text = text, Value = value.ToString () });
         }
     }
 }
