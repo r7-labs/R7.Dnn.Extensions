@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
     <packages>
-        <package name="R7.DotNetNuke.Extensions" type="Library" version="00.08.00">
+        <package name="R7.DotNetNuke.Extensions" type="Library" version="00.09.00">
             <friendlyName>R7.DotNetNuke.Extensions</friendlyName>
             <description>R7.DotNetNuke.Extensions is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules and settings, useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.</description>
             <owner>
@@ -12,9 +12,7 @@
             <license src="license.txt" />
             <releaseNotes src="releaseNotes.htm" />
             <dependencies>
-                <dependency type="CoreVersion">07.04.02</dependency>
-                <!-- TODO: Remove after switch to DNN 8 -->
-                <dependency type="type">DotNetNuke.Web.UI.WebControls.DnnDateTimePicker</dependency>
+                <dependency type="CoreVersion">08.00.04</dependency>
             </dependencies>
             <components>
                 <component type="Assembly">

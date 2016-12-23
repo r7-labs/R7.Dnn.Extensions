@@ -15,8 +15,9 @@
         <copyright>Copyright 2014-2016 Roman M. Yagodin &lt;roman.yagodin@gmail.com&gt;</copyright>
         <tags>DotNetNuke DNN</tags>
         <dependencies>
-            <dependency id="DotNetNuke.Core" version="7.4.2.216" />
-            <dependency id="DotNetNuke.Web" version="7.4.2.216" />
+            <dependency id="DotNetNuke.Core" version="8.0.4.226" />
+            <dependency id="DotNetNuke.Web" version="8.0.4.226" />
+            <dependency id="DotNetNuke.Web.Deprecated" version="8.0.4.226" />
         </dependencies>
     </metadata>
     <files>
