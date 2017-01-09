@@ -90,6 +90,7 @@
     <Compile Include="ControlExtensions\GridViewExtensions.cs" />
     <Compile Include="Utilities\CacheHelper.cs" />
     <Compile Include="ControlExtensions\ControlExtensions.cs" />
+    <Compile Include="Modules\IModuleControlWithSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

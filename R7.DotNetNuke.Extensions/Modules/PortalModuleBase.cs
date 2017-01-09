@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2016 Roman M. Yagodin
+//  Copyright (c) 2016-2017 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,38 +19,52 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
 using DotNetNuke.Entities.Modules;
-using R7.DotNetNuke.Extensions.Modules;
+using DotNetNuke.Entities.Modules.Settings;
 
 namespace R7.DotNetNuke.Extensions.Modules
 {
     /// <summary>
     /// Base class for module view and edit controls, extended with strongly-typed settings.
     /// </summary>
-    public class PortalModuleBase<TSettings>: PortalModuleBase
-        where TSettings : SettingsWrapper, new ()
+    public abstract class PortalModuleBase<TSettings>: PortalModuleBase, 
+        IModuleControlWithSettings<TSettings> where TSettings : class, new ()
     {
-        private TSettings settings;
+        #region Private fields
+
+        TSettings settings;
+
+        SettingsRepository<TSettings> settingsRepo;
+
+        #endregion
 
         /// <summary>
-        /// Gets strongly-typed module settings. Raw settings hashtable is still accessible 
-        /// via <see cref="R7.DotNetNuke.Extensions.Modules.SettingsWrapper.Settings" /> property.
+        /// Gets strongly-typed module settings.
         /// </summary>
         /// <value>The module settings.</value>
-        protected new TSettings Settings
-        {
-            get 
-            { 
-                if (settings == null) 
-                {
-                    settings = new TSettings ();
-                    settings.Init (ModuleId, TabModuleId, PortalId);
-                }
+        public new TSettings Settings {
+            get { return settings; }
+        }
 
-                return settings; 
+        /// <summary>
+        /// Gets or sets the settings repository.
+        /// </summary>
+        /// <value>The settings repository.</value>
+        public SettingsRepository<TSettings> SettingsRepository {
+            get {
+                return settingsRepo ?? (settingsRepo = CreateSettingsRepository ());
+            }
+            set {
+                settingsRepo = value;
+                settings = SettingsRepository.GetSettings (ModuleContext.Configuration);
             }
         }
+
+        /// <summary>
+        /// Creates the settings repository.
+        /// </summary>
+        /// <returns>The settings repository.</returns>
+        public abstract SettingsRepository<TSettings> CreateSettingsRepository ();
     }
 }
 

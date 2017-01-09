@@ -1,10 +1,10 @@
 ﻿//
-//  ModuleSettingsBase.cs
+//  IModuleControlWithSettings.cs
 //
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2016-2017 Roman M. Yagodin
+//  Copyright (c) 2017 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,52 +19,33 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
-using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Settings;
+using DotNetNuke.UI.Modules;
 
 namespace R7.DotNetNuke.Extensions.Modules
 {
     /// <summary>
-    /// Base class for module settings controls, extended with strongly-typed settings.
+    /// Module control with settings.
     /// </summary>
-    public abstract class ModuleSettingsBase<TSettings> : ModuleSettingsBase, 
-        IModuleControlWithSettings<TSettings> where TSettings: class, new ()
+    public interface IModuleControlWithSettings<TSettings>: IModuleControl
+        where TSettings : class, new()
     {
-        #region Private fields
-
-        TSettings settings;
-
-        SettingsRepository<TSettings> settingsRepo;
-
-        #endregion
-
         /// <summary>
-        /// Gets strongly-typed module settings.
+        /// Gets the settings.
         /// </summary>
-        /// <value>The module settings.</value>
-        public new TSettings Settings {
-            get { return settings; }
-        }
+        /// <value>The settings.</value>
+        TSettings Settings { get; }
 
         /// <summary>
         /// Gets or sets the settings repository.
         /// </summary>
         /// <value>The settings repository.</value>
-        public SettingsRepository<TSettings> SettingsRepository {
-            get {
-                return settingsRepo ?? (settingsRepo = CreateSettingsRepository ());
-            }
-            set {
-                settingsRepo = value;
-                settings = SettingsRepository.GetSettings (ModuleContext.Configuration);
-            }
-        }
+        SettingsRepository<TSettings> SettingsRepository { get; set; }
 
         /// <summary>
         /// Creates the settings repository.
         /// </summary>
         /// <returns>The settings repository.</returns>
-        public abstract SettingsRepository<TSettings> CreateSettingsRepository ();
+        SettingsRepository<TSettings> CreateSettingsRepository ();
     }
 }
