@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2016 Roman M. Yagodin
+//  Copyright (c) 2016-2017 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,46 +19,57 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
 using System.Web.UI;
 using DotNetNuke.UI.Modules;
-using R7.DotNetNuke.Extensions.Modules;
 
 namespace R7.DotNetNuke.Extensions.ViewModels
 {
+    /// <summary>
+    /// DNN module control context for viewmodels with settings.
+    /// </summary>
     public class ViewModelContext<TSettings>: ViewModelContext
-        where TSettings: SettingsWrapper, new ()
+        where TSettings: class, new ()
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:R7.DotNetNuke.Extensions.ViewModels.ViewModelContext`1"/> class.
+        /// </summary>
+        /// <param name="module">Module control.</param>
         public ViewModelContext (IModuleControl module): base (module)
         {}
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:R7.DotNetNuke.Extensions.ViewModels.ViewModelContext`1"/> class.
+        /// </summary>
+        /// <param name="control">Control.</param>
+        /// <param name="module">Module control.</param>
         public ViewModelContext (Control control, IModuleControl module): base (control, module)
         {}
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:R7.DotNetNuke.Extensions.ViewModels.ViewModelContext`1"/> class.
+        /// </summary>
+        /// <param name="module">Module control.</param>
+        /// <param name="settings">Settings.</param>
         public ViewModelContext (IModuleControl module, TSettings settings): base (module)
         {
-            this.settings = settings;
+            Settings = settings;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:R7.DotNetNuke.Extensions.ViewModels.ViewModelContext`1"/> class.
+        /// </summary>
+        /// <param name="control">Control.</param>
+        /// <param name="module">Module control.</param>
+        /// <param name="settings">Settings.</param>
         public ViewModelContext (Control control, IModuleControl module, TSettings settings): base (control, module)
         {
-            this.settings = settings;
+            Settings = settings;
         }
 
-       TSettings settings;
-        public TSettings Settings
-        {
-            get
-            {
-                if (settings == null)
-                {
-                    settings = new TSettings ();
-                    settings.Init (Module.ModuleId, Module.TabModuleId, Module.PortalId);
-                }
-
-                return settings;
-            }
-        }
+        /// <summary>
+        /// Gets or sets the settings.
+        /// </summary>
+        /// <value>The settings.</value>
+        public TSettings Settings { get; protected set; }
     }
 }
-
