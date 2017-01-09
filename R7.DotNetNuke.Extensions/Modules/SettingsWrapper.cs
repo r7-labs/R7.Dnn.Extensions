@@ -30,6 +30,7 @@ namespace R7.DotNetNuke.Extensions.Modules
     /// <summary>
     /// Provides strong typed access to settings used by module
     /// </summary>
+    [Obsolete ("Consider use of DotNetNuke.Entities.Modules.Settings.SettingsRepository{T} for DNN 8+ because of DNN-8902")]
     public class SettingsWrapper
     {
         protected ModuleController ctrl;
