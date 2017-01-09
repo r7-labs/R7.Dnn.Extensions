@@ -2,7 +2,7 @@
 <package>
     <metadata>
         <id>R7.DotNetNuke.Extensions</id>
-        <version>$version$-beta1</version>
+        <version>$version$</version>
         <title>R7.DotNetNuke.Extensions</title>
         <authors>Roman M. Yagodin</authors>
         <owners>Roman M. Yagodin</owners>
