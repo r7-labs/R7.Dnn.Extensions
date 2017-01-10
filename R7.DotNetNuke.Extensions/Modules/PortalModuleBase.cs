@@ -43,7 +43,9 @@ namespace R7.DotNetNuke.Extensions.Modules
         /// </summary>
         /// <value>The module settings.</value>
         public new TSettings Settings {
-            get { return settings; }
+            get {
+                return settings ?? (settings = SettingsRepository.GetSettings (ModuleContext.Configuration));
+            }                
         }
 
         /// <summary>
