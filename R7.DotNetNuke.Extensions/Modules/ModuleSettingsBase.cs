@@ -65,6 +65,9 @@ namespace R7.DotNetNuke.Extensions.Modules
         /// Creates the settings repository.
         /// </summary>
         /// <returns>The settings repository.</returns>
-        public abstract SettingsRepository<TSettings> CreateSettingsRepository ();
+        public virtual SettingsRepository<TSettings> CreateSettingsRepository ()
+        {
+            return new SettingsRepositoryImpl<TSettings> ();
+        }
     }
 }

@@ -8,7 +8,7 @@
     <RootNamespace>R7.DotNetNuke.Extensions</RootNamespace>
     <AssemblyName>R7.DotNetNuke.Extensions</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <ReleaseVersion>0.10.0-beta1</ReleaseVersion>
+    <ReleaseVersion>0.10.0-beta2</ReleaseVersion>
     <Description>R7.DotNetNuke.Extensions is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules and settings, useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -91,6 +91,7 @@
     <Compile Include="Utilities\CacheHelper.cs" />
     <Compile Include="ControlExtensions\ControlExtensions.cs" />
     <Compile Include="Modules\IModuleControlWithSettings.cs" />
+    <Compile Include="Modules\SettingsRepositoryImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
