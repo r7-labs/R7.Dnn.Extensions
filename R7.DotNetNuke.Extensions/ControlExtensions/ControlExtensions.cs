@@ -21,7 +21,7 @@
 
 using System.Web.UI;
 
-namespace R7.University.ControlExtensions
+namespace R7.DotNetNuke.Extensions.ControlExtensions
 {
     /// <summary>
     /// Control extensions.

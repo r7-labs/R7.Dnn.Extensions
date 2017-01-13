@@ -22,7 +22,7 @@
 using System.Web.UI.WebControls;
 using DotNetNuke.Services.Localization;
 
-namespace R7.University.ControlExtensions
+namespace R7.DotNetNuke.Extensions.ControlExtensions
 {
     public static class GridViewExtensions
     {
