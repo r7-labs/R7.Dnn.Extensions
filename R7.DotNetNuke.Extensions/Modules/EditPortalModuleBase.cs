@@ -115,7 +115,7 @@ namespace R7.DotNetNuke.Extensions.Modules
             ButtonDelete.Click += OnButtonDeleteClick;
 
             // set url for Cancel link
-            LinkCancel.NavigateUrl = Globals.NavigateURL ();
+            LinkCancel.NavigateUrl = UrlHelper.GetCancelUrl (UrlHelper.IsInPopup (Request));
 
             // add confirmation dialog to delete button
             ButtonDelete.Attributes.Add ("onClick", "javascript:return confirm('" 
