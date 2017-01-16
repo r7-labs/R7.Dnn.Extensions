@@ -3,8 +3,8 @@
 [![R7.DotNetNuke.Extensions on NuGet.org](https://img.shields.io/nuget/v/R7.DotNetNuke.Extensions.svg)](https://www.nuget.org/packages/R7.DotNetNuke.Extensions)
 
 *R7.DotNetNuke.Extensions* is a library for DNN Platform web CMS extensions development (primarily, modules). 
-It includes DAL2-based generic data provider, a set of base classes for modules and settings, 
-useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.
+It includes DAL2-based generic data provider, a set of base classes for modules, 
+useful extension methods for webcontrols and strings, various helpers and even some DNN version-specific hacks.
 
 The pragmatic goal of *R7.DotNetNuke.Extensions* project is to provide a library, which could be shared
 by all existing *R7* extensions for DNN Platform, and also new ones via 

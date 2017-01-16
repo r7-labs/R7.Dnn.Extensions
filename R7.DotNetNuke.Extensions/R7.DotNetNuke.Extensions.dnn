@@ -2,7 +2,7 @@
     <packages>
         <package name="R7.DotNetNuke.Extensions" type="Library" version="00.10.00">
             <friendlyName>R7.DotNetNuke.Extensions</friendlyName>
-            <description>R7.DotNetNuke.Extensions is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules and settings, useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.</description>
+            <description>R7.DotNetNuke.Extensions is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules, useful extension methods for webcontrols and strings, various utilities and even some DNN version-specific hacks.</description>
             <owner>
                 <name>Roman M. Yagodin</name>
                 <organization>R7.Solutions</organization>

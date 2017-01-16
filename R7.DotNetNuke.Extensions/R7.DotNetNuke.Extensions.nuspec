@@ -9,7 +9,7 @@
         <licenseUrl>http://www.gnu.org/licenses/lgpl.txt</licenseUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <projectUrl>https://github.com/roman-yagodin/R7.DotNetNuke.Extensions</projectUrl>
-        <description>R7.DotNetNuke.Extensions (formerly DotNetNuke.R7) is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules and settings, useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.</description>
+        <description>R7.DotNetNuke.Extensions (formerly DotNetNuke.R7) is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules, useful extension methods for webcontrols and strings, various utilities and even some DNN version-specific hacks.</description>
         <summary>R7.DotNetNuke.Extensions is a library for DNN Platform web CMS extensions development (NOT STABLE).</summary>
         <releaseNotes>https://github.com/roman-yagodin/R7.DotNetNuke.Extensions/blob/master/R7.DotNetNuke.Extensions/releaseNotes.htm</releaseNotes>
         <copyright>Copyright 2014-2016 Roman M. Yagodin &lt;roman.yagodin@gmail.com&gt;</copyright>
