@@ -19,7 +19,6 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
 using System.Web.UI;
 using DotNetNuke.UI.Modules;
 
@@ -31,23 +30,6 @@ namespace R7.DotNetNuke.Extensions.ViewModels
     public class ViewModelContext<TSettings>: ViewModelContext
         where TSettings: class, new ()
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:R7.DotNetNuke.Extensions.ViewModels.ViewModelContext`1"/> class.
-        /// </summary>
-        /// <param name="module">Module control.</param>
-        [Obsolete]
-        public ViewModelContext (IModuleControl module): base (module)
-        {}
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:R7.DotNetNuke.Extensions.ViewModels.ViewModelContext`1"/> class.
-        /// </summary>
-        /// <param name="control">Control.</param>
-        /// <param name="module">Module control.</param>
-        [Obsolete]
-        public ViewModelContext (Control control, IModuleControl module): base (control, module)
-        {}
-
         /// <summary>
         /// Initializes a new instance of the <see cref="T:R7.DotNetNuke.Extensions.ViewModels.ViewModelContext`1"/> class.
         /// </summary>
