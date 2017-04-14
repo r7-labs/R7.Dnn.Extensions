@@ -96,14 +96,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <None Include="MakeNuGetPackage.targets" />
     <None Include="R7.Dnn.Extensions.dnn" />
     <None Include="releaseNotes.htm" />
-    <None Include="MakeDnnPackage.targets" />
     <None Include="R7.Dnn.Extensions.nuspec" />
     <None Include="license.txt" />
     <None Include="license-gpl.txt" />
     <None Include="packages.config" />
+    <None Include="R7.Dnn.Extensions.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Text\" />
@@ -118,13 +117,6 @@
     <Folder Include="Text\Transliteration\" />
     <Folder Include="TextExtensions\" />
   </ItemGroup>
-  <PropertyGroup>
-    <PackageName>R7.Dnn.Extensions</PackageName>
-    <PackageOutputPath>output</PackageOutputPath>
-  </PropertyGroup>
-  <Import Project="MakeNuGetPackage.targets" />
-  <Import Project="MakeDnnPackage.targets" />
-  <Target Name="AfterBuild" DependsOnTargets="MakeNuGetPackage;MakeDnnPackage" />
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>

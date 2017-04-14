@@ -1,29 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
-    <Target Name="MakeDnnPackage" Condition=" '$(Configuration)' == 'Release' ">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="MakeDnnPackage">
+    <Target Name="MakeDnnPackage" >
         <!-- Read package version from the manifest -->
-		<XmlPeek Query="/dotnetnuke/packages/package[1]/@version" XmlInputPath="R7.Dnn.Extensions.dnn">
+		<XmlPeek Query="/dotnetnuke/packages/package[1]/@version" XmlInputPath="$(MainProjectPath)/R7.Dnn.Extensions.dnn">
             <Output TaskParameter="Result" PropertyName="Version" />
         </XmlPeek>
         <!-- Declare binaries -->
         <ItemGroup>
-            <InstallBinaryFiles Include="$(OutputPath)\R7.Dnn.Extensions.dll" />
-            <InstallBinaryFiles Include="$(OutputPath)\R7.Dnn.Extensions.xml" />
-        </ItemGroup>
+            <InstallBinaryFiles Include="$(MainProjectOutputPath)/R7.Dnn.Extensions.dll" />
+			<InstallBinaryFiles Include="$(MainProjectOutputPath)/R7.Dnn.Extensions.xml" />
+		</ItemGroup>
         <!-- Declare manifest files -->
         <ItemGroup>
-            <InstallManifestFiles Include="R7.Dnn.Extensions.dnn" />
-            <InstallManifestFiles Include="license.txt" />
-            <InstallManifestFiles Include="license-gpl.txt" />
-            <InstallManifestFiles Include="releaseNotes.htm" />
+            <InstallManifestFiles Include="$(MainProjectPath)/R7.Dnn.Extensions.dnn" />
+            <InstallManifestFiles Include="$(MainProjectPath)/license.txt" />
+            <InstallManifestFiles Include="$(MainProjectPath)/license-gpl.txt" />
+            <InstallManifestFiles Include="$(MainProjectPath)/releaseNotes.htm" />
         </ItemGroup>
         <!-- Copy binaries -->
         <Copy SourceFiles="@(InstallBinaryFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package\bin" />
         <!-- Copy manifest files -->
         <Copy SourceFiles="@(InstallManifestFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package" />
-        <!-- Copy SqlDataProvider files -->
-        <Copy SourceFiles="@(InstallSqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package\SqlDataProvider" />
-        <!-- Declare install package files -->
         <ItemGroup>
             <InstallPackageFiles Include="$(MSBuildProjectDirectory)\tmp\Package\**\*.*" />
         </ItemGroup>
