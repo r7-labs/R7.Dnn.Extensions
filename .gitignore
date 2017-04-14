@@ -3,9 +3,10 @@
 *.usertasks
 
 # Build output
-R7.Dnn.Extensions*/bin
-R7.Dnn.Extensions*/obj
-*.nupkg
+*/bin/*
+*/obj/*
+R7.Dnn.Extensions/output/*
 
 # Downloaded NuGet packages
 packages/*
+Packages/*
