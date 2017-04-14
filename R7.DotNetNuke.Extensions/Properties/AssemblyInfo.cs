@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle("R7.DotNetNuke.Extensions")]
 [assembly: AssemblyDescription("Library for DNN Platform web CMS extensions development")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("R7.Solutions")]
+[assembly: AssemblyCompany("R7.Labs")]
 [assembly: AssemblyProduct("R7.DotNetNuke.Extensions")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
