@@ -92,6 +92,7 @@
     <Compile Include="Modules\IModuleControlWithSettings.cs" />
     <Compile Include="Modules\SettingsRepositoryImpl.cs" />
     <Compile Include="Utilities\UrlHelper.cs" />
+    <Compile Include="ViewModels\ListItemViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

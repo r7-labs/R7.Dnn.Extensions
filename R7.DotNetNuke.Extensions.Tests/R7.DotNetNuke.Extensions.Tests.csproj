@@ -42,6 +42,7 @@
     <Reference Include="xunit.assert">
       <HintPath>..\packages\xunit.assert.2.1.0\lib\portable-net45+win8+wp8+wpa81\xunit.assert.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props" Condition="Exists('..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props')" />
@@ -52,10 +53,12 @@
   <ItemGroup>
     <Folder Include="TextExtensions\" />
     <Folder Include="Utilities\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TextExtensions\StringExtensionsTest.cs" />
     <Compile Include="Utilities\TypeUtilsTest.cs" />
+    <Compile Include="ViewModels\ListItemViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\R7.DotNetNuke.Extensions\R7.DotNetNuke.Extensions.csproj">
