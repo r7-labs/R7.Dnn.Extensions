@@ -1,7 +1,6 @@
 # About R7.Dnn.Extensions
 
 [![R7.Dnn.Extensions on NuGet.org](https://img.shields.io/nuget/v/R7.Dnn.Extensions.svg)](https://www.nuget.org/packages/R7.Dnn.Extensions)
-[![R7.Dnn.Extensions on NuGet.org](https://img.shields.io/nuget/vpre/R7.Dnn.Extensions.svg)](https://www.nuget.org/packages/R7.Dnn.Extensions)
 [![BCH compliance](https://bettercodehub.com/edge/badge/roman-yagodin/R7.Dnn.Extensions)](https://bettercodehub.com/)
 
 *R7.Dnn.Extensions* is a library for DNN Platform web CMS extensions development (primarily, modules). 
