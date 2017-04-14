@@ -77,7 +77,6 @@
     <Compile Include="Modules\EditPortalModuleBase.cs" />
     <Compile Include="Modules\ModuleSettingsBase.cs" />
     <Compile Include="Modules\PortalModuleBase.cs" />
-    <Compile Include="Modules\SettingsWrapper.cs" />
     <Compile Include="ModuleExtensions\MessageType.cs" />
     <Compile Include="Utilities\UserUtils.cs" />
     <Compile Include="Utilities\TypeUtils.cs" />
