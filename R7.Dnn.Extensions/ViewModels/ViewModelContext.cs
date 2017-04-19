@@ -26,7 +26,7 @@ using UiUtilities = DotNetNuke.Web.UI.Utilities;
 namespace R7.Dnn.Extensions.ViewModels
 {
     /// <summary>
-    /// Simple DNN module control context for viewmodels.
+    /// Simple DNN module context to pass to viewmodels.
     /// </summary>
     public class ViewModelContext
     {
@@ -41,6 +41,17 @@ namespace R7.Dnn.Extensions.ViewModels
         /// </summary>
         /// <value>The module instance context.</value>
         public ModuleInstanceContext Module { get; protected set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:R7.Dnn.Extensions.ViewModels.ViewModelContext"/> class.
+        /// </summary>
+        /// <param name="moduleContext">Module instance context.</param>
+        /// <param name="localResourceFile">Local resource file.</param>
+        public ViewModelContext (ModuleInstanceContext moduleContext, string localResourceFile)
+        {
+            Module = moduleContext;
+            LocalResourceFile = localResourceFile;
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:R7.Dnn.Extensions.ViewModels.ViewModelContext"/> class.

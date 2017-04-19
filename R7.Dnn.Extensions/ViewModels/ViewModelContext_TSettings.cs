@@ -25,11 +25,29 @@ using DotNetNuke.UI.Modules;
 namespace R7.Dnn.Extensions.ViewModels
 {
     /// <summary>
-    /// DNN module control context for viewmodels with settings.
+    /// DNN module context with settings to pass to viewmodels.
     /// </summary>
     public class ViewModelContext<TSettings>: ViewModelContext
         where TSettings: class, new ()
     {
+        /// <summary>
+        /// Gets or sets the settings.
+        /// </summary>
+        /// <value>The settings.</value>
+        public TSettings Settings { get; protected set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:R7.Dnn.Extensions.ViewModels.ViewModelContext`1"/> class.
+        /// </summary>
+        /// <param name="moduleContext">Module instance context.</param>
+        /// <param name="localResourceFile">Local resource file.</param>
+        /// <param name="settings">Settings.</param>
+        public ViewModelContext (ModuleInstanceContext moduleContext, string localResourceFile, TSettings settings)
+            : base (moduleContext, localResourceFile)
+        {
+            Settings = settings;
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:R7.Dnn.Extensions.ViewModels.ViewModelContext`1"/> class.
         /// </summary>
@@ -50,11 +68,5 @@ namespace R7.Dnn.Extensions.ViewModels
         {
             Settings = settings;
         }
-
-        /// <summary>
-        /// Gets or sets the settings.
-        /// </summary>
-        /// <value>The settings.</value>
-        public TSettings Settings { get; protected set; }
     }
 }
