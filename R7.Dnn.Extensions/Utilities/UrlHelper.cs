@@ -52,19 +52,10 @@ namespace R7.Dnn.Extensions.Utilities
         /// </summary>
         /// <returns><c>true</c>, if control is opened in modal popup, <c>false</c> otherwise.</returns>
         /// <param name="request">HTTP request object.</param>
+        [Obsolete ("User UrlUtils.InPopUp() instead")]
         public static bool IsInPopup (HttpRequest request)
         {
-            var popupArg = request.QueryString ["popup"];
-            if (string.IsNullOrEmpty (popupArg)) {
-                return false;
-            }
-
-            bool popupValue;
-            if (bool.TryParse (popupArg, out popupValue)) {
-                return popupValue;
-            }
-
-            return false;
+            return  UrlUtils.InPopUp ();
         }
 
         static readonly char [] resourceIdSeparator = { '=' };
