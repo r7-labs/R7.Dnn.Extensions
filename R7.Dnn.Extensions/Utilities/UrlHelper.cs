@@ -19,6 +19,7 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using System.Web;
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
@@ -64,6 +65,26 @@ namespace R7.Dnn.Extensions.Utilities
             }
 
             return false;
+        }
+
+        static readonly char [] resourceIdSeparator = { '=' };
+
+        /// <summary>
+        /// Gets the resource identifier from fileid=xxx or alike DNN URLs.
+        /// </summary>
+        /// <returns>The resource identifier.</returns>
+        /// <param name="url">URL.</param>
+        public static int GetResourceId (string url)
+        {
+            var urlParts = url.Split (resourceIdSeparator, StringSplitOptions.RemoveEmptyEntries);
+            if (urlParts.Length == 2) {
+                int resourceId;
+                if (int.TryParse (urlParts [1], out resourceId)) {
+                    return resourceId;
+                }
+            }
+
+            return Null.NullInteger;
         }
     }
 }

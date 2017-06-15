@@ -98,6 +98,10 @@
     <Compile Include="ViewModels\ListItemViewModel.cs" />
     <Compile Include="Configuration\ExtensionConfig.cs" />
     <Compile Include="Configuration\ExtensionYamlConfig.cs" />
+    <Compile Include="UrlHistory\UrlHistory.cs" />
+    <Compile Include="UrlHistory\UrlHistoryInProcBackend.cs" />
+    <Compile Include="UrlHistory\UrlHistoryBackend.cs" />
+    <Compile Include="UrlHistory\UrlHistoryDefaultBackend.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -122,6 +126,7 @@
     <Folder Include="Text\Transliteration\" />
     <Folder Include="TextExtensions\" />
     <Folder Include="Configuration\" />
+    <Folder Include="UrlHistory\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
