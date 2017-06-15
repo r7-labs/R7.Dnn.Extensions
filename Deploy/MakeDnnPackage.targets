@@ -9,6 +9,7 @@
         <ItemGroup>
             <InstallBinaryFiles Include="$(MainProjectOutputPath)/R7.Dnn.Extensions.dll" />
 			<InstallBinaryFiles Include="$(MainProjectOutputPath)/R7.Dnn.Extensions.xml" />
+			<InstallBinaryFiles Include="$(MainProjectOutputPath)/YamlDotNet.dll" />
 		</ItemGroup>
         <!-- Declare manifest files -->
         <ItemGroup>
