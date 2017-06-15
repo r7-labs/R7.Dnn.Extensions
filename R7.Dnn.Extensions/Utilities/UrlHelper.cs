@@ -99,5 +99,32 @@ namespace R7.Dnn.Extensions.Utilities
         {
             return popupUrl.Replace (",550,950,true,'')", $",{windowHeight},{windowWidth},{responseRedirect.ToString ().ToLowerInvariant ()},'')");
         }
+
+        /// <summary>
+        /// Checks if browser is InternetExplorer
+        /// </summary>
+        /// <returns><c>true</c>, if browser is InternetExplorer, <c>false</c> otherwise.</returns>
+        /// <param name="request">Request.</param>
+        public static bool IsIeBrowser (HttpRequest request)
+        {
+            var browserName = request.Browser.Browser.ToUpperInvariant ();
+            if (browserName.StartsWith ("IE", StringComparison.Ordinal)
+                || browserName.Contains ("MSIE")
+                || browserName == "INTERNETEXPLORER") {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if browser is Edge
+        /// </summary>
+        /// <returns><c>true</c>, if browser is Edge, <c>false</c> otherwise.</returns>
+        /// <param name="request">Request.</param>
+        public static bool IsEdgeBrowser (HttpRequest request)
+        {
+            return request.UserAgent.Contains ("Edge");
+        }
     }
 }
