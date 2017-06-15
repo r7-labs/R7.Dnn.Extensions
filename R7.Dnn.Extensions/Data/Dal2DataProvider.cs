@@ -199,6 +199,20 @@ namespace R7.Dnn.Extensions.Data
         }
 
         /// <summary>
+        /// Gets stored procedure execution result as scalar value
+        /// </summary>
+        /// <returns>Stored procedure execution result as scalar value.</returns>
+        /// <param name="spName">Stored procedure name.</param>
+        /// <param name="args">SQL command arguments.</param>
+        /// <typeparam name="T">Type of scalar.</typeparam>
+        public T ExecuteSpScalar<T> (string spName, params object [] args)
+        {
+            using (var ctx = DataContext.Instance ()) {
+                return ctx.ExecuteScalar<T> (System.Data.CommandType.StoredProcedure, spName, args);
+            }
+        }
+
+        /// <summary>
         /// Finds the objects of type T
         /// </summary>
         /// <returns>Enumerable with objects of type T matching sqlCondition. If searchText is null or whitespace, all objects of type T returned.</returns>
