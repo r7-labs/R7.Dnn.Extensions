@@ -57,6 +57,9 @@
     <Reference Include="Telerik.Web.UI">
       <HintPath>..\packages\DotNetNuke.Web.Deprecated.8.0.4.226\lib\net40\Telerik.Web.UI.dll</HintPath>
     </Reference>
+    <Reference Include="YamlDotNet">
+      <HintPath>..\packages\YamlDotNet.4.2.1\lib\net35\YamlDotNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,6 +96,8 @@
     <Compile Include="Modules\SettingsRepositoryImpl.cs" />
     <Compile Include="Utilities\UrlHelper.cs" />
     <Compile Include="ViewModels\ListItemViewModel.cs" />
+    <Compile Include="Configuration\ExtensionConfig.cs" />
+    <Compile Include="Configuration\ExtensionYamlConfig.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -116,6 +121,7 @@
     <Folder Include="Utilities\" />
     <Folder Include="Text\Transliteration\" />
     <Folder Include="TextExtensions\" />
+    <Folder Include="Configuration\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

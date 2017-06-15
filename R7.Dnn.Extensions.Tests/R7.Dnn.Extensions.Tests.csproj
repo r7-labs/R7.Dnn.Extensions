@@ -49,16 +49,19 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="LICENSE.md" />
+    <None Include="Configuration\Config.yml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TextExtensions\" />
     <Folder Include="Utilities\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Configuration\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TextExtensions\StringExtensionsTest.cs" />
     <Compile Include="Utilities\TypeUtilsTest.cs" />
     <Compile Include="ViewModels\ListItemViewModelTests.cs" />
+    <Compile Include="Configuration\ExtensionYamlConfigTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\R7.Dnn.Extensions\R7.Dnn.Extensions.csproj">
