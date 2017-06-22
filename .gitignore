@@ -1,12 +1,12 @@
 # User-specific
 *.userprefs
 *.usertasks
+*.csproj.user
 
 # Build output
-*/bin/*
-*/obj/*
-R7.Dnn.Extensions/output/*
+bin/
+obj/
 
-# Downloaded NuGet packages
-packages/*
-Packages/*
+# NuGet packages
+/packages/
+/Packages/
