@@ -102,6 +102,7 @@
     <Compile Include="UrlHistory\UrlHistoryInProcBackend.cs" />
     <Compile Include="UrlHistory\UrlHistoryBackend.cs" />
     <Compile Include="UrlHistory\UrlHistoryDefaultBackend.cs" />
+    <Compile Include="Models\ModelHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -127,6 +128,7 @@
     <Folder Include="TextExtensions\" />
     <Folder Include="Configuration\" />
     <Folder Include="UrlHistory\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
