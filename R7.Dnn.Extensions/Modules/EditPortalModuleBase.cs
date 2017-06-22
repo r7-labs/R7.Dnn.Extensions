@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2016 Roman M. Yagodin
+//  Copyright (c) 2016-2017 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -22,10 +22,11 @@
 using System;
 using System.Web.UI.WebControls;
 using DotNetNuke.Common;
-using DotNetNuke.Framework;
-using DotNetNuke.Services.Localization;
-using DotNetNuke.Services.Exceptions;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
+using DotNetNuke.Framework;
+using DotNetNuke.Services.Exceptions;
+using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.UserControls;
 using R7.Dnn.Extensions.Utilities;
 
@@ -115,7 +116,7 @@ namespace R7.Dnn.Extensions.Modules
             ButtonDelete.Click += OnButtonDeleteClick;
 
             // set url for Cancel link
-            LinkCancel.NavigateUrl = UrlHelper.GetCancelUrl (UrlHelper.IsInPopup (Request));
+            LinkCancel.NavigateUrl = UrlHelper.GetCancelUrl (UrlUtils.InPopUp ());
 
             // add confirmation dialog to delete button
             ButtonDelete.Attributes.Add ("onClick", "javascript:return confirm('" 
