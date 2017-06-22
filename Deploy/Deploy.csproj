@@ -19,6 +19,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>Custom</type>
+          <name>Publish NuGet Package</name>
+          <command>msbuild /t:Build /p:Configuration=${ProjectConfig} /p:PublishNuGetPackage=true ../R7.Dnn.Extensions.sln</command>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -57,5 +66,5 @@
   </PropertyGroup>
   <Import Project="MakeDnnPackage.targets" />
   <Import Project="MakeNuGetPackage.targets" />
-  <Target Name="AfterBuild" DependsOnTargets="MakeDnnPackage;MakeNuGetPackage" />
+  <Target Name="AfterBuild" DependsOnTargets="MakeDnnPackage;MakeNuGetPackage;PublishNuGetPackage" />
 </Project>
