@@ -8,7 +8,7 @@
     <RootNamespace>R7.Dnn.Extensions.Tests</RootNamespace>
     <AssemblyName>R7.Dnn.Extensions.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <ReleaseVersion>0.11.0-alpha1</ReleaseVersion>
+    <ReleaseVersion>0.11.0-alpha2</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
