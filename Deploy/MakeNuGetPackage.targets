@@ -1,14 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="MakeNuGetPackage;PublishNuGetPackage">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="MakeNuGetPackage">
     <Target Name="MakeNuGetPackage" Condition=" '$(Configuration)' == 'Release' ">
 		<Exec Command="nuget pack $(PackageName).nuspec -Version $(ReleaseVersion) -OutputDirectory &quot;$(MSBuildProjectDirectory)/$(PackageOutputPath)&quot;" 
             WorkingDirectory="$(MainProjectPath)" />
-	</Target>
-	<Target Name="PublishNuGetPackage" Condition=" '$(Configuration)|$(PublishNuGetPackage)' == 'Release|true' " DependsOnTargets="MakeNuGetPackage">
-		<ReadLinesFromFile File="ApiKey.txt">
-            <Output TaskParameter="Lines" PropertyName="ApiKey" />
-        </ReadLinesFromFile>
-        <Exec Command="nuget push $(PackageName).$(ReleaseVersion).nupkg $(ApiKey) -Source https://www.nuget.org/api/v2/package" 
+		<Exec Condition=" '$(Configuration)|$(PublishNuGetPackage)' == 'Release|true' " Command="nuget push $(PackageName).$(ReleaseVersion).nupkg -Source https://www.nuget.org/api/v2/package" 
             WorkingDirectory="$(PackageOutputPath)" />
-    </Target>
+	</Target>
 </Project>

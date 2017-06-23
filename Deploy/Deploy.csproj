@@ -66,5 +66,5 @@
   </PropertyGroup>
   <Import Project="MakeDnnPackage.targets" />
   <Import Project="MakeNuGetPackage.targets" />
-  <Target Name="AfterBuild" DependsOnTargets="MakeDnnPackage;MakeNuGetPackage;PublishNuGetPackage" />
+  <Target Name="AfterBuild" DependsOnTargets="MakeDnnPackage;MakeNuGetPackage" />
 </Project>
