@@ -19,7 +19,6 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
 using Xunit;
 using R7.Dnn.Extensions.Utilities;
 
@@ -28,10 +27,18 @@ namespace R7.Dnn.Extensions.Tests.Utilities
     public class TypeUtilsTest
     {
         [Fact]
-        public void ToNullable ()
+        public void ToNullableTest ()
         {
-            Assert.Equal (TypeUtils.ToNullable<int> (-1), null);
-            Assert.Equal (TypeUtils.ToNullable<int> (20), (int?) 20);
+            Assert.Equal (null, TypeUtils.ToNullable<int> (-1));
+            Assert.Equal ((int?) 20, TypeUtils.ToNullable<int> (20));
+        }
+
+        [Fact]
+        public void ParseToNullableTest ()
+        {
+            Assert.Equal (1, TypeUtils.ParseToNullable<int> ("1"));
+            Assert.Equal (null, TypeUtils.ParseToNullable<int> ("-1"));
+            Assert.Equal (10, TypeUtils.ParseToNullable<int> ("-1") ?? 10);
         }
     }
 }
