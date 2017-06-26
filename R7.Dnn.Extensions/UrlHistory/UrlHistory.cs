@@ -31,6 +31,9 @@ using R7.Dnn.Extensions.Utilities;
 
 namespace R7.Dnn.Extensions.UrlHistory
 {
+    /// <summary>
+    /// Manages URL history across session.
+    /// </summary>
     public class UrlHistory
     {
         protected readonly UrlHistoryBackend Backend;

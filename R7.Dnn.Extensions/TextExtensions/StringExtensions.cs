@@ -123,6 +123,11 @@ namespace R7.Dnn.Extensions.TextExtensions
             return int.TryParse (value, out tmp) ? tmp : defaultValue; 
         }
 
+        /// <summary>
+        /// Count words in a string.
+        /// </summary>
+        /// <returns>The word count</returns>
+        /// <param name="text">Text</param>
         public static int WordCount (this string text)
         {
             return Regex.Matches (text, @"\b\w[\w-]*?").Count;
