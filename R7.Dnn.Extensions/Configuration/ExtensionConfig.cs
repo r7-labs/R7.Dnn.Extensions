@@ -23,6 +23,7 @@ using System;
 using System.Collections.Concurrent;
 using System.IO;
 using DotNetNuke.Entities.Portals;
+using DotNetNuke.Services.Exceptions;
 
 namespace R7.Dnn.Extensions.Configuration
 {
@@ -65,9 +66,16 @@ namespace R7.Dnn.Extensions.Configuration
                                        ? _configFileName
                                        : Path.Combine (new PortalSettings (portalId).HomeDirectoryMapPath, _configFileName);
 
-            return (File.Exists (portalConfigFile))
-                ? DeserializeConfig (portalConfigFile)
-                : new TPortalConfig ();
+            try {
+                return (File.Exists (portalConfigFile))
+                    ? DeserializeConfig (portalConfigFile)
+                    : new TPortalConfig ();
+            }
+            catch (Exception ex)
+            {
+                Exceptions.LogException (new Exception ($"Cannot deserialize the \"{portalConfigFile}\" config file", ex));
+                return new TPortalConfig ();
+            }
         }
 
         public abstract TPortalConfig DeserializeConfig (string configFile);
