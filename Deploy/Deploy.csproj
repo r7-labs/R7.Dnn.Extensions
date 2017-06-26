@@ -28,6 +28,7 @@
         </Command>
       </CustomCommands>
     </CustomCommands>
+    <NoWarn>CS2008</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -35,12 +36,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <NoWarn>CS2008</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Dummy.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\R7.Dnn.Extensions\R7.Dnn.Extensions.csproj">
