@@ -33,9 +33,9 @@ namespace R7.Dnn.Extensions.Configuration
         {
         }
 
-        public override TPortalConfig DeserializeConfig (string portalConfigFile)
+        public override TPortalConfig DeserializeConfig (string configFile)
         {
-            using (var configReader = new StringReader (File.ReadAllText (portalConfigFile))) {
+            using (var configReader = new StringReader (File.ReadAllText (configFile))) {
                 var deserializer = new DeserializerBuilder ()
                     .WithNamingConvention (new HyphenatedNamingConvention ())
                     .Build ();

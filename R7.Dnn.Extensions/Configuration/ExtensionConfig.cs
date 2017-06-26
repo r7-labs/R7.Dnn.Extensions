@@ -70,6 +70,6 @@ namespace R7.Dnn.Extensions.Configuration
                 : new TPortalConfig ();
         }
 
-        public abstract TPortalConfig DeserializeConfig (string portalConfigFile);
+        public abstract TPortalConfig DeserializeConfig (string configFile);
     }
 }
