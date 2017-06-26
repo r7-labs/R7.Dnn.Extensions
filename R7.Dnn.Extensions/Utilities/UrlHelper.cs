@@ -20,9 +20,11 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Linq;
 using System.Web;
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
+using DotNetNuke.Entities.Portals;
 
 namespace R7.Dnn.Extensions.Utilities
 {
@@ -116,6 +118,44 @@ namespace R7.Dnn.Extensions.Utilities
         public static bool IsEdgeBrowser (HttpRequest request)
         {
             return request.UserAgent.Contains ("Edge");
+        }
+
+        /// <summary>
+        /// Wrapper for <see cref="Globals.NavigateURL()" /> to execute outside HttpContext or on another portal.
+        /// </summary>
+        /// <returns>The URL.</returns>
+        /// <param name="tabId">Tab identifier.</param>
+        /// <param name="portalId">Portal identifier.</param>
+        public static string NavigateUrl (int tabId, int portalId)
+        {
+            return NavigateUrl (tabId, portalId, string.Empty, null);
+        }
+
+        /// <summary>
+        /// Wrapper for <see cref="Globals.NavigateURL()" /> to execute outside HttpContext or on another portal. 
+        /// </summary>
+        /// <returns>The URL.</returns>
+        /// <param name="tabId">Tab identifier.</param>
+        /// <param name="portalId">Portal identifier.</param>
+        /// <param name="controlKey">Control key.</param>
+        /// <param name="additionalParameters">Additional parameters.</param>
+        public static string NavigateUrl (int tabId, int portalId, string controlKey, params string [] additionalParameters)
+        {
+            return Globals.NavigateURL (tabId,
+                                        new PortalSettings (tabId, GetPrimaryPortalAlias (portalId)),
+                                        controlKey, additionalParameters);
+        }
+
+        static PortalAliasInfo GetPrimaryPortalAlias (int portalId)
+        {
+            var portalAliases =  PortalAliasController.Instance.GetPortalAliasesByPortalId (portalId);
+            var portalAlias = portalAliases.FirstOrDefault (pa => pa.IsPrimary);
+            if (portalAlias == null) {
+                // fallback to first available portal alias
+                portalAlias = portalAliases.FirstOrDefault ();
+            }
+
+            return portalAlias;
         }
     }
 }
