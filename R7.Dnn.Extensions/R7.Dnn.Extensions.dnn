@@ -17,12 +17,11 @@
             <components>
                 <component type="Assembly">
                     <assemblies>
+						<path>bin</path>
                         <assembly>
-                            <path>bin</path>
                             <name>R7.Dnn.Extensions.dll</name>
                         </assembly>
 						<assembly>
-                            <path>bin</path>
                             <name>YamlDotNet.dll</name>
                         </assembly>
                     </assemblies>
