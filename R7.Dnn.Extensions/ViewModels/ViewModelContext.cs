@@ -20,6 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Web.UI;
+using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.Modules;
 using UiUtilities = DotNetNuke.Web.UI.Utilities;
 
@@ -72,6 +73,29 @@ namespace R7.Dnn.Extensions.ViewModels
         {
             Module = module.ModuleContext;
             LocalResourceFile = UiUtilities.GetLocalResourceFile (control);
+        }
+
+        /// <summary>
+        /// Gets localized string what matches provided resource key.
+        /// </summary>
+        /// <returns>Localized string.</returns>
+        /// <param name="key">Resource key.</param>
+        public string LocalizeString (string key)
+        {
+            return Localization.GetString (key, LocalResourceFile);
+        }
+
+        /// <summary>
+        /// Gets localized string what matches provided resource key. If failed, returns default value.
+        /// Use it to localize format strings and other critical values.
+        /// </summary>
+        /// <returns>Localized string or default value.</returns>
+        /// <param name="key">Resource key.</param>
+        /// <param name="defaultValue">Default value.</param>
+        public string SafeLocalizeString (string key, string defaultValue)
+        {
+            var result = Localization.GetString (key, LocalResourceFile);
+            return  (!string.IsNullOrEmpty (result))? result : defaultValue;
         }
     }
 }
