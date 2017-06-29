@@ -20,7 +20,8 @@
 			<dependency id="DotNetNuke.Web.Mvc" version="8.0.4.226" />
             <dependency id="DotNetNuke.Web.Deprecated" version="8.0.4.226" />
 			<dependency id="Microsoft.AspNet.Mvc" version="5.1.1" />
-			<dependency id="YamlDotNet" version="4.2.1" />
+            <dependency id="Microsoft.AspNet.WebApi.Core" version="5.1.1" />
+  			<dependency id="YamlDotNet" version="4.2.1" />
         </dependencies>
     </metadata>
     <files>
