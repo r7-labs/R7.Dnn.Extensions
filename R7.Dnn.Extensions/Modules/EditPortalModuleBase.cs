@@ -205,26 +205,25 @@ namespace R7.Dnn.Extensions.Modules
         {
             try
             {
-                // create new or get existing item
-                var item = (ItemId == null) ? new TItem () : GetItem (ItemId.Value);
+                if (Page.IsValid) {
+                    // create new or get existing item
+                    var item = (ItemId == null) ? new TItem () : GetItem (ItemId.Value);
 
-                BeforeUpdateItem (item);
+                    BeforeUpdateItem (item);
 
-                if (ItemId == null)
-                {
-                    AddItem (item);
+                    if (ItemId == null) {
+                        AddItem (item);
+                    } else {
+                        UpdateItem (item);
+                    }
+
+                    AfterUpdateItem (item);
+
+                    // synchronize module
+                    ModuleController.SynchronizeModule (ModuleId);
+
+                    Response.Redirect (Globals.NavigateURL (), true);
                 }
-                else
-                {
-                    UpdateItem (item);
-                }
-
-                AfterUpdateItem (item);
-
-                // synchronize module
-                ModuleController.SynchronizeModule (ModuleId);
-
-                Response.Redirect (Globals.NavigateURL (), true);
             }
             catch (Exception ex)
             {
