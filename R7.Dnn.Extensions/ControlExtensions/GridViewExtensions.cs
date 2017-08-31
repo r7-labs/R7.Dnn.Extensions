@@ -37,5 +37,24 @@ namespace R7.Dnn.Extensions.ControlExtensions
                 column.HeaderText = Localization.GetString (column.HeaderText, resourceFile);
             }
         }
+
+        /// <summary>
+        /// Gets row style for a GridView row
+        /// </summary>
+        /// <returns>The row style.</returns>
+        /// <param name="gv">GridView.</param>
+        /// <param name="row">GridView row.</param>
+        public static TableItemStyle GetRowStyle (this GridView gv, GridViewRow row)
+        {
+            switch (row.RowType) {
+                case DataControlRowType.DataRow:
+                    return (row.DataItemIndex % 2 == 0) ? gv.RowStyle : gv.AlternatingRowStyle;
+                case DataControlRowType.Header: return gv.HeaderStyle;
+                case DataControlRowType.Footer: return gv.FooterStyle;
+                case DataControlRowType.EmptyDataRow: return gv.EmptyDataRowStyle;
+                case DataControlRowType.Pager: return gv.PagerStyle;
+                default: return new TableItemStyle ();
+            }
+        }
     }
 }
