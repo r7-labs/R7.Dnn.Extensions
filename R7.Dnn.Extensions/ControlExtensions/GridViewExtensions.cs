@@ -24,6 +24,9 @@ using DotNetNuke.Services.Localization;
 
 namespace R7.Dnn.Extensions.ControlExtensions
 {
+    /// <summary>
+    /// Extension methods for <see cref="System.Web.UI.WebControls.GridView" />
+    /// </summary>
     public static class GridViewExtensions
     {
         /// <summary>
