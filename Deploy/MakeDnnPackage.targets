@@ -18,10 +18,14 @@
             <InstallManifestFiles Include="$(MainProjectPath)/license-gpl.txt" />
             <InstallManifestFiles Include="$(MainProjectPath)/releaseNotes.htm" />
         </ItemGroup>
+		<ItemGroup>
+            <InstallSqlDataProviderFiles Include="$(MainProjectPath)/SqlDataProvider/*.SqlDataProvider" />
+        </ItemGroup>
         <!-- Copy binaries -->
         <Copy SourceFiles="@(InstallBinaryFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package\bin" />
         <!-- Copy manifest files -->
         <Copy SourceFiles="@(InstallManifestFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package" />
+		<Copy SourceFiles="@(InstallSqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package\SqlDataProvider" />
         <ItemGroup>
             <InstallPackageFiles Include="$(MSBuildProjectDirectory)\tmp\Package\**\*.*" />
         </ItemGroup>

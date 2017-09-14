@@ -146,6 +146,8 @@
     <None Include="license-gpl.txt" />
     <None Include="packages.config" />
     <None Include="R7.Dnn.Extensions.csproj" />
+    <None Include="SqlDataProvider\00.12.00.SqlDataProvider" />
+    <None Include="SqlDataProvider\Uninstall.SqlDataProvider" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Text\" />
@@ -162,6 +164,7 @@
     <Folder Include="Configuration\" />
     <Folder Include="UrlHistory\" />
     <Folder Include="Models\" />
+    <Folder Include="SqlDataProvider\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

@@ -15,6 +15,18 @@
                 <dependency type="CoreVersion">08.00.04</dependency>
             </dependencies>
             <components>
+				<component type="Script">
+                    <scripts>
+						<basePath>DesktopModules\R7.Dnn.Extensions</basePath>
+                        <script type="Install">
+                            <name>SqlDataProvider\00.12.00.SqlDataProvider</name>
+                            <version>00.12.00</version>
+                        </script>
+                        <script type="UnInstall">
+                            <name>SqlDataProvider\Uninstall.SqlDataProvider</name>
+                        </script>
+                    </scripts>
+                </component>
                 <component type="Assembly">
                     <assemblies>
 						<path>bin</path>
