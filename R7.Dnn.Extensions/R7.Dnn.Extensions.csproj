@@ -136,6 +136,7 @@
     <Compile Include="UrlHistory\UrlHistoryBackend.cs" />
     <Compile Include="UrlHistory\UrlHistoryDefaultBackend.cs" />
     <Compile Include="Models\ModelHelper.cs" />
+    <Compile Include="Utilities\CopyCstor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
