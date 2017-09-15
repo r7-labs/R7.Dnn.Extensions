@@ -93,6 +93,10 @@
     <Reference Include="System.Web.Http">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.1.1\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
+    <Reference Include="NGettext">
+      <HintPath>..\packages\NGettext.0.6.3\lib\net45\NGettext.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,6 +141,7 @@
     <Compile Include="UrlHistory\UrlHistoryDefaultBackend.cs" />
     <Compile Include="Models\ModelHelper.cs" />
     <Compile Include="Utilities\CopyCstor.cs" />
+    <Compile Include="Utilities\CultureHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

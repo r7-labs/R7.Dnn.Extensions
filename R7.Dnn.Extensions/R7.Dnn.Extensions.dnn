@@ -36,6 +36,9 @@
 						<assembly>
                             <name>YamlDotNet.dll</name>
                         </assembly>
+						<assembly>
+                            <name>NGettext.dll</name>
+                        </assembly>
                     </assemblies>
                 </component>
                 <component type="File">
