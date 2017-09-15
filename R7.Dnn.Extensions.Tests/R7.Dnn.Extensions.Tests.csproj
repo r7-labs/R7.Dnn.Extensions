@@ -62,6 +62,7 @@
     <Compile Include="Utilities\TypeUtilsTest.cs" />
     <Compile Include="ViewModels\ListItemViewModelTests.cs" />
     <Compile Include="Configuration\ExtensionYamlConfigTests.cs" />
+    <Compile Include="Utilities\CultureHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\R7.Dnn.Extensions\R7.Dnn.Extensions.csproj">
