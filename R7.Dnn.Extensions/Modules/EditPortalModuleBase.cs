@@ -39,12 +39,25 @@ namespace R7.Dnn.Extensions.Modules
         where TItem: class, new ()
         where TItemId: struct
     {
-        #region Fields
+        #region Fields & Properties
 
         /// <summary>
         /// The edited item identifier.
         /// </summary>
-        protected TItemId? ItemId;
+        protected TItemId? ItemId {
+            get {
+                var itemIdObj = ViewState ["ItemId"];
+                if (itemIdObj != null) {
+                    return (TItemId?) itemIdObj;
+                }
+
+                // parse querystring parameters
+                var itemId = TypeUtils.ParseToNullable<TItemId> (Request.QueryString [Key]);
+                ViewState ["ItemId"] = itemId;
+                return itemId;
+            }
+            set { ViewState ["ItemId"] = value; }
+        }
 
         /// <summary>
         /// The querystring key to parse to get edited item identifier.
@@ -153,9 +166,6 @@ namespace R7.Dnn.Extensions.Modules
 
             try
             {
-                // parse querystring parameters
-                ItemId = TypeUtils.ParseToNullable<TItemId> (Request.QueryString [Key]);
-
                 if (!IsPostBack)
                 {
                     // load the data into the control the first time we hit this page
