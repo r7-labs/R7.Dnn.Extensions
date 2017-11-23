@@ -57,9 +57,6 @@
     <Reference Include="Telerik.Web.UI">
       <HintPath>..\packages\DotNetNuke.Web.Deprecated.8.0.4.226\lib\net40\Telerik.Web.UI.dll</HintPath>
     </Reference>
-    <Reference Include="YamlDotNet">
-      <HintPath>..\packages\YamlDotNet.4.2.1\lib\net35\YamlDotNet.dll</HintPath>
-    </Reference>
     <Reference Include="DotNetNuke.Web.Mvc">
       <HintPath>..\packages\DotNetNuke.Web.Mvc.8.0.4.226\lib\net45\DotNetNuke.Web.Mvc.dll</HintPath>
     </Reference>
@@ -97,6 +94,9 @@
       <HintPath>..\packages\NGettext.0.6.3\lib\net45\NGettext.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="YamlDotNet">
+      <HintPath>..\packages\YamlDotNet.4.2.2\lib\net35\YamlDotNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
