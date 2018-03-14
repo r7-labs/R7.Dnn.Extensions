@@ -283,6 +283,13 @@ namespace R7.Dnn.Extensions.Modules
         }
 
         /// <summary>
+        /// Gets the integer identifier of the item.
+        /// </summary>
+        /// <returns>The integer identifier.</returns>
+        /// <param name="item">Item.</param>
+        protected abstract TItemId GetItemId (TItem item);
+
+        /// <summary>
         /// Implement method which will get item by id.
         /// Usually there is no need to return extra data
         /// (e.g. some dependent objects or collections) here.
