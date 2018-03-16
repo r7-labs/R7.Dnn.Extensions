@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2015-2017 Roman M. Yagodin
+//  Copyright (c) 2015-2018 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -19,6 +19,8 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
+using System.Web;
 using System.Web.UI;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.Modules;
@@ -42,6 +44,16 @@ namespace R7.Dnn.Extensions.ViewModels
         /// </summary>
         /// <value>The module instance context.</value>
         public ModuleInstanceContext Module { get; protected set; }
+
+        /// <summary>
+        /// Gets the initial timestamp of the current HTTP request.
+        /// </summary>
+        public DateTime Now => HttpContext.Current.Timestamp;
+
+        /// <summary>
+        /// Gets the initial timestamp of the current HTTP request in UTC.
+        /// </summary>
+        public DateTime UtcNow => HttpContext.Current.Timestamp.ToUniversalTime ();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:R7.Dnn.Extensions.ViewModels.ViewModelContext"/> class.
