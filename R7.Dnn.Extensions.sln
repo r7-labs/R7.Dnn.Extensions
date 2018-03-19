@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R7.Dnn.Extensions", "R7.Dnn.Extensions\R7.Dnn.Extensions.csproj", "{F5EF3563-5DD0-4412-B6FE-1C992C1E4EE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R7.Dnn.Extensions.Tests", "R7.Dnn.Extensions.Tests\R7.Dnn.Extensions.Tests.csproj", "{9F671FBC-7184-4DC5-827D-15689BF91B3C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R7.Dnn.Extensions.Tests2", "R7.Dnn.Extensions.Tests2\R7.Dnn.Extensions.Tests2.csproj", "{D3BEAAFA-E487-469F-B939-62B2BCE09DA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deploy", "Deploy\Deploy.csproj", "{57EF268D-E476-4E14-8E26-8B96886A5EAF}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Deploy", "Deploy\Deploy.csproj", "{84D3F240-6335-48FE-8576-6674035FBBDF}"
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "R7.Dnn.Extensions.Tests", "R7.Dnn.Extensions.Tests\R7.Dnn.Extensions.Tests.csproj", "{61D56372-B618-4A20-BFBB-DD5E3A94F2C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R7.Dnn.Extensions.Core", "R7.Dnn.Extensions.Core\R7.Dnn.Extensions.Core.csproj", "{C542E8DB-D743-47FF-BB7C-BC35DC3E8D94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,26 +17,34 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9F671FBC-7184-4DC5-827D-15689BF91B3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F671FBC-7184-4DC5-827D-15689BF91B3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F671FBC-7184-4DC5-827D-15689BF91B3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F671FBC-7184-4DC5-827D-15689BF91B3C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5EF3563-5DD0-4412-B6FE-1C992C1E4EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F5EF3563-5DD0-4412-B6FE-1C992C1E4EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5EF3563-5DD0-4412-B6FE-1C992C1E4EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5EF3563-5DD0-4412-B6FE-1C992C1E4EE6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57EF268D-E476-4E14-8E26-8B96886A5EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57EF268D-E476-4E14-8E26-8B96886A5EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57EF268D-E476-4E14-8E26-8B96886A5EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57EF268D-E476-4E14-8E26-8B96886A5EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3BEAAFA-E487-469F-B939-62B2BCE09DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3BEAAFA-E487-469F-B939-62B2BCE09DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3BEAAFA-E487-469F-B939-62B2BCE09DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3BEAAFA-E487-469F-B939-62B2BCE09DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84D3F240-6335-48FE-8576-6674035FBBDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84D3F240-6335-48FE-8576-6674035FBBDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84D3F240-6335-48FE-8576-6674035FBBDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84D3F240-6335-48FE-8576-6674035FBBDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61D56372-B618-4A20-BFBB-DD5E3A94F2C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61D56372-B618-4A20-BFBB-DD5E3A94F2C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61D56372-B618-4A20-BFBB-DD5E3A94F2C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61D56372-B618-4A20-BFBB-DD5E3A94F2C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C542E8DB-D743-47FF-BB7C-BC35DC3E8D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C542E8DB-D743-47FF-BB7C-BC35DC3E8D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C542E8DB-D743-47FF-BB7C-BC35DC3E8D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C542E8DB-D743-47FF-BB7C-BC35DC3E8D94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
 		$0.TextStylePolicy = $1
 		$1.NoTabsAfterNonTabs = True
-		$1.inheritsSet = VisualStudio
-		$1.inheritsScope = text/plain
 		$1.scope = text/x-csharp
+		$1.FileWidth = 80
+		$1.TabsToSpaces = True
 		$0.CSharpFormattingPolicy = $2
 		$2.IndentSwitchBody = True
 		$2.IndentBlocksInsideExpressions = True
@@ -57,9 +69,24 @@ Global
 		$2.BeforeTypeOfParentheses = True
 		$2.SpacesAfterTypecast = True
 		$2.SpacesBeforeArrayDeclarationBrackets = True
-		$2.inheritsSet = Mono
-		$2.inheritsScope = text/x-csharp
 		$2.scope = text/x-csharp
+		$2.IndentSwitchSection = False
+		$2.NewLinesForBracesInProperties = False
+		$2.NewLinesForBracesInAccessors = False
+		$2.NewLinesForBracesInAnonymousMethods = False
+		$2.NewLinesForBracesInControlBlocks = False
+		$2.NewLinesForBracesInAnonymousTypes = False
+		$2.NewLinesForBracesInObjectCollectionArrayInitializers = False
+		$2.NewLinesForBracesInLambdaExpressionBody = False
+		$2.NewLineForElse = False
+		$2.NewLineForCatch = False
+		$2.NewLineForFinally = False
+		$2.NewLineForMembersInObjectInit = False
+		$2.NewLineForMembersInAnonymousTypes = False
+		$2.NewLineForClausesInQuery = False
+		$2.SpacingAfterMethodDeclarationName = True
+		$2.SpaceAfterMethodCallName = True
+		$2.SpaceBeforeOpenSquareBracket = True
 		version = 0.13.0
 	EndGlobalSection
 EndGlobal

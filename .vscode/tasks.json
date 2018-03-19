@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/R7.Dnn.Extensions.Tests2/R7.Dnn.Extensions.Tests2.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

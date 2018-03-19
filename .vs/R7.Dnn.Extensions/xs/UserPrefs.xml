@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{D3BEAAFA-E487-469F-B939-62B2BCE09DA2}|Default" GitUserInfo="UsingGIT">
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="R7.Dnn.Extensions" expanded="True">
+            <Node name="R7.Dnn.Extensions.Tests2" expanded="True">
+              <Node name="R7" expanded="True">
+                <Node name="Dnn" expanded="True">
+                  <Node name="Extensions" expanded="True">
+                    <Node name="Tests2" expanded="True">
+                      <Node name="Configuration" expanded="True" selected="True">
+                        <Node name="ExtensionYamlConfigTests" expanded="True" />
+                      </Node>
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.R7.Dnn.Extensions.Tests2 PreferredExecutionTarget="MonoDevelop.Default" />
+  <DisabledProjects>
+    <String>R7.Dnn.Extensions.Tests/R7.Dnn.Extensions.Tests.csproj</String>
+    <String>Deploy/Deploy.csproj</String>
+  </DisabledProjects>
+</Properties>
