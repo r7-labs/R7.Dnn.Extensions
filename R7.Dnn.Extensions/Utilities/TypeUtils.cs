@@ -36,6 +36,7 @@ namespace R7.Dnn.Extensions.Utilities
         /// <param name="value">String value to parse.</param>
         /// <param name="checkDnnNull">If set to 'true' (default), 
         /// threat <see cref="T:DotNetNuke.Common.Utilities.Null" /> special values as nulls.</param>
+        // TODO: checkDnnNull should be false by default
         public static T? ParseToNullable<T> (string value, bool checkDnnNull = true) where T: struct
         {
             var tc = TypeDescriptor.GetConverter (typeof (T));
