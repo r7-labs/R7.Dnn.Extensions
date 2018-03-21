@@ -19,8 +19,11 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
+
 namespace R7.Dnn.Extensions.ViewModels
 {
+    [Obsolete ("Replace with anonymous type")]
     /// <summary>
     /// Simple viewmodel class to bind to ListControl
     /// </summary>
