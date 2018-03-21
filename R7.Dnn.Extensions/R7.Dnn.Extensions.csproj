@@ -105,7 +105,7 @@
     <Compile Include="Text\QuotedPrintable.cs" />
     <Compile Include="ViewModels\ViewModelContext.cs" />
     <Compile Include="ViewModels\EnumViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelContext_TSettings.cs" />
+    <Compile Include="ViewModels\ViewModelContextOfTSettings.cs" />
     <Compile Include="Data\Dal2DataProvider.cs" />
     <Compile Include="Controls\PagingControl.cs" />
     <Compile Include="Controls\PagingControlMode.cs" />

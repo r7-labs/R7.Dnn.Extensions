@@ -1,5 +1,5 @@
 ﻿//
-//  ViewModelContext_TSettings.cs
+//  ViewModelContextOfTSettings.cs
 //
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
