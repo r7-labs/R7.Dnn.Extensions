@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2014, 2015, 2016 Roman M. Yagodin
+//  Copyright (c) 2014-2018 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -28,23 +28,6 @@ namespace R7.Dnn.Extensions.Utilities
 {
     public static class TypeUtils
     {
-        /// <summary>
-        /// Parses specified string value to a nullable int, 
-        /// also with convertion of Null.NullInteger to null 
-        /// </summary>
-        /// <returns>The nullable int.</returns>
-        /// <param name="value">String value to parse.</param>
-        [Obsolete ("Use T? ParseToNullable<T> () method")]
-        public static int? ParseToNullableInt (string value)
-        {
-            int n;
-
-            if (int.TryParse (value, out n))
-                return Null.IsNull (n) ? null : (int?) n;
-
-            return null;
-        }
-
         /// <summary>
         /// Parses specified string value to a nullable, optionally threating 
         /// <see cref="T:DotNetNuke.Common.Utilities.Null" /> special values as nulls
