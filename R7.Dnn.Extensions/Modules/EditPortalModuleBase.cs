@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2016-2017 Roman M. Yagodin
+//  Copyright (c) 2016-2018 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -44,7 +44,7 @@ namespace R7.Dnn.Extensions.Modules
         /// <summary>
         /// The edited item identifier.
         /// </summary>
-        protected TItemId? ItemId {
+        protected virtual TItemId? ItemId {
             get {
                 var itemIdObj = ViewState ["ItemId"];
                 if (itemIdObj != null) {
