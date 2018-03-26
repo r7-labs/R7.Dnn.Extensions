@@ -139,7 +139,7 @@
     <Compile Include="Text\StringExtensions.cs" />
     <Compile Include="Models\SettingsRepositoryImpl.cs" />
     <Compile Include="Cache\CacheHelper.cs" />
-    <Compile Include="FileSystem\FileUtils.cs" />
+    <Compile Include="FileSystem\FileHelper.cs" />
     <Compile Include="FileSystem\MimeTypes.cs" />
     <Compile Include="Text\FormatHelper.cs" />
     <Compile Include="Urls\UrlHelper.cs" />

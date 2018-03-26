@@ -1,5 +1,5 @@
 ﻿//
-//  FileUtils.cs
+//  FileHelper.cs
 //
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
@@ -26,7 +26,7 @@ using DotNetNuke.Entities.Controllers;
 
 namespace R7.Dnn.Extensions.FileSystem
 {
-    public static class FileUtils
+    public static class FileHelper
     {
         /// <summary>
         /// Determines if the specified file is an images.
