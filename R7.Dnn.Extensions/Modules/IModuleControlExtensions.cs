@@ -51,7 +51,7 @@ namespace R7.Dnn.Extensions.Modules
         /// <param name="args">Additional parameters.</param>
         public static string EditUrl (this IModuleControl module, string controlKey, params string [] args)
         {
-            // REVIEW: Use 2-element array
+            // TODO: Use 2-element array?
             var argList = new List<string> (args); 
             argList.Add ("mid");
             argList.Add (module.ModuleContext.ModuleId.ToString ());

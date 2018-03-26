@@ -31,12 +31,11 @@ namespace R7.Dnn.Extensions.Text.Levenstein
         {
         }
 
+        // TODO: Add tests
         public override int Distance
         {
             get
             {
-                // REVIEW: require testing
-
                 // border case processing
                 if (string.IsNullOrEmpty (s1))
                 {

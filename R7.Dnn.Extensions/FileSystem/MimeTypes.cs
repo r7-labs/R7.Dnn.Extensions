@@ -24,8 +24,7 @@ using System.Collections.Generic;
 
 namespace R7.Dnn.Extensions.FileSystem
 {
-    // REVIEW: Rename class to MimeUtils?
-
+    // TODO: Rename class?
     public static class MimeTypes
     {
         #region Big freaking list of mime types
