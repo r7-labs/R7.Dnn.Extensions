@@ -60,7 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Text\StringExtensionsTest.cs" />
-    <Compile Include="Utilities\TypeUtilsTest.cs" />
     <Compile Include="Configuration\ExtensionYamlConfigTests.cs" />
     <Compile Include="Utilities\CultureHelperTests.cs" />
     <Compile Include="Collections\EnumerableExtensionsTests.cs" />

@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2018 Roman M. Yagodin
+//  Copyright (c) 2014-2018 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -27,6 +27,21 @@ namespace R7.Dnn.Extensions.Tests.Text
 {
     public class TypeUtilsTests
     {
+        [Fact]
+        public void ToNullableTest ()
+        {
+            Assert.Equal (null, TypeUtils.ToNullable<int> (-1));
+            Assert.Equal ((int?)20, TypeUtils.ToNullable<int> (20));
+        }
+
+        [Fact]
+        public void ParseToNullableTest ()
+        {
+            Assert.Equal (1, TypeUtils.ParseToNullable<int> ("1"));
+            Assert.Equal (null, TypeUtils.ParseToNullable<int> ("-1"));
+            Assert.Equal (10, TypeUtils.ParseToNullable<int> ("-1") ?? 10);
+        }
+
         [Fact]
         public void RemoveTrailingZeroesTest ()
         {
