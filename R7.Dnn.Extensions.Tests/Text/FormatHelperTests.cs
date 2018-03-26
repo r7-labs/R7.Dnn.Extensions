@@ -1,10 +1,10 @@
 ﻿//
-//  TypeUtilsTests.cs
+//  FormatHelperTests.cs
 //
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2014-2018 Roman M. Yagodin
+//  Copyright (c) 2018 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -20,26 +20,21 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Globalization;
-using R7.Dnn.Extensions.Utilities;
+using R7.Dnn.Extensions.Text;
 using Xunit;
 
 namespace R7.Dnn.Extensions.Tests.Text
 {
-    public class TypeUtilsTests
+    public static class FormatHelperTests
     {
         [Fact]
-        public void ToNullableTest ()
+        public static void RemoveTrailingZeroesTest ()
         {
-            Assert.Equal (null, TypeUtils.ToNullable<int> (-1));
-            Assert.Equal ((int?)20, TypeUtils.ToNullable<int> (20));
-        }
+            var decimalSeparator = new CultureInfo ("en-US").NumberFormat.NumberDecimalSeparator;
 
-        [Fact]
-        public void ParseToNullableTest ()
-        {
-            Assert.Equal (1, TypeUtils.ParseToNullable<int> ("1"));
-            Assert.Equal (null, TypeUtils.ParseToNullable<int> ("-1"));
-            Assert.Equal (10, TypeUtils.ParseToNullable<int> ("-1") ?? 10);
+            Assert.Equal ("12", FormatHelper.RemoveTrailingZeroes ("12.0", decimalSeparator));
+            Assert.Equal ("0", FormatHelper.RemoveTrailingZeroes ("0.000", decimalSeparator));
+            Assert.Equal ("12.345", FormatHelper.RemoveTrailingZeroes ("12.34500", decimalSeparator));
         }
     }
 }
