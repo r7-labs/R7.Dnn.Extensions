@@ -20,6 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using R7.Dnn.Extensions.Text.Transliteration;
@@ -141,6 +142,27 @@ namespace R7.Dnn.Extensions.Text
 
             return s;
         }
+
+        /// <summary>
+        /// Joins the not null or empty string representations of the objects in the collection using specified separator.
+        /// </summary>
+        /// <returns>The joined string.</returns>
+        /// <param name="values">Values.</param>
+        /// <param name="separator">Separator.</param>
+        public static string JoinNotNullOrEmpty (this IEnumerable<string> values, string separator)
+        {
+            return TextUtils.JoinNotNullOrEmpty (separator, values); 
+        }
+
+        /// <summary>
+        /// Joins the not null or empty strings in the collection using specified separator.
+        /// </summary>
+        /// <returns>The joined string.</returns>
+        /// <param name="values">Values.</param>
+        /// <param name="separator">Separator.</param>
+        public static string JoinNotNullOrEmpty (this IEnumerable<object> values, string separator)
+        {
+            return TextUtils.JoinNotNullOrEmpty (separator, values);
+        }
     }
 }
-

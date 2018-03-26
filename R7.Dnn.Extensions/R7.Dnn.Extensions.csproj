@@ -114,7 +114,6 @@
     <Compile Include="Utilities\TypeUtils.cs" />
     <Compile Include="Text\Transliteration\RuFileTranslitTable.cs" />
     <Compile Include="Text\Transliteration\TranslitTableBase.cs" />
-    <Compile Include="Utilities\TextUtils.cs" />
     <Compile Include="Modules\IModuleControlWithSettings.cs" />
     <Compile Include="Utilities\UrlHelper.cs" />
     <Compile Include="ViewModels\ListItemViewModel.cs" />
@@ -143,6 +142,7 @@
     <Compile Include="Cache\CacheHelper.cs" />
     <Compile Include="FileSystem\FileUtils.cs" />
     <Compile Include="FileSystem\MimeTypes.cs" />
+    <Compile Include="Text\TextUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
