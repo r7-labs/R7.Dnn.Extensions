@@ -142,7 +142,7 @@
     <Compile Include="Cache\CacheHelper.cs" />
     <Compile Include="FileSystem\FileUtils.cs" />
     <Compile Include="FileSystem\MimeTypes.cs" />
-    <Compile Include="Text\TextUtils.cs" />
+    <Compile Include="Text\FormatHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -1,5 +1,5 @@
 ﻿//
-//  TextUtils.cs
+//  FormatHelper.cs
 //
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
@@ -27,8 +27,7 @@ using System.Text;
 
 namespace R7.Dnn.Extensions.Text
 {
-    // TODO: Rename to FormatHelper?
-    public static class TextUtils
+    public static class FormatHelper
     {
         /// <summary>
         /// Formats the list of arguments, excluding null or empty ones.

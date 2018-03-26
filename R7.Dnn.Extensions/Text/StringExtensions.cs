@@ -151,7 +151,7 @@ namespace R7.Dnn.Extensions.Text
         /// <param name="separator">Separator.</param>
         public static string JoinNotNullOrEmpty (this IEnumerable<string> values, string separator)
         {
-            return TextUtils.JoinNotNullOrEmpty (separator, values); 
+            return FormatHelper.JoinNotNullOrEmpty (separator, values); 
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace R7.Dnn.Extensions.Text
         /// <param name="separator">Separator.</param>
         public static string JoinNotNullOrEmpty (this IEnumerable<object> values, string separator)
         {
-            return TextUtils.JoinNotNullOrEmpty (separator, values);
+            return FormatHelper.JoinNotNullOrEmpty (separator, values);
         }
     }
 }
