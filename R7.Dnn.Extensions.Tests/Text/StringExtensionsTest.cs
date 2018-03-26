@@ -21,9 +21,9 @@
 
 using System;
 using Xunit;
-using R7.Dnn.Extensions.TextExtensions;
+using R7.Dnn.Extensions.Text;
 
-namespace R7.Dnn.Extensions.Tests.TextExtensions
+namespace R7.Dnn.Extensions.Tests.Text
 {
     public class StringExtensionsTest
     {

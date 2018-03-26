@@ -53,14 +53,14 @@
     <None Include="Configuration\Config.yml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="TextExtensions\" />
+    <Folder Include="Text\" />
     <Folder Include="Utilities\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Configuration\" />
     <Folder Include="Collections\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TextExtensions\StringExtensionsTest.cs" />
+    <Compile Include="Text\StringExtensionsTest.cs" />
     <Compile Include="Utilities\TypeUtilsTest.cs" />
     <Compile Include="ViewModels\ListItemViewModelTests.cs" />
     <Compile Include="Configuration\ExtensionYamlConfigTests.cs" />

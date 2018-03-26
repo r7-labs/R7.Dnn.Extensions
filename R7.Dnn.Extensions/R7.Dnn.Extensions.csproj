@@ -107,28 +107,17 @@
     <Compile Include="ViewModels\EnumViewModel.cs" />
     <Compile Include="ViewModels\ViewModelContextOfTSettings.cs" />
     <Compile Include="Data\Dal2DataProvider.cs" />
-    <Compile Include="Controls\PagingControl.cs" />
-    <Compile Include="Controls\PagingControlMode.cs" />
-    <Compile Include="ControlExtensions\DnnFilePickerUploaderExtensions.cs" />
-    <Compile Include="ControlExtensions\DnnTreeViewExtensions.cs" />
-    <Compile Include="ControlExtensions\ListControlExtensions.cs" />
-    <Compile Include="ModuleExtensions\IModuleControlExtensions.cs" />
-    <Compile Include="ModuleExtensions\ModuleExtensions.cs" />
     <Compile Include="Modules\EditPortalModuleBase.cs" />
     <Compile Include="Modules\ModuleSettingsBase.cs" />
     <Compile Include="Modules\PortalModuleBase.cs" />
-    <Compile Include="ModuleExtensions\MessageType.cs" />
     <Compile Include="Utilities\UserUtils.cs" />
     <Compile Include="Utilities\TypeUtils.cs" />
     <Compile Include="Text\Transliteration\RuFileTranslitTable.cs" />
     <Compile Include="Text\Transliteration\TranslitTableBase.cs" />
-    <Compile Include="TextExtensions\StringExtensions.cs" />
     <Compile Include="Utilities\FileUtils.cs" />
     <Compile Include="Utilities\TextUtils.cs" />
     <Compile Include="Utilities\MimeTypes.cs" />
-    <Compile Include="ControlExtensions\GridViewExtensions.cs" />
     <Compile Include="Utilities\CacheHelper.cs" />
-    <Compile Include="ControlExtensions\ControlExtensions.cs" />
     <Compile Include="Modules\IModuleControlWithSettings.cs" />
     <Compile Include="Modules\SettingsRepositoryImpl.cs" />
     <Compile Include="Utilities\UrlHelper.cs" />
@@ -143,6 +132,17 @@
     <Compile Include="Utilities\CopyCstor.cs" />
     <Compile Include="Utilities\CultureHelper.cs" />
     <Compile Include="Collections\EnumerableExtensions.cs" />
+    <Compile Include="Controls\PagingControl\PagingControl.cs" />
+    <Compile Include="Controls\PagingControl\PagingControlMode.cs" />
+    <Compile Include="Controls\ControlExtensions.cs" />
+    <Compile Include="Controls\DnnFilePickerUploaderExtensions.cs" />
+    <Compile Include="Controls\DnnTreeViewExtensions.cs" />
+    <Compile Include="Controls\GridViewExtensions.cs" />
+    <Compile Include="Controls\ListControlExtensions.cs" />
+    <Compile Include="Modules\IModuleControlExtensions.cs" />
+    <Compile Include="Modules\MessageType.cs" />
+    <Compile Include="Modules\ModuleExtensions.cs" />
+    <Compile Include="Text\StringExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -163,16 +163,14 @@
     <Folder Include="Controls\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Data\" />
-    <Folder Include="ControlExtensions\" />
-    <Folder Include="ModuleExtensions\" />
     <Folder Include="Utilities\" />
     <Folder Include="Text\Transliteration\" />
-    <Folder Include="TextExtensions\" />
     <Folder Include="Configuration\" />
     <Folder Include="UrlHistory\" />
     <Folder Include="Models\" />
     <Folder Include="SqlDataProvider\" />
     <Folder Include="Collections\" />
+    <Folder Include="Controls\PagingControl\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

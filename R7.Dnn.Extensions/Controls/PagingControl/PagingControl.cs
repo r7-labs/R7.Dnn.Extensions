@@ -30,7 +30,7 @@ using System.Web.UI.WebControls;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Common;
 
-namespace R7.Dnn.Extensions.Controls
+namespace R7.Dnn.Extensions.Controls.PagingControl
 {
 	[ToolboxData("<{0}:PagingControl runat=server></{0}:PagingControl>")]
 	public class PagingControl : WebControl, IPostBackEventHandler

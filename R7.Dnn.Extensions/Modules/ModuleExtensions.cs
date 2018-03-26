@@ -19,13 +19,12 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
+using DotNetNuke.Entities.Modules;
+using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.Skins;
 using DotNetNuke.UI.Skins.Controls;
-using DotNetNuke.Services.Localization;
-using DotNetNuke.Entities.Modules;
 
-namespace R7.Dnn.Extensions.ModuleExtensions
+namespace R7.Dnn.Extensions.Modules
 {
     public static class ModuleExtensions
     {

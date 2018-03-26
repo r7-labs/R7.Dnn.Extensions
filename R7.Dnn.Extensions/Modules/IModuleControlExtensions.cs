@@ -25,7 +25,7 @@ using DotNetNuke.Entities.Modules;
 using DotNetNuke.UI.Modules;
 using DotNetNuke.Common;
 
-namespace R7.Dnn.Extensions.ModuleExtensions
+namespace R7.Dnn.Extensions.Modules
 {
     public static class IModuleControlExtensions
     {

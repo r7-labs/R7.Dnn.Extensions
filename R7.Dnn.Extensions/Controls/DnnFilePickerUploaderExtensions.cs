@@ -24,7 +24,7 @@ using DotNetNuke.Entities.Portals;
 using DotNetNuke.Services.FileSystem;
 using DotNetNuke.Web.UI.WebControls;
 
-namespace R7.Dnn.Extensions.ControlExtensions
+namespace R7.Dnn.Extensions.Controls
 {
     public static class DnnFilePickerUploaderExtensions
     {

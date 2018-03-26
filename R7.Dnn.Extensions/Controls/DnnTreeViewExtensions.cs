@@ -22,7 +22,7 @@
 using System;
 using DotNetNuke.Web.UI.WebControls;
 
-namespace R7.Dnn.Extensions.ControlExtensions
+namespace R7.Dnn.Extensions.Controls
 {
     /// <summary>
     /// DnnTreeView extensions.

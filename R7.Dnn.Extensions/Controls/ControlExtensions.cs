@@ -21,7 +21,7 @@
 
 using System.Web.UI;
 
-namespace R7.Dnn.Extensions.ControlExtensions
+namespace R7.Dnn.Extensions.Controls
 {
     /// <summary>
     /// Control extensions.

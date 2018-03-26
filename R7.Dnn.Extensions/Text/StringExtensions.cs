@@ -24,7 +24,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using R7.Dnn.Extensions.Text.Transliteration;
 
-namespace R7.Dnn.Extensions.TextExtensions
+namespace R7.Dnn.Extensions.Text
 {
     public static class StringExtensions
     {

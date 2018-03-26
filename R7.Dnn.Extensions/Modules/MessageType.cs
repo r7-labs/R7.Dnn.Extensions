@@ -22,7 +22,7 @@
 using System;
 using DotNetNuke.UI.Skins.Controls;
 
-namespace R7.Dnn.Extensions.ModuleExtensions
+namespace R7.Dnn.Extensions.Modules
 {
     /// <summary>
     /// Module message types.
