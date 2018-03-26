@@ -117,7 +117,6 @@
     <Compile Include="Utilities\FileUtils.cs" />
     <Compile Include="Utilities\TextUtils.cs" />
     <Compile Include="Utilities\MimeTypes.cs" />
-    <Compile Include="Utilities\CacheHelper.cs" />
     <Compile Include="Modules\IModuleControlWithSettings.cs" />
     <Compile Include="Utilities\UrlHelper.cs" />
     <Compile Include="ViewModels\ListItemViewModel.cs" />
@@ -143,6 +142,7 @@
     <Compile Include="Modules\ModuleExtensions.cs" />
     <Compile Include="Text\StringExtensions.cs" />
     <Compile Include="Models\SettingsRepositoryImpl.cs" />
+    <Compile Include="Cache\CacheHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -171,6 +171,7 @@
     <Folder Include="SqlDataProvider\" />
     <Folder Include="Collections\" />
     <Folder Include="Controls\PagingControl\" />
+    <Folder Include="Cache\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
