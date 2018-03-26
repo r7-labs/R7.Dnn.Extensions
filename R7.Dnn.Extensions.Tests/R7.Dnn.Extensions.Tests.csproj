@@ -55,14 +55,12 @@
   <ItemGroup>
     <Folder Include="Text\" />
     <Folder Include="Utilities\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Configuration\" />
     <Folder Include="Collections\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Text\StringExtensionsTest.cs" />
     <Compile Include="Utilities\TypeUtilsTest.cs" />
-    <Compile Include="ViewModels\ListItemViewModelTests.cs" />
     <Compile Include="Configuration\ExtensionYamlConfigTests.cs" />
     <Compile Include="Utilities\CultureHelperTests.cs" />
     <Compile Include="Collections\EnumerableExtensionsTests.cs" />
