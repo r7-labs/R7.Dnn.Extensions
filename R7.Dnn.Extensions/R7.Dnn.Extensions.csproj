@@ -142,6 +142,7 @@
     <Compile Include="Models\ModelHelper.cs" />
     <Compile Include="Utilities\CopyCstor.cs" />
     <Compile Include="Utilities\CultureHelper.cs" />
+    <Compile Include="Collections\EnumerableExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -171,6 +172,7 @@
     <Folder Include="UrlHistory\" />
     <Folder Include="Models\" />
     <Folder Include="SqlDataProvider\" />
+    <Folder Include="Collections\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
