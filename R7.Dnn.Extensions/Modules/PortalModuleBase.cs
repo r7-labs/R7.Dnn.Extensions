@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2016-2017 Roman M. Yagodin
+//  Copyright (c) 2016-2018 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -21,6 +21,7 @@
 
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Settings;
+using R7.Dnn.Extensions.Models;
 
 namespace R7.Dnn.Extensions.Modules
 {

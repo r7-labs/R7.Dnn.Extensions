@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2017 Roman M. Yagodin
+//  Copyright (c) 2017-2018 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -21,12 +21,12 @@
 
 using DotNetNuke.Entities.Modules.Settings;
 
-namespace R7.Dnn.Extensions.Modules
+namespace R7.Dnn.Extensions.Models
 {
     /// <summary>
     /// Basic generic settings repository implementation.
     /// </summary>
-    internal class SettingsRepositoryImpl<TSettings>: SettingsRepository<TSettings>
+    public class SettingsRepositoryImpl<TSettings>: SettingsRepository<TSettings>
         where TSettings: class, new ()
     {
     }

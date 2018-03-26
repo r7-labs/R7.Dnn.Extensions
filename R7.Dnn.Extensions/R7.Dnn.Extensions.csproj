@@ -119,7 +119,6 @@
     <Compile Include="Utilities\MimeTypes.cs" />
     <Compile Include="Utilities\CacheHelper.cs" />
     <Compile Include="Modules\IModuleControlWithSettings.cs" />
-    <Compile Include="Modules\SettingsRepositoryImpl.cs" />
     <Compile Include="Utilities\UrlHelper.cs" />
     <Compile Include="ViewModels\ListItemViewModel.cs" />
     <Compile Include="Configuration\ExtensionConfig.cs" />
@@ -143,6 +142,7 @@
     <Compile Include="Modules\MessageType.cs" />
     <Compile Include="Modules\ModuleExtensions.cs" />
     <Compile Include="Text\StringExtensions.cs" />
+    <Compile Include="Models\SettingsRepositoryImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
