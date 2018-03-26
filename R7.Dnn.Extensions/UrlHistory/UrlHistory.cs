@@ -27,7 +27,7 @@ using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Tabs;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Services.FileSystem;
-using R7.Dnn.Extensions.Utilities;
+using R7.Dnn.Extensions.Urls;
 
 namespace R7.Dnn.Extensions.UrlHistory
 {

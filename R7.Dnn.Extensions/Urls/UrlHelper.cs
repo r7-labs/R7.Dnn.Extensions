@@ -26,7 +26,7 @@ using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Portals;
 
-namespace R7.Dnn.Extensions.Utilities
+namespace R7.Dnn.Extensions.Urls
 {
     /// <summary>
     /// URL helper.

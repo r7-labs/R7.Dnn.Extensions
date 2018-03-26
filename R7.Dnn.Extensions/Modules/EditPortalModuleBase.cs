@@ -28,6 +28,7 @@ using DotNetNuke.Framework;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.UserControls;
+using R7.Dnn.Extensions.Urls;
 using R7.Dnn.Extensions.Utilities;
 
 namespace R7.Dnn.Extensions.Modules
