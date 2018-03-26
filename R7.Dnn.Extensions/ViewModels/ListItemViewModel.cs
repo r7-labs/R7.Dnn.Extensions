@@ -23,10 +23,10 @@ using System;
 
 namespace R7.Dnn.Extensions.ViewModels
 {
-    [Obsolete ("Replace with anonymous type", true)]
     /// <summary>
     /// Simple viewmodel class to bind to ListControl
     /// </summary>
+    [Obsolete ("Replace with anonymous type", true)]
     public class ListItemViewModel
     {
         /// <summary>
