@@ -27,6 +27,7 @@ namespace R7.Dnn.Extensions.Utilities
 {
     public static class UserUtils
     {
+        [Obsolete]
         public static string GetUserDisplayName (int userId)
         {
             var portalId = PortalController.Instance.GetCurrentPortalSettings ().PortalId;
