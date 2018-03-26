@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2014, 2015 Roman M. Yagodin
+//  Copyright (c) 2014-2018 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -22,7 +22,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace R7.Dnn.Extensions.Utilities
+namespace R7.Dnn.Extensions.FileSystem
 {
     // REVIEW: Rename class to MimeUtils?
 

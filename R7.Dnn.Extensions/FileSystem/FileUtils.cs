@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2014,2015 Roman M. Yagodin
+//  Copyright (c) 2014-2018 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -23,9 +23,8 @@ using System;
 using System.IO;
 using DotNetNuke.Common;
 using DotNetNuke.Entities.Controllers;
-using DotNetNuke.Services.FileSystem;
 
-namespace R7.Dnn.Extensions.Utilities
+namespace R7.Dnn.Extensions.FileSystem
 {
     public static class FileUtils
     {
