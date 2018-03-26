@@ -21,6 +21,7 @@
 
 using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Web.UI.WebControls;
 using DotNetNuke.Common.Utilities;
 
@@ -84,6 +85,28 @@ namespace R7.Dnn.Extensions.Utilities
         {
             var unit = Unit.Parse (value);
             return unit.Value <= minvalue ? Unit.Empty : unit;
+        }
+
+        /// <summary>
+        /// Removes the trailing zeroes from string with decimal number representation.
+        /// </summary>
+        /// <returns>The decimal string w/o trailing zeroes.</returns>
+        /// <param name="decimalStr">Decimal string.</param>
+        /// <param name="decimalSeparator">Decimal separator string or null to use decimal separator from current culture.</param>
+        public static string RemoveTrailingZeroes (string decimalStr, string decimalSeparator = null)
+        {
+            if (decimalSeparator == null) {
+                decimalSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+            }
+
+            if (decimalStr.Contains (decimalSeparator)) {
+                decimalStr = decimalStr.TrimEnd ('0');
+                if (decimalStr.EndsWith (decimalSeparator, StringComparison.CurrentCulture)) {
+                    decimalStr = decimalStr.Substring (0, decimalStr.Length - decimalSeparator.Length);
+                }
+            }
+
+            return decimalStr;
         }
     }
 }
