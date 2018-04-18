@@ -26,6 +26,7 @@ using DotNetNuke.Common.Utilities;
 
 namespace R7.Dnn.Extensions.Utilities
 {
+    [Obsolete]
     public static class TypeUtils
     {
         /// <summary>
@@ -36,7 +37,7 @@ namespace R7.Dnn.Extensions.Utilities
         /// <param name="value">String value to parse.</param>
         /// <param name="checkDnnNull">If set to 'true' (default), 
         /// threat <see cref="T:DotNetNuke.Common.Utilities.Null" /> special values as nulls.</param>
-        // TODO: checkDnnNull should be false by default
+        [Obsolete ("Use ParseHelper.ParseToNullable instead")]
         public static T? ParseToNullable<T> (string value, bool checkDnnNull = true) where T: struct
         {
             var tc = TypeDescriptor.GetConverter (typeof (T));

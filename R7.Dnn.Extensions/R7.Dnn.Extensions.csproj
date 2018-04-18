@@ -143,6 +143,7 @@
     <Compile Include="FileSystem\MimeTypes.cs" />
     <Compile Include="Text\FormatHelper.cs" />
     <Compile Include="Urls\UrlHelper.cs" />
+    <Compile Include="Text\ParseHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

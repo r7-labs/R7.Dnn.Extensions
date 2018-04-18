@@ -1,5 +1,5 @@
 ﻿//
-//  TypeUtilsTests.cs
+//  ParseHelperTests.cs
 //
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
@@ -19,27 +19,20 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System.Globalization;
-using R7.Dnn.Extensions.Utilities;
+using R7.Dnn.Extensions.Text;
 using Xunit;
 
 namespace R7.Dnn.Extensions.Tests.Text
 {
-    public class TypeUtilsTests
+    public class ParseHelperTests
     {
-        [Fact]
-        public void ToNullableTest ()
-        {
-            Assert.Equal (null, TypeUtils.ToNullable<int> (-1));
-            Assert.Equal ((int?)20, TypeUtils.ToNullable<int> (20));
-        }
-
         [Fact]
         public void ParseToNullableTest ()
         {
-            Assert.Equal (1, TypeUtils.ParseToNullable<int> ("1"));
-            Assert.Equal (null, TypeUtils.ParseToNullable<int> ("-1"));
-            Assert.Equal (10, TypeUtils.ParseToNullable<int> ("-1") ?? 10);
+            Assert.Equal (1, ParseHelper.ParseToNullable<int> ("1"));
+            Assert.Equal (-1, ParseHelper.ParseToNullable<int> ("-1"));
+            Assert.Equal (null, ParseHelper.ParseToNullable<int> ("-1", true));
+            Assert.Equal (10, ParseHelper.ParseToNullable<int> ("ABC") ?? 10);
         }
     }
 }
