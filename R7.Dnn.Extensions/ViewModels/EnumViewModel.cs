@@ -21,7 +21,7 @@
 
 using System;
 using System.Collections.Generic;
-using DotNetNuke.Services.Localization;
+using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 
 namespace R7.Dnn.Extensions.ViewModels
 {
@@ -50,7 +50,7 @@ namespace R7.Dnn.Extensions.ViewModels
 
         public string ValueLocalized
         {
-            get { return Localization.GetString (ValueResourceKey, Context.LocalResourceFile); }
+            get { return DnnLocalization.GetString (ValueResourceKey, Context.LocalResourceFile); }
         }
 
         public string ValueResourceKey

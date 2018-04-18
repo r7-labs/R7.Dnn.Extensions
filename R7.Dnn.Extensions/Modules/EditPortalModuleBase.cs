@@ -26,10 +26,10 @@ using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Framework;
 using DotNetNuke.Services.Exceptions;
-using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.UserControls;
 using R7.Dnn.Extensions.Urls;
 using R7.Dnn.Extensions.Utilities;
+using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 
 namespace R7.Dnn.Extensions.Modules
 {
@@ -134,7 +134,7 @@ namespace R7.Dnn.Extensions.Modules
 
             // add confirmation dialog to delete button
             ButtonDelete.Attributes.Add ("onClick", "javascript:return confirm('" 
-                + Localization.GetString ("DeleteItem") + "');");
+                + DnnLocalization.GetString ("DeleteItem") + "');");
         }
 
         /// <summary>

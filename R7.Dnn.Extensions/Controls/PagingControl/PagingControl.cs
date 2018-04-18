@@ -27,8 +27,8 @@ using System.Data;
 using System.Web.UI;
 using System.ComponentModel;
 using System.Web.UI.WebControls;
-using DotNetNuke.Services.Localization;
 using DotNetNuke.Common;
+using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 
 namespace R7.Dnn.Extensions.Controls.PagingControl
 {
@@ -297,9 +297,9 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
 		private string GetPreviousLink()
 		{
             if (CurrentPage > 1 && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL ((CurrentPage - 1).ToString()) + "\">" + Localization.GetString("Previous", Localization.SharedResourceFile) + "</a></li>";
+                return "<li><a href=\"" + CreateURL ((CurrentPage - 1).ToString()) + "\">" + DnnLocalization.GetString("Previous", DnnLocalization.SharedResourceFile) + "</a></li>";
 
-            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + Localization.GetString("Previous", Localization.SharedResourceFile) + "</span></li>";
+            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + DnnLocalization.GetString("Previous", DnnLocalization.SharedResourceFile) + "</span></li>";
 		}
 
 		/// -----------------------------------------------------------------------------
@@ -315,9 +315,9 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
 		private string GetNextLink()
 		{
             if (CurrentPage != TotalPages && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL ((CurrentPage + 1).ToString()) + "\">" + Localization.GetString("Next", Localization.SharedResourceFile) + "</a></li>";
+                return "<li><a href=\"" + CreateURL ((CurrentPage + 1).ToString()) + "\">" + DnnLocalization.GetString("Next", DnnLocalization.SharedResourceFile) + "</a></li>";
 
-            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + Localization.GetString("Next", Localization.SharedResourceFile) + "</span></li>";
+            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + DnnLocalization.GetString("Next", DnnLocalization.SharedResourceFile) + "</span></li>";
 		}
 
 		/// -----------------------------------------------------------------------------
@@ -333,9 +333,9 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
 		private string GetFirstLink()
 		{
             if (CurrentPage > 1 && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL ("1") + "\">" + Localization.GetString("First", Localization.SharedResourceFile) + "</a></li>";
+                return "<li><a href=\"" + CreateURL ("1") + "\">" + DnnLocalization.GetString("First", DnnLocalization.SharedResourceFile) + "</a></li>";
 
-            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + Localization.GetString("First", Localization.SharedResourceFile) + "</span></li>";
+            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + DnnLocalization.GetString("First", DnnLocalization.SharedResourceFile) + "</span></li>";
 		}
 
 		/// -----------------------------------------------------------------------------
@@ -351,9 +351,9 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
 		private string GetLastLink()
 		{
             if (CurrentPage != TotalPages && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL (TotalPages.ToString()) + "\">" + Localization.GetString("Last", Localization.SharedResourceFile) + "</a></li>";
+                return "<li><a href=\"" + CreateURL (TotalPages.ToString()) + "\">" + DnnLocalization.GetString("Last", DnnLocalization.SharedResourceFile) + "</a></li>";
 
-            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + Localization.GetString("Last", Localization.SharedResourceFile) + "</span></li>";
+            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + DnnLocalization.GetString("Last", DnnLocalization.SharedResourceFile) + "</span></li>";
 		}
 
 		#endregion
@@ -397,7 +397,7 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
 				intTotalPages = 1;
 
 			string str = null;
-			str = string.Format (Localization.GetString ("Pages"), CurrentPage.ToString (), intTotalPages.ToString ());
+			str = string.Format (DnnLocalization.GetString ("Pages"), CurrentPage.ToString (), intTotalPages.ToString ());
 			LiteralControl lit = new LiteralControl (str);
 			cellDisplayStatus.Controls.Add (lit);
 

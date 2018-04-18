@@ -20,7 +20,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Web.UI.WebControls;
-using DotNetNuke.Services.Localization;
+using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 
 namespace R7.Dnn.Extensions.Controls
 {
@@ -37,7 +37,7 @@ namespace R7.Dnn.Extensions.Controls
         public static void LocalizeColumnHeaders (this GridView gridView, string resourceFile)
         {
             foreach (DataControlField column in gridView.Columns) {
-                column.HeaderText = Localization.GetString (column.HeaderText, resourceFile);
+                column.HeaderText = DnnLocalization.GetString (column.HeaderText, resourceFile);
             }
         }
 

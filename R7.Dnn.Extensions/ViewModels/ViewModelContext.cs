@@ -22,9 +22,9 @@
 using System;
 using System.Web;
 using System.Web.UI;
-using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.Modules;
-using UiUtilities = DotNetNuke.Web.UI.Utilities;
+using DnnUiUtilities = DotNetNuke.Web.UI.Utilities;
+using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 
 namespace R7.Dnn.Extensions.ViewModels
 {
@@ -84,7 +84,7 @@ namespace R7.Dnn.Extensions.ViewModels
         public ViewModelContext (Control control, IModuleControl module)
         {
             Module = module.ModuleContext;
-            LocalResourceFile = UiUtilities.GetLocalResourceFile (control);
+            LocalResourceFile = DnnUiUtilities.GetLocalResourceFile (control);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace R7.Dnn.Extensions.ViewModels
         /// <param name="key">Resource key.</param>
         public string LocalizeString (string key)
         {
-            return Localization.GetString (key, LocalResourceFile);
+            return DnnLocalization.GetString (key, LocalResourceFile);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace R7.Dnn.Extensions.ViewModels
         /// <param name="defaultValue">Default value.</param>
         public string SafeLocalizeString (string key, string defaultValue)
         {
-            var result = Localization.GetString (key, LocalResourceFile);
+            var result = DnnLocalization.GetString (key, LocalResourceFile);
             return  (!string.IsNullOrEmpty (result))? result : defaultValue;
         }
     }

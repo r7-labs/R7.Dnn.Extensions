@@ -20,10 +20,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Globalization;
-using R7.Dnn.Extensions.Utilities;
+using R7.Dnn.Extensions.Localization;
 using Xunit;
 
-namespace R7.Dnn.Extensions.Tests.Utilities
+namespace R7.Dnn.Extensions.Tests.Localization
 {
     public class CultureHelperTests
     {

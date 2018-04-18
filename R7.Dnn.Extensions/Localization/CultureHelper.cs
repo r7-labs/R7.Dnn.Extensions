@@ -23,7 +23,7 @@ using System.Collections.Concurrent;
 using System.Globalization;
 using NGettext;
 
-namespace R7.Dnn.Extensions.Utilities
+namespace R7.Dnn.Extensions.Localization
 {
     public static class CultureHelper
     {

@@ -20,9 +20,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using DotNetNuke.Entities.Modules;
-using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.Skins;
 using DotNetNuke.UI.Skins.Controls;
+using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 
 namespace R7.Dnn.Extensions.Modules
 {
@@ -38,8 +38,8 @@ namespace R7.Dnn.Extensions.Modules
         /// <param name="localize">If set to <c>true</c> localize message and heading.</param>
         public static void Message (this PortalModuleBase module, string heading, string message, MessageType messageType = MessageType.Info, bool localize = false)
         {
-            var locheading = localize ? Localization.GetString (heading, module.LocalResourceFile) : heading;
-            var locmessage = localize ? Localization.GetString (message, module.LocalResourceFile) : message;
+            var locheading = localize ? DnnLocalization.GetString (heading, module.LocalResourceFile) : heading;
+            var locmessage = localize ? DnnLocalization.GetString (message, module.LocalResourceFile) : message;
             Skin.AddModuleMessage (module, locheading, locmessage,
                 (ModuleMessage.ModuleMessageType) messageType);
         }
@@ -53,7 +53,7 @@ namespace R7.Dnn.Extensions.Modules
         /// <param name="localize">If set to <c>true</c> localize message.</param>
         public static void Message (this PortalModuleBase module, string message, MessageType messageType = MessageType.Info, bool localize = false)
         {
-            var locmessage = localize ? Localization.GetString (message, module.LocalResourceFile) : message;
+            var locmessage = localize ? DnnLocalization.GetString (message, module.LocalResourceFile) : message;
             Skin.AddModuleMessage (module, locmessage,
                 (ModuleMessage.ModuleMessageType) messageType);
         }
