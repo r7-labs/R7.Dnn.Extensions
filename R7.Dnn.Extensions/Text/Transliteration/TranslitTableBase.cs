@@ -24,6 +24,7 @@ using System.Text;
 
 namespace R7.Dnn.Extensions.Text.Transliteration
 {
+    [Obsolete]
     public abstract class TranslitTableBase
     {
         protected string [,] translitTable; 

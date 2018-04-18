@@ -24,6 +24,7 @@ using System.Text;
 
 namespace R7.Dnn.Extensions.Text.Transliteration
 {
+    [Obsolete]
     public class RuFileTranslitTable : TranslitTableBase
     {
         private static readonly string [,] ruFileTranslitTable ={

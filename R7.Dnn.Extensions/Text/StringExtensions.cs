@@ -134,6 +134,7 @@ namespace R7.Dnn.Extensions.Text
             return Regex.Matches (text, @"\b\w[\w-]*?").Count;
         }
 
+        [Obsolete]
         public static string Transliterate (this string s, TranslitTableBase translitTable)
         {
             if (translitTable != null)
