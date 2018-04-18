@@ -19,7 +19,7 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-namespace R7.Dnn.Extensions.Utilities
+namespace R7.Dnn.Extensions.Models
 {
     /// <summary>
     /// Copy constructor.

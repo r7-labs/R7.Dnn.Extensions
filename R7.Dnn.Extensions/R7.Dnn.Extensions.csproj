@@ -122,7 +122,6 @@
     <Compile Include="UrlHistory\UrlHistoryBackend.cs" />
     <Compile Include="UrlHistory\UrlHistoryDefaultBackend.cs" />
     <Compile Include="Models\ModelHelper.cs" />
-    <Compile Include="Utilities\CopyCstor.cs" />
     <Compile Include="Collections\EnumerableExtensions.cs" />
     <Compile Include="Controls\PagingControl\PagingControl.cs" />
     <Compile Include="Controls\PagingControl\PagingControlMode.cs" />
@@ -144,6 +143,7 @@
     <Compile Include="Text\ParseHelper.cs" />
     <Compile Include="Text\QuotedPrintable\QuotedPrintable.cs" />
     <Compile Include="Localization\CultureHelper.cs" />
+    <Compile Include="Models\CopyCstor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
