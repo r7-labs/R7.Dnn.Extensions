@@ -42,15 +42,15 @@ namespace R7.Dnn.Extensions.Data
         /// </param>
         public T Get<T, TKey> (TKey itemId) where T: class
         {
-            T info;
+            T item;
 
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                info = repo.GetById (itemId);
+                item = repo.GetById (itemId);
             }
 
-            return info;
+            return item;
         }
 
         /// <summary>
@@ -70,15 +70,15 @@ namespace R7.Dnn.Extensions.Data
         /// <typeparam name="TScopeKey">The type of the scope property of object.</typeparam>
         public T Get<T, TKey, TScopeKey> (TKey itemId, TScopeKey scopeId) where T: class
         {
-            T info;
+            T item;
 
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                info = repo.GetById (itemId, scopeId);
+                item = repo.GetById (itemId, scopeId);
             }
 
-            return info;
+            return item;
         }
 
         /// <summary>
@@ -90,15 +90,15 @@ namespace R7.Dnn.Extensions.Data
         /// <typeparam name="T">The type of object to get.</typeparam>
         public T Get<T> (string sqlCondition, params object [] args) where T: class
         {
-            T info;
+            T item;
 
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                info = repo.Find (sqlCondition, args).SingleOrDefault ();
+                item = repo.Find (sqlCondition, args).SingleOrDefault ();
             }
 
-            return info;
+            return item;
         }
 
         /// <summary>
@@ -111,18 +111,18 @@ namespace R7.Dnn.Extensions.Data
         /// <typeparam name="T">The type of objects to get.</typeparam>
         public IEnumerable<T> GetObjects<T> (int scopeId) where T: class
         {
-            IEnumerable<T> infos;
+            IEnumerable<T> items;
 
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                infos = repo.Get (scopeId);
+                items = repo.Get (scopeId);
 
                 // Without [Scope("ModuleID")] it should be like:
-                // infos = repo.Find ("WHERE ModuleID = @0", moduleId);
+                // items = repo.Find ("WHERE ModuleID = @0", moduleId);
             }
 
-            return infos ?? Enumerable.Empty<T> ();
+            return items ?? Enumerable.Empty<T> ();
         }
 
         /// <summary>
@@ -132,15 +132,15 @@ namespace R7.Dnn.Extensions.Data
         /// <typeparam name="T">The type of objects to get.</typeparam>
         public IEnumerable<T> GetObjects<T> () where T: class
         {
-            IEnumerable<T> infos;
+            IEnumerable<T> items;
 
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                infos = repo.Get ();
+                items = repo.Get ();
             }
 
-            return infos ?? Enumerable.Empty<T> ();
+            return items ?? Enumerable.Empty<T> ();
         }
 
         /// <summary>
@@ -152,15 +152,15 @@ namespace R7.Dnn.Extensions.Data
         /// <typeparam name="T">The type of objects to get.</typeparam>
         public IEnumerable<T> GetObjects<T> (string sqlCondition, params object [] args) where T: class
         {
-            IEnumerable<T> infos;
+            IEnumerable<T> items;
 
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                infos = repo.Find (sqlCondition, args);
+                items = repo.Find (sqlCondition, args);
             }
 
-            return infos ?? Enumerable.Empty<T> ();
+            return items ?? Enumerable.Empty<T> ();
         }
 
         /// <summary>
@@ -173,14 +173,14 @@ namespace R7.Dnn.Extensions.Data
         /// <typeparam name="T">The type of objects to get.</typeparam>
         public IEnumerable<T> GetObjects<T> (System.Data.CommandType cmdType, string sql, params object [] args) where T: class
         {
-            IEnumerable<T> infos;
+            IEnumerable<T> items;
 
             using (var ctx = DataContext.Instance ())
             {
-                infos = ctx.ExecuteQuery<T> (cmdType, sql, args);
+                items = ctx.ExecuteQuery<T> (cmdType, sql, args);
             }
 
-            return infos ?? Enumerable.Empty<T> ();
+            return items ?? Enumerable.Empty<T> ();
         }
 
         /// <summary>
@@ -192,14 +192,14 @@ namespace R7.Dnn.Extensions.Data
         /// <typeparam name="T">The type of objects to get.</typeparam>
         public IEnumerable<T> GetObjectsFromSp<T> (string spName, params object [] args) where T: class
         {
-            IEnumerable<T> infos;
+            IEnumerable<T> items;
 
             using (var ctx = DataContext.Instance ())
             {
-                infos = ctx.ExecuteQuery<T> (System.Data.CommandType.StoredProcedure, spName, args);
+                items = ctx.ExecuteQuery<T> (System.Data.CommandType.StoredProcedure, spName, args);
             }
 
-            return infos ?? Enumerable.Empty<T> ();
+            return items ?? Enumerable.Empty<T> ();
         }
 
         /// <summary>
@@ -240,15 +240,15 @@ namespace R7.Dnn.Extensions.Data
         /// <typeparam name="T">The type of object to get.</typeparam>
         public IPagedList<T> GetPage<T> (int pageIndex, int pageSize) where T: class
         {
-            IPagedList<T> infos;
+            IPagedList<T> items;
 
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                infos = repo.GetPage (pageIndex, pageSize);
+                items = repo.GetPage (pageIndex, pageSize);
             }
 
-            return infos ?? new PagedList<T> (Enumerable.Empty<T> (), 0, 0);
+            return items ?? new PagedList<T> (Enumerable.Empty<T> (), 0, 0);
         }
 
         /// <summary>
@@ -262,15 +262,15 @@ namespace R7.Dnn.Extensions.Data
         /// <typeparam name="TScopeKey">The type of the scope property of object.</typeparam>
         public IPagedList<T> GetPage<T, TScopeKey> (TScopeKey scopeId, int pageIndex, int pageSize) where T: class
         {
-            IPagedList<T> infos;
+            IPagedList<T> items;
 
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                infos = repo.GetPage (scopeId, pageIndex, pageSize);
+                items = repo.GetPage (scopeId, pageIndex, pageSize);
             }
 
-            return infos ?? new PagedList<T> (Enumerable.Empty<T> (), 0, 0);
+            return items ?? new PagedList<T> (Enumerable.Empty<T> (), 0, 0);
         }
 
         /// <summary>
@@ -284,58 +284,58 @@ namespace R7.Dnn.Extensions.Data
         /// <typeparam name="T">The type of objects to get.</typeparam>
         public IPagedList<T> GetPage<T> (string sqlCondition, int pageIndex, int pageSize, params object [] args) where T: class
         {
-            IPagedList<T> infos;
+            IPagedList<T> items;
 
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                infos = repo.Find (pageIndex, pageSize, sqlCondition, args);
+                items = repo.Find (pageIndex, pageSize, sqlCondition, args);
             }
 
-            return infos ?? new PagedList<T> (Enumerable.Empty<T> (), 0, 0);
+            return items ?? new PagedList<T> (Enumerable.Empty<T> (), 0, 0);
         }
 
         /// <summary>
         /// Adds a new T object into the database
         /// </summary>
-        /// <param name='info'></param>
+        /// <param name='item'></param>
         /// <typeparam name="T">The type of object to add.</typeparam>
-        public void Add<T> (T info) where T: class
+        public void Add<T> (T item) where T: class
         {
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                repo.Insert (info);
+                repo.Insert (item);
             }
         }
 
         /// <summary>
         /// Updates an object already stored in the database
         /// </summary>
-        /// <param name='info'>
-        /// Info.
+        /// <param name='item'>
+        /// item.
         /// </param>
         /// <typeparam name="T">The type of object to update.</typeparam>
-        public void Update<T> (T info) where T: class
+        public void Update<T> (T item) where T: class
         {
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                repo.Update (info);
+                repo.Update (item);
             }
         }
 
         /// <summary>
         /// Delete a given item from the database by instance
         /// </summary>
-        /// <param name='info'></param>
+        /// <param name='item'></param>
         /// <typeparam name="T">The type of object to delete.</typeparam>
-        public void Delete<T> (T info) where T: class
+        public void Delete<T> (T item) where T: class
         {
             using (var ctx = DataContext.Instance ())
             {
                 var repo = ctx.GetRepository<T> ();
-                repo.Delete (info);
+                repo.Delete (item);
             }
         }
 
