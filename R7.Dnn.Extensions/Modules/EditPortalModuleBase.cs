@@ -165,44 +165,37 @@ namespace R7.Dnn.Extensions.Modules
                 AJAX.RegisterScriptManager ();
             }
 
-            try
-            {
-                if (!IsPostBack)
-                {
+            try {
+                if (!IsPostBack) {
                     // load the data into the control the first time we hit this page
 
                     // check we have an item to lookup
-                    if (ItemId != null)
-                    {
+                    if (ItemId != null) {
                         // load the item
                         var item = GetItemWithDependencies (ItemId.Value);
 
-                        if (item != null && CanEditItem (item))
-                        {
+                        if (item != null && CanEditItem (item)) {
                             ButtonDelete.Visible = CanDeleteItem (item);
                             LoadItem (item);
                         }
-                        else
+                        else {
                             Response.Redirect (Globals.NavigateURL (), true);
+                        }
                     }
-                    else
-                    {
+                    else {
                         ButtonDelete.Visible = false;
-                        if (ModuleAuditControl != null)
-                        {
+                        if (ModuleAuditControl != null) {
                             ModuleAuditControl.Visible = false;
                         }
 
                         LoadNewItem ();
                     }
                 }
-                else
-                {
+                else {
                     PostBack ();
                 }
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Exceptions.ProcessModuleLoadException (this, ex);
             }
         }
@@ -214,8 +207,7 @@ namespace R7.Dnn.Extensions.Modules
         /// <param name="e">Event arguments.</param>
         protected virtual void OnButtonUpdateClick (object sender, EventArgs e)
         {
-            try
-            {
+            try {
                 if (Page.IsValid) {
                     // create new or get existing item
                     var item = (ItemId == null) ? new TItem () : GetItem (ItemId.Value);
@@ -236,8 +228,7 @@ namespace R7.Dnn.Extensions.Modules
                     Response.Redirect (Globals.NavigateURL (), true);
                 }
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Exceptions.ProcessModuleLoadException (this, ex);
             }
         }
@@ -249,20 +240,16 @@ namespace R7.Dnn.Extensions.Modules
         /// <param name="e">Event arguments.</param>
         protected virtual void OnButtonDeleteClick (object sender, EventArgs e)
         {
-            try
-            {
-                if (ItemId.HasValue)
-                {
+            try {
+                if (ItemId.HasValue) {
                     var item = GetItem (ItemId.Value);
-                    if (item != null && CanDeleteItem (item))
-                    {
+                    if (item != null && CanDeleteItem (item)) {
                         DeleteItem (item);
                         Response.Redirect (Globals.NavigateURL (), true);
                     }
                 }
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Exceptions.ProcessModuleLoadException (this, ex);
             }
         }
