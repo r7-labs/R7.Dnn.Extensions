@@ -25,9 +25,9 @@ using DotNetNuke.UI.Modules;
 namespace R7.Dnn.Extensions.ViewModels
 {
     /// <summary>
-    /// DNN module context with settings to pass to viewmodels.
+    /// DNN context with settings to pass to viewmodels.
     /// </summary>
-    public class ViewModelContext<TSettings>: ViewModelContext
+    public class ViewModelContext<TSettings>: ViewModelContext, IViewModelContext<TSettings>
         where TSettings: class, new ()
     {
         /// <summary>

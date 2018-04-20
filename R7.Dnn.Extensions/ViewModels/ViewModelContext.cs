@@ -29,9 +29,9 @@ using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 namespace R7.Dnn.Extensions.ViewModels
 {
     /// <summary>
-    /// Simple DNN module context to pass to viewmodels.
+    /// Simple DNN context to pass to the viewmodels.
     /// </summary>
-    public class ViewModelContext
+    public class ViewModelContext : IViewModelContext
     {
         /// <summary>
         /// Gets or sets the local resource file.

@@ -144,6 +144,8 @@
     <Compile Include="Text\QuotedPrintable\QuotedPrintable.cs" />
     <Compile Include="Localization\CultureHelper.cs" />
     <Compile Include="Models\CopyCstor.cs" />
+    <Compile Include="ViewModels\IViewModelContext.cs" />
+    <Compile Include="ViewModels\IViewModelContextOfTSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
