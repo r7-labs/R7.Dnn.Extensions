@@ -169,7 +169,7 @@ namespace R7.Dnn.Extensions.Modules
                 if (!IsPostBack) {
                     // load the data into the control the first time we hit this page
 
-                    // check we have an item to lookup
+                    // check we have an item to edit
                     if (ItemId != null) {
                         // load the item
                         var item = GetItemWithDependencies (ItemId.Value);
@@ -179,7 +179,7 @@ namespace R7.Dnn.Extensions.Modules
                             LoadItem (item);
                         }
                         else {
-                            Response.Redirect (Globals.NavigateURL (), true);
+                            ItemDoesNotExists ();
                         }
                     }
                     else {
@@ -373,7 +373,14 @@ namespace R7.Dnn.Extensions.Modules
             return true;
         }
 
+        /// <summary>
+        /// Override to define custom action on control load then item does not exists.
+        /// </summary>
+        protected virtual void ItemDoesNotExists ()
+        {
+            Response.Redirect (Globals.NavigateURL (), true);
+        }
+
         #endregion
     }
 }
-
