@@ -66,11 +66,6 @@ namespace R7.Dnn.Extensions.Modules
         /// </summary>
         protected readonly string Key;
 
-        /// <summary>
-        /// The flag to enable AJAX.
-        /// </summary>
-        protected readonly bool EnableAjax;
-
         #endregion
 
         #region Controls
@@ -103,20 +98,10 @@ namespace R7.Dnn.Extensions.Modules
         /// Initializes a new instance of the <see cref="R7.Dnn.Extensions.Modules.EditPortalModuleBase{TItem,TKey}"/> class.
         /// </summary>
         /// <param name="key">Key.</param>
-        protected EditPortalModuleBase (string key, ICrudProvider<TItem> crudProvider) : this (key, false)
-        {
-            CrudProvider = crudProvider;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="R7.Dnn.Extensions.Modules.EditPortalModuleBase{TItem,TKey}"/> class.
-        /// </summary>
-        /// <param name="key">Key.</param>
-        /// <param name="enableAjax">If set to 'true', module will try to register AJAX script manager, if AJAX is installed.</param>
-        protected EditPortalModuleBase (string key, bool enableAjax)
+        protected EditPortalModuleBase (string key, ICrudProvider<TItem> crudProvider)
         {
             Key = key;
-            EnableAjax = enableAjax;
+            CrudProvider = crudProvider;
         }
 
         /// <summary>
@@ -164,10 +149,6 @@ namespace R7.Dnn.Extensions.Modules
         protected override void OnLoad (EventArgs e)
         {
             base.OnLoad (e);
-
-            if (EnableAjax && AJAX.IsInstalled ()) {
-                AJAX.RegisterScriptManager ();
-            }
 
             try {
                 if (!IsPostBack) {
