@@ -146,6 +146,8 @@
     <Compile Include="Models\CopyCstor.cs" />
     <Compile Include="ViewModels\IViewModelContext.cs" />
     <Compile Include="ViewModels\IViewModelContextOfTSettings.cs" />
+    <Compile Include="Data\Dal2CrudProvider.cs" />
+    <Compile Include="Data\ICrudProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

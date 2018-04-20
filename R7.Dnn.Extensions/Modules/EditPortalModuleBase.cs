@@ -27,6 +27,7 @@ using DotNetNuke.Entities.Modules;
 using DotNetNuke.Framework;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.UI.UserControls;
+using R7.Dnn.Extensions.Data;
 using R7.Dnn.Extensions.Text;
 using R7.Dnn.Extensions.Urls;
 using DnnLocalization = DotNetNuke.Services.Localization.Localization;
@@ -94,14 +95,17 @@ namespace R7.Dnn.Extensions.Modules
         /// </summary>
         protected ModuleAuditControl ModuleAuditControl;
 
+        protected ICrudProvider<TItem> CrudProvider; 
+
         #endregion
 
         /// <summary>
         /// Initializes a new instance of the <see cref="R7.Dnn.Extensions.Modules.EditPortalModuleBase{TItem,TKey}"/> class.
         /// </summary>
         /// <param name="key">Key.</param>
-        protected EditPortalModuleBase (string key): this (key, false)
+        protected EditPortalModuleBase (string key, ICrudProvider<TItem> crudProvider): this (key, false)
         {
+            CrudProvider = crudProvider;
         }
 
         /// <summary>
@@ -284,25 +288,25 @@ namespace R7.Dnn.Extensions.Modules
         /// </summary>
         /// <returns>The item.</returns>
         /// <param name="itemId">Item identifier.</param>
-        protected abstract TItem GetItem (TItemId itemId);
+        protected virtual TItem GetItem (TItemId itemId) => CrudProvider.Get (mnnmitemId);
 
         /// <summary>
         /// Implement method which will store new item in the datastore
         /// </summary>
         /// <param name="item">Item.</param>
-        protected abstract void AddItem (TItem item);
+        protected virtual void AddItem (TItem item) => CrudProvider.Add (item);
 
         /// <summary>
         /// Implement method which will update existing item in the datastore
         /// </summary>
         /// <param name="item">Item.</param>
-        protected abstract void UpdateItem (TItem item);
+        protected virtual void UpdateItem (TItem item) => CrudProvider.Update (item);
 
         /// <summary>
         /// Implement method which deletes the item in the datastore
         /// </summary>
         /// <param name="item">Item.</param>
-        protected abstract void DeleteItem (TItem item);
+        protected virtual void DeleteItem (TItem item) => CrudProvider.Delete (item);
 
         #endregion
 

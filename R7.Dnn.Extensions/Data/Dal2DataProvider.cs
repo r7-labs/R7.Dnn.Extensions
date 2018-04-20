@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2016 Roman M. Yagodin
+//  Copyright (c) 2016-2018 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -27,6 +27,8 @@ using DotNetNuke.Collections;
 
 namespace R7.Dnn.Extensions.Data
 {
+    // TODO: Use type parameter instead of int
+
     /// <summary>
     /// Provides interface to access data using DNN DAL2 features.
     /// </summary>
@@ -47,6 +49,18 @@ namespace R7.Dnn.Extensions.Data
 
             using (var ctx = DataContext.Instance ())
             {
+                var repo = ctx.GetRepository<T> ();
+                info = repo.GetById (itemId);
+            }
+
+            return info;
+        }
+
+        public T Get<T, TKey> (TKey itemId) where T : class
+        {
+            T info;
+
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 info = repo.GetById (itemId);
             }
