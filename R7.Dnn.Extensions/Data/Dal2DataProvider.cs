@@ -19,7 +19,6 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
 using System.Linq;
 using System.Collections.Generic;
 using DotNetNuke.Data;
@@ -27,8 +26,6 @@ using DotNetNuke.Collections;
 
 namespace R7.Dnn.Extensions.Data
 {
-    // TODO: Use type parameter instead of int
-
     /// <summary>
     /// Provides interface to access data using DNN DAL2 features.
     /// </summary>
@@ -43,24 +40,12 @@ namespace R7.Dnn.Extensions.Data
         /// <param name='itemId'>
         /// Item identifier.
         /// </param>
-        public T Get<T> (int itemId) where T: class
+        public T Get<T, TKey> (TKey itemId) where T: class
         {
             T info;
 
             using (var ctx = DataContext.Instance ())
             {
-                var repo = ctx.GetRepository<T> ();
-                info = repo.GetById (itemId);
-            }
-
-            return info;
-        }
-
-        public T Get<T, TKey> (TKey itemId) where T : class
-        {
-            T info;
-
-            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 info = repo.GetById (itemId);
             }
@@ -80,7 +65,10 @@ namespace R7.Dnn.Extensions.Data
         /// <param name='scopeId'>
         /// Scope identifier (like moduleId)
         /// </param>
-        public T Get<T> (int itemId, int scopeId) where T: class
+        /// <typeparam name="T">The type of object to get.</typeparam>
+        /// <typeparam name="TKey">The type of the key property of object.</typeparam>
+        /// <typeparam name="TScopeKey">The type of the scope property of object.</typeparam>
+        public T Get<T, TKey, TScopeKey> (TKey itemId, TScopeKey scopeId) where T: class
         {
             T info;
 
@@ -99,7 +87,7 @@ namespace R7.Dnn.Extensions.Data
         /// <returns>Object of type T or null.</returns>
         /// <param name="sqlCondition">SQL command condition.</param>
         /// <param name="args">SQL command arguments.</param>
-        /// <typeparam name="T">Type of objects.</typeparam>
+        /// <typeparam name="T">The type of object to get.</typeparam>
         public T Get<T> (string sqlCondition, params object [] args) where T: class
         {
             T info;
@@ -119,7 +107,8 @@ namespace R7.Dnn.Extensions.Data
         /// <param name='scopeId'>
         /// Scope identifier (like moduleId)
         /// </param>
-        /// <returns></returns>
+        /// <returns>Enumerable with objects of type T</returns>
+        /// <typeparam name="T">The type of objects to get.</typeparam>
         public IEnumerable<T> GetObjects<T> (int scopeId) where T: class
         {
             IEnumerable<T> infos;
@@ -139,7 +128,8 @@ namespace R7.Dnn.Extensions.Data
         /// <summary>
         /// Gets all objects of type T from database
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Enumerable with objects of type T</returns>
+        /// <typeparam name="T">The type of objects to get.</typeparam>
         public IEnumerable<T> GetObjects<T> () where T: class
         {
             IEnumerable<T> infos;
@@ -159,7 +149,7 @@ namespace R7.Dnn.Extensions.Data
         /// <returns>Enumerable with objects of type T</returns>
         /// <param name="sqlCondition">SQL command condition.</param>
         /// <param name="args">SQL command arguments.</param>
-        /// <typeparam name="T">Type of objects.</typeparam>
+        /// <typeparam name="T">The type of objects to get.</typeparam>
         public IEnumerable<T> GetObjects<T> (string sqlCondition, params object [] args) where T: class
         {
             IEnumerable<T> infos;
@@ -180,7 +170,7 @@ namespace R7.Dnn.Extensions.Data
         /// <param name="cmdType">Type of an SQL command.</param>
         /// <param name="sql">SQL command.</param>
         /// <param name="args">SQL command arguments.</param>
-        /// <typeparam name="T">Type of objects.</typeparam>
+        /// <typeparam name="T">The type of objects to get.</typeparam>
         public IEnumerable<T> GetObjects<T> (System.Data.CommandType cmdType, string sql, params object [] args) where T: class
         {
             IEnumerable<T> infos;
@@ -199,7 +189,7 @@ namespace R7.Dnn.Extensions.Data
         /// <returns>Enumerable with objects of type T</returns>
         /// <param name="spName">Stored procedure name.</param>
         /// <param name="args">SQL command arguments.</param>
-        /// <typeparam name="T">Type of objects.</typeparam>
+        /// <typeparam name="T">The type of objects to get.</typeparam>
         public IEnumerable<T> GetObjectsFromSp<T> (string spName, params object [] args) where T: class
         {
             IEnumerable<T> infos;
@@ -218,7 +208,7 @@ namespace R7.Dnn.Extensions.Data
         /// <returns>Stored procedure execution result as scalar value.</returns>
         /// <param name="spName">Stored procedure name.</param>
         /// <param name="args">SQL command arguments.</param>
-        /// <typeparam name="T">Type of scalar.</typeparam>
+        /// <typeparam name="T">The type of the scalar.</typeparam>
         public T ExecuteSpScalar<T> (string spName, params object [] args)
         {
             using (var ctx = DataContext.Instance ()) {
@@ -233,7 +223,7 @@ namespace R7.Dnn.Extensions.Data
         /// <param name="sqlCondition">SQL condition.</param>
         /// <param name="searchText">Search text.</param>
         /// <param name="dynamicSql">If set to <c>true</c> use dynamic sql arguments with @, otherwize string.Format().</param>
-        /// <typeparam name="T">Type of objects.</typeparam>
+        /// <typeparam name="T">The type of objects to find.</typeparam>
         public IEnumerable<T> FindObjects<T> (string sqlCondition, string searchText, bool dynamicSql = true) where T: class
         {
             return string.IsNullOrWhiteSpace (searchText) ? GetObjects<T> ()
@@ -247,6 +237,7 @@ namespace R7.Dnn.Extensions.Data
         /// <param name="pageIndex">a page index</param>
         /// <param name="pageSize">a page size</param>
         /// <returns>A paged list of T objects</returns>
+        /// <typeparam name="T">The type of object to get.</typeparam>
         public IPagedList<T> GetPage<T> (int pageIndex, int pageSize) where T: class
         {
             IPagedList<T> infos;
@@ -267,7 +258,9 @@ namespace R7.Dnn.Extensions.Data
         /// <param name="pageIndex">a page index</param>
         /// <param name="pageSize">a page size</param>
         /// <returns>A paged list of T objects</returns>
-        public IPagedList<T> GetPage<T> (int scopeId, int pageIndex, int pageSize) where T: class
+        /// <typeparam name="T">The type of object to get.</typeparam>
+        /// <typeparam name="TScopeKey">The type of the scope property of object.</typeparam>
+        public IPagedList<T> GetPage<T, TScopeKey> (TScopeKey scopeId, int pageIndex, int pageSize) where T: class
         {
             IPagedList<T> infos;
 
@@ -288,6 +281,7 @@ namespace R7.Dnn.Extensions.Data
         /// <param name="pageSize">a page size</param>
         /// <param name="args">SQL command arguments.</param>
         /// <returns>A paged list of T objects</returns>
+        /// <typeparam name="T">The type of objects to get.</typeparam>
         public IPagedList<T> GetPage<T> (string sqlCondition, int pageIndex, int pageSize, params object [] args) where T: class
         {
             IPagedList<T> infos;
@@ -305,6 +299,7 @@ namespace R7.Dnn.Extensions.Data
         /// Adds a new T object into the database
         /// </summary>
         /// <param name='info'></param>
+        /// <typeparam name="T">The type of object to add.</typeparam>
         public void Add<T> (T info) where T: class
         {
             using (var ctx = DataContext.Instance ())
@@ -320,6 +315,7 @@ namespace R7.Dnn.Extensions.Data
         /// <param name='info'>
         /// Info.
         /// </param>
+        /// <typeparam name="T">The type of object to update.</typeparam>
         public void Update<T> (T info) where T: class
         {
             using (var ctx = DataContext.Instance ())
@@ -333,6 +329,7 @@ namespace R7.Dnn.Extensions.Data
         /// Delete a given item from the database by instance
         /// </summary>
         /// <param name='info'></param>
+        /// <typeparam name="T">The type of object to delete.</typeparam>
         public void Delete<T> (T info) where T: class
         {
             using (var ctx = DataContext.Instance ())
@@ -346,7 +343,9 @@ namespace R7.Dnn.Extensions.Data
         /// Delete a given item from the database by ID
         /// </summary>
         /// <param name='itemId'></param>
-        public void Delete<T> (int itemId) where T: class
+        /// <typeparam name="T">The type of object to delete.</typeparam>
+        /// <typeparam name="TKey">The type of the key property of object.</typeparam>
+        public void Delete<T, TKey> (TKey itemId) where T: class
         {
             using (var ctx = DataContext.Instance ())
             {
@@ -360,6 +359,7 @@ namespace R7.Dnn.Extensions.Data
         /// </summary>
         /// <param name='sqlCondition'>SQL condition</param>
         /// <param name='args'>Optional arguments</param>
+        /// <typeparam name="T">The type of objects to delete.</typeparam>
         public void Delete<T> (string sqlCondition, params object [] args) where T: class
         {
             using (var ctx = DataContext.Instance ())
