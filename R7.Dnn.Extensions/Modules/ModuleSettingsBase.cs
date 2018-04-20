@@ -30,7 +30,7 @@ namespace R7.Dnn.Extensions.Modules
     /// Base class for module settings controls, extended with strongly-typed settings.
     /// </summary>
     public abstract class ModuleSettingsBase<TSettings> : ModuleSettingsBase, 
-        IModuleControlWithSettings<TSettings> where TSettings: class, new ()
+        IModuleControl<TSettings> where TSettings: class, new ()
     {
         #region Private fields
 

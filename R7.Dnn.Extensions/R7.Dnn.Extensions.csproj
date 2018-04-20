@@ -113,7 +113,7 @@
     <Compile Include="Utilities\TypeUtils.cs" />
     <Compile Include="Text\Transliteration\RuFileTranslitTable.cs" />
     <Compile Include="Text\Transliteration\TranslitTableBase.cs" />
-    <Compile Include="Modules\IModuleControlWithSettings.cs" />
+    <Compile Include="Modules\IModuleControlOfTSettings.cs" />
     <Compile Include="ViewModels\ListItemViewModel.cs" />
     <Compile Include="Configuration\ExtensionConfig.cs" />
     <Compile Include="Configuration\ExtensionYamlConfig.cs" />

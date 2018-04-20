@@ -1,10 +1,10 @@
 ﻿//
-//  IModuleControlWithSettings.cs
+//  IModuleControlOfTSettings.cs
 //
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2017 Roman M. Yagodin
+//  Copyright (c) 2017-2018 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -27,7 +27,7 @@ namespace R7.Dnn.Extensions.Modules
     /// <summary>
     /// Module control with settings.
     /// </summary>
-    public interface IModuleControlWithSettings<TSettings>: IModuleControl
+    public interface IModuleControl<TSettings>: IModuleControl
         where TSettings : class, new()
     {
         /// <summary>
