@@ -288,7 +288,7 @@ namespace R7.Dnn.Extensions.Modules
         /// </summary>
         /// <returns>The item.</returns>
         /// <param name="itemId">Item identifier.</param>
-        protected virtual TItem GetItem (TItemId itemId) => CrudProvider.Get (mnnmitemId);
+        protected virtual TItem GetItem (TItemId itemId) => CrudProvider.Get (itemId);
 
         /// <summary>
         /// Implement method which will store new item in the datastore
