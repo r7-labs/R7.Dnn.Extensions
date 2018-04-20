@@ -28,7 +28,7 @@ namespace R7.Dnn.Extensions.ViewModels
     /// DNN context with settings to pass to viewmodels.
     /// </summary>
     public class ViewModelContext<TSettings>: ViewModelContext, IViewModelContext<TSettings>
-        where TSettings: class, new ()
+        where TSettings : class, new()
     {
         /// <summary>
         /// Gets or sets the settings.
@@ -53,7 +53,7 @@ namespace R7.Dnn.Extensions.ViewModels
         /// </summary>
         /// <param name="module">Module control.</param>
         /// <param name="settings">Settings.</param>
-        public ViewModelContext (IModuleControl module, TSettings settings): base (module)
+        public ViewModelContext (IModuleControl module, TSettings settings) : base (module)
         {
             Settings = settings;
         }
@@ -64,7 +64,7 @@ namespace R7.Dnn.Extensions.ViewModels
         /// <param name="control">Control.</param>
         /// <param name="module">Module control.</param>
         /// <param name="settings">Settings.</param>
-        public ViewModelContext (Control control, IModuleControl module, TSettings settings): base (control, module)
+        public ViewModelContext (Control control, IModuleControl module, TSettings settings) : base (control, module)
         {
             Settings = settings;
         }

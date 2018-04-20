@@ -34,20 +34,18 @@ namespace R7.Dnn.Extensions.Controls
         /// <param name="value">A value.</param>
         /// <param name="defaultIndex">Default index (in case item not found).</param>
         public static int FindIndexByValue (this ListControl list, object value, int defaultIndex = 0)
-        { 
-            if (value != null)
-            {
+        {
+            if (value != null) {
                 var index = 0;
                 var strvalue = value.ToString ();
-                foreach (ListItem item in list.Items)
-                {
+                foreach (ListItem item in list.Items) {
                     if (item.Value == strvalue)
                         return index;
                     index++;
                 }
             }
 
-            return defaultIndex; 
+            return defaultIndex;
         }
 
         /// <summary>

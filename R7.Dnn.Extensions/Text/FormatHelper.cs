@@ -55,10 +55,8 @@ namespace R7.Dnn.Extensions.Text
             var sb = new StringBuilder ();
 
             var i = 0;
-            foreach (var a in args)
-            {
-                if (a != null && !string.IsNullOrWhiteSpace (a.ToString ()))
-                {
+            foreach (var a in args) {
+                if (a != null && !string.IsNullOrWhiteSpace (a.ToString ())) {
                     if (i++ > 0)
                         sb.Append (separator);
 

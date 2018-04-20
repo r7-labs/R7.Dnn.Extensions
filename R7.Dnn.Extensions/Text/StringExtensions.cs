@@ -36,8 +36,7 @@ namespace R7.Dnn.Extensions.Text
         /// <param name="s">Original string.</param>
         public static string FirstCharToUpper (this string s)
         {
-            if (!string.IsNullOrWhiteSpace (s))
-            {
+            if (!string.IsNullOrWhiteSpace (s)) {
                 if (s.Length == 1) {
                     return s.ToUpper ();
                 }
@@ -55,8 +54,7 @@ namespace R7.Dnn.Extensions.Text
         /// <param name="s">Original string.</param>
         public static string FirstCharToUpperInvariant (this string s)
         {
-            if (!string.IsNullOrWhiteSpace (s))
-            {
+            if (!string.IsNullOrWhiteSpace (s)) {
                 if (s.Length == 1) {
                     return s.ToUpperInvariant ();
                 }
@@ -74,8 +72,7 @@ namespace R7.Dnn.Extensions.Text
         /// <param name="s">Original string.</param>
         public static string FirstCharToLower (this string s)
         {
-            if (!string.IsNullOrWhiteSpace (s))
-            {
+            if (!string.IsNullOrWhiteSpace (s)) {
                 if (s.Length == 1) {
                     return s.ToLower ();
                 }
@@ -93,8 +90,7 @@ namespace R7.Dnn.Extensions.Text
         /// <param name="s">Original string.</param>
         public static string FirstCharToLowerInvariant (this string s)
         {
-            if (!string.IsNullOrWhiteSpace (s))
-            {
+            if (!string.IsNullOrWhiteSpace (s)) {
                 if (s.Length == 1) {
                     return s.ToLowerInvariant ();
                 }
@@ -108,8 +104,7 @@ namespace R7.Dnn.Extensions.Text
         public static int TryExtractInt32 (string text, int defaultValue = 0)
         {
             var matches = Regex.Matches (text, @"\d+");
-            if (matches != null && matches.Count > 0)
-            {
+            if (matches != null && matches.Count > 0) {
                 int result;
                 if (int.TryParse (matches [0].Value, out result))
                     return result;
@@ -121,7 +116,7 @@ namespace R7.Dnn.Extensions.Text
         public static int ToInt32 (this string value, int defaultValue)
         {
             int tmp;
-            return int.TryParse (value, out tmp) ? tmp : defaultValue; 
+            return int.TryParse (value, out tmp) ? tmp : defaultValue;
         }
 
         /// <summary>
@@ -152,7 +147,7 @@ namespace R7.Dnn.Extensions.Text
         /// <param name="separator">Separator.</param>
         public static string JoinNotNullOrEmpty (this IEnumerable<string> values, string separator)
         {
-            return FormatHelper.JoinNotNullOrEmpty (separator, values); 
+            return FormatHelper.JoinNotNullOrEmpty (separator, values);
         }
 
         /// <summary>

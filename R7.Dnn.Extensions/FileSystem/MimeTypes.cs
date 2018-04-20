@@ -31,7 +31,7 @@ namespace R7.Dnn.Extensions.FileSystem
 
         // http://stackoverflow.com/questions/1029740/get-mime-type-from-extension
 
-        private static readonly IDictionary<string, string> mimeTypes = new Dictionary<string, string> (StringComparer.InvariantCultureIgnoreCase) 
+        private static readonly IDictionary<string, string> mimeTypes = new Dictionary<string, string> (StringComparer.InvariantCultureIgnoreCase)
         {
             // combination of values from Windows 7 Registry and 
             // from C:\Windows\System32\inetsrv\config\applicationHost.config, and more

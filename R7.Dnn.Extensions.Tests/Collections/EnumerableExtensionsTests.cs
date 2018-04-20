@@ -28,7 +28,7 @@ namespace R7.Dnn.Extensions.Tests.Collections
     public class EnumerableExtensionsTests
     {
         [Fact]
-        public void IsNullOrEmptyTest  ()
+        public void IsNullOrEmptyTest ()
         {
             var emptyEnumerable = GetEmptyEnumerable ();
             var emptyCollection = new List<object> ();

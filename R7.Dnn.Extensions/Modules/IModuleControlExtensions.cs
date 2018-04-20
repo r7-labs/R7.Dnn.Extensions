@@ -38,7 +38,7 @@ namespace R7.Dnn.Extensions.Modules
         /// <param name="trackClicks">If set to <c>true</c> then track clicks.</param>
         public static string FormatUrl (this IModuleControl module, string link, bool trackClicks)
         {
-            return Globals.LinkClick 
+            return Globals.LinkClick
                 (link, module.ModuleContext.TabId, module.ModuleContext.ModuleId, trackClicks);
         }
 
@@ -52,7 +52,7 @@ namespace R7.Dnn.Extensions.Modules
         public static string EditUrl (this IModuleControl module, string controlKey, params string [] args)
         {
             // TODO: Use 2-element array?
-            var argList = new List<string> (args); 
+            var argList = new List<string> (args);
             argList.Add ("mid");
             argList.Add (module.ModuleContext.ModuleId.ToString ());
 

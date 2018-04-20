@@ -73,26 +73,26 @@ namespace R7.Dnn.Extensions.UrlHistory
         protected virtual string GetUrlName (string url, int portalId)
         {
             switch (Globals.GetURLType (url)) {
-            case TabType.File:
-                var file = FileManager.Instance.GetFile (UrlHelper.GetResourceId (url));
-                if (file != null) {
-                    return file.Folder + file.FileName;
-                }
-                break;
+                case TabType.File:
+                    var file = FileManager.Instance.GetFile (UrlHelper.GetResourceId (url));
+                    if (file != null) {
+                        return file.Folder + file.FileName;
+                    }
+                    break;
 
-            case TabType.Tab:
-                var tab = TabController.Instance.GetTab (int.Parse (url), portalId);
-                if (tab != null) {
-                    return tab.TabName;
-                }
-                break;
+                case TabType.Tab:
+                    var tab = TabController.Instance.GetTab (int.Parse (url), portalId);
+                    if (tab != null) {
+                        return tab.TabName;
+                    }
+                    break;
 
-            case TabType.Member:
-                var user = UserController.Instance.GetUserById (portalId, UrlHelper.GetResourceId (url));
-                if (user != null) {
-                    return user.DisplayName;
-                }
-                break;
+                case TabType.Member:
+                    var user = UserController.Instance.GetUserById (portalId, UrlHelper.GetResourceId (url));
+                    if (user != null) {
+                        return user.DisplayName;
+                    }
+                    break;
             }
 
             return url;

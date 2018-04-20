@@ -28,8 +28,8 @@ namespace R7.Dnn.Extensions.Modules
     /// <summary>
     /// Base class for module view and edit controls, extended with strongly-typed settings.
     /// </summary>
-    public abstract class PortalModuleBase<TSettings>: PortalModuleBase, 
-        IModuleControl<TSettings> where TSettings : class, new ()
+    public abstract class PortalModuleBase<TSettings>: PortalModuleBase,
+        IModuleControl<TSettings> where TSettings : class, new()
     {
         #region Private fields
 
@@ -46,7 +46,7 @@ namespace R7.Dnn.Extensions.Modules
         public new TSettings Settings {
             get {
                 return settings ?? (settings = SettingsRepository.GetSettings (ModuleContext.Configuration));
-            }                
+            }
         }
 
         /// <summary>

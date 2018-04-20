@@ -37,20 +37,17 @@ namespace R7.Dnn.Extensions.Controls
         /// <param name="ignoreCase">If set to <c>true</c> ignore value case.</param>
         public static void SelectAndExpandByValue (this DnnTreeView treeview, string value, bool ignoreCase = false)
         {
-            if (!string.IsNullOrWhiteSpace (value))
-            {
+            if (!string.IsNullOrWhiteSpace (value)) {
                 var treeNode = treeview.FindNodeByValue (value, ignoreCase);
-                if (treeNode != null)
-                {
+                if (treeNode != null) {
                     treeNode.Selected = true;
 
                     // expand all parent nodes
                     treeNode = treeNode.ParentNode;
-                    while (treeNode != null)
-                    {
+                    while (treeNode != null) {
                         treeNode.Expanded = true;
                         treeNode = treeNode.ParentNode;
-                    } 
+                    }
                 }
             }
         }

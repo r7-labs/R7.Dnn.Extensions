@@ -31,7 +31,7 @@ namespace R7.Dnn.Extensions.ViewModels
     /// <summary>
     /// Simple DNN context to pass to the viewmodels.
     /// </summary>
-    public class ViewModelContext : IViewModelContext
+    public class ViewModelContext: IViewModelContext
     {
         /// <summary>
         /// Gets or sets the local resource file.
@@ -107,7 +107,7 @@ namespace R7.Dnn.Extensions.ViewModels
         public string SafeLocalizeString (string key, string defaultValue)
         {
             var result = DnnLocalization.GetString (key, LocalResourceFile);
-            return  (!string.IsNullOrEmpty (result))? result : defaultValue;
+            return (!string.IsNullOrEmpty (result)) ? result : defaultValue;
         }
     }
 }

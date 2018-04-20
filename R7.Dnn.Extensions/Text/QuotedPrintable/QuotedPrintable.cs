@@ -78,29 +78,26 @@ namespace R7.Dnn.Extensions.Text.QuotedPrintable
 
             var bytes = Encoding.UTF8.GetBytes (textToEncode);
             var builder = new StringBuilder ();
-            foreach (var b in bytes)
-            {
+            foreach (var b in bytes) {
                 if (b != 0)
-                if ((b < 32) || (b > 126))
-                    builder.Append (String.Format ("={0}", b.ToString ("X2")));
-                else
-                {
-                    switch (b)
-                    {
-                        case 13:
-                            builder.Append ("=0D");
-                            break;
-                        case 10:
-                            builder.Append ("=0A");
-                            break;
-                        case 61:
-                            builder.Append ("=3D");
-                            break;
-                        default:
-                            builder.Append (Convert.ToChar (b));
-                            break;
+                    if ((b < 32) || (b > 126))
+                        builder.Append (String.Format ("={0}", b.ToString ("X2")));
+                    else {
+                        switch (b) {
+                            case 13:
+                                builder.Append ("=0D");
+                                break;
+                            case 10:
+                                builder.Append ("=0A");
+                                break;
+                            case 61:
+                                builder.Append ("=3D");
+                                break;
+                            default:
+                                builder.Append (Convert.ToChar (b));
+                                break;
+                        }
                     }
-                }
             }
 
             return builder.ToString ();
@@ -114,12 +111,10 @@ namespace R7.Dnn.Extensions.Text.QuotedPrintable
             var builder = new StringBuilder ();
             var charArray = qpstr.ToCharArray ();
             var i = 0;
-            foreach (char c in charArray)
-            {
+            foreach (char c in charArray) {
                 builder.Append (c);
                 i++;
-                if (i == maxcharlen)
-                {
+                if (i == maxcharlen) {
                     builder.AppendLine ("=");
                     i = 0;
                 }
@@ -134,10 +129,9 @@ namespace R7.Dnn.Extensions.Text.QuotedPrintable
                 return null;
 
             CaptureCollection captures = m.Groups [3].Captures;
-            var bytes = new byte[captures.Count];
+            var bytes = new byte [captures.Count];
 
-            for (int i = 0; i < captures.Count; i++)
-            {
+            for (int i = 0; i < captures.Count; i++) {
                 bytes [i] = Convert.ToByte (captures [i].Value, 16);
             }
 
@@ -158,12 +152,10 @@ namespace R7.Dnn.Extensions.Text.QuotedPrintable
             if (encodedText == null)
                 throw new ArgumentNullException ();
 
-            using (var sr = new StringReader (encodedText))
-            {
+            using (var sr = new StringReader (encodedText)) {
                 var builder = new StringBuilder ();
                 string line;
-                while ((line = sr.ReadLine ()) != null)
-                {
+                while ((line = sr.ReadLine ()) != null) {
                     if (line.EndsWith ("=", StringComparison.Ordinal))
                         builder.Append (line.Substring (0, line.Length - 1));
                     else

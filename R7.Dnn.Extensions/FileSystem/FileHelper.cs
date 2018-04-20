@@ -49,7 +49,7 @@ namespace R7.Dnn.Extensions.FileSystem
 
             var upExt = Path.GetExtension (filename).ToLowerInvariant ().TrimStart ('.');
             foreach (var ext in allowedFileExts)
-                if (ext.Trim().ToLowerInvariant () == upExt)
+                if (ext.Trim ().ToLowerInvariant () == upExt)
                     return true;
 
             return false;

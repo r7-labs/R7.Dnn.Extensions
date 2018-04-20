@@ -21,7 +21,7 @@
 
 namespace R7.Dnn.Extensions.Data
 {
-    public class Dal2CrudProvider<T> : ICrudProvider<T> where T: class
+    public class Dal2CrudProvider<T>: ICrudProvider<T> where T : class
     {
         protected readonly Dal2DataProvider DataProvider;
 

@@ -34,7 +34,7 @@ namespace R7.Dnn.Extensions.Models
         /// <param name="dest">Destination object.</param>
         /// <returns>The dest object of type T filled with properties of src object.</returns>
         /// <typeparam name="T">Common base type (e.g. interface) for both objects.</typeparam>
-        public static T Copy<T> (T src, T dest) where T: class
+        public static T Copy<T> (T src, T dest) where T : class
         {
             foreach (var pi in typeof (T).GetProperties ()) {
                 if (pi.GetSetMethod () != null) {
@@ -52,12 +52,12 @@ namespace R7.Dnn.Extensions.Models
         /// <returns>New object of type T filled with properties of src object.</returns>
         /// <typeparam name="T">The type of object to create.</typeparam>
         /// <typeparam name="U">Common base type (e.g. interface) for both objects.</typeparam>
-        public static T New<T,U> (U src)
-            where T: class, U, new ()
-            where U: class
+        public static T New<T, U> (U src)
+            where T : class, U, new()
+            where U : class
         {
             // incapsulate type cast
             return (T) Copy (src, new T ());
         }
-    }       
+    }
 }

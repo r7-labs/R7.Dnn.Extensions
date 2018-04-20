@@ -38,14 +38,12 @@ namespace R7.Dnn.Extensions.Text.Levenstein
 
         public abstract int Distance { get; }
 
-        public double NormalDistance
-        {
-            get
-            {
+        public double NormalDistance {
+            get {
                 var l1 = (s1 == null) ? 0 : s1.Length;
                 var l2 = (s2 == null) ? 0 : s2.Length;
 
-                return  1 - (double) Distance / Math.Max (l1, l2);
+                return 1 - (double) Distance / Math.Max (l1, l2);
             }
         }
     }

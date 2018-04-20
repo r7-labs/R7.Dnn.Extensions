@@ -38,7 +38,7 @@ namespace R7.Dnn.Extensions.Utilities
         /// <param name="checkDnnNull">If set to 'true' (default), 
         /// threat <see cref="T:DotNetNuke.Common.Utilities.Null" /> special values as nulls.</param>
         [Obsolete ("Use ParseHelper.ParseToNullable instead")]
-        public static T? ParseToNullable<T> (string value, bool checkDnnNull = true) where T: struct
+        public static T? ParseToNullable<T> (string value, bool checkDnnNull = true) where T : struct
         {
             var tc = TypeDescriptor.GetConverter (typeof (T));
 
@@ -62,7 +62,7 @@ namespace R7.Dnn.Extensions.Utilities
         /// <returns>The nullable.</returns>
         /// <param name="n">N.</param>
         /// <typeparam name="T">Type parameter.</typeparam>
-        public static T? ToNullable<T> (T n) where T: struct
+        public static T? ToNullable<T> (T n) where T : struct
         {
             return Null.IsNull (n) ? null : (T?) n;
         }
@@ -73,7 +73,7 @@ namespace R7.Dnn.Extensions.Utilities
         /// <returns><c>true</c> if the specified n is null or DNN Null; otherwise, <c>false</c>.</returns>
         /// <param name="n">N.</param>
         /// <typeparam name="T">Type parameter.</typeparam>
-        public static bool IsNull<T> (T? n) where T: struct
+        public static bool IsNull<T> (T? n) where T : struct
         {
             if (n.HasValue && !Null.IsNull (n.Value))
                 return false;

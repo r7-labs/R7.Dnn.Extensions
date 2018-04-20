@@ -27,10 +27,9 @@ namespace R7.Dnn.Extensions.Text.Transliteration
     [Obsolete]
     public abstract class TranslitTableBase
     {
-        protected string [,] translitTable; 
+        protected string [,] translitTable;
 
-        public string [,] TranslitTable 
-        {
+        public string [,] TranslitTable {
             get { return translitTable; }
         }
 

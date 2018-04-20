@@ -26,7 +26,7 @@ using YamlDotNet.Serialization.NamingConventions;
 
 namespace R7.Dnn.Extensions.Configuration
 {
-    public class ExtensionYamlConfig<TPortalConfig> : ExtensionConfig<TPortalConfig> where TPortalConfig: class, new ()
+    public class ExtensionYamlConfig<TPortalConfig>: ExtensionConfig<TPortalConfig> where TPortalConfig : class, new()
     {
         public ExtensionYamlConfig (string configFileName, Func<TPortalConfig, TPortalConfig> initCallback = null)
             : base (configFileName, initCallback)

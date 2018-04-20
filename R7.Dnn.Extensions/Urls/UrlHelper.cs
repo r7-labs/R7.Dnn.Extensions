@@ -57,7 +57,7 @@ namespace R7.Dnn.Extensions.Urls
         [Obsolete ("User UrlUtils.InPopUp() instead")]
         public static bool IsInPopup (HttpRequest request)
         {
-            return  UrlUtils.InPopUp ();
+            return UrlUtils.InPopUp ();
         }
 
         static readonly char [] resourceIdSeparator = { '=' };
@@ -148,7 +148,7 @@ namespace R7.Dnn.Extensions.Urls
 
         static PortalAliasInfo GetPrimaryPortalAlias (int portalId)
         {
-            var portalAliases =  PortalAliasController.Instance.GetPortalAliasesByPortalId (portalId);
+            var portalAliases = PortalAliasController.Instance.GetPortalAliasesByPortalId (portalId);
             var portalAlias = portalAliases.FirstOrDefault (pa => pa.IsPrimary);
             if (portalAlias == null) {
                 // fallback to first available portal alias

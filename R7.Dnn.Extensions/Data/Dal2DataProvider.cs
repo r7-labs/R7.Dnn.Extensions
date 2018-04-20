@@ -40,12 +40,11 @@ namespace R7.Dnn.Extensions.Data
         /// <param name='itemId'>
         /// Item identifier.
         /// </param>
-        public T Get<T, TKey> (TKey itemId) where T: class
+        public T Get<T, TKey> (TKey itemId) where T : class
         {
             T item;
 
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 item = repo.GetById (itemId);
             }
@@ -68,12 +67,11 @@ namespace R7.Dnn.Extensions.Data
         /// <typeparam name="T">The type of object to get.</typeparam>
         /// <typeparam name="TKey">The type of the key property of object.</typeparam>
         /// <typeparam name="TScopeKey">The type of the scope property of object.</typeparam>
-        public T Get<T, TKey, TScopeKey> (TKey itemId, TScopeKey scopeId) where T: class
+        public T Get<T, TKey, TScopeKey> (TKey itemId, TScopeKey scopeId) where T : class
         {
             T item;
 
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 item = repo.GetById (itemId, scopeId);
             }
@@ -88,12 +86,11 @@ namespace R7.Dnn.Extensions.Data
         /// <param name="sqlCondition">SQL command condition.</param>
         /// <param name="args">SQL command arguments.</param>
         /// <typeparam name="T">The type of object to get.</typeparam>
-        public T Get<T> (string sqlCondition, params object [] args) where T: class
+        public T Get<T> (string sqlCondition, params object [] args) where T : class
         {
             T item;
 
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 item = repo.Find (sqlCondition, args).SingleOrDefault ();
             }
@@ -109,12 +106,11 @@ namespace R7.Dnn.Extensions.Data
         /// </param>
         /// <returns>Enumerable with objects of type T</returns>
         /// <typeparam name="T">The type of objects to get.</typeparam>
-        public IEnumerable<T> GetObjects<T> (int scopeId) where T: class
+        public IEnumerable<T> GetObjects<T> (int scopeId) where T : class
         {
             IEnumerable<T> items;
 
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 items = repo.Get (scopeId);
 
@@ -130,12 +126,11 @@ namespace R7.Dnn.Extensions.Data
         /// </summary>
         /// <returns>Enumerable with objects of type T</returns>
         /// <typeparam name="T">The type of objects to get.</typeparam>
-        public IEnumerable<T> GetObjects<T> () where T: class
+        public IEnumerable<T> GetObjects<T> () where T : class
         {
             IEnumerable<T> items;
 
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 items = repo.Get ();
             }
@@ -150,12 +145,11 @@ namespace R7.Dnn.Extensions.Data
         /// <param name="sqlCondition">SQL command condition.</param>
         /// <param name="args">SQL command arguments.</param>
         /// <typeparam name="T">The type of objects to get.</typeparam>
-        public IEnumerable<T> GetObjects<T> (string sqlCondition, params object [] args) where T: class
+        public IEnumerable<T> GetObjects<T> (string sqlCondition, params object [] args) where T : class
         {
             IEnumerable<T> items;
 
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 items = repo.Find (sqlCondition, args);
             }
@@ -171,12 +165,11 @@ namespace R7.Dnn.Extensions.Data
         /// <param name="sql">SQL command.</param>
         /// <param name="args">SQL command arguments.</param>
         /// <typeparam name="T">The type of objects to get.</typeparam>
-        public IEnumerable<T> GetObjects<T> (System.Data.CommandType cmdType, string sql, params object [] args) where T: class
+        public IEnumerable<T> GetObjects<T> (System.Data.CommandType cmdType, string sql, params object [] args) where T : class
         {
             IEnumerable<T> items;
 
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 items = ctx.ExecuteQuery<T> (cmdType, sql, args);
             }
 
@@ -190,12 +183,11 @@ namespace R7.Dnn.Extensions.Data
         /// <param name="spName">Stored procedure name.</param>
         /// <param name="args">SQL command arguments.</param>
         /// <typeparam name="T">The type of objects to get.</typeparam>
-        public IEnumerable<T> GetObjectsFromSp<T> (string spName, params object [] args) where T: class
+        public IEnumerable<T> GetObjectsFromSp<T> (string spName, params object [] args) where T : class
         {
             IEnumerable<T> items;
 
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 items = ctx.ExecuteQuery<T> (System.Data.CommandType.StoredProcedure, spName, args);
             }
 
@@ -224,11 +216,11 @@ namespace R7.Dnn.Extensions.Data
         /// <param name="searchText">Search text.</param>
         /// <param name="dynamicSql">If set to <c>true</c> use dynamic sql arguments with @, otherwize string.Format().</param>
         /// <typeparam name="T">The type of objects to find.</typeparam>
-        public IEnumerable<T> FindObjects<T> (string sqlCondition, string searchText, bool dynamicSql = true) where T: class
+        public IEnumerable<T> FindObjects<T> (string sqlCondition, string searchText, bool dynamicSql = true) where T : class
         {
             return string.IsNullOrWhiteSpace (searchText) ? GetObjects<T> ()
                     : dynamicSql ? GetObjects<T> (sqlCondition, searchText)
-                    : GetObjects<T> (string.Format (sqlCondition, searchText)); 
+                    : GetObjects<T> (string.Format (sqlCondition, searchText));
         }
 
         /// <summary>
@@ -238,12 +230,11 @@ namespace R7.Dnn.Extensions.Data
         /// <param name="pageSize">a page size</param>
         /// <returns>A paged list of T objects</returns>
         /// <typeparam name="T">The type of object to get.</typeparam>
-        public IPagedList<T> GetPage<T> (int pageIndex, int pageSize) where T: class
+        public IPagedList<T> GetPage<T> (int pageIndex, int pageSize) where T : class
         {
             IPagedList<T> items;
 
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 items = repo.GetPage (pageIndex, pageSize);
             }
@@ -260,12 +251,11 @@ namespace R7.Dnn.Extensions.Data
         /// <returns>A paged list of T objects</returns>
         /// <typeparam name="T">The type of object to get.</typeparam>
         /// <typeparam name="TScopeKey">The type of the scope property of object.</typeparam>
-        public IPagedList<T> GetPage<T, TScopeKey> (TScopeKey scopeId, int pageIndex, int pageSize) where T: class
+        public IPagedList<T> GetPage<T, TScopeKey> (TScopeKey scopeId, int pageIndex, int pageSize) where T : class
         {
             IPagedList<T> items;
 
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 items = repo.GetPage (scopeId, pageIndex, pageSize);
             }
@@ -282,12 +272,11 @@ namespace R7.Dnn.Extensions.Data
         /// <param name="args">SQL command arguments.</param>
         /// <returns>A paged list of T objects</returns>
         /// <typeparam name="T">The type of objects to get.</typeparam>
-        public IPagedList<T> GetPage<T> (string sqlCondition, int pageIndex, int pageSize, params object [] args) where T: class
+        public IPagedList<T> GetPage<T> (string sqlCondition, int pageIndex, int pageSize, params object [] args) where T : class
         {
             IPagedList<T> items;
 
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 items = repo.Find (pageIndex, pageSize, sqlCondition, args);
             }
@@ -300,10 +289,9 @@ namespace R7.Dnn.Extensions.Data
         /// </summary>
         /// <param name='item'></param>
         /// <typeparam name="T">The type of object to add.</typeparam>
-        public void Add<T> (T item) where T: class
+        public void Add<T> (T item) where T : class
         {
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 repo.Insert (item);
             }
@@ -316,10 +304,9 @@ namespace R7.Dnn.Extensions.Data
         /// item.
         /// </param>
         /// <typeparam name="T">The type of object to update.</typeparam>
-        public void Update<T> (T item) where T: class
+        public void Update<T> (T item) where T : class
         {
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 repo.Update (item);
             }
@@ -330,10 +317,9 @@ namespace R7.Dnn.Extensions.Data
         /// </summary>
         /// <param name='item'></param>
         /// <typeparam name="T">The type of object to delete.</typeparam>
-        public void Delete<T> (T item) where T: class
+        public void Delete<T> (T item) where T : class
         {
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 repo.Delete (item);
             }
@@ -345,10 +331,9 @@ namespace R7.Dnn.Extensions.Data
         /// <param name='itemId'></param>
         /// <typeparam name="T">The type of object to delete.</typeparam>
         /// <typeparam name="TKey">The type of the key property of object.</typeparam>
-        public void Delete<T, TKey> (TKey itemId) where T: class
+        public void Delete<T, TKey> (TKey itemId) where T : class
         {
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 repo.Delete (repo.GetById (itemId));
             }
@@ -360,10 +345,9 @@ namespace R7.Dnn.Extensions.Data
         /// <param name='sqlCondition'>SQL condition</param>
         /// <param name='args'>Optional arguments</param>
         /// <typeparam name="T">The type of objects to delete.</typeparam>
-        public void Delete<T> (string sqlCondition, params object [] args) where T: class
+        public void Delete<T> (string sqlCondition, params object [] args) where T : class
         {
-            using (var ctx = DataContext.Instance ())
-            {
+            using (var ctx = DataContext.Instance ()) {
                 var repo = ctx.GetRepository<T> ();
                 repo.Delete (sqlCondition, args);
             }

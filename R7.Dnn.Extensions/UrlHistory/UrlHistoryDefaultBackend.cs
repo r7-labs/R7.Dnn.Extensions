@@ -29,7 +29,7 @@ namespace R7.Dnn.Extensions.UrlHistory
     /// <summary>
     /// UrlHistory backend for non-InProc sessions
     /// </summary>
-    public class UrlHistoryDefaultBackend : UrlHistoryBackend
+    public class UrlHistoryDefaultBackend: UrlHistoryBackend
     {
         HttpSessionState _session;
 

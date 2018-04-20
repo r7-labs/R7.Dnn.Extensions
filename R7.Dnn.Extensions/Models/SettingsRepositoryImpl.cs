@@ -27,7 +27,7 @@ namespace R7.Dnn.Extensions.Models
     /// Basic generic settings repository implementation.
     /// </summary>
     public class SettingsRepositoryImpl<TSettings>: SettingsRepository<TSettings>
-        where TSettings: class, new ()
+        where TSettings : class, new()
     {
     }
 }

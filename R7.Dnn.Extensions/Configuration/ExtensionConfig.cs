@@ -34,7 +34,7 @@ namespace R7.Dnn.Extensions.Configuration
 
         readonly string _configFileName;
 
-        readonly Func<TPortalConfig,TPortalConfig> _initCallback;
+        readonly Func<TPortalConfig, TPortalConfig> _initCallback;
 
         protected ExtensionConfig (string configFileName, Func<TPortalConfig, TPortalConfig> initCallback = null)
         {
@@ -51,13 +51,13 @@ namespace R7.Dnn.Extensions.Configuration
             return _portalConfigs.GetOrAdd (portalId, portalId2 =>
                 new Lazy<TPortalConfig> (() => {
                     return InitConfig (GetPortalConfig (portalId2));
-                }                              
+                }
             )).Value;
         }
 
         public virtual TPortalConfig InitConfig (TPortalConfig config)
         {
-            return (_initCallback != null)? _initCallback (config) : config;
+            return (_initCallback != null) ? _initCallback (config) : config;
         }
 
         TPortalConfig GetPortalConfig (int portalId)
@@ -71,8 +71,7 @@ namespace R7.Dnn.Extensions.Configuration
                     ? DeserializeConfig (portalConfigFile)
                     : new TPortalConfig ();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Exceptions.LogException (new Exception ($"Cannot deserialize the \"{portalConfigFile}\" config file", ex));
                 return new TPortalConfig ();
             }

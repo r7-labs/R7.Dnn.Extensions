@@ -25,7 +25,7 @@ using System.Text;
 namespace R7.Dnn.Extensions.Text.Transliteration
 {
     [Obsolete]
-    public class RuFileTranslitTable : TranslitTableBase
+    public class RuFileTranslitTable: TranslitTableBase
     {
         private static readonly string [,] ruFileTranslitTable ={
             // apply some filename rules
@@ -43,8 +43,8 @@ namespace R7.Dnn.Extensions.Text.Transliteration
             {"ья", "iya" },
             {"ью", "iyu" },
             // main rules
-            {"а", "a"}, 
-            {"б", "b"}, 
+            {"а", "a"},
+            {"б", "b"},
             {"в", "v"},
             {"г", "g"},
             {"д", "d"},
@@ -109,7 +109,7 @@ namespace R7.Dnn.Extensions.Text.Transliteration
             {"Э", "E"},
             {"Ю", "YU"},
             {"Я", "YA"}
-        }; 
+        };
 
         private RuFileTranslitTable () : base (ruFileTranslitTable)
         {

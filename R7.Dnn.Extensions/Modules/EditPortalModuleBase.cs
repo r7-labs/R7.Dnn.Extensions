@@ -38,8 +38,8 @@ namespace R7.Dnn.Extensions.Modules
     /// A base class to build simple edit module controls
     /// </summary>
     public abstract class EditPortalModuleBase<TItem, TItemId>: PortalModuleBase
-        where TItem: class, new ()
-        where TItemId: struct
+        where TItem : class, new()
+        where TItemId : struct
     {
         #region Fields & Properties
 
@@ -95,7 +95,7 @@ namespace R7.Dnn.Extensions.Modules
         /// </summary>
         protected ModuleAuditControl ModuleAuditControl;
 
-        protected ICrudProvider<TItem> CrudProvider; 
+        protected ICrudProvider<TItem> CrudProvider;
 
         #endregion
 
@@ -103,7 +103,7 @@ namespace R7.Dnn.Extensions.Modules
         /// Initializes a new instance of the <see cref="R7.Dnn.Extensions.Modules.EditPortalModuleBase{TItem,TKey}"/> class.
         /// </summary>
         /// <param name="key">Key.</param>
-        protected EditPortalModuleBase (string key, ICrudProvider<TItem> crudProvider): this (key, false)
+        protected EditPortalModuleBase (string key, ICrudProvider<TItem> crudProvider) : this (key, false)
         {
             CrudProvider = crudProvider;
         }
@@ -137,7 +137,7 @@ namespace R7.Dnn.Extensions.Modules
             LinkCancel.NavigateUrl = UrlHelper.GetCancelUrl (UrlUtils.InPopUp ());
 
             // add confirmation dialog to delete button
-            ButtonDelete.Attributes.Add ("onClick", "javascript:return confirm('" 
+            ButtonDelete.Attributes.Add ("onClick", "javascript:return confirm('"
                 + DnnLocalization.GetString ("DeleteItem") + "');");
         }
 
@@ -220,7 +220,8 @@ namespace R7.Dnn.Extensions.Modules
 
                     if (ItemId == null) {
                         AddItem (item);
-                    } else {
+                    }
+                    else {
                         UpdateItem (item);
                     }
 
@@ -335,13 +336,13 @@ namespace R7.Dnn.Extensions.Modules
         /// Override to provide custom code which should be called for new items.
         /// </summary>
         protected virtual void LoadNewItem ()
-        {}
+        { }
 
         /// <summary>
         /// Override to provide code which should be called on Page_Load then (IsPostBack == true) here
         /// </summary>
         protected virtual void PostBack ()
-        {}
+        { }
 
         /// <summary>
         /// Implement to provide code to fill item from form controls here.
@@ -355,7 +356,7 @@ namespace R7.Dnn.Extensions.Modules
         /// </summary>
         /// <param name="item">Item.</param>
         protected virtual void AfterUpdateItem (TItem item)
-        {}
+        { }
 
         /// <summary>
         /// Override to define edit permission checks here.

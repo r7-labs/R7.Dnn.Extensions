@@ -25,7 +25,7 @@ using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 
 namespace R7.Dnn.Extensions.ViewModels
 {
-    public class EnumViewModel<T> where T: struct
+    public class EnumViewModel<T> where T : struct
     {
         #region Protected members
 
@@ -36,8 +36,7 @@ namespace R7.Dnn.Extensions.ViewModels
         public EnumViewModel (T? value)
         {
             // where T: enum
-            if (!typeof (T).IsEnum)
-            {
+            if (!typeof (T).IsEnum) {
                 throw new NotSupportedException ("Type parameter of EnumViewModel must be enum.");
             }
 
@@ -48,14 +47,12 @@ namespace R7.Dnn.Extensions.ViewModels
 
         public T? Value { get; protected set; }
 
-        public string ValueLocalized
-        {
+        public string ValueLocalized {
             get { return DnnLocalization.GetString (ValueResourceKey, Context.LocalResourceFile); }
         }
 
-        public string ValueResourceKey
-        {
-            get { return GetValueResourceKey (Value); } 
+        public string ValueResourceKey {
+            get { return GetValueResourceKey (Value); }
         }
 
         #endregion
@@ -66,15 +63,13 @@ namespace R7.Dnn.Extensions.ViewModels
         {
             var values = new List<EnumViewModel<T>> ();
 
-            if (includeDefault)
-            {
+            if (includeDefault) {
                 var v1 = new EnumViewModel<T> (null);
                 v1.Context = context;
                 values.Add (v1);
             }
 
-            foreach (T value in Enum.GetValues (typeof (T)))
-            {   
+            foreach (T value in Enum.GetValues (typeof (T))) {
                 var v1 = new EnumViewModel<T> (value);
                 v1.Context = context;
                 values.Add (v1);
@@ -85,8 +80,7 @@ namespace R7.Dnn.Extensions.ViewModels
 
         public static string GetValueResourceKey (T? value)
         {
-            if (value != null)
-            {
+            if (value != null) {
                 return typeof (T).Name + "_" + value.Value + ".Text";
             }
 

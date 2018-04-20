@@ -42,7 +42,7 @@ namespace R7.Dnn.Extensions.Tests.Configuration
                     return cfg;
                 }
             );
-            
+
             Assert.Equal (10, config.GetInstance (0).Key);
             Assert.Equal ("Value from config", config.GetInstance (0).Value);
         }
@@ -55,7 +55,7 @@ namespace R7.Dnn.Extensions.Tests.Configuration
                     return cfg;
                 }
             );
-            
+
             Assert.Equal (1, config.GetInstance (0).Key);
             Assert.Equal ("Default value", config.GetInstance (0).Value);
         }
