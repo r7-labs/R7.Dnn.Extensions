@@ -27,8 +27,8 @@ using DotNetNuke.Entities.Modules;
 using DotNetNuke.Framework;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.UI.UserControls;
+using R7.Dnn.Extensions.Text;
 using R7.Dnn.Extensions.Urls;
-using R7.Dnn.Extensions.Utilities;
 using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 
 namespace R7.Dnn.Extensions.Modules
@@ -53,7 +53,7 @@ namespace R7.Dnn.Extensions.Modules
                 }
 
                 // parse querystring parameters
-                var itemId = TypeUtils.ParseToNullable<TItemId> (Request.QueryString [Key]);
+                var itemId = ParseHelper.ParseToNullable<TItemId> (Request.QueryString [Key]);
                 ViewState ["ItemId"] = itemId;
                 return itemId;
             }
