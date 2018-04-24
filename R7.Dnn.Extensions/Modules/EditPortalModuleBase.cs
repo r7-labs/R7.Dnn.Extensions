@@ -383,14 +383,6 @@ namespace R7.Dnn.Extensions.Modules
             return true;
         }
 
-        /// <summary>
-        /// Override to define custom action on control load then item does not exists.
-        /// </summary>
-        protected virtual void ItemDoesNotExists ()
-        {
-            Response.Redirect (Globals.NavigateURL (), true);
-        }
-
         #endregion
     }
 }
