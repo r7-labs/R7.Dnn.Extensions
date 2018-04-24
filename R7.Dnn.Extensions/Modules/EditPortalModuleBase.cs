@@ -164,8 +164,7 @@ namespace R7.Dnn.Extensions.Modules
                                 }
                             }
                             else {
-                                Exceptions.LogException (new SecurityException ($"Wrong item key: {ItemKey}"));
-                                Response.Redirect (Globals.NavigateURL (), true);
+                                throw new Exception ($"Wrong item key: {ItemKey}");
                             }
                         }
                         else {
@@ -180,8 +179,7 @@ namespace R7.Dnn.Extensions.Modules
                         }
                     }
                     else {
-                        Exceptions.LogException (new SecurityException ($"Wrong edit URL: {Request.RawUrl}"));
-                        Response.Redirect (Globals.NavigateURL (), true);
+                        throw new Exception ($"Wrong edit URL: {Request.RawUrl}");
                     }
                 }
                 else {
