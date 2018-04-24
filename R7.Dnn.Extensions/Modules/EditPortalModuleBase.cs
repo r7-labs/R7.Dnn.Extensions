@@ -122,8 +122,7 @@ namespace R7.Dnn.Extensions.Modules
             LinkCancel.NavigateUrl = UrlHelper.GetCancelUrl (UrlUtils.InPopUp ());
 
             // add confirmation dialog to delete button
-            ButtonDelete.Attributes.Add ("onClick", "javascript:return confirm('"
-                + DnnLocalization.GetString ("DeleteItem") + "');");
+            ButtonDelete.Attributes.Add ("onclick", $"javascript:return confirm('{DnnLocalization.GetString ("DeleteItem")}');");
         }
 
         /// <summary>
