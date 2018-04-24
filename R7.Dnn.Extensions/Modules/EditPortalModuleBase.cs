@@ -156,7 +156,7 @@ namespace R7.Dnn.Extensions.Modules
                 if (!IsPostBack) {
                     if (Request.QueryString [Key] != null) {
                         if (ItemKey != null) {
-                            var item = GetItemWithDependencies (ItemKey.Value);
+                            var item = GetItem (ItemKey.Value);
                             if (item != null) {
                                 if (CanEditItem (item)) {
                                     ButtonDelete.Visible = CanDeleteItem (item);
@@ -249,27 +249,6 @@ namespace R7.Dnn.Extensions.Modules
         }
 
         #region CRUD methods
-
-        // TODO: Remove as too children-specific?
-        /// <summary>
-        /// Override this method if you need extra data 
-        /// (e.g. some dependent objects and collections) 
-        /// to fill edit form in LoadItem method, 
-        /// than returned by GetItem method.
-        /// </summary>
-        /// <returns>The item.</returns>
-        /// <param name="itemId">Item identifier.</param>
-        protected virtual TItem GetItemWithDependencies (TKey itemId)
-        {
-            return GetItem (itemId);
-        }
-
-        /// <summary>
-        /// Gets the key of the item.
-        /// </summary>
-        /// <returns>The key of the item.</returns>
-        /// <param name="item">Item.</param>
-        protected abstract TKey GetItemKey (TItem item);
 
         /// <summary>
         /// Implement method which will get item by id.
