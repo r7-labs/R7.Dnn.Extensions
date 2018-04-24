@@ -89,6 +89,9 @@ namespace R7.Dnn.Extensions.Modules
         /// </summary>
         protected ModuleAuditControl ModuleAuditControl;
 
+        /// <summary>
+        /// The CRUD operations provider.
+        /// </summary>
         protected ICrudProvider<TItem> CrudProvider;
 
         #endregion
@@ -335,6 +338,7 @@ namespace R7.Dnn.Extensions.Modules
         /// Implement to provide code to fill item from form controls here.
         /// </summary>
         /// <param name="item">Item.</param>
+        /// <param name="isNew">Adding new item?</param>
         protected abstract void BeforeUpdateItem (TItem item, bool isNew);
 
         /// <summary>
@@ -342,13 +346,14 @@ namespace R7.Dnn.Extensions.Modules
         /// after item update in the DB
         /// </summary>
         /// <param name="item">Item.</param>
+        /// <param name="isNew">Adding new item?</param>
         protected virtual void AfterUpdateItem (TItem item, bool isNew)
         { }
 
-        // TODO: Extract CRUD security provider
+        // TODO: Extract CRUD security provider?
 
         /// <summary>
-        /// Override to define edit permission checks here.
+        /// Override to define edit item permission checks here.
         /// </summary>
         /// <returns><c>true</c> if the specified item can be edited; otherwise, <c>false</c>.</returns>
         /// <param name="item">Item.</param>
@@ -357,6 +362,10 @@ namespace R7.Dnn.Extensions.Modules
             return true;
         }
 
+        /// <summary>
+        /// Override to define add item permission checks here.
+        /// </summary>
+        /// <returns><c>true</c> if the item can be added; otherwise, <c>false</c>.</returns>
         protected virtual bool CanAddItem ()
         {
             return true;
