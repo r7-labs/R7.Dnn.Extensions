@@ -24,7 +24,6 @@ using System.Web.UI.WebControls;
 using DotNetNuke.Common;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
-using DotNetNuke.Framework;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.UI.UserControls;
 using R7.Dnn.Extensions.Data;
@@ -37,28 +36,28 @@ namespace R7.Dnn.Extensions.Modules
     /// <summary>
     /// A base class to build simple edit module controls
     /// </summary>
-    public abstract class EditPortalModuleBase<TItem, TItemId>: PortalModuleBase
+    public abstract class EditPortalModuleBase<TItem, TKey>: PortalModuleBase
         where TItem : class, new()
-        where TItemId : struct
+        where TKey : struct
     {
         #region Fields & Properties
 
         /// <summary>
         /// The edited item identifier.
         /// </summary>
-        protected virtual TItemId? ItemId {
+        protected virtual TKey? ItemKey {
             get {
-                var itemIdObj = ViewState ["ItemId"];
-                if (itemIdObj != null) {
-                    return (TItemId?) itemIdObj;
+                var itemKeyObj = ViewState ["ItemKey"];
+                if (itemKeyObj != null) {
+                    return (TKey?) itemKeyObj;
                 }
 
                 // parse querystring parameters
-                var itemId = ParseHelper.ParseToNullable<TItemId> (Request.QueryString [Key]);
-                ViewState ["ItemId"] = itemId;
-                return itemId;
+                var itemKey = ParseHelper.ParseToNullable<TKey> (Request.QueryString [Key]);
+                ViewState ["ItemKey"] = itemKey;
+                return itemKey;
             }
-            set { ViewState ["ItemId"] = value; }
+            set { ViewState ["ItemKey"] = value; }
         }
 
         /// <summary>
@@ -97,7 +96,8 @@ namespace R7.Dnn.Extensions.Modules
         /// <summary>
         /// Initializes a new instance of the <see cref="R7.Dnn.Extensions.Modules.EditPortalModuleBase{TItem,TKey}"/> class.
         /// </summary>
-        /// <param name="key">Key.</param>
+        /// <param name="key">Querystring key.</param>
+        /// <param name="crudProvider">CRUD provider object.</param>
         protected EditPortalModuleBase (string key, ICrudProvider<TItem> crudProvider)
         {
             Key = key;
@@ -152,28 +152,32 @@ namespace R7.Dnn.Extensions.Modules
 
             try {
                 if (!IsPostBack) {
-                    // load the data into the control the first time we hit this page
-
-                    // check we have an item to edit
-                    if (ItemId != null) {
-                        // load the item
-                        var item = GetItemWithDependencies (ItemId.Value);
-
-                        if (item != null && CanEditItem (item)) {
-                            ButtonDelete.Visible = CanDeleteItem (item);
-                            LoadItem (item);
+                    if (Request.QueryString [Key] != null) {
+                        if (ItemKey != null) {
+                            var item = GetItemWithDependencies (ItemKey.Value);
+                            if (item != null) {
+                                if (CanEditItem (item)) {
+                                    ButtonDelete.Visible = CanDeleteItem (item);
+                                    LoadItem (item);
+                                }
+                            }
+                            else {
+                                Exceptions.LogException (new SecurityException ($"Wrong item key: {ItemKey}"));
+                            }
                         }
                         else {
-                            ItemDoesNotExists ();
+                            if (CanAddItem ()) {
+                                ButtonDelete.Visible = false;
+                                if (ModuleAuditControl != null) {
+                                    ModuleAuditControl.Visible = false;
+                                }
+
+                                LoadNewItem ();
+                            }
                         }
                     }
                     else {
-                        ButtonDelete.Visible = false;
-                        if (ModuleAuditControl != null) {
-                            ModuleAuditControl.Visible = false;
-                        }
-
-                        LoadNewItem ();
+                        Exceptions.LogException (new SecurityException ($"Wrong edit URL: {Request.RawUrl}"));
                     }
                 }
                 else {
@@ -194,19 +198,23 @@ namespace R7.Dnn.Extensions.Modules
         {
             try {
                 if (Page.IsValid) {
-                    // create new or get existing item
-                    var item = (ItemId == null) ? new TItem () : GetItem (ItemId.Value);
+                    var item = GetItem (ItemKey.Value);
+                    var isNew = item == null;
 
-                    BeforeUpdateItem (item);
+                    if (isNew) {
+                        item = new TItem ();
+                    }
 
-                    if (ItemId == null) {
+                    BeforeUpdateItem (item, isNew);
+
+                    if (isNew) {
                         AddItem (item);
                     }
                     else {
                         UpdateItem (item);
                     }
 
-                    AfterUpdateItem (item);
+                    AfterUpdateItem (item, isNew);
 
                     // synchronize module
                     ModuleController.SynchronizeModule (ModuleId);
@@ -227,12 +235,10 @@ namespace R7.Dnn.Extensions.Modules
         protected virtual void OnButtonDeleteClick (object sender, EventArgs e)
         {
             try {
-                if (ItemId.HasValue) {
-                    var item = GetItem (ItemId.Value);
-                    if (item != null && CanDeleteItem (item)) {
-                        DeleteItem (item);
-                        Response.Redirect (Globals.NavigateURL (), true);
-                    }
+                var item = GetItem (ItemKey.Value);
+                if (item != null && CanDeleteItem (item)) {
+                    DeleteItem (item);
+                    Response.Redirect (Globals.NavigateURL (), true);
                 }
             }
             catch (Exception ex) {
@@ -240,9 +246,9 @@ namespace R7.Dnn.Extensions.Modules
             }
         }
 
-
         #region CRUD methods
 
+        // TODO: Remove as too children-specific?
         /// <summary>
         /// Override this method if you need extra data 
         /// (e.g. some dependent objects and collections) 
@@ -251,17 +257,17 @@ namespace R7.Dnn.Extensions.Modules
         /// </summary>
         /// <returns>The item.</returns>
         /// <param name="itemId">Item identifier.</param>
-        protected virtual TItem GetItemWithDependencies (TItemId itemId)
+        protected virtual TItem GetItemWithDependencies (TKey itemId)
         {
             return GetItem (itemId);
         }
 
         /// <summary>
-        /// Gets the integer identifier of the item.
+        /// Gets the key of the item.
         /// </summary>
-        /// <returns>The integer identifier.</returns>
+        /// <returns>The key of the item.</returns>
         /// <param name="item">Item.</param>
-        protected abstract TItemId GetItemId (TItem item);
+        protected abstract TKey GetItemKey (TItem item);
 
         /// <summary>
         /// Implement method which will get item by id.
@@ -269,8 +275,8 @@ namespace R7.Dnn.Extensions.Modules
         /// (e.g. some dependent objects or collections) here.
         /// </summary>
         /// <returns>The item.</returns>
-        /// <param name="itemId">Item identifier.</param>
-        protected virtual TItem GetItem (TItemId itemId) => CrudProvider.Get (itemId);
+        /// <param name="itemKey">Item key.</param>
+        protected virtual TItem GetItem (TKey itemKey) => CrudProvider.Get (itemKey);
 
         /// <summary>
         /// Implement method which will store new item in the datastore
@@ -319,6 +325,7 @@ namespace R7.Dnn.Extensions.Modules
         protected virtual void LoadNewItem ()
         { }
 
+        // TODO: Rename to LoadPostBack?
         /// <summary>
         /// Override to provide code which should be called on Page_Load then (IsPostBack == true) here
         /// </summary>
@@ -329,15 +336,17 @@ namespace R7.Dnn.Extensions.Modules
         /// Implement to provide code to fill item from form controls here.
         /// </summary>
         /// <param name="item">Item.</param>
-        protected abstract void BeforeUpdateItem (TItem item);
+        protected abstract void BeforeUpdateItem (TItem item, bool isNew);
 
         /// <summary>
         /// Implement to provide code which will be called 
         /// after item update in the DB
         /// </summary>
         /// <param name="item">Item.</param>
-        protected virtual void AfterUpdateItem (TItem item)
+        protected virtual void AfterUpdateItem (TItem item, bool isNew)
         { }
+
+        // TODO: Extract CRUD security provider
 
         /// <summary>
         /// Override to define edit permission checks here.
@@ -345,6 +354,11 @@ namespace R7.Dnn.Extensions.Modules
         /// <returns><c>true</c> if the specified item can be edited; otherwise, <c>false</c>.</returns>
         /// <param name="item">Item.</param>
         protected virtual bool CanEditItem (TItem item)
+        {
+            return true;
+        }
+
+        protected virtual bool CanAddItem ()
         {
             return true;
         }
