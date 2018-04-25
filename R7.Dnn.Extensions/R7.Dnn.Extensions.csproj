@@ -226,6 +226,7 @@
     <Compile Include="Data\DnnTableMappingHelper.cs" />
     <Compile Include="Data\EfCoreTransaction.cs" />
     <Compile Include="Models\ITransaction.cs" />
+    <Compile Include="Data\EfCoreDnnDataContextBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -20,7 +20,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Linq;
-using DotNetNuke.Common.Utilities;
 using Microsoft.EntityFrameworkCore;
 using R7.Dnn.Extensions.Models;
 
@@ -29,48 +28,34 @@ namespace R7.Dnn.Extensions.Data
     public abstract class EfCoreDataContextBase: DbContext, IDataContext
     {
         protected EfCoreDataContextBase ()
-        {
-            ChangeTracker.AutoDetectChangesEnabled = false;
-        }
+        {}
 
-        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer (Config.GetConnectionString ("SiteSqlServer"));
-        }
-
-        protected override void OnModelCreating (ModelBuilder modelBuilder)
-        {
-            var databaseOwner = Config.GetDataBaseOwner ();
-            // remove trailing '.' from schema name, by ex. "dbo." => "dbo"
-            modelBuilder.HasDefaultSchema (databaseOwner.Substring (0, databaseOwner.Length - 1));
-
-            // add model configurations mappings (in child classes)
-            // modelBuilder.ApplyConfiguration (new EntitySampleMapping ());
-        }
+        protected EfCoreDataContextBase (DbContextOptions options): base (options)
+        {}
 
         #region IDataContext implementation
 
-        public new DbSet<TEntity> Set<TEntity> () where TEntity : class
+        public virtual new DbSet<TEntity> Set<TEntity> () where TEntity : class
         {
-            return Set<TEntity> ();
+            return base.Set<TEntity> ();
         }
 
-        public IQueryable<TEntity> FromSql<TEntity> (string sql, params object [] parameters) where TEntity : class
+        public virtual IQueryable<TEntity> FromSql<TEntity> (string sql, params object [] parameters) where TEntity : class
         {
-            return Set<TEntity> ().FromSql (sql.Replace ("{objectQualifier}", Config.GetObjectQualifer ()), parameters).AsNoTracking ();
+            return Set<TEntity> ().FromSql (sql, parameters).AsNoTracking ();
         }
 
-        public void WasModified<TEntity> (TEntity entity) where TEntity : class
+        public virtual void WasModified<TEntity> (TEntity entity) where TEntity : class
         {
             Entry (entity).State = EntityState.Modified;
         }
 
-        public void WasRemoved<TEntity> (TEntity entity) where TEntity : class
+        public virtual void WasRemoved<TEntity> (TEntity entity) where TEntity : class
         {
             Entry (entity).State = EntityState.Deleted;
         }
 
-        public ITransaction BeginTransaction ()
+        public virtual ITransaction BeginTransaction ()
         {
             return new EfCoreTransaction (this);
         }
