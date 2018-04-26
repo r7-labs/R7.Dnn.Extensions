@@ -130,6 +130,9 @@
     <Compile Include="Collections\EnumerableExtensionsTests.cs" />
     <Compile Include="Text\FormatHelperTests.cs" />
     <Compile Include="Text\ParseHelperTests.cs" />
+    <Compile Include="Data\EfCoreDataContextTests.cs" />
+    <Compile Include="Data\EfCoreTestDataContext.cs" />
+    <Compile Include="Models\TestEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\R7.Dnn.Extensions\R7.Dnn.Extensions.csproj">

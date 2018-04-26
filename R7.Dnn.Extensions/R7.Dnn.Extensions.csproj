@@ -206,6 +206,15 @@
     <Compile Include="ViewModels\IViewModelContextOfTSettings.cs" />
     <Compile Include="Data\Dal2CrudProvider.cs" />
     <Compile Include="Data\ICrudProvider.cs" />
+    <Compile Include="Data\DnnTableMappingHelper.cs" />
+    <Compile Include="Data\EfCoreDataContextBase.cs" />
+    <Compile Include="Data\EfCoreDnnDataContextBase.cs" />
+    <Compile Include="Data\EfCoreTransaction.cs" />
+    <Compile Include="Data\EntityConfigurationSample.cs" />
+    <Compile Include="Data\IDataContext.cs" />
+    <Compile Include="Models\IModelContext.cs" />
+    <Compile Include="Models\ITransaction.cs" />
+    <Compile Include="Models\ModelContextBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
