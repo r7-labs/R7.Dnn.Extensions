@@ -100,6 +100,15 @@ namespace R7.Dnn.Extensions.Modules
         /// Initializes a new instance of the <see cref="R7.Dnn.Extensions.Modules.EditPortalModuleBase{TItem,TKey}"/> class.
         /// </summary>
         /// <param name="key">Querystring key.</param>
+        protected EditPortalModuleBase (string key)
+        {
+            Key = key;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="R7.Dnn.Extensions.Modules.EditPortalModuleBase{TItem,TKey}"/> class.
+        /// </summary>
+        /// <param name="key">Querystring key.</param>
         /// <param name="crudProvider">CRUD provider object.</param>
         protected EditPortalModuleBase (string key, ICrudProvider<TItem> crudProvider)
         {
