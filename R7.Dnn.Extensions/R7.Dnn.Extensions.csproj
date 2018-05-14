@@ -8,7 +8,7 @@
     <RootNamespace>R7.Dnn.Extensions</RootNamespace>
     <AssemblyName>R7.Dnn.Extensions</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <ReleaseVersion>0.13.0-alpha1</ReleaseVersion>
+    <ReleaseVersion>0.13.0-alpha2</ReleaseVersion>
     <Description>R7.Dnn.Extensions is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules and settings, useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
