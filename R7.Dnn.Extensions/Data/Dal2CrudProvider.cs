@@ -19,6 +19,8 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using R7.Dnn.Extensions.Models;
+
 namespace R7.Dnn.Extensions.Data
 {
     public class Dal2CrudProvider<T>: ICrudProvider<T> where T : class

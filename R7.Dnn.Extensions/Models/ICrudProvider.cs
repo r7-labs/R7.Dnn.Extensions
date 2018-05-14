@@ -1,4 +1,4 @@
-﻿namespace R7.Dnn.Extensions.Data
+﻿namespace R7.Dnn.Extensions.Models
 {
     public interface ICrudProvider<TItem>
         where TItem : class

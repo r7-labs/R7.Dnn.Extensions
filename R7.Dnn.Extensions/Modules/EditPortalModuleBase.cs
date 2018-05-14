@@ -26,7 +26,7 @@ using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.UI.UserControls;
-using R7.Dnn.Extensions.Data;
+using R7.Dnn.Extensions.Models;
 using R7.Dnn.Extensions.Text;
 using R7.Dnn.Extensions.Urls;
 using DnnLocalization = DotNetNuke.Services.Localization.Localization;
