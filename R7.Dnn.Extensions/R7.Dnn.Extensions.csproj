@@ -135,7 +135,7 @@
     <Compile Include="Modules\ModuleExtensions.cs" />
     <Compile Include="Text\StringExtensions.cs" />
     <Compile Include="Models\SettingsRepositoryImpl.cs" />
-    <Compile Include="Cache\CacheHelper.cs" />
+    <Compile Include="Caching\CacheHelper.cs" />
     <Compile Include="FileSystem\FileHelper.cs" />
     <Compile Include="FileSystem\MimeTypes.cs" />
     <Compile Include="Text\FormatHelper.cs" />
@@ -182,7 +182,7 @@
     <Folder Include="SqlDataProvider\" />
     <Folder Include="Collections\" />
     <Folder Include="Controls\PagingControl\" />
-    <Folder Include="Cache\" />
+    <Folder Include="Caching\" />
     <Folder Include="FileSystem\" />
     <Folder Include="Urls\" />
     <Folder Include="Text\QuotedPrintable\" />
