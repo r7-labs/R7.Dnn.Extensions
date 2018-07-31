@@ -33,6 +33,13 @@ using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 
 namespace R7.Dnn.Extensions.Modules
 {
+    public enum EditPortalModuleMode
+    {
+        Default,
+        Add,
+        Edit
+    }
+
     /// <summary>
     /// A base class to build simple edit module controls
     /// </summary>
@@ -58,6 +65,15 @@ namespace R7.Dnn.Extensions.Modules
                 return itemKey;
             }
             set { ViewState ["ItemKey"] = value; }
+        }
+
+        protected EditPortalModuleMode Mode {
+            get {
+                if (!Enum.TryParse (Request.QueryString ["mode"], true, out EditPortalModuleMode mode)) {
+                    mode = EditPortalModuleMode.Default;
+                }
+                return mode;
+            }
         }
 
         /// <summary>
@@ -163,28 +179,26 @@ namespace R7.Dnn.Extensions.Modules
 
             try {
                 if (!IsPostBack) {
-                    if (Request.QueryString [Key] != null) {
-                        if (ItemKey != null) {
-                            var item = GetItem (ItemKey.Value);
-                            if (item != null) {
-                                if (CanEditItem (item)) {
-                                    ButtonDelete.Visible = CanDeleteItem (item);
-                                    LoadItem (item);
-                                }
+                    if (ItemKey == null || Mode == EditPortalModuleMode.Add) {
+                        if (CanAddItem ()) {
+                            ButtonDelete.Visible = false;
+                            if (ModuleAuditControl != null) {
+                                ModuleAuditControl.Visible = false;
                             }
-                            else {
-                                throw new Exception ($"Wrong item key: {ItemKey}");
+
+                            LoadNewItem ();
+                        }
+                    }
+                    else if (ItemKey != null) {
+                        var item = GetItem (ItemKey.Value);
+                        if (item != null) {
+                            if (CanEditItem (item)) {
+                                ButtonDelete.Visible = CanDeleteItem (item);
+                                LoadItem (item);
                             }
                         }
                         else {
-                            if (CanAddItem ()) {
-                                ButtonDelete.Visible = false;
-                                if (ModuleAuditControl != null) {
-                                    ModuleAuditControl.Visible = false;
-                                }
-
-                                LoadNewItem ();
-                            }
+                            throw new Exception ($"Wrong item key: {ItemKey}");
                         }
                     }
                     else {
