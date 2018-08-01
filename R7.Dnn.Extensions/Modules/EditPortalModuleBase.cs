@@ -223,7 +223,7 @@ namespace R7.Dnn.Extensions.Modules
         {
             try {
                 if (Page.IsValid) {
-                    var item = GetItem (ItemKey.Value);
+                    var item = SafeGetItem (ItemKey);
                     var isNew = item == null;
 
                     if (isNew) {
@@ -260,7 +260,7 @@ namespace R7.Dnn.Extensions.Modules
         protected virtual void OnButtonDeleteClick (object sender, EventArgs e)
         {
             try {
-                var item = GetItem (ItemKey.Value);
+                var item = SafeGetItem (ItemKey);
                 if (item != null && CanDeleteItem (item)) {
                     DeleteItem (item);
                     Response.Redirect (Globals.NavigateURL (), true);
@@ -272,6 +272,11 @@ namespace R7.Dnn.Extensions.Modules
         }
 
         #region CRUD methods
+
+        TItem SafeGetItem (TKey? itemKey)
+        {
+            return (itemKey != null) ? GetItem (itemKey.Value) : null;
+        }
 
         /// <summary>
         /// Implement method which will get item by id.
