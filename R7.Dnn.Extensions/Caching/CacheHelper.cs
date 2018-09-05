@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2016 Roman M. Yagodin
+//  Copyright (c) 2016-2018 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -32,6 +32,7 @@ namespace R7.Dnn.Extensions.Caching
         /// Remove all cache keys with specified prefix
         /// </summary>
         /// <param name="cacheKeyPrefix">Cache key prefix.</param>
+        [Obsolete ("Use DataCache.ClearCache (cachePrefix) instead")]
         public static void RemoveCacheByPrefix (string cacheKeyPrefix)
         {
             var cacheKeysToRemove = new Collection<string> ();
@@ -47,6 +48,21 @@ namespace R7.Dnn.Extensions.Caching
             foreach (var cacheKey in cacheKeysToRemove) {
                 // Substring (4) removes DNN_ prefix 
                 DataCache.RemoveCache (cacheKey.Substring (4));
+            }
+        }
+
+        public static DNNCacheDependency GetDNNCacheDependency (string cacheKey)
+        {
+            return new DNNCacheDependency (null, new string [] { cacheKey });
+        }
+
+        public static void EnsureRootExists (string cacheKey, int seconds)
+        {
+            if (DataCache.GetCache (cacheKey) == null) {
+                // use sliding expiration for root cache object
+                // to ensure that it will be in cache for subsequent cache operations
+                // TODO: Increase cache priority?
+                DataCache.SetCache (cacheKey, new object (), TimeSpan.FromSeconds (seconds));
             }
         }
     }
