@@ -19,6 +19,7 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using System.Collections.Generic;
 using System.Web.SessionState;
 using System.Web.UI.WebControls;
@@ -34,6 +35,7 @@ namespace R7.Dnn.Extensions.UrlHistory
     /// <summary>
     /// Manages URL history across session.
     /// </summary>
+    [Obsolete ("Consider using LastFolderExtensions")]
     public class UrlHistory
     {
         protected readonly UrlHistoryBackend Backend;
