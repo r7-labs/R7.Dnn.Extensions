@@ -49,6 +49,14 @@
                         </file>
                     </files>
                 </component>
+				<component type="ResourceFile">
+					<resourceFiles>
+						<basePath>DesktopModules/R7.Dnn.Extensions</basePath>
+						<resourceFile>
+							<name>Resources.zip</name>
+						</resourceFile>
+					</resourceFiles>
+				</component>
             </components>
         </package>
     </packages>

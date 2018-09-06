@@ -166,6 +166,7 @@
     <None Include="R7.Dnn.Extensions.csproj" />
     <None Include="SqlDataProvider\00.12.00.SqlDataProvider" />
     <None Include="SqlDataProvider\Uninstall.SqlDataProvider" />
+    <None Include="assets\js\dnnModalHelper.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Text\" />
@@ -187,6 +188,8 @@
     <Folder Include="Urls\" />
     <Folder Include="Text\QuotedPrintable\" />
     <Folder Include="Localization\" />
+    <Folder Include="assets\" />
+    <Folder Include="assets\js\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
