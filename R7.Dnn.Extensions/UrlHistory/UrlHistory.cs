@@ -35,7 +35,7 @@ namespace R7.Dnn.Extensions.UrlHistory
     /// <summary>
     /// Manages URL history across session.
     /// </summary>
-    [Obsolete ("Consider using LastFolderExtensions")]
+    [Obsolete ("Consider using FolderHistory")]
     public class UrlHistory
     {
         protected readonly UrlHistoryBackend Backend;
