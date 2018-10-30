@@ -1,20 +1,27 @@
 ﻿(function ($, window) {
+  // window - modal popup window
+  // _window - parent window
   window.dnnModalHelper = {
     getPopup: function (_window) {
       return _window.jQuery("#iPopUp");
     },
-    disableRefresh: function (popup) {
+    disableRefreshOnce: function (_window) {
+        if (typeof _window.dnnModalHelperClose !== "undefined") {
+            this.disableRefresh (_window);
+        }
+    },
+    disableRefresh: function (_window) {
+      var popup = this.getPopup (_window);
       if (popup.dialog("option", "refresh")) {
+        _window.dnnModalHelperClose = popup.dialog("option", "close");
         popup.dialog("option", "refresh", false);
-        window.dnnModalHelper.closingUrl = popup.dialog("option", "closingUrl");
         popup.dialog("option", "close", null);
       }
     },
-    enableRefresh: function (popup, closingUrl) {
+    reEnableRefresh: function (_window) {
+      var popup = this.getPopup (_window);
       popup.dialog("option", "refresh", true);
-      popup.dialog("option", "close", function() {
-        window.dnnModal.closePopUp(true, window.dnnModalHelper.closingUrl);
-      });
+      popup.dialog("option", "close", _window.dnnModalHelperClose);
     }
   }
 }) (jQuery, window);
