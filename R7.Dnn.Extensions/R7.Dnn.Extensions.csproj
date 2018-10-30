@@ -154,7 +154,7 @@
     <Compile Include="Models\ModelContextBase.cs" />
     <Compile Include="Data\IDataSet.cs" />
     <Compile Include="Models\ICrudProvider.cs" />
-    <Compile Include="FileSystem\LastFolderExtensions.cs" />
+    <Compile Include="FileSystem\FolderHistory.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
