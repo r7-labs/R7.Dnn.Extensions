@@ -155,6 +155,7 @@
     <Compile Include="Data\IDataSet.cs" />
     <Compile Include="Models\ICrudProvider.cs" />
     <Compile Include="FileSystem\FolderHistory.cs" />
+    <Compile Include="Controls\DnnUrlControlExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
