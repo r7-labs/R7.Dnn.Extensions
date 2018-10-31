@@ -109,7 +109,7 @@
     <Compile Include="Modules\EditPortalModuleBase.cs" />
     <Compile Include="Modules\ModuleSettingsBase.cs" />
     <Compile Include="Modules\PortalModuleBase.cs" />
-    <Compile Include="Utilities\UserUtils.cs" />
+    <Compile Include="Utilities\UserHelper.cs" />
     <Compile Include="Utilities\TypeUtils.cs" />
     <Compile Include="Text\Transliteration\RuFileTranslitTable.cs" />
     <Compile Include="Text\Transliteration\TranslitTableBase.cs" />
@@ -192,6 +192,7 @@
     <Folder Include="Localization\" />
     <Folder Include="assets\" />
     <Folder Include="assets\js\" />
+    <Folder Include="Users\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
