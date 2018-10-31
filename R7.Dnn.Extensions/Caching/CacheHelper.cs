@@ -32,7 +32,6 @@ namespace R7.Dnn.Extensions.Caching
         /// Remove all cache keys with specified prefix
         /// </summary>
         /// <param name="cacheKeyPrefix">Cache key prefix.</param>
-        [Obsolete ("Use DataCache.ClearCache (cachePrefix) instead")]
         public static void RemoveCacheByPrefix (string cacheKeyPrefix)
         {
             var cacheKeysToRemove = new Collection<string> ();
