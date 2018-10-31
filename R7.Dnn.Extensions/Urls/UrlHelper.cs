@@ -63,7 +63,7 @@ namespace R7.Dnn.Extensions.Urls
         static readonly char [] resourceIdSeparator = { '=' };
 
         /// <summary>
-        /// Gets the resource identifier from fileid=xxx or alike DNN URLs.
+        /// Gets the resource identifier from fileid=xxx or alike DNN internal URLs.
         /// </summary>
         /// <returns>The resource identifier.</returns>
         /// <param name="url">URL.</param>
@@ -82,6 +82,16 @@ namespace R7.Dnn.Extensions.Urls
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Checks if provided DNN internal URL is the URL to file.
+        /// </summary>
+        /// <returns><c>true</c>, if provided DNN internal URL is the URL to file, <c>false</c> otherwise.</returns>
+        /// <param name="url">URL.</param>
+        public static bool IsFileUrl (string url)
+        {
+            return !string.IsNullOrEmpty (url) && url.StartsWith ("fileid=", StringComparison.InvariantCultureIgnoreCase);
         }
 
         /// <summary>
