@@ -76,7 +76,7 @@ namespace R7.Dnn.Extensions.UrlHistory
         {
             switch (Globals.GetURLType (url)) {
                 case TabType.File:
-                    var file = FileManager.Instance.GetFile (UrlHelper.GetResourceId (url));
+                    var file = FileManager.Instance.GetFile (UrlHelper.GetResourceId (url) ?? -1);
                     if (file != null) {
                         return file.Folder + file.FileName;
                     }
@@ -90,7 +90,7 @@ namespace R7.Dnn.Extensions.UrlHistory
                     break;
 
                 case TabType.Member:
-                    var user = UserController.Instance.GetUserById (portalId, UrlHelper.GetResourceId (url));
+                    var user = UserController.Instance.GetUserById (portalId, UrlHelper.GetResourceId (url) ?? -1);
                     if (user != null) {
                         return user.DisplayName;
                     }

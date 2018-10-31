@@ -67,17 +67,21 @@ namespace R7.Dnn.Extensions.Urls
         /// </summary>
         /// <returns>The resource identifier.</returns>
         /// <param name="url">URL.</param>
-        public static int GetResourceId (string url)
+        public static int? GetResourceId (string url)
         {
             var urlParts = url.Split (resourceIdSeparator, StringSplitOptions.RemoveEmptyEntries);
             if (urlParts.Length == 2) {
-                int resourceId;
-                if (int.TryParse (urlParts [1], out resourceId)) {
+                if (int.TryParse (urlParts [1], out int resourceId)) {
+                    return resourceId;
+                }
+            }
+            else if (urlParts.Length == 1) {
+                if (int.TryParse (urlParts [0], out int resourceId)) {
                     return resourceId;
                 }
             }
 
-            return Null.NullInteger;
+            return null;
         }
 
         /// <summary>
