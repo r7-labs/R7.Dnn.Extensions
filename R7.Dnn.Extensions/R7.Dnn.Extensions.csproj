@@ -8,7 +8,7 @@
     <RootNamespace>R7.Dnn.Extensions</RootNamespace>
     <AssemblyName>R7.Dnn.Extensions</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <ReleaseVersion>0.13.0-beta1</ReleaseVersion>
+    <ReleaseVersion>0.13.0-beta2</ReleaseVersion>
     <Description>R7.Dnn.Extensions is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules and settings, useful extension methods for webcontrols and strings, various utilities and some version-specific hacks.</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -109,7 +109,6 @@
     <Compile Include="Modules\EditPortalModuleBase.cs" />
     <Compile Include="Modules\ModuleSettingsBase.cs" />
     <Compile Include="Modules\PortalModuleBase.cs" />
-    <Compile Include="Utilities\UserHelper.cs" />
     <Compile Include="Utilities\TypeUtils.cs" />
     <Compile Include="Text\Transliteration\RuFileTranslitTable.cs" />
     <Compile Include="Text\Transliteration\TranslitTableBase.cs" />
@@ -156,6 +155,7 @@
     <Compile Include="Models\ICrudProvider.cs" />
     <Compile Include="FileSystem\FolderHistory.cs" />
     <Compile Include="Controls\DnnUrlControlExtensions.cs" />
+    <Compile Include="Users\UserHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
