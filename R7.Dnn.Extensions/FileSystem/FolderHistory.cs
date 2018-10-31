@@ -26,6 +26,7 @@ using System.Web;
 using DotNetNuke.Services.FileSystem;
 using R7.Dnn.Extensions.Collections;
 using R7.Dnn.Extensions.Text;
+using R7.Dnn.Extensions.Urls;
 
 namespace R7.Dnn.Extensions.FileSystem
 {
@@ -83,6 +84,25 @@ namespace R7.Dnn.Extensions.FileSystem
                 Expires = DateTime.Now.AddHours (24)
             };
             request.Cookies.Add (cookie);
+        }
+
+        /// <summary>
+        /// Remembers the folder by fileid=xxx URL.
+        /// </summary>
+        /// <param name="request">HTTP request.</param>
+        /// <param name="url">Internal DNN file URL.</param>
+        /// <param name="portalId">Portal identifier.</param>
+        public static void RememberFolderByFileUrl (HttpRequest request, string url, int portalId)
+        {
+            if (UrlHelper.IsFileUrl (url)) {
+                var fileId = UrlHelper.GetResourceId (url);
+                if (fileId != null) {
+                    var file = FileManager.Instance.GetFile (fileId.Value);
+                    if (file != null) {
+                        RememberFolder (request, file.FolderId, portalId);
+                    }
+                }
+            }
         }
 
         static IEnumerable<int> One (int i) { yield return i; }
