@@ -43,18 +43,11 @@ namespace R7.Dnn.Extensions.FileSystem
         /// <param name="portalId">Portal identifier.</param>
         public static int? GetLastFolderId (HttpRequest request, int portalId)
         {
-            var cookie = request.Cookies ["r7_FolderHistory{portalId}"];
-            var folderIds = FilterFolders (ParseFolderIds (cookie?.Value));
+            var cookie = request.Cookies [$"r7_FolderHistory{portalId}"];
+            var folderIds = FilterDeletedFolders (ParseFolderIds (cookie?.Value));
             if (!folderIds.IsNullOrEmpty ()) {
                 return folderIds.Last ();
             }
-
-            // no folders in history, get most recent created folder
-            var folder = FolderManager.Instance.GetFolders (portalId).OrderBy (f => f.LastModifiedOnDate).Last ();
-            if (folder != null) {
-                return folder.FolderID;
-            }
-
             return null;
         }
 
@@ -62,62 +55,62 @@ namespace R7.Dnn.Extensions.FileSystem
         /// Remembers the folder id in the cookie.
         /// </summary>
         /// <param name="request">HTTP request.</param>
+        /// <param name="response">HTTP response.</param>
         /// <param name="folderId">Folder identifier.</param>
         /// <param name="portalId">Portal identifier.</param>
-        public static void RememberFolder (HttpRequest request, int folderId, int portalId)
+        public static void RememberFolder (HttpRequest request, HttpResponse response, int folderId, int portalId)
         {
-            var cookie = request.Cookies ["r7_FolderHistory{portalId}"];
-            var folderIds = FilterFolders (ParseFolderIds (cookie?.Value));
+            var cookie = request.Cookies [$"r7_FolderHistory{portalId}"];
+            var folderIds = FilterDeletedFolders (ParseFolderIds (cookie?.Value));
 
             var newCookieValue = cookie?.Value;
             if (!folderIds.IsNullOrEmpty ()) {
-                if (folderIds.Last () != folderId) {
-                    newCookieValue = FormatHelper.JoinNotNullOrEmpty (";", folderIds.Concat (One (folderId)));
+                if (folderIds.Last() != folderId) {
+                    newCookieValue = folderIds.Select (f => f.ToString ()).JoinNotNullOrEmpty (",") + "," + folderId;
                 }
             }
             else {
                 newCookieValue = folderId.ToString ();
             }
 
-            cookie = new HttpCookie ("r7_FolderHistory{portalId}") {
+            cookie = new HttpCookie ($"r7_FolderHistory{portalId}") {
                 Value = newCookieValue,
                 Expires = DateTime.Now.AddHours (24)
             };
-            request.Cookies.Add (cookie);
+            response.Cookies.Add (cookie);
         }
 
         /// <summary>
         /// Remembers the folder by fileid=xxx URL.
         /// </summary>
         /// <param name="request">HTTP request.</param>
+        /// <param name="response">HTTP response.</param>
         /// <param name="url">Internal DNN file URL.</param>
         /// <param name="portalId">Portal identifier.</param>
-        public static void RememberFolderByFileUrl (HttpRequest request, string url, int portalId)
+        public static void RememberFolderByFileUrl (HttpRequest request, HttpResponse response, string url, int portalId)
         {
             if (UrlHelper.IsFileUrl (url)) {
                 var fileId = UrlHelper.GetResourceId (url);
                 if (fileId != null) {
                     var file = FileManager.Instance.GetFile (fileId.Value);
                     if (file != null) {
-                        RememberFolder (request, file.FolderId, portalId);
+                        RememberFolder (request, response, file.FolderId, portalId);
                     }
                 }
             }
         }
 
-        static IEnumerable<int> One (int i) { yield return i; }
-
         static IEnumerable<int> ParseFolderIds (string cookieValue)
         {
             if (!string.IsNullOrEmpty (cookieValue)) {
-                return cookieValue.Split (new char [] { ';' }, StringSplitOptions.RemoveEmptyEntries)
+                return cookieValue.Split (new char [] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                                   .Select (f => int.Parse (f));
             }
 
             return Enumerable.Empty<int> ();
         }
 
-        static IEnumerable<int> FilterFolders (IEnumerable<int> folderIds)
+        static IEnumerable<int> FilterDeletedFolders (IEnumerable<int> folderIds)
         {
             foreach (var folderId in folderIds) {
                 var folder = FolderManager.Instance.GetFolder (folderId);
