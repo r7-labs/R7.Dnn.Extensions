@@ -36,7 +36,7 @@ namespace R7.Dnn.Extensions.FileSystem
     public static class FolderHistory
     {
         /// <summary>
-        /// Return last folder id from cookie.
+        /// Returns last folder id from cookie.
         /// </summary>
         /// <returns>The last folder identifier.</returns>
         /// <param name="request">HTTP request.</param>
@@ -49,6 +49,18 @@ namespace R7.Dnn.Extensions.FileSystem
                 return folderIds.Last ();
             }
             return null;
+        }
+
+        /// <summary>
+        /// Gets folder history.
+        /// </summary>
+        /// <returns>The folder identifiers.</returns>
+        /// <param name="request">HTTP request.</param>
+        /// <param name="portalId">Portal identifier.</param>
+        static IEnumerable<int> GetFolderIds (HttpRequest request, int portalId)
+        {
+            var cookie = request.Cookies [$"r7_FolderHistory{portalId}"];
+            return FilterDeletedFolders (ParseFolderIds (cookie?.Value));
         }
 
         /// <summary>
@@ -65,7 +77,7 @@ namespace R7.Dnn.Extensions.FileSystem
 
             var newCookieValue = cookie?.Value;
             if (!folderIds.IsNullOrEmpty ()) {
-                if (folderIds.Last() != folderId) {
+                if (folderIds.Last () != folderId) {
                     newCookieValue = folderIds.Select (f => f.ToString ()).JoinNotNullOrEmpty (",") + "," + folderId;
                 }
             }
