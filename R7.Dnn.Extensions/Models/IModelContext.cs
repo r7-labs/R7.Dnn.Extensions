@@ -29,7 +29,7 @@ namespace R7.Dnn.Extensions.Models
     {
         IQueryable<TEntity> Query<TEntity> () where TEntity : class;
 
-        IQueryable<TEntity> QueryOne<TEntity> (Expression<Func<TEntity, bool>> keySelector) where TEntity : class;
+        IQueryable<TEntity> QueryWhere<TEntity> (Expression<Func<TEntity, bool>> selector) where TEntity : class;
 
         IQueryable<TEntity> Query<TEntity> (string sql, params object [] parameters) where TEntity : class;
 

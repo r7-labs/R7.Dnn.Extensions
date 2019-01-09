@@ -63,13 +63,13 @@ namespace R7.Dnn.Extensions.Models
             return Context.GetDataSet<TEntity> ().Query ();
         }
 
-        public virtual IQueryable<TEntity> QueryOne<TEntity> (Expression<Func<TEntity, bool>> keySelector) where TEntity : class
+        public virtual IQueryable<TEntity> QueryWhere<TEntity> (Expression<Func<TEntity, bool>> selector) where TEntity : class
         {
-            if (keySelector == null) {
-                throw new ArgumentException ("Key selector cannot be null.");
+            if (selector == null) {
+                throw new ArgumentException ("Selector cannot be null.");
             }
 
-            return Context.GetDataSet<TEntity> ().Query ().Where (keySelector).Take (1);
+            return Context.GetDataSet<TEntity> ().Query ().Where (selector);
         }
 
         public virtual IQueryable<TEntity> Query<TEntity> (string sql, params object [] parameters) where TEntity : class
