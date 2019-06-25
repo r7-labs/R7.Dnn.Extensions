@@ -156,6 +156,7 @@
     <Compile Include="FileSystem\FolderHistory.cs" />
     <Compile Include="Controls\DnnUrlControlExtensions.cs" />
     <Compile Include="Users\UserHelper.cs" />
+    <Compile Include="Modules\EditPortalModuleMode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

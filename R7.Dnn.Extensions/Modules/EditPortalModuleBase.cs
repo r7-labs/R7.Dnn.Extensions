@@ -33,13 +33,6 @@ using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 
 namespace R7.Dnn.Extensions.Modules
 {
-    public enum EditPortalModuleMode
-    {
-        Default,
-        Add,
-        Edit
-    }
-
     /// <summary>
     /// A base class to build simple edit module controls
     /// </summary>
@@ -67,6 +60,10 @@ namespace R7.Dnn.Extensions.Modules
             set { ViewState ["ItemKey"] = value; }
         }
 
+        /// <summary>
+        /// Gets the mode from querystring.
+        /// </summary>
+        /// <value>The mode.</value>
         protected EditPortalModuleMode Mode {
             get {
                 if (!Enum.TryParse (Request.QueryString ["mode"], true, out EditPortalModuleMode mode)) {
