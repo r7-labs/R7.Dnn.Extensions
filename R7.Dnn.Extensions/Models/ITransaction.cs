@@ -21,8 +21,16 @@
 
 namespace R7.Dnn.Extensions.Models
 {
+    /// <summary>
+    /// Interface for transaction.
+    /// </summary>
     public interface ITransaction
     {
+        /// <summary>
+        /// Commits the transaction.
+        /// </summary>
         void Commit ();
+
+        // TODO: Add Abort()?
     }
 }

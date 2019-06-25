@@ -24,6 +24,9 @@ using System.Linq;
 
 namespace R7.Dnn.Extensions.Collections
 {
+    /// <summary>
+    /// Extensions methods for <see cref="IEnumerable{T}" />.
+    /// </summary>
     public static class EnumerableExtensions
     {
         /// <summary>
