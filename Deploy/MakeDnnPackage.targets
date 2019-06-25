@@ -1,11 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="MakeDnnPackage">
     <Target Name="MakeDnnPackage" >
-        <!-- Read package version from the manifest -->
-		<XmlPeek Query="/dotnetnuke/packages/package[1]/@version" XmlInputPath="$(MainProjectPath)/R7.Dnn.Extensions.dnn">
-            <Output TaskParameter="Result" PropertyName="Version" />
-        </XmlPeek>
-        <!-- Declare binaries -->
+		<!-- Declare binaries -->
         <ItemGroup>
             <InstallBinaryFiles Include="$(MainProjectOutputPath)/R7.Dnn.Extensions.dll" />
 			<InstallBinaryFiles Include="$(MainProjectOutputPath)/R7.Dnn.Extensions.xml" />
@@ -78,11 +74,11 @@
             <InstallPackageFiles Include="$(MSBuildProjectDirectory)\tmp\Package\**\*.*" />
         </ItemGroup>
         <!-- Create the install package -->
-        <Zip Condition=" '$(OS)' != 'Unix' " Files="@(InstallPackageFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Package" ZipFileName="$(PackageName)-$(Version)-Install.zip" />
-        <Exec Condition=" '$(OS)' == 'Unix' " Command="zip -r -6 -UN=UTF8 &quot;$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.zip&quot; ." WorkingDirectory="$(MSBuildProjectDirectory)/tmp/Package" />
+        <Zip Condition=" '$(OS)' != 'Unix' " Files="@(InstallPackageFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Package" ZipFileName="$(PackageName)-$(ReleaseVersion)-Install.zip" />
+        <Exec Condition=" '$(OS)' == 'Unix' " Command="zip -r -6 -UN=UTF8 &quot;$(MSBuildProjectDirectory)\$(PackageName)-$(ReleaseVersion)-Install.zip&quot; ." WorkingDirectory="$(MSBuildProjectDirectory)/tmp/Package" />
         <!-- Move the install package to the output directory -->
-        <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.zip" DestinationFolder="$(PackageOutputPath)\" />
-        <Delete Files="$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.zip" />
+        <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)-$(ReleaseVersion)-Install.zip" DestinationFolder="$(PackageOutputPath)\" />
+        <Delete Files="$(MSBuildProjectDirectory)\$(PackageName)-$(ReleaseVersion)-Install.zip" />
         <!-- Cleanup -->
         <RemoveDir Directories="$(MSBuildProjectDirectory)\tmp\Package" />
         <RemoveDir Directories="$(MSBuildProjectDirectory)\tmp" />
