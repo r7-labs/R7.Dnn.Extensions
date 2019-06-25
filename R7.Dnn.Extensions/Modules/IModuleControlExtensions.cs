@@ -59,6 +59,7 @@ namespace R7.Dnn.Extensions.Modules
             return module.ModuleContext.NavigateUrl (module.ModuleContext.TabId, controlKey, false, argList.ToArray ());
         }
 
+        [Obsolete ("Fixed in DNN 7.2.0")]
         public static void SynchronizeModuleHack (this IModuleControl module)
         {
             ModuleController.SynchronizeModule (module.ModuleContext.ModuleId);
