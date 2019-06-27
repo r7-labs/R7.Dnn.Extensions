@@ -20,18 +20,29 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Text;
 using System.Collections.Generic;
 
 namespace R7.Dnn.Extensions.Text.Levenstein
 {
+    /// <summary>
+    /// Class to calulate Damerau-Levenshtein distance between two strings.
+    /// </summary>
     public class DamerauLevenshteinDistance: LevenshteinDistanceBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:R7.Dnn.Extensions.Text.Levenstein.DamerauLevenshteinDistance"/> class.
+        /// </summary>
+        /// <param name="s1">First string.</param>
+        /// <param name="s2">Second string.</param>
         public DamerauLevenshteinDistance (string s1, string s2) : base (s1, s2)
         {
         }
 
         // TODO: Add tests
+        /// <summary>
+        /// Calculates the Damerau-Levenstein distance between two strings.
+        /// </summary>
+        /// <value>The Damerau-Levenstein distance.</value>
         public override int Distance {
             get {
                 // border case processing
