@@ -65,7 +65,7 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
 
         public event EventHandler PageChanged;
 
-        #region "Protected Properties"
+        #region "Public Properties"
 
         public int PageLinksPerPage { get; set; } = 10;
 
