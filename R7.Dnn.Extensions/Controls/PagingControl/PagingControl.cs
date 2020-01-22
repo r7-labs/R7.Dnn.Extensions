@@ -33,7 +33,6 @@ using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 // TODO: Abstract, inherit BS4 control from this?
 namespace R7.Dnn.Extensions.Controls.PagingControl
 {
-    [ToolboxData ("<{0}:PagingControl runat=server></{0}:PagingControl>")]
     public class PagingControl: WebControl, IPostBackEventHandler
     {
 
@@ -68,10 +67,8 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
 
         #region "Protected Properties"
 
-        [Bindable (true), Category ("Behavior"), DefaultValue (10)]
         public int PageLinksPerPage { get; set; } = 10;
 
-        [Bindable (true), Category ("Behavior"), DefaultValue ("")]
         public string CSSClassLinkActive {
             get {
                 if (string.IsNullOrEmpty (_CSSClassLinkActive)) {
@@ -82,7 +79,6 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
             set { _CSSClassLinkActive = value; }
         }
 
-        [Bindable (true), Category ("Behavior"), DefaultValue ("disabled")]
         public string CSSClassLinkInactive {
             get {
                 if (string.IsNullOrEmpty (_CSSClassLinkInactive)) {
@@ -94,7 +90,6 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
             set { _CSSClassLinkInactive = value; }
         }
 
-        [Bindable (true), Category ("Behavior"), DefaultValue ("disabled")]
         public string CSSClassLinkCurrent {
             get {
                 if (string.IsNullOrEmpty (_CSSClassLinkCurrent)) {
@@ -107,7 +102,6 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
             }
         }
 
-        [Bindable (true), Category ("Behavior"), DefaultValue ("Normal")]
         public string CSSClassPagingStatus {
             get {
                 if (string.IsNullOrEmpty (_CSSClassPagingStatus)) {
@@ -119,21 +113,16 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
             set { _CSSClassPagingStatus = value; }
         }
 
-        [Bindable (true), Category ("Behavior"), DefaultValue ("1")]
         public int CurrentPage { get; set; } = 1;
 
         public PagingControlMode Mode { get; set; } = PagingControlMode.URL;
 
-        [Bindable (true), Category ("Behavior"), DefaultValue ("10")]
         public int PageSize { get; set; } = 10;
 
-        [Bindable (true), Category ("Behavior"), DefaultValue (null)]
         public string QuerystringParams { get; set; }
 
-        [Bindable (true), Category ("Behavior"), DefaultValue ("-1")]
         public int TabID { get; set; } = -1;
 
-        [Bindable (true), Category ("Behavior"), DefaultValue ("0")]
         public int TotalRecords { get; set; }
 
         #endregion
