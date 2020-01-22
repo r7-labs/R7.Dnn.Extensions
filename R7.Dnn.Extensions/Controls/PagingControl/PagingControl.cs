@@ -30,6 +30,7 @@ using System.Web.UI.WebControls;
 using DotNetNuke.Common;
 using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 
+// TODO: Abstract, inherit BS4 control from this?
 namespace R7.Dnn.Extensions.Controls.PagingControl
 {
     [ToolboxData ("<{0}:PagingControl runat=server></{0}:PagingControl>")]
@@ -38,27 +39,28 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
 
         #region "Controls"
 
+        // TODO: Replace table with something
         protected Table tablePageNumbers;
+
         protected Repeater PageNumbers;
+
         protected TableCell cellDisplayStatus;
+
         protected TableCell cellDisplayLinks;
 
         #endregion
 
         #region "Private Members"
 
-        private int _PageLinksPerPage = 10;
-        private int TotalPages = -1;
-        private int _TotalRecords;
-        private PagingControlMode _Mode = PagingControlMode.URL;
-        private int _PageSize;// = 1; check DivideByZeroException
-        private int _CurrentPage;
-        private string _QuerystringParams;
-        private int _TabID;
-        private string _CSSClassLinkActive;
-        private string _CSSClassLinkInactive;
-        private string _CSSClassPagingStatus;
-        private string _CSSClassLinkCurrent;
+        int TotalPages = -1;
+
+        string _CSSClassLinkActive;
+
+        string _CSSClassLinkInactive;
+
+        string _CSSClassPagingStatus;
+
+        string _CSSClassLinkCurrent;
 
         #endregion
 
@@ -67,10 +69,7 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
         #region "Protected Properties"
 
         [Bindable (true), Category ("Behavior"), DefaultValue (10)]
-        public int PageLinksPerPage {
-            get { return this._PageLinksPerPage; }
-            set { _PageLinksPerPage = value; }
-        }
+        public int PageLinksPerPage { get; set; } = 10;
 
         [Bindable (true), Category ("Behavior"), DefaultValue ("")]
         public string CSSClassLinkActive {
@@ -78,9 +77,7 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
                 if (string.IsNullOrEmpty (_CSSClassLinkActive)) {
                     return "";
                 }
-                else {
-                    return _CSSClassLinkActive;
-                }
+                return _CSSClassLinkActive;
             }
             set { _CSSClassLinkActive = value; }
         }
@@ -91,9 +88,7 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
                 if (string.IsNullOrEmpty (_CSSClassLinkInactive)) {
                     return "disabled";
                 }
-                else {
-                    return _CSSClassLinkInactive;
-                }
+                return _CSSClassLinkInactive;
             }
 
             set { _CSSClassLinkInactive = value; }
@@ -102,10 +97,10 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
         [Bindable (true), Category ("Behavior"), DefaultValue ("disabled")]
         public string CSSClassLinkCurrent {
             get {
-                if (string.IsNullOrEmpty (_CSSClassLinkCurrent))
+                if (string.IsNullOrEmpty (_CSSClassLinkCurrent)) {
                     return "active";
-                else
-                    return this._CSSClassLinkCurrent;
+                }
+                return this._CSSClassLinkCurrent;
             }
             set {
                 _CSSClassLinkCurrent = value;
@@ -118,57 +113,34 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
                 if (string.IsNullOrEmpty (_CSSClassPagingStatus)) {
                     return "Normal";
                 }
-                else {
-                    return _CSSClassPagingStatus;
-                }
+                return _CSSClassPagingStatus;
             }
 
             set { _CSSClassPagingStatus = value; }
         }
 
         [Bindable (true), Category ("Behavior"), DefaultValue ("1")]
-        public int CurrentPage {
-            get { return _CurrentPage; }
-            set { _CurrentPage = value; }
-        }
+        public int CurrentPage { get; set; } = 1;
 
-        public PagingControlMode Mode {
-            get { return _Mode; }
-            set { _Mode = value; }
-        }
+        public PagingControlMode Mode { get; set; } = PagingControlMode.URL;
 
         [Bindable (true), Category ("Behavior"), DefaultValue ("10")]
-        public int PageSize {
-            get { return _PageSize; }
+        public int PageSize { get; set; } = 10;
 
-            set { _PageSize = value; }
-        }
-
-        [Bindable (true), Category ("Behavior"), DefaultValue ("")]
-        public string QuerystringParams {
-            get { return _QuerystringParams; }
-
-            set { _QuerystringParams = value; }
-        }
+        [Bindable (true), Category ("Behavior"), DefaultValue (null)]
+        public string QuerystringParams { get; set; }
 
         [Bindable (true), Category ("Behavior"), DefaultValue ("-1")]
-        public int TabID {
-            get { return _TabID; }
-
-            set { _TabID = value; }
-        }
+        public int TabID { get; set; } = -1;
 
         [Bindable (true), Category ("Behavior"), DefaultValue ("0")]
-        public int TotalRecords {
-            get { return _TotalRecords; }
-
-            set { _TotalRecords = value; }
-        }
+        public int TotalRecords { get; set; }
 
         #endregion
 
         #region "Private Methods"
 
+        // TODO: Extract page calculation methods
         private void BindPageNumbers (int TotalRecords, int RecordsPerPage)
         {
             if (TotalRecords < 1 || RecordsPerPage < 1) {
@@ -184,17 +156,18 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
             }
 
             if (TotalPages > 0) {
-                DataTable ht = new DataTable ();
+                var ht = new DataTable ();
                 ht.Columns.Add ("PageNum");
                 DataRow tmpRow = default (DataRow);
 
-                int LowNum = 1;
-                int HighNum = Convert.ToInt32 (TotalPages);
+                var LowNum = 1;
+                var HighNum = Convert.ToInt32 (TotalPages);
 
-                double tmpNum = 0;
+                var tmpNum = 0d;
                 tmpNum = CurrentPage - PageLinksPerPage / 2;
-                if (tmpNum < 1)
+                if (tmpNum < 1) {
                     tmpNum = 1;
+                }
 
                 if (CurrentPage > (PageLinksPerPage / 2)) {
                     LowNum = Convert.ToInt32 (Math.Floor (tmpNum));
@@ -214,13 +187,14 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
                     }
                 }
 
-                if (HighNum > Convert.ToInt32 (TotalPages))
+                if (HighNum > Convert.ToInt32 (TotalPages)) {
                     HighNum = Convert.ToInt32 (TotalPages);
-                if (LowNum < 1)
+                }
+                if (LowNum < 1) {
                     LowNum = 1;
+                }
 
-                int i = 0;
-                for (i = LowNum; i <= HighNum; i++) {
+                for (var i = LowNum; i <= HighNum; i++) {
                     tmpRow = ht.NewRow ();
                     tmpRow ["PageNum"] = i;
                     ht.Rows.Add (tmpRow);
@@ -229,34 +203,24 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
                 PageNumbers.DataSource = ht;
                 PageNumbers.DataBind ();
             }
-
         }
 
         private string CreateURL (string CurrentPage)
         {
-
             if (Mode == PagingControlMode.URL) {
                 if (!string.IsNullOrEmpty (QuerystringParams)) {
                     if (!string.IsNullOrEmpty (CurrentPage)) {
                         return Globals.NavigateURL (TabID, "", QuerystringParams, "currentpage=" + CurrentPage);
                     }
-                    else {
-                        return Globals.NavigateURL (TabID, "", QuerystringParams);
-                    }
+                    return Globals.NavigateURL (TabID, "", QuerystringParams);
                 }
-                else {
-                    if (!string.IsNullOrEmpty (CurrentPage)) {
-                        return Globals.NavigateURL (TabID, "", "currentpage=" + CurrentPage);
-                    }
-                    else {
-                        return Globals.NavigateURL (TabID);
-                    }
+                if (!string.IsNullOrEmpty (CurrentPage)) {
+                    return Globals.NavigateURL (TabID, "", "currentpage=" + CurrentPage);
                 }
-            }
-            else {
-                return this.Page.ClientScript.GetPostBackClientHyperlink (this, "Page_" + CurrentPage.ToString (), false);
+                return Globals.NavigateURL (TabID);
             }
 
+            return Page.ClientScript.GetPostBackClientHyperlink (this, "Page_" + CurrentPage, false);
         }
 
         /// -----------------------------------------------------------------------------
@@ -354,44 +318,49 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
 
         protected override void CreateChildControls ()
         {
+            tablePageNumbers = new Table ();
 
-            tablePageNumbers = new System.Web.UI.WebControls.Table ();
-
+            // TODO: Remove this
             tablePageNumbers.Width = new Unit ("100%");
 
-            cellDisplayStatus = new System.Web.UI.WebControls.TableCell ();
-            cellDisplayLinks = new System.Web.UI.WebControls.TableCell ();
+            cellDisplayStatus = new TableCell ();
+            cellDisplayLinks = new TableCell ();
             cellDisplayStatus.CssClass = "Normal";
             cellDisplayLinks.CssClass = "Normal";
 
-            if (string.IsNullOrEmpty (this.CssClass)) {
+            if (string.IsNullOrEmpty (CssClass)) {
                 tablePageNumbers.CssClass = "PagingTable";
             }
             else {
-                tablePageNumbers.CssClass = this.CssClass;
+                tablePageNumbers.CssClass = CssClass;
             }
 
-            int intRowIndex = tablePageNumbers.Rows.Add (new TableRow ());
+            var intRowIndex = tablePageNumbers.Rows.Add (new TableRow ());
 
             PageNumbers = new Repeater ();
             PageNumberLinkTemplate I = new PageNumberLinkTemplate (this);
             PageNumbers.ItemTemplate = I;
             BindPageNumbers (TotalRecords, PageSize);
 
+            // TODO: Remove this
             cellDisplayStatus.HorizontalAlign = HorizontalAlign.Left;
 
+            // TODO: Remove this
             cellDisplayStatus.Style.Add (HtmlTextWriterStyle.WhiteSpace, "nowrap");
 
+            // TODO: Remove this
             cellDisplayLinks.HorizontalAlign = HorizontalAlign.Right;
+
+            // TODO: Remove this
             //cellDisplayLinks.Width = new Unit ("100%");
 
-            int intTotalPages = TotalPages;
-            if (intTotalPages == 0)
+            var intTotalPages = TotalPages;
+            if (intTotalPages == 0) {
                 intTotalPages = 1;
+            }
 
-            string str = null;
-            str = string.Format (DnnLocalization.GetString ("Pages"), CurrentPage.ToString (), intTotalPages.ToString ());
-            LiteralControl lit = new LiteralControl (str);
+            var lit = new LiteralControl (
+                string.Format (DnnLocalization.GetString ("Pages"), CurrentPage.ToString (), intTotalPages.ToString ()));
             cellDisplayStatus.Controls.Add (lit);
 
             tablePageNumbers.Rows [intRowIndex].Cells.Add (cellDisplayStatus);
@@ -436,28 +405,24 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
 
         public class PageNumberLinkTemplate: ITemplate
         {
-            //static int itemcount = 0;
+            PagingControl _PagingControl;
 
-            private PagingControl _PagingControl;
             public PageNumberLinkTemplate (PagingControl ctlPagingControl)
             {
                 _PagingControl = ctlPagingControl;
             }
 
-
             public void InstantiateIn (Control container)
             {
-                Literal l = new Literal ();
-                l.DataBinding += this.BindData;
-                container.Controls.Add (l);
+                var lit = new Literal ();
+                lit.DataBinding += BindData;
+                container.Controls.Add (lit);
             }
 
-            private void BindData (object sender, System.EventArgs e)
+            private void BindData (object sender, EventArgs e)
             {
-                Literal lc = default (Literal);
-                lc = (Literal) sender;
-                RepeaterItem container = default (RepeaterItem);
-                container = (RepeaterItem) lc.NamingContainer;
+                var lc = (Literal) sender;
+                var container = (RepeaterItem) lc.NamingContainer;
                 lc.Text = _PagingControl.GetLink (Convert.ToInt32 (DataBinder.Eval (container.DataItem, "PageNum"))) + "&nbsp;&nbsp;";
             }
         }
