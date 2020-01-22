@@ -130,15 +130,15 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
         #region "Private Methods"
 
         // TODO: Extract page calculation methods
-        private void BindPageNumbers (int totalRecords, int RecordsPerPage)
+        private void BindPageNumbers (int totalRecords, int recordsPerPage)
         {
-            if (totalRecords < 1 || RecordsPerPage < 1) {
+            if (totalRecords < 1 || recordsPerPage < 1) {
                 TotalPages = 1;
                 return;
             }
 
-            if (totalRecords / RecordsPerPage >= 1) {
-                TotalPages = totalRecords / RecordsPerPage + ((totalRecords % RecordsPerPage == 0) ? 0 : 1);
+            if (totalRecords / recordsPerPage >= 1) {
+                TotalPages = totalRecords / recordsPerPage + ((totalRecords % recordsPerPage == 0) ? 0 : 1);
             }
             else {
                 TotalPages = 0;
