@@ -19,6 +19,7 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
 using R7.Dnn.Extensions.Common;
 using Xunit;
 
@@ -58,6 +59,23 @@ namespace R7.Dnn.Extensions.Tests.Common
             Assert.Equal (2, PagingHelper.GetTotalPages (7, 4));
             Assert.Equal (2, PagingHelper.GetTotalPages (7, 5));
             Assert.Equal (2, PagingHelper.GetTotalPages (7, 6));
+        }
+
+        [Fact]
+        public void GetPagesRangeTest ()
+        {
+            var totalPages = 10;
+            var pageLinksPerPage = 3;
+
+            Assert.Equal (new Tuple<int, int> (1, 3), PagingHelper.GetPagesRange (totalPages, pageLinksPerPage, 1));
+            Assert.Equal (new Tuple<int, int> (1, 3), PagingHelper.GetPagesRange (totalPages, pageLinksPerPage, 3));
+            Assert.Equal (new Tuple<int, int> (2, 4), PagingHelper.GetPagesRange (totalPages, pageLinksPerPage, 4));
+            Assert.Equal (new Tuple<int, int> (7, 9), PagingHelper.GetPagesRange (totalPages, pageLinksPerPage, 9));
+            Assert.Equal (new Tuple<int, int> (8, 10), PagingHelper.GetPagesRange (totalPages, pageLinksPerPage, 10));
+
+            totalPages = 2;
+            Assert.Equal (new Tuple<int, int> (1, 2), PagingHelper.GetPagesRange (totalPages, pageLinksPerPage, 1));
+            Assert.Equal (new Tuple<int, int> (1, 2), PagingHelper.GetPagesRange (totalPages, pageLinksPerPage, 2));
         }
     }
 }

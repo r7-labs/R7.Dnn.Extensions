@@ -19,6 +19,8 @@
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+using System;
+
 namespace R7.Dnn.Extensions.Common
 {
     public static class PagingHelper
@@ -39,6 +41,40 @@ namespace R7.Dnn.Extensions.Common
             }
 
             return totalRecords / recordsPerPage + ((totalRecords % recordsPerPage == 0) ? 0 : 1);
+        }
+
+        public static Tuple<int,int> GetPagesRange (int totalPages, int pageLinksPerPage, int currentPage)
+        {
+            var lowNum = 1;
+            var highNum = totalPages;
+
+            if (currentPage > (pageLinksPerPage / 2)) {
+                var tmpNum = currentPage - pageLinksPerPage / 2.0;
+                if (tmpNum < 1) {
+                    tmpNum = 1;
+                }
+                lowNum = Convert.ToInt32 (Math.Floor (tmpNum));
+            }
+
+            if (totalPages <= pageLinksPerPage) {
+                highNum = totalPages;
+            }
+            else {
+                highNum = lowNum + pageLinksPerPage - 1;
+            }
+
+            if (highNum > totalPages) {
+                highNum = totalPages;
+                if (highNum - lowNum < pageLinksPerPage) {
+                    lowNum = highNum - pageLinksPerPage + 1;
+                }
+            }
+
+            if (lowNum < 1) {
+                lowNum = 1;
+            }
+
+            return new Tuple<int, int> (lowNum, highNum);
         }
     }
 }

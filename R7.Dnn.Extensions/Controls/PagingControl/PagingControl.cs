@@ -137,52 +137,17 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
             );
         }
        
-        // TODO: Extract page calculation methods
         private void BindPageNumbers (int totalRecords, int recordsPerPage)
         {
             TotalPages = PagingHelper.GetTotalPages (totalRecords, recordsPerPage);
 
             if (TotalPages > 0) {
+                var pagesRange = PagingHelper.GetPagesRange (TotalPages, PageLinksPerPage, CurrentPage);
+
                 var ht = new DataTable ();
                 ht.Columns.Add ("PageNum");
-                var tmpRow = default (DataRow);
-
-                var LowNum = 1;
-                var HighNum = Convert.ToInt32 (TotalPages);
-
-                var tmpNum = 0d;
-                tmpNum = CurrentPage - PageLinksPerPage / 2;
-                if (tmpNum < 1) {
-                    tmpNum = 1;
-                }
-
-                if (CurrentPage > (PageLinksPerPage / 2)) {
-                    LowNum = Convert.ToInt32 (Math.Floor (tmpNum));
-                }
-
-                if (Convert.ToInt32 (TotalPages) <= PageLinksPerPage) {
-                    HighNum = Convert.ToInt32 (TotalPages);
-                }
-                else {
-                    HighNum = LowNum + PageLinksPerPage - 1;
-                }
-
-                if (HighNum > Convert.ToInt32 (TotalPages)) {
-                    HighNum = Convert.ToInt32 (TotalPages);
-                    if (HighNum - LowNum < PageLinksPerPage) {
-                        LowNum = HighNum - PageLinksPerPage + 1;
-                    }
-                }
-
-                if (HighNum > Convert.ToInt32 (TotalPages)) {
-                    HighNum = Convert.ToInt32 (TotalPages);
-                }
-                if (LowNum < 1) {
-                    LowNum = 1;
-                }
-
-                for (var i = LowNum; i <= HighNum; i++) {
-                    tmpRow = ht.NewRow ();
+                for (var i = pagesRange.Item1; i <= pagesRange.Item2; i++) {
+                    var tmpRow = ht.NewRow ();
                     tmpRow ["PageNum"] = i;
                     ht.Rows.Add (tmpRow);
                 }
