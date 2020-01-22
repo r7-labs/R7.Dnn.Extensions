@@ -28,7 +28,6 @@ using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DotNetNuke.Common;
-using DnnLocalization = DotNetNuke.Services.Localization.Localization;
 
 // TODO: Abstract, inherit BS4 control from this?
 namespace R7.Dnn.Extensions.Controls.PagingControl
@@ -128,6 +127,14 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
         #endregion
 
         #region "Private Methods"
+
+        string GetString (string key)
+        {
+            return DotNetNuke.Services.Localization.Localization.GetString (
+                key,
+                DotNetNuke.Services.Localization.Localization.SharedResourceFile
+            );
+        }
 
         // TODO: Extract page calculation methods
         private void BindPageNumbers (int totalRecords, int recordsPerPage)
@@ -244,9 +251,9 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
         private string GetPreviousLink ()
         {
             if (CurrentPage > 1 && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL ((CurrentPage - 1).ToString ()) + "\">" + DnnLocalization.GetString ("Previous", DnnLocalization.SharedResourceFile) + "</a></li>";
+                return "<li><a href=\"" + CreateURL ((CurrentPage - 1).ToString ()) + "\">" + GetString ("Previous") + "</a></li>";
 
-            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + DnnLocalization.GetString ("Previous", DnnLocalization.SharedResourceFile) + "</span></li>";
+            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + GetString ("Previous") + "</span></li>";
         }
 
         /// -----------------------------------------------------------------------------
@@ -262,9 +269,9 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
         private string GetNextLink ()
         {
             if (CurrentPage != TotalPages && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL ((CurrentPage + 1).ToString ()) + "\">" + DnnLocalization.GetString ("Next", DnnLocalization.SharedResourceFile) + "</a></li>";
+                return "<li><a href=\"" + CreateURL ((CurrentPage + 1).ToString ()) + "\">" + GetString ("Next") + "</a></li>";
 
-            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + DnnLocalization.GetString ("Next", DnnLocalization.SharedResourceFile) + "</span></li>";
+            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + GetString ("Next") + "</span></li>";
         }
 
         /// -----------------------------------------------------------------------------
@@ -280,9 +287,9 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
         private string GetFirstLink ()
         {
             if (CurrentPage > 1 && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL ("1") + "\">" + DnnLocalization.GetString ("First", DnnLocalization.SharedResourceFile) + "</a></li>";
+                return "<li><a href=\"" + CreateURL ("1") + "\">" + GetString ("First") + "</a></li>";
 
-            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + DnnLocalization.GetString ("First", DnnLocalization.SharedResourceFile) + "</span></li>";
+            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + GetString ("First") + "</span></li>";
         }
 
         /// -----------------------------------------------------------------------------
@@ -298,9 +305,9 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
         private string GetLastLink ()
         {
             if (CurrentPage != TotalPages && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL (TotalPages.ToString ()) + "\">" + DnnLocalization.GetString ("Last", DnnLocalization.SharedResourceFile) + "</a></li>";
+                return "<li><a href=\"" + CreateURL (TotalPages.ToString ()) + "\">" + GetString ("Last") + "</a></li>";
 
-            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + DnnLocalization.GetString ("Last", DnnLocalization.SharedResourceFile) + "</span></li>";
+            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + GetString ("Last") + "</span></li>";
         }
 
         #endregion
@@ -349,7 +356,7 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
             }
 
             var lit = new LiteralControl (
-                string.Format (DnnLocalization.GetString ("Pages"), CurrentPage.ToString (), intTotalPages.ToString ()));
+                string.Format (GetString ("Pages"), CurrentPage.ToString (), intTotalPages.ToString ()));
             cellDisplayStatus.Controls.Add (lit);
 
             tablePageNumbers.Rows [intRowIndex].Cells.Add (cellDisplayStatus);
