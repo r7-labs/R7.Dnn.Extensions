@@ -23,9 +23,9 @@
 // THE SOFTWARE.
 
 using System;
+using System.IO;
 using System.Data;
 using System.Web.UI;
-using System.ComponentModel;
 using System.Web.UI.WebControls;
 using DotNetNuke.Common;
 using DnnLocalization = DotNetNuke.Services.Localization.Localization;
@@ -363,7 +363,7 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
             }
         }
 
-        protected override void Render (System.Web.UI.HtmlTextWriter output)
+        protected override void Render (HtmlTextWriter writer)
         {
             if (PageNumbers == null) {
                 CreateChildControls ();
@@ -374,7 +374,7 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
             str.Append (GetFirstLink ());
             str.Append (GetPreviousLink ());
             System.Text.StringBuilder result = new System.Text.StringBuilder (1024);
-            PageNumbers.RenderControl (new HtmlTextWriter (new System.IO.StringWriter (result)));
+            PageNumbers.RenderControl (new HtmlTextWriter (new StringWriter (result)));
             str.Append (result.ToString ());
             str.Append (GetNextLink ());
             str.Append (GetLastLink ());
@@ -382,7 +382,7 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
 
             cellDisplayLinks.Controls.Add (new LiteralControl (str.ToString ()));
 
-            tablePageNumbers.RenderControl (output);
+            tablePageNumbers.RenderControl (writer);
         }
 
         public void RaisePostBackEvent (string eventArgument)
