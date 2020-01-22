@@ -154,7 +154,7 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
             if (TotalPages > 0) {
                 var ht = new DataTable ();
                 ht.Columns.Add ("PageNum");
-                DataRow tmpRow = default (DataRow);
+                var tmpRow = default (DataRow);
 
                 var LowNum = 1;
                 var HighNum = Convert.ToInt32 (TotalPages);
@@ -201,22 +201,22 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
             }
         }
 
-        private string CreateURL (string CurrentPage)
+        private string CreateURL (string currentPage)
         {
             if (Mode == PagingControlMode.URL) {
                 if (!string.IsNullOrEmpty (QuerystringParams)) {
-                    if (!string.IsNullOrEmpty (CurrentPage)) {
-                        return Globals.NavigateURL (TabID, "", QuerystringParams, "currentpage=" + CurrentPage);
+                    if (!string.IsNullOrEmpty (currentPage)) {
+                        return Globals.NavigateURL (TabID, "", QuerystringParams, "currentpage=" + currentPage);
                     }
                     return Globals.NavigateURL (TabID, "", QuerystringParams);
                 }
-                if (!string.IsNullOrEmpty (CurrentPage)) {
-                    return Globals.NavigateURL (TabID, "", "currentpage=" + CurrentPage);
+                if (!string.IsNullOrEmpty (currentPage)) {
+                    return Globals.NavigateURL (TabID, "", "currentpage=" + currentPage);
                 }
                 return Globals.NavigateURL (TabID);
             }
 
-            return Page.ClientScript.GetPostBackClientHyperlink (this, "Page_" + CurrentPage, false);
+            return Page.ClientScript.GetPostBackClientHyperlink (this, "Page_" + currentPage, false);
         }
 
         /// -----------------------------------------------------------------------------
@@ -334,8 +334,7 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
             var intRowIndex = tablePageNumbers.Rows.Add (new TableRow ());
 
             PageNumbers = new Repeater ();
-            PageNumberLinkTemplate I = new PageNumberLinkTemplate (this);
-            PageNumbers.ItemTemplate = I;
+            PageNumbers.ItemTemplate = new PageNumberLinkTemplate (this);
             BindPageNumbers (TotalRecords, PageSize);
 
             // TODO: Remove this
