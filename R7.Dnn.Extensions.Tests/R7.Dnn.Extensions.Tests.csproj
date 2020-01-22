@@ -57,6 +57,7 @@
     <Folder Include="Localization\" />
     <Folder Include="Configuration\" />
     <Folder Include="Collections\" />
+    <Folder Include="Common\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Text\StringExtensionsTest.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Collections\EnumerableExtensionsTests.cs" />
     <Compile Include="Text\FormatHelperTests.cs" />
     <Compile Include="Text\ParseHelperTests.cs" />
+    <Compile Include="Common\PagingHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\R7.Dnn.Extensions\R7.Dnn.Extensions.csproj">

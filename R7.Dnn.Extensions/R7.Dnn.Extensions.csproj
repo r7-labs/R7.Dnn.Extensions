@@ -157,6 +157,7 @@
     <Compile Include="Controls\DnnUrlControlExtensions.cs" />
     <Compile Include="Users\UserHelper.cs" />
     <Compile Include="Modules\EditPortalModuleMode.cs" />
+    <Compile Include="Common\PagingHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -194,6 +195,7 @@
     <Folder Include="assets\" />
     <Folder Include="assets\js\" />
     <Folder Include="Users\" />
+    <Folder Include="Common\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

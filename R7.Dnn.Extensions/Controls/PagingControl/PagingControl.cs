@@ -28,6 +28,7 @@ using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DotNetNuke.Common;
+using R7.Dnn.Extensions.Common;
 
 // TODO: Abstract, inherit BS4 control from this?
 namespace R7.Dnn.Extensions.Controls.PagingControl
@@ -135,21 +136,11 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
                 DotNetNuke.Services.Localization.Localization.SharedResourceFile
             );
         }
-
+       
         // TODO: Extract page calculation methods
         private void BindPageNumbers (int totalRecords, int recordsPerPage)
         {
-            if (totalRecords < 1 || recordsPerPage < 1) {
-                TotalPages = 1;
-                return;
-            }
-
-            if (totalRecords / recordsPerPage >= 1) {
-                TotalPages = totalRecords / recordsPerPage + ((totalRecords % recordsPerPage == 0) ? 0 : 1);
-            }
-            else {
-                TotalPages = 0;
-            }
+            TotalPages = PagingHelper.GetTotalPages (totalRecords, recordsPerPage);
 
             if (TotalPages > 0) {
                 var ht = new DataTable ();
