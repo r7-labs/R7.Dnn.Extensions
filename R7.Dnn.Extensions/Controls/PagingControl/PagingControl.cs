@@ -95,7 +95,7 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
                 if (string.IsNullOrEmpty (_CSSClassLinkCurrent)) {
                     return "active";
                 }
-                return this._CSSClassLinkCurrent;
+                return _CSSClassLinkCurrent;
             }
             set {
                 _CSSClassLinkCurrent = value;
