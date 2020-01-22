@@ -2,7 +2,7 @@
 // PagingControl.cs
 //
 // Copyright (c) 2002-2010 DotNetNuke Corporation
-// Copyright (c) 2015 Roman M. Yagodin <roman.yagodin@gmail.com>
+// Copyright (c) 2015-2020 Roman M. Yagodin <roman.yagodin@gmail.com>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -222,13 +222,13 @@ namespace R7.Dnn.Extensions.Controls.PagingControl
         /// 	[dancaron]	10/28/2004	Initial Version
         /// </history>
         /// -----------------------------------------------------------------------------
-        private string GetLink (int PageNum)
+        private string GetLink (int pageNum)
         {
-            if (PageNum == CurrentPage)
-                return "<li class=\"" + CSSClassLinkCurrent + "\"><span>" + PageNum + "</span></li>";
+            if (pageNum == CurrentPage)
+                return "<li class=\"" + CSSClassLinkCurrent + "\"><span>" + pageNum + "</span></li>";
 
             return "<li><a href=\"" +
-                CreateURL (PageNum.ToString ()) + "\">" + PageNum + "</a></li>";
+                CreateURL (pageNum.ToString ()) + "\">" + pageNum + "</a></li>";
         }
 
         /// -----------------------------------------------------------------------------
