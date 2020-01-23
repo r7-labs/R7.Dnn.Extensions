@@ -1,381 +1,145 @@
 ﻿//
-// PagingControl.cs
+//  PagingControl.cs
 //
-// Copyright (c) 2002-2010 DotNetNuke Corporation
-// Copyright (c) 2015-2020 Roman M. Yagodin <roman.yagodin@gmail.com>
+//  Author:
+//       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+//  Copyright (c) 2020 Roman M. Yagodin
 //
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU Lesser General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
 //
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU Lesser General Public License for more details.
+//
+//  You should have received a copy of the GNU Lesser General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-using System;
-using System.IO;
-using System.Data;
+using System.Text;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using DotNetNuke.Common;
 using R7.Dnn.Extensions.Common;
 
-// TODO: Abstract, inherit BS4 control from this?
 namespace R7.Dnn.Extensions.Controls.PagingControl
 {
-    public class PagingControl: WebControl, IPostBackEventHandler
+    // TODO: Icons support w/ proper a11y: https://getbootstrap.com/docs/4.4/components/pagination/#working-with-icons
+    public class PagingControl: PagingControlBase
     {
-
-        #region "Controls"
-
-        // TODO: Replace table with something
-        protected Table tablePageNumbers;
-
-        protected Repeater PageNumbers;
-
-        protected TableCell cellDisplayStatus;
-
-        protected TableCell cellDisplayLinks;
-
-        #endregion
-
-        #region "Private Members"
-
-        int TotalPages = -1;
-
-        string _CSSClassLinkActive;
-
-        string _CSSClassLinkInactive;
-
-        string _CSSClassPagingStatus;
-
-        string _CSSClassLinkCurrent;
-
-        #endregion
-
-        public event EventHandler PageChanged;
-
-        #region "Public Properties"
-
-        public int PageLinksPerPage { get; set; } = 10;
-
-        public string CSSClassLinkActive {
-            get {
-                if (string.IsNullOrEmpty (_CSSClassLinkActive)) {
-                    return "";
-                }
-                return _CSSClassLinkActive;
-            }
-            set { _CSSClassLinkActive = value; }
-        }
-
-        public string CSSClassLinkInactive {
-            get {
-                if (string.IsNullOrEmpty (_CSSClassLinkInactive)) {
-                    return "disabled";
-                }
-                return _CSSClassLinkInactive;
-            }
-
-            set { _CSSClassLinkInactive = value; }
-        }
-
-        public string CSSClassLinkCurrent {
-            get {
-                if (string.IsNullOrEmpty (_CSSClassLinkCurrent)) {
-                    return "active";
-                }
-                return _CSSClassLinkCurrent;
-            }
-            set {
-                _CSSClassLinkCurrent = value;
-            }
-        }
-
-        public string CSSClassPagingStatus {
-            get {
-                if (string.IsNullOrEmpty (_CSSClassPagingStatus)) {
-                    return "Normal";
-                }
-                return _CSSClassPagingStatus;
-            }
-
-            set { _CSSClassPagingStatus = value; }
-        }
-
-        public int CurrentPage { get; set; } = 1;
-
-        public PagingControlMode Mode { get; set; } = PagingControlMode.URL;
-
-        public int PageSize { get; set; } = 10;
-
-        public string QuerystringParams { get; set; }
-
-        public int TabID { get; set; } = -1;
-
-        public int TotalRecords { get; set; }
-
-        #endregion
-
-        #region "Private Methods"
-
-        string GetString (string key)
-        {
-            return DotNetNuke.Services.Localization.Localization.GetString (
-                key,
-                DotNetNuke.Services.Localization.Localization.SharedResourceFile
-            );
-        }
-       
-        private void BindPageNumbers (int totalRecords, int recordsPerPage)
-        {
-            TotalPages = PagingHelper.GetTotalPages (totalRecords, recordsPerPage);
-
-            if (TotalPages > 0) {
-                var pagesRange = PagingHelper.GetPagesRange (TotalPages, PageLinksPerPage, CurrentPage);
-
-                var ht = new DataTable ();
-                ht.Columns.Add ("PageNum");
-                for (var i = pagesRange.Item1; i <= pagesRange.Item2; i++) {
-                    var tmpRow = ht.NewRow ();
-                    tmpRow ["PageNum"] = i;
-                    ht.Rows.Add (tmpRow);
-                }
-
-                PageNumbers.DataSource = ht;
-                PageNumbers.DataBind ();
-            }
-        }
-
-        private string CreateURL (string currentPage)
-        {
-            if (Mode == PagingControlMode.URL) {
-                if (!string.IsNullOrEmpty (QuerystringParams)) {
-                    if (!string.IsNullOrEmpty (currentPage)) {
-                        return Globals.NavigateURL (TabID, "", QuerystringParams, "currentpage=" + currentPage);
-                    }
-                    return Globals.NavigateURL (TabID, "", QuerystringParams);
-                }
-                if (!string.IsNullOrEmpty (currentPage)) {
-                    return Globals.NavigateURL (TabID, "", "currentpage=" + currentPage);
-                }
-                return Globals.NavigateURL (TabID);
-            }
-
-            return Page.ClientScript.GetPostBackClientHyperlink (this, "Page_" + currentPage, false);
-        }
-
-        /// -----------------------------------------------------------------------------
-        /// <summary>
-        /// GetLink returns the page number links for paging.
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
-        /// <history>
-        /// 	[dancaron]	10/28/2004	Initial Version
-        /// </history>
-        /// -----------------------------------------------------------------------------
-        private string GetLink (int pageNum)
-        {
-            if (pageNum == CurrentPage)
-                return "<li class=\"" + CSSClassLinkCurrent + "\"><span>" + pageNum + "</span></li>";
-
-            return "<li><a href=\"" +
-                CreateURL (pageNum.ToString ()) + "\">" + pageNum + "</a></li>";
-        }
-
-        /// -----------------------------------------------------------------------------
-        /// <summary>
-        /// GetPreviousLink returns the link for the Previous page for paging.
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
-        /// <history>
-        /// 	[dancaron]	10/28/2004	Initial Version
-        /// </history>
-        /// -----------------------------------------------------------------------------
-        private string GetPreviousLink ()
-        {
-            if (CurrentPage > 1 && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL ((CurrentPage - 1).ToString ()) + "\">" + GetString ("Previous") + "</a></li>";
-
-            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + GetString ("Previous") + "</span></li>";
-        }
-
-        /// -----------------------------------------------------------------------------
-        /// <summary>
-        /// GetNextLink returns the link for the Next Page for paging.
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
-        /// <history>
-        /// 	[dancaron]	10/28/2004	Initial Version
-        /// </history>
-        /// -----------------------------------------------------------------------------
-        private string GetNextLink ()
-        {
-            if (CurrentPage != TotalPages && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL ((CurrentPage + 1).ToString ()) + "\">" + GetString ("Next") + "</a></li>";
-
-            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + GetString ("Next") + "</span></li>";
-        }
-
-        /// -----------------------------------------------------------------------------
-        /// <summary>
-        /// GetFirstLink returns the First Page link for paging.
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
-        /// <history>
-        /// 	[dancaron]	10/28/2004	Initial Version
-        /// </history>
-        /// -----------------------------------------------------------------------------
-        private string GetFirstLink ()
-        {
-            if (CurrentPage > 1 && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL ("1") + "\">" + GetString ("First") + "</a></li>";
-
-            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + GetString ("First") + "</span></li>";
-        }
-
-        /// -----------------------------------------------------------------------------
-        /// <summary>
-        /// GetLastLink returns the Last Page link for paging.
-        /// </summary>
-        /// <remarks>
-        /// </remarks>
-        /// <history>
-        /// 	[dancaron]	10/28/2004	Initial Version
-        /// </history>
-        /// -----------------------------------------------------------------------------
-        private string GetLastLink ()
-        {
-            if (CurrentPage != TotalPages && TotalPages > 0)
-                return "<li><a href=\"" + CreateURL (TotalPages.ToString ()) + "\">" + GetString ("Last") + "</a></li>";
-
-            return "<li class=\"" + CSSClassLinkInactive + "\"><span>" + GetString ("Last") + "</span></li>";
-        }
-
-        #endregion
-
-        protected override void CreateChildControls ()
-        {
-            tablePageNumbers = new Table ();
-
-            // TODO: Remove this
-            tablePageNumbers.Width = new Unit ("100%");
-
-            cellDisplayStatus = new TableCell ();
-            cellDisplayLinks = new TableCell ();
-            cellDisplayStatus.CssClass = "Normal";
-            cellDisplayLinks.CssClass = "Normal";
-
-            if (string.IsNullOrEmpty (CssClass)) {
-                tablePageNumbers.CssClass = "PagingTable";
-            }
-            else {
-                tablePageNumbers.CssClass = CssClass;
-            }
-
-            var intRowIndex = tablePageNumbers.Rows.Add (new TableRow ());
-
-            PageNumbers = new Repeater ();
-            PageNumbers.ItemTemplate = new PageNumberLinkTemplate (this);
-            BindPageNumbers (TotalRecords, PageSize);
-
-            // TODO: Remove this
-            cellDisplayStatus.HorizontalAlign = HorizontalAlign.Left;
-
-            // TODO: Remove this
-            cellDisplayStatus.Style.Add (HtmlTextWriterStyle.WhiteSpace, "nowrap");
-
-            // TODO: Remove this
-            cellDisplayLinks.HorizontalAlign = HorizontalAlign.Right;
-
-            // TODO: Remove this
-            //cellDisplayLinks.Width = new Unit ("100%");
-
-            var intTotalPages = TotalPages;
-            if (intTotalPages == 0) {
-                intTotalPages = 1;
-            }
-
-            var lit = new LiteralControl (
-                string.Format (GetString ("Pages"), CurrentPage.ToString (), intTotalPages.ToString ()));
-            cellDisplayStatus.Controls.Add (lit);
-
-            tablePageNumbers.Rows [intRowIndex].Cells.Add (cellDisplayStatus);
-            tablePageNumbers.Rows [intRowIndex].Cells.Add (cellDisplayLinks);
-        }
-
-        protected void OnPageChanged (EventArgs e)
-        {
-            if (PageChanged != null) {
-                PageChanged (this, e);
-            }
-        }
-
         protected override void Render (HtmlTextWriter writer)
         {
-            if (PageNumbers == null) {
-                CreateChildControls ();
+            var totalPages = GetTotalPages ();
+            if (totalPages <= 0) {
+                // nothing to render
+                return;
             }
 
-            System.Text.StringBuilder str = new System.Text.StringBuilder ();
-            str.Append ("<ul class=\"pagination\">");
-            str.Append (GetFirstLink ());
-            str.Append (GetPreviousLink ());
-            System.Text.StringBuilder result = new System.Text.StringBuilder (1024);
-            PageNumbers.RenderControl (new HtmlTextWriter (new StringWriter (result)));
-            str.Append (result.ToString ());
-            str.Append (GetNextLink ());
-            str.Append (GetLastLink ());
-            str.Append ("</ul>");
+            var pagesRange = PagingHelper.GetPagesRange (totalPages, PageLinksPerPage, CurrentPage);
+            var sb = new StringBuilder (1024);
 
-            cellDisplayLinks.Controls.Add (new LiteralControl (str.ToString ()));
+            sb.Append ($"<nav id=\"{ClientID}\" class=\"{CssClass}\" aria-label=\"{GetAriaLabel ()}\">");
 
-            tablePageNumbers.RenderControl (writer);
+            if (ShowStatus) {
+                sb.Append (RenderPagingStatus (totalPages));
+            }
+
+            sb.Append ($"<ul class=\"{ListCssClass}\">");
+
+            if (ShowFirstLast) {
+                sb.Append (RenderFirstLink (totalPages));
+            }
+
+            sb.Append (RenderPreviousLink (totalPages));
+
+            for (var pageNum = pagesRange.Item1; pageNum <= pagesRange.Item2; pageNum++) {
+                sb.Append (RenderLink (pageNum));
+            }
+
+            sb.Append (RenderNextLink (totalPages));
+
+            if (ShowFirstLast) {
+                sb.Append (RenderLastLink (totalPages));
+            }
+
+            sb.Append ("</ul></nav>");
+
+            writer.Write (sb);
         }
 
-        public void RaisePostBackEvent (string eventArgument)
+        /// <summary>
+        /// RenderLink renders the paging status markup.
+        /// </summary>
+        protected virtual string RenderPagingStatus (int totalPages)
         {
-            CurrentPage = int.Parse (eventArgument.Replace ("Page_", ""));
-
-            OnPageChanged (new EventArgs ());
+            return $"<div class=\"{StatusCssClass}\">{string.Format (GetStatusFormat (), CurrentPage, totalPages)}</div>";
         }
 
-        public class PageNumberLinkTemplate: ITemplate
+        /// <summary>
+        /// RenderLink renders the page number links markup.
+        /// </summary>
+        protected virtual string RenderLink (int pageNum)
         {
-            PagingControl _PagingControl;
-
-            public PageNumberLinkTemplate (PagingControl ctlPagingControl)
-            {
-                _PagingControl = ctlPagingControl;
+            if (pageNum == CurrentPage) {
+                return $"<li class=\"{ItemCssClass} {CurrentItemCssClass}\" aria-current=\"page\">" +
+                    $"<span class=\"{LinkCssClass}\">{pageNum} <span class=\"sr-only\">{GetCurrentText ()}</span></span></li>";
             }
 
-            public void InstantiateIn (Control container)
-            {
-                var lit = new Literal ();
-                lit.DataBinding += BindData;
-                container.Controls.Add (lit);
+            return $"<li class=\"{ItemCssClass}\"><a class=\"{LinkCssClass}\" href=\"{GetUrl (pageNum)}\">{pageNum}</a></li>";
+        }
+
+        /// <summary>
+        /// RenderPreviousLink renders the Previous Page link markup.
+        /// </summary>
+        protected virtual string RenderPreviousLink (int totalPages)
+        {
+            if (CurrentPage > 1 && totalPages > 0) {
+                return $"<li class=\"{ItemCssClass}\"><a class=\"{LinkCssClass}\" href=\"{GetUrl (CurrentPage - 1)}\">{GetPrevText ()}</a></li>";
             }
 
-            private void BindData (object sender, EventArgs e)
-            {
-                var lc = (Literal) sender;
-                var container = (RepeaterItem) lc.NamingContainer;
-                lc.Text = _PagingControl.GetLink (Convert.ToInt32 (DataBinder.Eval (container.DataItem, "PageNum"))) + "&nbsp;&nbsp;";
+            return $"<li class=\"{ItemCssClass} {InactiveItemCssClass}\">" +
+            	$"<span class=\"{LinkCssClass}\">{GetPrevText ()}</span></li>";
+        }
+
+        /// <summary>
+        /// RenderNextLink renders the Next Page link markup.
+        /// </summary>
+        protected virtual string RenderNextLink (int totalPages)
+        {
+            if (CurrentPage != totalPages && totalPages > 0) {
+                return $"<li class=\"{ItemCssClass}\"><a class=\"{LinkCssClass}\" href=\"{GetUrl (CurrentPage + 1)}\">{GetNextText ()}</a></li>";
             }
+
+            return $"<li class=\"{ItemCssClass} {InactiveItemCssClass}\">" +
+            	$"<span class=\"{LinkCssClass}\">{GetNextText ()}</span></li>";
+        }
+
+        /// <summary>
+        /// RenderFirstLink renders the First Page link markup.
+        /// </summary>
+        protected virtual string RenderFirstLink (int totalPages)
+        {
+            if (CurrentPage > 1 && totalPages > 0) {
+                return $"<li class=\"{ItemCssClass}\"><a class=\"{LinkCssClass}\" href=\"{GetUrl (1)}\">{GetFirstText ()}</a></li>";
+            }
+
+            return $"<li class=\"{ItemCssClass} {InactiveItemCssClass}\">" +
+            	$"<span class=\"{LinkCssClass}\">{GetFirstText ()}</span></li>";
+        }
+
+        /// <summary>
+        /// RenderLastLink renders the Last Page link markup.
+        /// </summary>
+        protected virtual string RenderLastLink (int totalPages)
+        {
+            if (CurrentPage != totalPages && totalPages > 0) {
+                return $"<li class=\"{ItemCssClass}\"><a class=\"{LinkCssClass}\" href=\"{GetUrl (totalPages)}\">{GetLastText ()}</a></li>";
+            }
+
+            return $"<li class=\"{ItemCssClass} {InactiveItemCssClass}\">" +
+            	$"<span class=\"{LinkCssClass}\">{GetLastText ()}</span></li>";
         }
     }
 }
+
