@@ -160,6 +160,7 @@
     <Compile Include="Common\PagingHelper.cs" />
     <Compile Include="Controls\PagingControl\PagingControl.cs" />
     <Compile Include="Client\JavaScriptLibraryHelper.cs" />
+    <Compile Include="Content\ContentHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -199,6 +200,7 @@
     <Folder Include="Users\" />
     <Folder Include="Common\" />
     <Folder Include="Client\" />
+    <Folder Include="Content\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
