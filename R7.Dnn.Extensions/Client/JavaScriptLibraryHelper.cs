@@ -50,13 +50,13 @@ namespace R7.Dnn.Extensions.Client
             }
         }
 
-        public static void RegisterHighestVersionStyleSheet (JavaScriptLibrary jsLibrary, Page page, string filePath, int priority, string provider, string name)
+        public static void RegisterStyleSheet (JavaScriptLibrary jsLibrary, Page page, string filePath, int priority, string provider, string name)
         {
             ClientResourceManager.RegisterStyleSheet (page, $"/Resources/Libraries/{jsLibrary.LibraryName}/{Globals.FormatVersion (jsLibrary.Version, "00", 3, "_")}/{filePath}",
                 priority, provider, name, jsLibrary.Version.ToString ());
         }
 
-        public static void RegisterHighestVersionScript (JavaScriptLibrary jsLibrary, Page page, string filePath, int priority, string provider, string name)
+        public static void RegisterScript (JavaScriptLibrary jsLibrary, Page page, string filePath, int priority, string provider, string name)
         {
             ClientResourceManager.RegisterScript (page, $"/Resources/Libraries/{jsLibrary.LibraryName}/{Globals.FormatVersion (jsLibrary.Version, "00", 3, "_")}/{filePath}",
                 priority, provider, name, jsLibrary.Version.ToString ());
