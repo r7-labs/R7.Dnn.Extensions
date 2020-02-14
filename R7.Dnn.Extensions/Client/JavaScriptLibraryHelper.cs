@@ -54,13 +54,13 @@ namespace R7.Dnn.Extensions.Client
 
         public static void RegisterStyleSheet (JavaScriptLibrary jsLibrary, Page page, string filePath, int priority, string provider, string name)
         {
-            ClientResourceManager.RegisterStyleSheet (page, $"/Resources/Libraries/{jsLibrary.LibraryName}/{Globals.FormatVersion (jsLibrary.Version, "00", 3, "_")}/{filePath}",
+            ClientResourceManager.RegisterStyleSheet (page, $"/Resources/Libraries/{jsLibrary.LibraryName}/{FormatVersionPath (jsLibrary.Version)}/{filePath}",
                 priority, provider, name, jsLibrary.Version.ToString ());
         }
 
         public static void RegisterScript (JavaScriptLibrary jsLibrary, Page page, string filePath, int priority, string provider, string name)
         {
-            ClientResourceManager.RegisterScript (page, $"/Resources/Libraries/{jsLibrary.LibraryName}/{Globals.FormatVersion (jsLibrary.Version, "00", 3, "_")}/{filePath}",
+            ClientResourceManager.RegisterScript (page, $"/Resources/Libraries/{jsLibrary.LibraryName}/{FormatVersionPath (jsLibrary.Version)}/{filePath}",
                 priority, provider, name, jsLibrary.Version.ToString ());
         }
 
@@ -72,6 +72,11 @@ namespace R7.Dnn.Extensions.Client
         public static void RegisterScript (JavaScriptLibrary jsLibrary, Page page, string filePath)
         {
             RegisterScript (jsLibrary, page, filePath, (int) FileOrder.Js.DefaultPriority, "DnnFormBottomProvider", ExtractBaseFileName (filePath));
+        }
+
+        static string FormatVersionPath (Version version)
+        {
+            return Globals.FormatVersion (version, "00", 3, "_");
         }
 
         static string ExtractBaseFileName (string filePath)
