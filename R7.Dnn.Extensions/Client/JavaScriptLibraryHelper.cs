@@ -20,10 +20,12 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.IO;
 using System.Linq;
 using System.Web.UI;
 using DotNetNuke.Common;
 using DotNetNuke.Framework.JavaScriptLibraries;
+using DotNetNuke.Web.Client;
 using DotNetNuke.Web.Client.ClientResourceManagement;
 
 namespace R7.Dnn.Extensions.Client
@@ -60,6 +62,21 @@ namespace R7.Dnn.Extensions.Client
         {
             ClientResourceManager.RegisterScript (page, $"/Resources/Libraries/{jsLibrary.LibraryName}/{Globals.FormatVersion (jsLibrary.Version, "00", 3, "_")}/{filePath}",
                 priority, provider, name, jsLibrary.Version.ToString ());
+        }
+
+        public static void RegisterStyleSheet (JavaScriptLibrary jsLibrary, Page page, string filePath)
+        {
+            RegisterStyleSheet (jsLibrary, page, filePath, (int) FileOrder.Css.DefaultPriority, "DnnPageHeaderProvider", ExtractBaseFileName (filePath));
+        }
+
+        public static void RegisterScript (JavaScriptLibrary jsLibrary, Page page, string filePath)
+        {
+            RegisterScript (jsLibrary, page, filePath, (int) FileOrder.Js.DefaultPriority, "DnnFormBottomProvider", ExtractBaseFileName (filePath));
+        }
+
+        static string ExtractBaseFileName (string filePath)
+        {
+            return Path.GetFileNameWithoutExtension (filePath).Replace (".min", "");
         }
     }
 }
