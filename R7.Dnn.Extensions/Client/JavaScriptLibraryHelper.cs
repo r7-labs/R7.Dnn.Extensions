@@ -21,8 +21,10 @@
 
 using System;
 using System.Linq;
+using System.Web.UI;
 using DotNetNuke.Common;
 using DotNetNuke.Framework.JavaScriptLibraries;
+using DotNetNuke.Web.Client.ClientResourceManagement;
 
 namespace R7.Dnn.Extensions.Client
 {
@@ -46,6 +48,18 @@ namespace R7.Dnn.Extensions.Client
                 // no library found (install or upgrade)
                 return null;
             }
+        }
+
+        public static void RegisterHighestVersionStyleSheet (JavaScriptLibrary jsLibrary, Page page, string filePath, int priority, string provider, string name)
+        {
+            ClientResourceManager.RegisterStyleSheet (page, $"/Resources/Libraries/{jsLibrary.LibraryName}/{Globals.FormatVersion (jsLibrary.Version, "00", 3, "_")}/{filePath}",
+                priority, provider, name, jsLibrary.Version.ToString ());
+        }
+
+        public static void RegisterHighestVersionScript (JavaScriptLibrary jsLibrary, Page page, string filePath, int priority, string provider, string name)
+        {
+            ClientResourceManager.RegisterScript (page, $"/Resources/Libraries/{jsLibrary.LibraryName}/{Globals.FormatVersion (jsLibrary.Version, "00", 3, "_")}/{filePath}",
+                priority, provider, name, jsLibrary.Version.ToString ());
         }
     }
 }
