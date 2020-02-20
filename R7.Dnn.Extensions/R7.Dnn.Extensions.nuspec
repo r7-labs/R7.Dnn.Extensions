@@ -11,7 +11,7 @@
         <projectUrl>https://github.com/roman-yagodin/R7.Dnn.Extensions</projectUrl>
         <description>R7.Dnn.Extensions (formerly DotNetNuke.R7) is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules, useful extension methods for webcontrols and strings, various utilities and even some DNN version-specific hacks.</description>
         <summary>R7.Dnn.Extensions is a library for DNN Platform web CMS extensions development (NOT STABLE).</summary>
-        <releaseNotes>https://github.com/roman-yagodin/R7.Dnn.Extensions/blob/master/R7.Dnn.Extensions/releaseNotes.htm</releaseNotes>
+        <releaseNotes>https://github.com/roman-yagodin/R7.Dnn.Extensions/releases</releaseNotes>
         <copyright>Copyright 2014-2020 Roman M. Yagodin &lt;roman.yagodin@gmail.com&gt;</copyright>
         <tags>DotNetNuke DNN</tags>
         <dependencies>
