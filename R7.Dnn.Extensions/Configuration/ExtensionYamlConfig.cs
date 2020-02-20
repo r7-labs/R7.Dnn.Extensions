@@ -37,7 +37,7 @@ namespace R7.Dnn.Extensions.Configuration
         {
             using (var configReader = new StringReader (File.ReadAllText (configFile))) {
                 var deserializer = new DeserializerBuilder ()
-                    .WithNamingConvention (new HyphenatedNamingConvention ())
+                    .WithNamingConvention (HyphenatedNamingConvention.Instance)
                     .Build ();
 
                 return deserializer.Deserialize<TPortalConfig> (configReader);
