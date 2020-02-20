@@ -3,7 +3,7 @@
     <Target Name="MakeNuGetPackage" Condition=" '$(Configuration)' == 'Release' ">
 		<Exec Command="nuget pack $(PackageName).nuspec -Version $(ReleaseVersion) -OutputDirectory &quot;$(MSBuildProjectDirectory)/$(PackageOutputPath)&quot;" 
             WorkingDirectory="$(MainProjectPath)" />
-		<Exec Condition=" '$(Configuration)|$(PublishNuGetPackage)' == 'Release|true' " Command="nuget push $(PackageName).$(ReleaseVersion).nupkg -Source https://www.nuget.org/api/v2/package" 
+		<Exec Condition=" '$(Configuration)|$(PublishNuGetPackage)' == 'Release|true' " Command="nuget push $(PackageName).$(ReleaseVersion).nupkg -Source https://api.nuget.org/v3/index.json" 
             WorkingDirectory="$(PackageOutputPath)" />
 	</Target>
 </Project>
