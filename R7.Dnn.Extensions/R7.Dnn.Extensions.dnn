@@ -1,6 +1,6 @@
 ﻿<dotnetnuke type="Package" version="5.0">
     <packages>
-        <package name="R7.Dnn.Extensions" type="Library" version="00.14.01">
+        <package name="R7.Dnn.Extensions" type="Library" version="00.14.02">
             <friendlyName>R7.Dnn.Extensions</friendlyName>
             <description>R7.Dnn.Extensions is a library for DNN Platform web CMS extensions development (primarily, modules). It includes DAL2-based generic controller, a set of base classes for modules, useful extension methods for webcontrols and strings, various utilities and even some DNN version-specific hacks.</description>
             <owner>
