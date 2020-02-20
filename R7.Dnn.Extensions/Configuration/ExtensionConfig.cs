@@ -4,7 +4,7 @@
 //  Author:
 //       Roman M. Yagodin <roman.yagodin@gmail.com>
 //
-//  Copyright (c) 2017 Roman M. Yagodin
+//  Copyright (c) 2017-2020 Roman M. Yagodin
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU Lesser General Public License as published by
@@ -62,17 +62,22 @@ namespace R7.Dnn.Extensions.Configuration
 
         TPortalConfig GetPortalConfig (int portalId)
         {
-            var portalConfigFile = Path.IsPathRooted (_configFileName)
-                                       ? _configFileName
-                                       : Path.Combine (new PortalSettings (portalId).HomeDirectoryMapPath, _configFileName);
+            // TODO: Also check for portalId >= 0
+            var сonfigFile = !Path.IsPathRooted (_configFileName)
+                ? Path.Combine (new PortalSettings (portalId).HomeDirectoryMapPath, _configFileName)
+                : _configFileName;
 
             try {
-                return (File.Exists (portalConfigFile))
-                    ? DeserializeConfig (portalConfigFile)
-                    : new TPortalConfig ();
+                return File.Exists (сonfigFile) ? DeserializeConfig (сonfigFile) : new TPortalConfig ();
             }
             catch (Exception ex) {
-                Exceptions.LogException (new Exception ($"Cannot deserialize the \"{portalConfigFile}\" config file", ex));
+                // Only log error to DNN for portal-level configs,
+                // otherwize (e.g. calling Exceptions.LogException from WebActivator) will broke application.
+                // TODO: Also check for portalId >= 0
+                // TODO: Use non-DNN logging solution?
+                if (!Path.IsPathRooted (_configFileName)) {
+                    Exceptions.LogException (new Exception ($"Cannot deserialize the \"{сonfigFile}\" config file", ex));
+                }
                 return new TPortalConfig ();
             }
         }
