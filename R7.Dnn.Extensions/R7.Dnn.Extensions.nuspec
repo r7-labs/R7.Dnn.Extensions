@@ -27,7 +27,8 @@
         </dependencies>
     </metadata>
     <files>
-        <file src="bin/Release/R7.Dnn.Extensions.dll" target="lib/net45" /> 
-        <file src="bin/Release/R7.Dnn.Extensions.xml" target="lib/net45" />
+        <file src="bin/Release/R7.dll" target="lib/net472" />
+        <file src="bin/Release/R7.Dnn.Extensions.dll" target="lib/net472" /> 
+        <file src="bin/Release/R7.Dnn.Extensions.xml" target="lib/net472" />
     </files>
 </package>

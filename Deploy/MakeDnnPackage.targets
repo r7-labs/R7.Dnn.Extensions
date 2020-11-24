@@ -3,8 +3,8 @@
     <Target Name="MakeDnnPackage" >
 		<!-- Declare binaries -->
         <ItemGroup>
+            <InstallBinaryFiles Include="$(MainProjectOutputPath)/R7.dll" />
             <InstallBinaryFiles Include="$(MainProjectOutputPath)/R7.Dnn.Extensions.dll" />
-			<InstallBinaryFiles Include="$(MainProjectOutputPath)/R7.Dnn.Extensions.xml" />
 			<InstallBinaryFiles Include="$(MainProjectOutputPath)/YamlDotNet.dll" />
 			<InstallBinaryFiles Include="$(MainProjectOutputPath)/NGettext.dll" />
 		</ItemGroup>

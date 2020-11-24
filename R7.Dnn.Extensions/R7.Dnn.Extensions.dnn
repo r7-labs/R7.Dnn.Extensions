@@ -33,6 +33,9 @@
                         <assembly>
                             <name>R7.Dnn.Extensions.dll</name>
                         </assembly>
+                        <assembly>
+                            <name>R7.dll</name>
+                        </assembly>
 						<assembly>
                             <name>YamlDotNet.dll</name>
                         </assembly>

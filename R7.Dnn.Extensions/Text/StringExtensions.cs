@@ -23,7 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-using R7.Dnn.Extensions.Text.Transliteration;
+using R7.Text;
 
 namespace R7.Dnn.Extensions.Text
 {
