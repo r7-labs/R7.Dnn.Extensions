@@ -19,11 +19,11 @@
                     <scripts>
 						<basePath>DesktopModules\R7.Dnn.Extensions</basePath>
                         <script type="Install">
-                            <name>SqlDataProvider\00.12.00.SqlDataProvider</name>
+                            <name>SqlDataProvider\00.12.00.dnn.sql</name>
                             <version>00.12.00</version>
                         </script>
                         <script type="UnInstall">
-                            <name>SqlDataProvider\Uninstall.SqlDataProvider</name>
+                            <name>SqlDataProvider\Uninstall.dnn.sql</name>
                         </script>
                     </scripts>
                 </component>

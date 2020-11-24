@@ -169,8 +169,8 @@
     <None Include="license-gpl.txt" />
     <None Include="packages.config" />
     <None Include="R7.Dnn.Extensions.csproj" />
-    <None Include="SqlDataProvider\00.12.00.SqlDataProvider" />
-    <None Include="SqlDataProvider\Uninstall.SqlDataProvider" />
+    <None Include="SqlDataProvider\00.12.00.dnn.sql" />
+    <None Include="SqlDataProvider\Uninstall.dnn.sql" />
     <None Include="assets\js\dnnModalHelper.js" />
   </ItemGroup>
   <ItemGroup>

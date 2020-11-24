@@ -16,7 +16,7 @@
             <InstallManifestFiles Include="$(MainProjectPath)/releaseNotes.htm" />
         </ItemGroup>
 		<ItemGroup>
-            <InstallSqlDataProviderFiles Include="$(MainProjectPath)/SqlDataProvider/*.SqlDataProvider" />
+            <InstallSqlDataProviderFiles Include="$(MainProjectPath)/SqlDataProvider/*.dnn.sql" />
         </ItemGroup>
 		<ItemGroup>
             <InstallResourceFiles Include="../**/*.ascx" />
