@@ -73,6 +73,10 @@
       <Project>{F5EF3563-5DD0-4412-B6FE-1C992C1E4EE6}</Project>
       <Name>R7.Dnn.Extensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\R7\R7.csproj">
+      <Project>{4a99e1d7-fe55-4413-9a91-5270412405fc}</Project>
+      <Name>R7</Name>
+    </ProjectReference>
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
