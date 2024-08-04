@@ -65,16 +65,24 @@
         <ItemGroup>
             <InstallResourceZipFiles Include="$(MSBuildProjectDirectory)/tmp/Resources/**/*.*" />
         </ItemGroup>
-        <Zip Condition=" '$(OS)' != 'Unix' " Files="@(InstallResourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Resources\R7.Dnn.Extensions" ZipFileName="$(MSBuildProjectDirectory)\tmp\Resources\Resources.zip" />
+		<ZipDirectory
+			Condition=" '$(OS)' != 'Unix' "
+            SourceDirectory="$(MSBuildProjectDirectory)\tmp\Resources\R7.Dnn.Extensions"
+            DestinationFile="$(MSBuildProjectDirectory)\tmp\Resources\Resources.zip" />
+        <!--<Zip Condition=" '$(OS)' != 'Unix' " Files="@(InstallResourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Resources\R7.Dnn.Extensions" ZipFileName="$(MSBuildProjectDirectory)\tmp\Resources\Resources.zip" />-->
         <Exec Condition=" '$(OS)' == 'Unix' " Command="zip -r -6 -UN=UTF8 &quot;Resources.zip&quot; ." WorkingDirectory="$(MSBuildProjectDirectory)/tmp/Resources/R7.Dnn.Extensions" />
-		<Copy SourceFiles="$(MSBuildProjectDirectory)/tmp/Resources/R7.Dnn.Extensions/Resources.zip" DestinationFolder="$(MSBuildProjectDirectory)/tmp/Package/" />
-        <Delete Files="$(MSBuildProjectDirectory)/tmp/Resources/R7.Dnn.Extensions/Resources.zip" />
+		<Copy SourceFiles="$(MSBuildProjectDirectory)/tmp/Resources/Resources.zip" DestinationFolder="$(MSBuildProjectDirectory)/tmp/Package/" />
+        <Delete Files="$(MSBuildProjectDirectory)/tmp/Resources/Resources.zip" />
 		<!-- Create the install package -->
         <ItemGroup>
             <InstallPackageFiles Include="$(MSBuildProjectDirectory)\tmp\Package\**\*.*" />
         </ItemGroup>
         <!-- Create the install package -->
-        <Zip Condition=" '$(OS)' != 'Unix' " Files="@(InstallPackageFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Package" ZipFileName="$(PackageName)-$(ReleaseVersion)-Install.zip" />
+		<ZipDirectory
+			Condition=" '$(OS)' != 'Unix' "
+            SourceDirectory="$(MSBuildProjectDirectory)\tmp\Package"
+            DestinationFile="$(PackageName)-$(ReleaseVersion)-Install.zip" />
+		<!--<Zip Condition=" '$(OS)' != 'Unix' " Files="@(InstallPackageFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Package" ZipFileName="$(PackageName)-$(ReleaseVersion)-Install.zip" />-->
         <Exec Condition=" '$(OS)' == 'Unix' " Command="zip -r -6 -UN=UTF8 &quot;$(MSBuildProjectDirectory)\$(PackageName)-$(ReleaseVersion)-Install.zip&quot; ." WorkingDirectory="$(MSBuildProjectDirectory)/tmp/Package" />
         <!-- Move the install package to the output directory -->
         <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)-$(ReleaseVersion)-Install.zip" DestinationFolder="$(PackageOutputPath)\" />
